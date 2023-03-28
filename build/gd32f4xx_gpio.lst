@@ -1,0 +1,1406 @@
+ARM GAS  /tmp/ccKI2pin.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_gpio.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.gpio_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	gpio_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	gpio_deinit:
+  27              	.LVL0:
+  28              	.LFB116:
+  29              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \file    gd32f4xx_gpio.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief   GPIO driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****        this list of conditions and the following disclaimer in the documentation
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****        may be used to endorse or promote products derived from this software without
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ARM GAS  /tmp/ccKI2pin.s 			page 2
+
+
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** #include "gd32f4xx_gpio.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      reset GPIO port
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_deinit(uint32_t gpio_periph)
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+  30              		.loc 1 49 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 49 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     switch(gpio_periph) {
+  40              		.loc 1 50 5 is_stmt 1 view .LVU2
+  41 0002 3A4B     		ldr	r3, .L19
+  42 0004 9842     		cmp	r0, r3
+  43 0006 55D0     		beq	.L2
+  44 0008 0FD9     		bls	.L16
+  45 000a 394B     		ldr	r3, .L19+4
+  46 000c 9842     		cmp	r0, r3
+  47 000e 63D0     		beq	.L10
+  48 0010 2DD9     		bls	.L17
+  49 0012 384B     		ldr	r3, .L19+8
+  50 0014 9842     		cmp	r0, r3
+  51 0016 43D1     		bne	.L1
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOA:
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOA */
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOARST);
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOB:
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOB */
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOBRST);
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOC:
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOC */
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOCRST);
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+ARM GAS  /tmp/ccKI2pin.s 			page 3
+
+
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOD:
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOD */
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIODRST);
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIODRST);
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOE:
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOE */
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOERST);
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOF:
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOF */
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOFRST);
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOFRST);
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOG:
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOG */
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOGRST);
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOGRST);
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOH:
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOH */
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOHRST);
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOHRST);
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOI:
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         /* reset GPIOI */
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_enable(RCU_GPIOIRST);
+  52              		.loc 1 93 9 view .LVU3
+  53 0018 4FF48160 		mov	r0, #1032
+  54              	.LVL1:
+  55              		.loc 1 93 9 is_stmt 0 view .LVU4
+  56 001c FFF7FEFF 		bl	rcu_periph_reset_enable
+  57              	.LVL2:
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOIRST);
+  58              		.loc 1 94 9 is_stmt 1 view .LVU5
+  59 0020 4FF48160 		mov	r0, #1032
+  60 0024 FFF7FEFF 		bl	rcu_periph_reset_disable
+  61              	.LVL3:
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  62              		.loc 1 95 9 view .LVU6
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     default:
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+  63              		.loc 1 99 1 is_stmt 0 view .LVU7
+  64 0028 3AE0     		b	.L1
+  65              	.LVL4:
+  66              	.L16:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOA:
+  67              		.loc 1 50 5 view .LVU8
+  68 002a A3F50063 		sub	r3, r3, #2048
+  69 002e 9842     		cmp	r0, r3
+  70 0030 37D0     		beq	.L4
+  71 0032 0BD9     		bls	.L18
+  72 0034 304B     		ldr	r3, .L19+12
+ARM GAS  /tmp/ccKI2pin.s 			page 4
+
+
+  73 0036 9842     		cmp	r0, r3
+  74 0038 32D1     		bne	.L1
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIODRST);
+  75              		.loc 1 68 9 is_stmt 1 view .LVU9
+  76 003a 40F20340 		movw	r0, #1027
+  77              	.LVL5:
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIODRST);
+  78              		.loc 1 68 9 is_stmt 0 view .LVU10
+  79 003e FFF7FEFF 		bl	rcu_periph_reset_enable
+  80              	.LVL6:
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+  81              		.loc 1 69 9 is_stmt 1 view .LVU11
+  82 0042 40F20340 		movw	r0, #1027
+  83 0046 FFF7FEFF 		bl	rcu_periph_reset_disable
+  84              	.LVL7:
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOE:
+  85              		.loc 1 70 9 view .LVU12
+  86 004a 29E0     		b	.L1
+  87              	.LVL8:
+  88              	.L18:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOA:
+  89              		.loc 1 50 5 is_stmt 0 view .LVU13
+  90 004c A3F50063 		sub	r3, r3, #2048
+  91 0050 9842     		cmp	r0, r3
+  92 0052 1DD0     		beq	.L6
+  93 0054 03F58063 		add	r3, r3, #1024
+  94 0058 9842     		cmp	r0, r3
+  95 005a 21D1     		bne	.L1
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  96              		.loc 1 58 9 is_stmt 1 view .LVU14
+  97 005c 40F20140 		movw	r0, #1025
+  98              	.LVL9:
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOBRST);
+  99              		.loc 1 58 9 is_stmt 0 view .LVU15
+ 100 0060 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 101              	.LVL10:
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 102              		.loc 1 59 9 is_stmt 1 view .LVU16
+ 103 0064 40F20140 		movw	r0, #1025
+ 104 0068 FFF7FEFF 		bl	rcu_periph_reset_disable
+ 105              	.LVL11:
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOC:
+ 106              		.loc 1 60 9 view .LVU17
+ 107 006c 18E0     		b	.L1
+ 108              	.LVL12:
+ 109              	.L17:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOA:
+ 110              		.loc 1 50 5 is_stmt 0 view .LVU18
+ 111 006e A3F50063 		sub	r3, r3, #2048
+ 112 0072 9842     		cmp	r0, r3
+ 113 0074 27D0     		beq	.L12
+ 114 0076 03F58063 		add	r3, r3, #1024
+ 115 007a 9842     		cmp	r0, r3
+ 116 007c 10D1     		bne	.L1
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOGRST);
+ 117              		.loc 1 83 9 is_stmt 1 view .LVU19
+ 118 007e 40F20640 		movw	r0, #1030
+ARM GAS  /tmp/ccKI2pin.s 			page 5
+
+
+ 119              	.LVL13:
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOGRST);
+ 120              		.loc 1 83 9 is_stmt 0 view .LVU20
+ 121 0082 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 122              	.LVL14:
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 123              		.loc 1 84 9 is_stmt 1 view .LVU21
+ 124 0086 40F20640 		movw	r0, #1030
+ 125 008a FFF7FEFF 		bl	rcu_periph_reset_disable
+ 126              	.LVL15:
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOH:
+ 127              		.loc 1 85 9 view .LVU22
+ 128 008e 07E0     		b	.L1
+ 129              	.LVL16:
+ 130              	.L6:
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+ 131              		.loc 1 53 9 view .LVU23
+ 132 0090 4FF48060 		mov	r0, #1024
+ 133              	.LVL17:
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOARST);
+ 134              		.loc 1 53 9 is_stmt 0 view .LVU24
+ 135 0094 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 136              	.LVL18:
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 137              		.loc 1 54 9 is_stmt 1 view .LVU25
+ 138 0098 4FF48060 		mov	r0, #1024
+ 139 009c FFF7FEFF 		bl	rcu_periph_reset_disable
+ 140              	.LVL19:
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOB:
+ 141              		.loc 1 55 9 view .LVU26
+ 142              	.L1:
+ 143              		.loc 1 99 1 is_stmt 0 view .LVU27
+ 144 00a0 08BD     		pop	{r3, pc}
+ 145              	.LVL20:
+ 146              	.L4:
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+ 147              		.loc 1 63 9 is_stmt 1 view .LVU28
+ 148 00a2 40F20240 		movw	r0, #1026
+ 149              	.LVL21:
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOCRST);
+ 150              		.loc 1 63 9 is_stmt 0 view .LVU29
+ 151 00a6 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 152              	.LVL22:
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 153              		.loc 1 64 9 is_stmt 1 view .LVU30
+ 154 00aa 40F20240 		movw	r0, #1026
+ 155 00ae FFF7FEFF 		bl	rcu_periph_reset_disable
+ 156              	.LVL23:
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOD:
+ 157              		.loc 1 65 9 view .LVU31
+ 158 00b2 F5E7     		b	.L1
+ 159              	.LVL24:
+ 160              	.L2:
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+ 161              		.loc 1 73 9 view .LVU32
+ 162 00b4 40F20440 		movw	r0, #1028
+ 163              	.LVL25:
+ARM GAS  /tmp/ccKI2pin.s 			page 6
+
+
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOERST);
+ 164              		.loc 1 73 9 is_stmt 0 view .LVU33
+ 165 00b8 FFF7FEFF 		bl	rcu_periph_reset_enable
+ 166              	.LVL26:
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 167              		.loc 1 74 9 is_stmt 1 view .LVU34
+ 168 00bc 40F20440 		movw	r0, #1028
+ 169 00c0 FFF7FEFF 		bl	rcu_periph_reset_disable
+ 170              	.LVL27:
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOF:
+ 171              		.loc 1 75 9 view .LVU35
+ 172 00c4 ECE7     		b	.L1
+ 173              	.LVL28:
+ 174              	.L12:
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOFRST);
+ 175              		.loc 1 78 9 view .LVU36
+ 176 00c6 40F20540 		movw	r0, #1029
+ 177              	.LVL29:
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOFRST);
+ 178              		.loc 1 78 9 is_stmt 0 view .LVU37
+ 179 00ca FFF7FEFF 		bl	rcu_periph_reset_enable
+ 180              	.LVL30:
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 181              		.loc 1 79 9 is_stmt 1 view .LVU38
+ 182 00ce 40F20540 		movw	r0, #1029
+ 183 00d2 FFF7FEFF 		bl	rcu_periph_reset_disable
+ 184              	.LVL31:
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOG:
+ 185              		.loc 1 80 9 view .LVU39
+ 186 00d6 E3E7     		b	.L1
+ 187              	.LVL32:
+ 188              	.L10:
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOHRST);
+ 189              		.loc 1 88 9 view .LVU40
+ 190 00d8 40F20740 		movw	r0, #1031
+ 191              	.LVL33:
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         rcu_periph_reset_disable(RCU_GPIOHRST);
+ 192              		.loc 1 88 9 is_stmt 0 view .LVU41
+ 193 00dc FFF7FEFF 		bl	rcu_periph_reset_enable
+ 194              	.LVL34:
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         break;
+ 195              		.loc 1 89 9 is_stmt 1 view .LVU42
+ 196 00e0 40F20740 		movw	r0, #1031
+ 197 00e4 FFF7FEFF 		bl	rcu_periph_reset_disable
+ 198              	.LVL35:
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     case GPIOI:
+ 199              		.loc 1 90 9 view .LVU43
+ 200 00e8 DAE7     		b	.L1
+ 201              	.L20:
+ 202 00ea 00BF     		.align	2
+ 203              	.L19:
+ 204 00ec 00100240 		.word	1073876992
+ 205 00f0 001C0240 		.word	1073880064
+ 206 00f4 00200240 		.word	1073881088
+ 207 00f8 000C0240 		.word	1073875968
+ 208              		.cfi_endproc
+ 209              	.LFE116:
+ARM GAS  /tmp/ccKI2pin.s 			page 7
+
+
+ 211              		.section	.text.gpio_mode_set,"ax",%progbits
+ 212              		.align	1
+ 213              		.global	gpio_mode_set
+ 214              		.syntax unified
+ 215              		.thumb
+ 216              		.thumb_func
+ 218              	gpio_mode_set:
+ 219              	.LVL36:
+ 220              	.LFB117:
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      set GPIO mode
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  mode: GPIO pin mode
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_MODE_INPUT: input mode
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_MODE_OUTPUT: output mode
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_MODE_AF: alternate function mode
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_MODE_ANALOG: analog mode
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pull_up_down: GPIO pin with pull-up or pull-down resistor
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PUPD_NONE: floating mode, no pull-up and pull-down resistors
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PUPD_PULLUP: with pull-up resistor
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PUPD_PULLDOWN:with pull-down resistor
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_mode_set(uint32_t gpio_periph, uint32_t mode, uint32_t pull_up_down, uint32_t pin)
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 221              		.loc 1 122 1 view -0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 0
+ 224              		@ frame_needed = 0, uses_anonymous_args = 0
+ 225              		.loc 1 122 1 is_stmt 0 view .LVU45
+ 226 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 227              	.LCFI1:
+ 228              		.cfi_def_cfa_offset 20
+ 229              		.cfi_offset 4, -20
+ 230              		.cfi_offset 5, -16
+ 231              		.cfi_offset 6, -12
+ 232              		.cfi_offset 7, -8
+ 233              		.cfi_offset 14, -4
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint16_t i;
+ 234              		.loc 1 123 5 is_stmt 1 view .LVU46
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint32_t ctl, pupd;
+ 235              		.loc 1 124 5 view .LVU47
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     ctl = GPIO_CTL(gpio_periph);
+ 236              		.loc 1 126 5 view .LVU48
+ 237              		.loc 1 126 9 is_stmt 0 view .LVU49
+ 238 0002 0568     		ldr	r5, [r0]
+ 239              	.LVL37:
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     pupd = GPIO_PUD(gpio_periph);
+ 240              		.loc 1 127 5 is_stmt 1 view .LVU50
+ARM GAS  /tmp/ccKI2pin.s 			page 8
+
+
+ 241              		.loc 1 127 10 is_stmt 0 view .LVU51
+ 242 0004 C668     		ldr	r6, [r0, #12]
+ 243              	.LVL38:
+ 128:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 129:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     for(i = 0U; i < 16U; i++) {
+ 244              		.loc 1 129 5 is_stmt 1 view .LVU52
+ 245              		.loc 1 129 11 is_stmt 0 view .LVU53
+ 246 0006 4FF0000C 		mov	ip, #0
+ 247              		.loc 1 129 5 view .LVU54
+ 248 000a 03E0     		b	.L22
+ 249              	.LVL39:
+ 250              	.L23:
+ 251              		.loc 1 129 26 is_stmt 1 discriminator 2 view .LVU55
+ 252              		.loc 1 129 27 is_stmt 0 discriminator 2 view .LVU56
+ 253 000c 0CF1010C 		add	ip, ip, #1
+ 254              	.LVL40:
+ 255              		.loc 1 129 27 discriminator 2 view .LVU57
+ 256 0010 1FFA8CFC 		uxth	ip, ip
+ 257              	.LVL41:
+ 258              	.L22:
+ 259              		.loc 1 129 17 is_stmt 1 discriminator 1 view .LVU58
+ 260              		.loc 1 129 5 is_stmt 0 discriminator 1 view .LVU59
+ 261 0014 BCF10F0F 		cmp	ip, #15
+ 262 0018 18D8     		bhi	.L26
+ 130:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         if((1U << i) & pin) {
+ 263              		.loc 1 130 9 is_stmt 1 view .LVU60
+ 264              		.loc 1 130 16 is_stmt 0 view .LVU61
+ 265 001a 4FF0010E 		mov	lr, #1
+ 266 001e 0EFA0CFE 		lsl	lr, lr, ip
+ 267              		.loc 1 130 11 view .LVU62
+ 268 0022 1EEA030F 		tst	lr, r3
+ 269 0026 F1D0     		beq	.L23
+ 131:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* clear the specified pin mode bits */
+ 132:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             ctl &= ~GPIO_MODE_MASK(i);
+ 270              		.loc 1 132 13 is_stmt 1 view .LVU63
+ 271              		.loc 1 132 21 is_stmt 0 view .LVU64
+ 272 0028 4FEA4C04 		lsl	r4, ip, #1
+ 273 002c 4FF0030E 		mov	lr, #3
+ 274 0030 0EFA04FE 		lsl	lr, lr, r4
+ 275              		.loc 1 132 17 view .LVU65
+ 276 0034 25EA0E05 		bic	r5, r5, lr
+ 277              	.LVL42:
+ 133:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* set the specified pin mode bits */
+ 134:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             ctl |= GPIO_MODE_SET(i, mode);
+ 278              		.loc 1 134 13 is_stmt 1 view .LVU66
+ 279              		.loc 1 134 20 is_stmt 0 view .LVU67
+ 280 0038 01FA04F7 		lsl	r7, r1, r4
+ 281              		.loc 1 134 17 view .LVU68
+ 282 003c 3D43     		orrs	r5, r5, r7
+ 283              	.LVL43:
+ 135:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 136:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* clear the specified pin pupd bits */
+ 137:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             pupd &= ~GPIO_PUPD_MASK(i);
+ 284              		.loc 1 137 13 is_stmt 1 view .LVU69
+ 285              		.loc 1 137 18 is_stmt 0 view .LVU70
+ 286 003e 26EA0E0E 		bic	lr, r6, lr
+ 287              	.LVL44:
+ARM GAS  /tmp/ccKI2pin.s 			page 9
+
+
+ 138:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* set the specified pin pupd bits */
+ 139:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             pupd |= GPIO_PUPD_SET(i, pull_up_down);
+ 288              		.loc 1 139 13 is_stmt 1 view .LVU71
+ 289              		.loc 1 139 21 is_stmt 0 view .LVU72
+ 290 0042 02FA04F4 		lsl	r4, r2, r4
+ 291              		.loc 1 139 18 view .LVU73
+ 292 0046 44EA0E06 		orr	r6, r4, lr
+ 293              	.LVL45:
+ 294              		.loc 1 139 18 view .LVU74
+ 295 004a DFE7     		b	.L23
+ 296              	.L26:
+ 140:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         }
+ 141:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 142:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 143:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_CTL(gpio_periph) = ctl;
+ 297              		.loc 1 143 5 is_stmt 1 view .LVU75
+ 298              		.loc 1 143 27 is_stmt 0 view .LVU76
+ 299 004c 0560     		str	r5, [r0]
+ 144:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_PUD(gpio_periph) = pupd;
+ 300              		.loc 1 144 5 is_stmt 1 view .LVU77
+ 301              		.loc 1 144 27 is_stmt 0 view .LVU78
+ 302 004e C660     		str	r6, [r0, #12]
+ 145:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 303              		.loc 1 145 1 view .LVU79
+ 304 0050 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 305              		.loc 1 145 1 view .LVU80
+ 306              		.cfi_endproc
+ 307              	.LFE117:
+ 309              		.section	.text.gpio_output_options_set,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	gpio_output_options_set
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	gpio_output_options_set:
+ 317              	.LVL46:
+ 318              	.LFB118:
+ 146:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 147:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 148:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      set GPIO output type and speed
+ 149:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 150:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 151:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 152:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  otype: GPIO pin output mode
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OTYPE_PP: push pull mode
+ 154:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OTYPE_OD: open drain mode
+ 155:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  speed: GPIO pin output max speed
+ 156:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OSPEED_2MHZ: output max speed 2MHz
+ 157:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OSPEED_25MHZ: output max speed 25MHz
+ 158:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OSPEED_50MHZ: output max speed 50MHz
+ 159:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_OSPEED_MAX: output max speed more than 50MHz
+ 160:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 161:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 162:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 163:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 164:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 165:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ARM GAS  /tmp/ccKI2pin.s 			page 10
+
+
+ 166:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_output_options_set(uint32_t gpio_periph, uint8_t otype, uint32_t speed, uint32_t pin)
+ 167:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 319              		.loc 1 167 1 is_stmt 1 view -0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              		.loc 1 167 1 is_stmt 0 view .LVU82
+ 324 0000 10B5     		push	{r4, lr}
+ 325              	.LCFI2:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 4, -8
+ 328              		.cfi_offset 14, -4
+ 168:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint16_t i;
+ 329              		.loc 1 168 5 is_stmt 1 view .LVU83
+ 169:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint32_t ospeedr;
+ 330              		.loc 1 169 5 view .LVU84
+ 170:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 171:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     if(GPIO_OTYPE_OD == otype) {
+ 331              		.loc 1 171 5 view .LVU85
+ 332              		.loc 1 171 7 is_stmt 0 view .LVU86
+ 333 0002 0129     		cmp	r1, #1
+ 334 0004 06D0     		beq	.L34
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         GPIO_OMODE(gpio_periph) |= (uint32_t)pin;
+ 173:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 174:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         GPIO_OMODE(gpio_periph) &= (uint32_t)(~pin);
+ 335              		.loc 1 174 9 is_stmt 1 view .LVU87
+ 336              		.loc 1 174 33 is_stmt 0 view .LVU88
+ 337 0006 4168     		ldr	r1, [r0, #4]
+ 338              	.LVL47:
+ 339              		.loc 1 174 33 view .LVU89
+ 340 0008 21EA0301 		bic	r1, r1, r3
+ 341 000c 4160     		str	r1, [r0, #4]
+ 342              	.L29:
+ 175:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 176:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 177:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     /* get the specified pin output speed bits value */
+ 178:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     ospeedr = GPIO_OSPD(gpio_periph);
+ 343              		.loc 1 178 5 is_stmt 1 view .LVU90
+ 344              		.loc 1 178 13 is_stmt 0 view .LVU91
+ 345 000e 8468     		ldr	r4, [r0, #8]
+ 346              	.LVL48:
+ 179:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 180:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     for(i = 0U; i < 16U; i++) {
+ 347              		.loc 1 180 5 is_stmt 1 view .LVU92
+ 348              		.loc 1 180 11 is_stmt 0 view .LVU93
+ 349 0010 0021     		movs	r1, #0
+ 350              		.loc 1 180 5 view .LVU94
+ 351 0012 05E0     		b	.L30
+ 352              	.LVL49:
+ 353              	.L34:
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 354              		.loc 1 172 9 is_stmt 1 view .LVU95
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 355              		.loc 1 172 33 is_stmt 0 view .LVU96
+ 356 0014 4168     		ldr	r1, [r0, #4]
+ 357              	.LVL50:
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ARM GAS  /tmp/ccKI2pin.s 			page 11
+
+
+ 358              		.loc 1 172 33 view .LVU97
+ 359 0016 1943     		orrs	r1, r1, r3
+ 360 0018 4160     		str	r1, [r0, #4]
+ 361 001a F8E7     		b	.L29
+ 362              	.LVL51:
+ 363              	.L31:
+ 364              		.loc 1 180 26 is_stmt 1 discriminator 2 view .LVU98
+ 365              		.loc 1 180 27 is_stmt 0 discriminator 2 view .LVU99
+ 366 001c 0131     		adds	r1, r1, #1
+ 367              	.LVL52:
+ 368              		.loc 1 180 27 discriminator 2 view .LVU100
+ 369 001e 89B2     		uxth	r1, r1
+ 370              	.LVL53:
+ 371              	.L30:
+ 372              		.loc 1 180 17 is_stmt 1 discriminator 1 view .LVU101
+ 373              		.loc 1 180 5 is_stmt 0 discriminator 1 view .LVU102
+ 374 0020 0F29     		cmp	r1, #15
+ 375 0022 13D8     		bhi	.L35
+ 181:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         if((1U << i) & pin) {
+ 376              		.loc 1 181 9 is_stmt 1 view .LVU103
+ 377              		.loc 1 181 16 is_stmt 0 view .LVU104
+ 378 0024 4FF0010C 		mov	ip, #1
+ 379 0028 0CFA01FC 		lsl	ip, ip, r1
+ 380              		.loc 1 181 11 view .LVU105
+ 381 002c 1CEA030F 		tst	ip, r3
+ 382 0030 F4D0     		beq	.L31
+ 182:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* clear the specified pin output speed bits */
+ 183:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             ospeedr &= ~GPIO_OSPEED_MASK(i);
+ 383              		.loc 1 183 13 is_stmt 1 view .LVU106
+ 384              		.loc 1 183 25 is_stmt 0 view .LVU107
+ 385 0032 4FEA410C 		lsl	ip, r1, #1
+ 386 0036 4FF0030E 		mov	lr, #3
+ 387 003a 0EFA0CFE 		lsl	lr, lr, ip
+ 388              		.loc 1 183 21 view .LVU108
+ 389 003e 24EA0E04 		bic	r4, r4, lr
+ 390              	.LVL54:
+ 184:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* set the specified pin output speed bits */
+ 185:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             ospeedr |= GPIO_OSPEED_SET(i, speed);
+ 391              		.loc 1 185 13 is_stmt 1 view .LVU109
+ 392              		.loc 1 185 24 is_stmt 0 view .LVU110
+ 393 0042 02FA0CFC 		lsl	ip, r2, ip
+ 394              		.loc 1 185 21 view .LVU111
+ 395 0046 4CEA0404 		orr	r4, ip, r4
+ 396              	.LVL55:
+ 397              		.loc 1 185 21 view .LVU112
+ 398 004a E7E7     		b	.L31
+ 399              	.L35:
+ 186:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         }
+ 187:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 188:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_OSPD(gpio_periph) = ospeedr;
+ 400              		.loc 1 188 5 is_stmt 1 view .LVU113
+ 401              		.loc 1 188 28 is_stmt 0 view .LVU114
+ 402 004c 8460     		str	r4, [r0, #8]
+ 189:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 403              		.loc 1 189 1 view .LVU115
+ 404 004e 10BD     		pop	{r4, pc}
+ 405              		.loc 1 189 1 view .LVU116
+ARM GAS  /tmp/ccKI2pin.s 			page 12
+
+
+ 406              		.cfi_endproc
+ 407              	.LFE118:
+ 409              		.section	.text.gpio_bit_set,"ax",%progbits
+ 410              		.align	1
+ 411              		.global	gpio_bit_set
+ 412              		.syntax unified
+ 413              		.thumb
+ 414              		.thumb_func
+ 416              	gpio_bit_set:
+ 417              	.LVL56:
+ 418              	.LFB119:
+ 190:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 191:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 192:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief    set GPIO pin bit
+ 193:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 194:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 195:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 196:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 197:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 198:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 199:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 200:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 201:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 202:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_bit_set(uint32_t gpio_periph, uint32_t pin)
+ 203:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 419              		.loc 1 203 1 is_stmt 1 view -0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 0
+ 422              		@ frame_needed = 0, uses_anonymous_args = 0
+ 423              		@ link register save eliminated.
+ 204:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_BOP(gpio_periph) = (uint32_t)pin;
+ 424              		.loc 1 204 5 view .LVU118
+ 425              		.loc 1 204 27 is_stmt 0 view .LVU119
+ 426 0000 8161     		str	r1, [r0, #24]
+ 205:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 427              		.loc 1 205 1 view .LVU120
+ 428 0002 7047     		bx	lr
+ 429              		.cfi_endproc
+ 430              	.LFE119:
+ 432              		.section	.text.gpio_bit_reset,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	gpio_bit_reset
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	gpio_bit_reset:
+ 440              	.LVL57:
+ 441              	.LFB120:
+ 206:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 207:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 208:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      reset GPIO pin bit
+ 209:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 210:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 211:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 212:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 213:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 214:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ARM GAS  /tmp/ccKI2pin.s 			page 13
+
+
+ 215:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 216:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 217:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 218:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_bit_reset(uint32_t gpio_periph, uint32_t pin)
+ 219:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 442              		.loc 1 219 1 is_stmt 1 view -0
+ 443              		.cfi_startproc
+ 444              		@ args = 0, pretend = 0, frame = 0
+ 445              		@ frame_needed = 0, uses_anonymous_args = 0
+ 446              		@ link register save eliminated.
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_BC(gpio_periph) = (uint32_t)pin;
+ 447              		.loc 1 220 5 view .LVU122
+ 448              		.loc 1 220 26 is_stmt 0 view .LVU123
+ 449 0000 8162     		str	r1, [r0, #40]
+ 221:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 450              		.loc 1 221 1 view .LVU124
+ 451 0002 7047     		bx	lr
+ 452              		.cfi_endproc
+ 453              	.LFE120:
+ 455              		.section	.text.gpio_bit_write,"ax",%progbits
+ 456              		.align	1
+ 457              		.global	gpio_bit_write
+ 458              		.syntax unified
+ 459              		.thumb
+ 460              		.thumb_func
+ 462              	gpio_bit_write:
+ 463              	.LVL58:
+ 464              	.LFB121:
+ 222:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 223:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 224:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      write data to the specified GPIO pin
+ 225:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 226:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 227:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 228:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 229:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 230:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 231:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  bit_value: SET or RESET
+ 232:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        RESET: clear the port pin
+ 233:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        SET: set the port pin
+ 234:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 235:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 236:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 237:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_bit_write(uint32_t gpio_periph, uint32_t pin, bit_status bit_value)
+ 238:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 465              		.loc 1 238 1 is_stmt 1 view -0
+ 466              		.cfi_startproc
+ 467              		@ args = 0, pretend = 0, frame = 0
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469              		@ link register save eliminated.
+ 239:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     if(RESET != bit_value) {
+ 470              		.loc 1 239 5 view .LVU126
+ 471              		.loc 1 239 7 is_stmt 0 view .LVU127
+ 472 0000 0AB1     		cbz	r2, .L39
+ 240:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         GPIO_BOP(gpio_periph) = (uint32_t)pin;
+ 473              		.loc 1 240 9 is_stmt 1 view .LVU128
+ 474              		.loc 1 240 31 is_stmt 0 view .LVU129
+ARM GAS  /tmp/ccKI2pin.s 			page 14
+
+
+ 475 0002 8161     		str	r1, [r0, #24]
+ 476 0004 7047     		bx	lr
+ 477              	.L39:
+ 241:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 242:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         GPIO_BC(gpio_periph) = (uint32_t)pin;
+ 478              		.loc 1 242 9 is_stmt 1 view .LVU130
+ 479              		.loc 1 242 30 is_stmt 0 view .LVU131
+ 480 0006 8162     		str	r1, [r0, #40]
+ 243:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 244:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 481              		.loc 1 244 1 view .LVU132
+ 482 0008 7047     		bx	lr
+ 483              		.cfi_endproc
+ 484              	.LFE121:
+ 486              		.section	.text.gpio_port_write,"ax",%progbits
+ 487              		.align	1
+ 488              		.global	gpio_port_write
+ 489              		.syntax unified
+ 490              		.thumb
+ 491              		.thumb_func
+ 493              	gpio_port_write:
+ 494              	.LVL59:
+ 495              	.LFB122:
+ 245:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 246:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 247:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      write data to the specified GPIO port
+ 248:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 249:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 250:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 251:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  data: specify the value to be written to the port output control register
+ 252:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 253:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 254:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 255:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_port_write(uint32_t gpio_periph, uint16_t data)
+ 256:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 496              		.loc 1 256 1 is_stmt 1 view -0
+ 497              		.cfi_startproc
+ 498              		@ args = 0, pretend = 0, frame = 0
+ 499              		@ frame_needed = 0, uses_anonymous_args = 0
+ 500              		@ link register save eliminated.
+ 257:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_OCTL(gpio_periph) = (uint32_t)data;
+ 501              		.loc 1 257 5 view .LVU134
+ 502              		.loc 1 257 28 is_stmt 0 view .LVU135
+ 503 0000 4161     		str	r1, [r0, #20]
+ 258:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 504              		.loc 1 258 1 view .LVU136
+ 505 0002 7047     		bx	lr
+ 506              		.cfi_endproc
+ 507              	.LFE122:
+ 509              		.section	.text.gpio_input_bit_get,"ax",%progbits
+ 510              		.align	1
+ 511              		.global	gpio_input_bit_get
+ 512              		.syntax unified
+ 513              		.thumb
+ 514              		.thumb_func
+ 516              	gpio_input_bit_get:
+ 517              	.LVL60:
+ARM GAS  /tmp/ccKI2pin.s 			page 15
+
+
+ 518              	.LFB123:
+ 259:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 260:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 261:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      get GPIO pin input status
+ 262:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 263:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 264:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 266:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 267:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 268:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 269:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     input status of GPIO pin: SET or RESET
+ 270:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 271:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** FlagStatus gpio_input_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 272:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 519              		.loc 1 272 1 is_stmt 1 view -0
+ 520              		.cfi_startproc
+ 521              		@ args = 0, pretend = 0, frame = 0
+ 522              		@ frame_needed = 0, uses_anonymous_args = 0
+ 523              		@ link register save eliminated.
+ 273:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     if((uint32_t)RESET != (GPIO_ISTAT(gpio_periph) & (pin))) {
+ 524              		.loc 1 273 5 view .LVU138
+ 525              		.loc 1 273 28 is_stmt 0 view .LVU139
+ 526 0000 0369     		ldr	r3, [r0, #16]
+ 527              		.loc 1 273 7 view .LVU140
+ 528 0002 0B42     		tst	r3, r1
+ 529 0004 01D0     		beq	.L44
+ 274:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         return SET;
+ 530              		.loc 1 274 16 view .LVU141
+ 531 0006 0120     		movs	r0, #1
+ 532              	.LVL61:
+ 533              		.loc 1 274 16 view .LVU142
+ 534 0008 7047     		bx	lr
+ 535              	.LVL62:
+ 536              	.L44:
+ 275:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 276:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         return RESET;
+ 537              		.loc 1 276 16 view .LVU143
+ 538 000a 0020     		movs	r0, #0
+ 539              	.LVL63:
+ 277:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 278:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 540              		.loc 1 278 1 view .LVU144
+ 541 000c 7047     		bx	lr
+ 542              		.cfi_endproc
+ 543              	.LFE123:
+ 545              		.section	.text.gpio_input_port_get,"ax",%progbits
+ 546              		.align	1
+ 547              		.global	gpio_input_port_get
+ 548              		.syntax unified
+ 549              		.thumb
+ 550              		.thumb_func
+ 552              	gpio_input_port_get:
+ 553              	.LVL64:
+ 554              	.LFB124:
+ 279:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 280:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ARM GAS  /tmp/ccKI2pin.s 			page 16
+
+
+ 281:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      get GPIO all pins input status
+ 282:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 283:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 284:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 285:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 286:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     input status of GPIO all pins
+ 287:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** uint16_t gpio_input_port_get(uint32_t gpio_periph)
+ 289:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 555              		.loc 1 289 1 is_stmt 1 view -0
+ 556              		.cfi_startproc
+ 557              		@ args = 0, pretend = 0, frame = 0
+ 558              		@ frame_needed = 0, uses_anonymous_args = 0
+ 559              		@ link register save eliminated.
+ 290:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     return ((uint16_t)GPIO_ISTAT(gpio_periph));
+ 560              		.loc 1 290 5 view .LVU146
+ 561              		.loc 1 290 23 is_stmt 0 view .LVU147
+ 562 0000 0069     		ldr	r0, [r0, #16]
+ 563              	.LVL65:
+ 291:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 564              		.loc 1 291 1 view .LVU148
+ 565 0002 80B2     		uxth	r0, r0
+ 566 0004 7047     		bx	lr
+ 567              		.cfi_endproc
+ 568              	.LFE124:
+ 570              		.section	.text.gpio_output_bit_get,"ax",%progbits
+ 571              		.align	1
+ 572              		.global	gpio_output_bit_get
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 577              	gpio_output_bit_get:
+ 578              	.LVL66:
+ 579              	.LFB125:
+ 292:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 293:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 294:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      get GPIO pin output status
+ 295:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 296:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 298:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 299:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 300:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 301:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 302:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     output status of GPIO pin: SET or RESET
+ 303:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 304:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** FlagStatus gpio_output_bit_get(uint32_t gpio_periph, uint32_t pin)
+ 305:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 580              		.loc 1 305 1 is_stmt 1 view -0
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 0, uses_anonymous_args = 0
+ 584              		@ link register save eliminated.
+ 306:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     if((uint32_t)RESET != (GPIO_OCTL(gpio_periph) & (pin))) {
+ 585              		.loc 1 306 5 view .LVU150
+ 586              		.loc 1 306 28 is_stmt 0 view .LVU151
+ 587 0000 4369     		ldr	r3, [r0, #20]
+ARM GAS  /tmp/ccKI2pin.s 			page 17
+
+
+ 588              		.loc 1 306 7 view .LVU152
+ 589 0002 0B42     		tst	r3, r1
+ 590 0004 01D0     		beq	.L48
+ 307:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         return SET;
+ 591              		.loc 1 307 16 view .LVU153
+ 592 0006 0120     		movs	r0, #1
+ 593              	.LVL67:
+ 594              		.loc 1 307 16 view .LVU154
+ 595 0008 7047     		bx	lr
+ 596              	.LVL68:
+ 597              	.L48:
+ 308:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     } else {
+ 309:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         return RESET;
+ 598              		.loc 1 309 16 view .LVU155
+ 599 000a 0020     		movs	r0, #0
+ 600              	.LVL69:
+ 310:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 311:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 601              		.loc 1 311 1 view .LVU156
+ 602 000c 7047     		bx	lr
+ 603              		.cfi_endproc
+ 604              	.LFE125:
+ 606              		.section	.text.gpio_output_port_get,"ax",%progbits
+ 607              		.align	1
+ 608              		.global	gpio_output_port_get
+ 609              		.syntax unified
+ 610              		.thumb
+ 611              		.thumb_func
+ 613              	gpio_output_port_get:
+ 614              	.LVL70:
+ 615              	.LFB126:
+ 312:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 313:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 314:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      get GPIO port output status
+ 315:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 316:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 317:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 318:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 319:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     output status of GPIO all pins
+ 320:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 321:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** uint16_t gpio_output_port_get(uint32_t gpio_periph)
+ 322:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 616              		.loc 1 322 1 is_stmt 1 view -0
+ 617              		.cfi_startproc
+ 618              		@ args = 0, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 620              		@ link register save eliminated.
+ 323:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     return ((uint16_t)GPIO_OCTL(gpio_periph));
+ 621              		.loc 1 323 5 view .LVU158
+ 622              		.loc 1 323 23 is_stmt 0 view .LVU159
+ 623 0000 4069     		ldr	r0, [r0, #20]
+ 624              	.LVL71:
+ 324:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 625              		.loc 1 324 1 view .LVU160
+ 626 0002 80B2     		uxth	r0, r0
+ 627 0004 7047     		bx	lr
+ 628              		.cfi_endproc
+ARM GAS  /tmp/ccKI2pin.s 			page 18
+
+
+ 629              	.LFE126:
+ 631              		.section	.text.gpio_af_set,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	gpio_af_set
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 638              	gpio_af_set:
+ 639              	.LVL72:
+ 640              	.LFB127:
+ 325:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 326:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      set GPIO alternate function
+ 328:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 329:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 330:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 331:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  alt_func_num: GPIO pin af function
+ 332:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_0: SYSTEM
+ 333:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_1: TIMER0, TIMER1
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_2: TIMER2, TIMER3, TIMER4
+ 335:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_3: TIMER7, TIMER8, TIMER9, TIMER10
+ 336:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_4: I2C0, I2C1, I2C2
+ 337:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_5: SPI0, SPI1, SPI2, SPI3, SPI4, SPI5
+ 338:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_6: SPI2, SPI3, SPI4
+ 339:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_7: USART0, USART1, USART2, SPI1, SPI2
+ 340:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_8: UART3, UART4, USART5, UART6, UART7
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_9: CAN0, CAN1, TLI, TIMER11, TIMER12, TIMER13, I2C1, I2C2, CTC
+ 342:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_10: USB_FS, USB_HS
+ 343:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_11: ENET
+ 344:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_12: EXMC, SDIO, USB_HS
+ 345:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_13: DCI
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_14: TLI
+ 347:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_AF_15: EVENTOUT
+ 348:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 349:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 350:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 351:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 352:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 353:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 354:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_af_set(uint32_t gpio_periph, uint32_t alt_func_num, uint32_t pin)
+ 355:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 641              		.loc 1 355 1 is_stmt 1 view -0
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 0
+ 644              		@ frame_needed = 0, uses_anonymous_args = 0
+ 645              		.loc 1 355 1 is_stmt 0 view .LVU162
+ 646 0000 30B5     		push	{r4, r5, lr}
+ 647              	.LCFI3:
+ 648              		.cfi_def_cfa_offset 12
+ 649              		.cfi_offset 4, -12
+ 650              		.cfi_offset 5, -8
+ 651              		.cfi_offset 14, -4
+ 356:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint16_t i;
+ 652              		.loc 1 356 5 is_stmt 1 view .LVU163
+ 357:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint32_t afrl, afrh;
+ 653              		.loc 1 357 5 view .LVU164
+ 358:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ARM GAS  /tmp/ccKI2pin.s 			page 19
+
+
+ 359:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     afrl = GPIO_AFSEL0(gpio_periph);
+ 654              		.loc 1 359 5 view .LVU165
+ 655              		.loc 1 359 10 is_stmt 0 view .LVU166
+ 656 0002 046A     		ldr	r4, [r0, #32]
+ 657              	.LVL73:
+ 360:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     afrh = GPIO_AFSEL1(gpio_periph);
+ 658              		.loc 1 360 5 is_stmt 1 view .LVU167
+ 659              		.loc 1 360 10 is_stmt 0 view .LVU168
+ 660 0004 456A     		ldr	r5, [r0, #36]
+ 661              	.LVL74:
+ 361:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 362:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     for(i = 0U; i < 8U; i++) {
+ 662              		.loc 1 362 5 is_stmt 1 view .LVU169
+ 663              		.loc 1 362 11 is_stmt 0 view .LVU170
+ 664 0006 0023     		movs	r3, #0
+ 665              		.loc 1 362 5 view .LVU171
+ 666 0008 01E0     		b	.L51
+ 667              	.LVL75:
+ 668              	.L52:
+ 669              		.loc 1 362 25 is_stmt 1 discriminator 2 view .LVU172
+ 670              		.loc 1 362 26 is_stmt 0 discriminator 2 view .LVU173
+ 671 000a 0133     		adds	r3, r3, #1
+ 672              	.LVL76:
+ 673              		.loc 1 362 26 discriminator 2 view .LVU174
+ 674 000c 9BB2     		uxth	r3, r3
+ 675              	.LVL77:
+ 676              	.L51:
+ 677              		.loc 1 362 17 is_stmt 1 discriminator 1 view .LVU175
+ 678              		.loc 1 362 5 is_stmt 0 discriminator 1 view .LVU176
+ 679 000e 072B     		cmp	r3, #7
+ 680 0010 13D8     		bhi	.L58
+ 363:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         if((1U << i) & pin) {
+ 681              		.loc 1 363 9 is_stmt 1 view .LVU177
+ 682              		.loc 1 363 16 is_stmt 0 view .LVU178
+ 683 0012 4FF0010C 		mov	ip, #1
+ 684 0016 0CFA03FC 		lsl	ip, ip, r3
+ 685              		.loc 1 363 11 view .LVU179
+ 686 001a 1CEA020F 		tst	ip, r2
+ 687 001e F4D0     		beq	.L52
+ 364:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* clear the specified pin alternate function bits */
+ 365:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             afrl &= ~GPIO_AFR_MASK(i);
+ 688              		.loc 1 365 13 is_stmt 1 view .LVU180
+ 689              		.loc 1 365 22 is_stmt 0 view .LVU181
+ 690 0020 4FEA830E 		lsl	lr, r3, #2
+ 691 0024 4FF00F0C 		mov	ip, #15
+ 692 0028 0CFA0EFC 		lsl	ip, ip, lr
+ 693              		.loc 1 365 18 view .LVU182
+ 694 002c 24EA0C04 		bic	r4, r4, ip
+ 695              	.LVL78:
+ 366:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             afrl |= GPIO_AFR_SET(i, alt_func_num);
+ 696              		.loc 1 366 13 is_stmt 1 view .LVU183
+ 697              		.loc 1 366 21 is_stmt 0 view .LVU184
+ 698 0030 01FA0EFE 		lsl	lr, r1, lr
+ 699              		.loc 1 366 18 view .LVU185
+ 700 0034 4EEA0404 		orr	r4, lr, r4
+ 701              	.LVL79:
+ 702              		.loc 1 366 18 view .LVU186
+ARM GAS  /tmp/ccKI2pin.s 			page 20
+
+
+ 703 0038 E7E7     		b	.L52
+ 704              	.L58:
+ 367:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         }
+ 368:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 369:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 370:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     for(i = 8U; i < 16U; i++) {
+ 705              		.loc 1 370 11 view .LVU187
+ 706 003a 0823     		movs	r3, #8
+ 707              	.LVL80:
+ 708              		.loc 1 370 11 view .LVU188
+ 709 003c 01E0     		b	.L54
+ 710              	.LVL81:
+ 711              	.L55:
+ 712              		.loc 1 370 26 is_stmt 1 discriminator 2 view .LVU189
+ 713              		.loc 1 370 27 is_stmt 0 discriminator 2 view .LVU190
+ 714 003e 0133     		adds	r3, r3, #1
+ 715              	.LVL82:
+ 716              		.loc 1 370 27 discriminator 2 view .LVU191
+ 717 0040 9BB2     		uxth	r3, r3
+ 718              	.LVL83:
+ 719              	.L54:
+ 720              		.loc 1 370 17 is_stmt 1 discriminator 1 view .LVU192
+ 721              		.loc 1 370 5 is_stmt 0 discriminator 1 view .LVU193
+ 722 0042 0F2B     		cmp	r3, #15
+ 723 0044 15D8     		bhi	.L59
+ 371:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         if((1U << i) & pin) {
+ 724              		.loc 1 371 9 is_stmt 1 view .LVU194
+ 725              		.loc 1 371 16 is_stmt 0 view .LVU195
+ 726 0046 4FF0010C 		mov	ip, #1
+ 727 004a 0CFA03FC 		lsl	ip, ip, r3
+ 728              		.loc 1 371 11 view .LVU196
+ 729 004e 1CEA020F 		tst	ip, r2
+ 730 0052 F4D0     		beq	.L55
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             /* clear the specified pin alternate function bits */
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             afrh &= ~GPIO_AFR_MASK(i - 8U);
+ 731              		.loc 1 373 13 is_stmt 1 view .LVU197
+ 732              		.loc 1 373 22 is_stmt 0 view .LVU198
+ 733 0054 A3F1080C 		sub	ip, r3, #8
+ 734 0058 4FEA8C0C 		lsl	ip, ip, #2
+ 735 005c 4FF00F0E 		mov	lr, #15
+ 736 0060 0EFA0CFE 		lsl	lr, lr, ip
+ 737              		.loc 1 373 18 view .LVU199
+ 738 0064 25EA0E05 		bic	r5, r5, lr
+ 739              	.LVL84:
+ 374:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****             afrh |= GPIO_AFR_SET(i - 8U, alt_func_num);
+ 740              		.loc 1 374 13 is_stmt 1 view .LVU200
+ 741              		.loc 1 374 21 is_stmt 0 view .LVU201
+ 742 0068 01FA0CFC 		lsl	ip, r1, ip
+ 743              		.loc 1 374 18 view .LVU202
+ 744 006c 4CEA0505 		orr	r5, ip, r5
+ 745              	.LVL85:
+ 746              		.loc 1 374 18 view .LVU203
+ 747 0070 E5E7     		b	.L55
+ 748              	.L59:
+ 375:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****         }
+ 376:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     }
+ 377:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ARM GAS  /tmp/ccKI2pin.s 			page 21
+
+
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_AFSEL0(gpio_periph) = afrl;
+ 749              		.loc 1 378 5 is_stmt 1 view .LVU204
+ 750              		.loc 1 378 30 is_stmt 0 view .LVU205
+ 751 0072 0462     		str	r4, [r0, #32]
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_AFSEL1(gpio_periph) = afrh;
+ 752              		.loc 1 379 5 is_stmt 1 view .LVU206
+ 753              		.loc 1 379 30 is_stmt 0 view .LVU207
+ 754 0074 4562     		str	r5, [r0, #36]
+ 380:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 755              		.loc 1 380 1 view .LVU208
+ 756 0076 30BD     		pop	{r4, r5, pc}
+ 757              		.loc 1 380 1 view .LVU209
+ 758              		.cfi_endproc
+ 759              	.LFE127:
+ 761              		.section	.text.gpio_pin_lock,"ax",%progbits
+ 762              		.align	1
+ 763              		.global	gpio_pin_lock
+ 764              		.syntax unified
+ 765              		.thumb
+ 766              		.thumb_func
+ 768              	gpio_pin_lock:
+ 769              	.LVL86:
+ 770              	.LFB128:
+ 381:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 382:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 383:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      lock GPIO pin bit
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 386:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 387:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 388:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 389:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 390:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 393:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_pin_lock(uint32_t gpio_periph, uint32_t pin)
+ 394:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 771              		.loc 1 394 1 is_stmt 1 view -0
+ 772              		.cfi_startproc
+ 773              		@ args = 0, pretend = 0, frame = 0
+ 774              		@ frame_needed = 0, uses_anonymous_args = 0
+ 775              		@ link register save eliminated.
+ 395:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     uint32_t lock = 0x00010000U;
+ 776              		.loc 1 395 5 view .LVU211
+ 396:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     lock |= pin;
+ 777              		.loc 1 396 5 view .LVU212
+ 778              		.loc 1 396 10 is_stmt 0 view .LVU213
+ 779 0000 41F48033 		orr	r3, r1, #65536
+ 780              	.LVL87:
+ 397:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 398:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     /* lock key writing sequence: write 1->write 0->write 1->read 0->read 1 */
+ 399:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)lock;
+ 781              		.loc 1 399 5 is_stmt 1 view .LVU214
+ 782              		.loc 1 399 28 is_stmt 0 view .LVU215
+ 783 0004 C361     		str	r3, [r0, #28]
+ 400:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)pin;
+ 784              		.loc 1 400 5 is_stmt 1 view .LVU216
+ARM GAS  /tmp/ccKI2pin.s 			page 22
+
+
+ 785              		.loc 1 400 28 is_stmt 0 view .LVU217
+ 786 0006 C161     		str	r1, [r0, #28]
+ 401:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_LOCK(gpio_periph) = (uint32_t)lock;
+ 787              		.loc 1 401 5 is_stmt 1 view .LVU218
+ 788              		.loc 1 401 28 is_stmt 0 view .LVU219
+ 789 0008 C361     		str	r3, [r0, #28]
+ 402:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 790              		.loc 1 402 5 is_stmt 1 view .LVU220
+ 791              		.loc 1 402 10 is_stmt 0 view .LVU221
+ 792 000a C369     		ldr	r3, [r0, #28]
+ 793              	.LVL88:
+ 403:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     lock = GPIO_LOCK(gpio_periph);
+ 794              		.loc 1 403 5 is_stmt 1 view .LVU222
+ 795              		.loc 1 403 10 is_stmt 0 view .LVU223
+ 796 000c C369     		ldr	r3, [r0, #28]
+ 404:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 797              		.loc 1 404 1 view .LVU224
+ 798 000e 7047     		bx	lr
+ 799              		.cfi_endproc
+ 800              	.LFE128:
+ 802              		.section	.text.gpio_bit_toggle,"ax",%progbits
+ 803              		.align	1
+ 804              		.global	gpio_bit_toggle
+ 805              		.syntax unified
+ 806              		.thumb
+ 807              		.thumb_func
+ 809              	gpio_bit_toggle:
+ 810              	.LVL89:
+ 811              	.LFB129:
+ 405:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 406:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 407:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      toggle GPIO pin status
+ 408:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 409:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 410:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 411:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  pin: GPIO pin
+ 412:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 one or more parameters can be selected which are shown as below:
+ 413:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIO_PIN_x(x=0..15), GPIO_PIN_ALL
+ 414:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 415:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 416:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 417:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_bit_toggle(uint32_t gpio_periph, uint32_t pin)
+ 418:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 812              		.loc 1 418 1 is_stmt 1 view -0
+ 813              		.cfi_startproc
+ 814              		@ args = 0, pretend = 0, frame = 0
+ 815              		@ frame_needed = 0, uses_anonymous_args = 0
+ 816              		@ link register save eliminated.
+ 419:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_TG(gpio_periph) = (uint32_t)pin;
+ 817              		.loc 1 419 5 view .LVU226
+ 818              		.loc 1 419 26 is_stmt 0 view .LVU227
+ 819 0000 C162     		str	r1, [r0, #44]
+ 420:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 820              		.loc 1 420 1 view .LVU228
+ 821 0002 7047     		bx	lr
+ 822              		.cfi_endproc
+ 823              	.LFE129:
+ARM GAS  /tmp/ccKI2pin.s 			page 23
+
+
+ 825              		.section	.text.gpio_port_toggle,"ax",%progbits
+ 826              		.align	1
+ 827              		.global	gpio_port_toggle
+ 828              		.syntax unified
+ 829              		.thumb
+ 830              		.thumb_func
+ 832              	gpio_port_toggle:
+ 833              	.LVL90:
+ 834              	.LFB130:
+ 421:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 422:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** /*!
+ 423:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \brief      toggle GPIO port status
+ 424:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[in]  gpio_periph: GPIO port
+ 425:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****                 only one parameter can be selected which is shown as below:
+ 426:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****       \arg        GPIOx(x = A,B,C,D,E,F,G,H,I)
+ 427:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** 
+ 428:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \param[out] none
+ 429:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     \retval     none
+ 430:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** */
+ 431:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** void gpio_port_toggle(uint32_t gpio_periph)
+ 432:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** {
+ 835              		.loc 1 432 1 is_stmt 1 view -0
+ 836              		.cfi_startproc
+ 837              		@ args = 0, pretend = 0, frame = 0
+ 838              		@ frame_needed = 0, uses_anonymous_args = 0
+ 839              		@ link register save eliminated.
+ 433:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c ****     GPIO_TG(gpio_periph) = 0x0000FFFFU;
+ 840              		.loc 1 433 5 view .LVU230
+ 841              		.loc 1 433 26 is_stmt 0 view .LVU231
+ 842 0000 4FF6FF73 		movw	r3, #65535
+ 843 0004 C362     		str	r3, [r0, #44]
+ 434:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_gpio.c **** }
+ 844              		.loc 1 434 1 view .LVU232
+ 845 0006 7047     		bx	lr
+ 846              		.cfi_endproc
+ 847              	.LFE130:
+ 849              		.text
+ 850              	.Letext0:
+ 851              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 852              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 853              		.file 4 "Core/Inc/gd32f4xx.h"
+ 854              		.file 5 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ 855              		.file 6 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_gpio.h"
+ARM GAS  /tmp/ccKI2pin.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_gpio.c
+     /tmp/ccKI2pin.s:20     .text.gpio_deinit:0000000000000000 $t
+     /tmp/ccKI2pin.s:26     .text.gpio_deinit:0000000000000000 gpio_deinit
+     /tmp/ccKI2pin.s:204    .text.gpio_deinit:00000000000000ec $d
+     /tmp/ccKI2pin.s:212    .text.gpio_mode_set:0000000000000000 $t
+     /tmp/ccKI2pin.s:218    .text.gpio_mode_set:0000000000000000 gpio_mode_set
+     /tmp/ccKI2pin.s:310    .text.gpio_output_options_set:0000000000000000 $t
+     /tmp/ccKI2pin.s:316    .text.gpio_output_options_set:0000000000000000 gpio_output_options_set
+     /tmp/ccKI2pin.s:410    .text.gpio_bit_set:0000000000000000 $t
+     /tmp/ccKI2pin.s:416    .text.gpio_bit_set:0000000000000000 gpio_bit_set
+     /tmp/ccKI2pin.s:433    .text.gpio_bit_reset:0000000000000000 $t
+     /tmp/ccKI2pin.s:439    .text.gpio_bit_reset:0000000000000000 gpio_bit_reset
+     /tmp/ccKI2pin.s:456    .text.gpio_bit_write:0000000000000000 $t
+     /tmp/ccKI2pin.s:462    .text.gpio_bit_write:0000000000000000 gpio_bit_write
+     /tmp/ccKI2pin.s:487    .text.gpio_port_write:0000000000000000 $t
+     /tmp/ccKI2pin.s:493    .text.gpio_port_write:0000000000000000 gpio_port_write
+     /tmp/ccKI2pin.s:510    .text.gpio_input_bit_get:0000000000000000 $t
+     /tmp/ccKI2pin.s:516    .text.gpio_input_bit_get:0000000000000000 gpio_input_bit_get
+     /tmp/ccKI2pin.s:546    .text.gpio_input_port_get:0000000000000000 $t
+     /tmp/ccKI2pin.s:552    .text.gpio_input_port_get:0000000000000000 gpio_input_port_get
+     /tmp/ccKI2pin.s:571    .text.gpio_output_bit_get:0000000000000000 $t
+     /tmp/ccKI2pin.s:577    .text.gpio_output_bit_get:0000000000000000 gpio_output_bit_get
+     /tmp/ccKI2pin.s:607    .text.gpio_output_port_get:0000000000000000 $t
+     /tmp/ccKI2pin.s:613    .text.gpio_output_port_get:0000000000000000 gpio_output_port_get
+     /tmp/ccKI2pin.s:632    .text.gpio_af_set:0000000000000000 $t
+     /tmp/ccKI2pin.s:638    .text.gpio_af_set:0000000000000000 gpio_af_set
+     /tmp/ccKI2pin.s:762    .text.gpio_pin_lock:0000000000000000 $t
+     /tmp/ccKI2pin.s:768    .text.gpio_pin_lock:0000000000000000 gpio_pin_lock
+     /tmp/ccKI2pin.s:803    .text.gpio_bit_toggle:0000000000000000 $t
+     /tmp/ccKI2pin.s:809    .text.gpio_bit_toggle:0000000000000000 gpio_bit_toggle
+     /tmp/ccKI2pin.s:826    .text.gpio_port_toggle:0000000000000000 $t
+     /tmp/ccKI2pin.s:832    .text.gpio_port_toggle:0000000000000000 gpio_port_toggle
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

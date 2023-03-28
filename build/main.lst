@@ -1,0 +1,115 @@
+ARM GAS  /tmp/ccUdv7wF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	1
+  21              		.global	main
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	main:
+  27              	.LFB119:
+  28              		.file 1 "Core/Src/main.c"
+   1:Core/Src/main.c **** /*!
+   2:Core/Src/main.c ****     \file    main.c
+   3:Core/Src/main.c ****     \brief   keyboard polling mode
+   4:Core/Src/main.c ****     
+   5:Core/Src/main.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Core/Src/main.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Core/Src/main.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Core/Src/main.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Core/Src/main.c **** */
+  10:Core/Src/main.c **** 
+  11:Core/Src/main.c **** /*
+  12:Core/Src/main.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Core/Src/main.c **** 
+  14:Core/Src/main.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  15:Core/Src/main.c **** are permitted provided that the following conditions are met:
+  16:Core/Src/main.c **** 
+  17:Core/Src/main.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  18:Core/Src/main.c ****        list of conditions and the following disclaimer.
+  19:Core/Src/main.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  20:Core/Src/main.c ****        this list of conditions and the following disclaimer in the documentation 
+  21:Core/Src/main.c ****        and/or other materials provided with the distribution.
+  22:Core/Src/main.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  23:Core/Src/main.c ****        may be used to endorse or promote products derived from this software without 
+  24:Core/Src/main.c ****        specific prior written permission.
+  25:Core/Src/main.c **** 
+  26:Core/Src/main.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  27:Core/Src/main.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  28:Core/Src/main.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  29:Core/Src/main.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  30:Core/Src/main.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+ARM GAS  /tmp/ccUdv7wF.s 			page 2
+
+
+  31:Core/Src/main.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  32:Core/Src/main.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  33:Core/Src/main.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  34:Core/Src/main.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  35:Core/Src/main.c **** OF SUCH DAMAGE.
+  36:Core/Src/main.c **** */
+  37:Core/Src/main.c **** 
+  38:Core/Src/main.c **** #include "gd32f4xx.h"
+  39:Core/Src/main.c **** #include "systick.h"
+  40:Core/Src/main.c **** #include <stdio.h>
+  41:Core/Src/main.c **** 
+  42:Core/Src/main.c **** /*!
+  43:Core/Src/main.c ****     \brief      main function
+  44:Core/Src/main.c ****     \param[in]  none
+  45:Core/Src/main.c ****     \param[out] none
+  46:Core/Src/main.c ****     \retval     none
+  47:Core/Src/main.c **** */
+  48:Core/Src/main.c **** int main(void)
+  49:Core/Src/main.c **** {
+  29              		.loc 1 49 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  50:Core/Src/main.c ****     systick_config();
+  38              		.loc 1 50 5 view .LVU1
+  39 0002 FFF7FEFF 		bl	systick_config
+  40              	.LVL0:
+  51:Core/Src/main.c ****     
+  52:Core/Src/main.c **** }
+  41              		.loc 1 52 1 is_stmt 0 view .LVU2
+  42 0006 0020     		movs	r0, #0
+  43 0008 08BD     		pop	{r3, pc}
+  44              		.cfi_endproc
+  45              	.LFE119:
+  47              		.text
+  48              	.Letext0:
+  49              		.file 2 "Core/Inc/systick.h"
+ARM GAS  /tmp/ccUdv7wF.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccUdv7wF.s:20     .text.main:0000000000000000 $t
+     /tmp/ccUdv7wF.s:26     .text.main:0000000000000000 main
+
+UNDEFINED SYMBOLS
+systick_config

@@ -1,0 +1,1181 @@
+ARM GAS  /tmp/cctAiCBG.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_dci.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.dci_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	dci_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	dci_deinit:
+  27              	.LFB116:
+  28              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \file    gd32f4xx_dci.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief   DCI driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****        this list of conditions and the following disclaimer in the documentation
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****        may be used to endorse or promote products derived from this software without
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ARM GAS  /tmp/cctAiCBG.s 			page 2
+
+
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** #include "gd32f4xx_dci.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    DCI deinit
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_deinit(void)
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+  29              		.loc 1 47 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     rcu_periph_reset_enable(RCU_DCIRST);
+  38              		.loc 1 48 5 view .LVU1
+  39 0002 4FF4A060 		mov	r0, #1280
+  40 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  41              	.LVL0:
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     rcu_periph_reset_disable(RCU_DCIRST);
+  42              		.loc 1 49 5 view .LVU2
+  43 000a 4FF4A060 		mov	r0, #1280
+  44 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  45              	.LVL1:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+  46              		.loc 1 50 1 is_stmt 0 view .LVU3
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE116:
+  51              		.section	.text.dci_init,"ax",%progbits
+  52              		.align	1
+  53              		.global	dci_init
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	dci_init:
+  59              	.LVL2:
+  60              	.LFB117:
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    initialize DCI registers
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  dci_struct: DCI parameter initialization structure
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 members of the structure and the member values are shown as below:
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 capture_mode    : DCI_CAPTURE_MODE_CONTINUOUS, DCI_CAPTURE_MODE_SNAPSHOT
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 colck_polarity  : DCI_CK_POLARITY_FALLING, DCI_CK_POLARITY_RISING
+ARM GAS  /tmp/cctAiCBG.s 			page 3
+
+
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 hsync_polarity  : DCI_HSYNC_POLARITY_LOW, DCI_HSYNC_POLARITY_HIGH
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 vsync_polarity  : DCI_VSYNC_POLARITY_LOW, DCI_VSYNC_POLARITY_HIGH
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 frame_rate      : DCI_FRAME_RATE_ALL, DCI_FRAME_RATE_1_2, DCI_FRAME_RATE_1_4
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                 interface_format: DCI_INTERFACE_FORMAT_8BITS, DCI_INTERFACE_FORMAT_10BITS,
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****                                       DCI_INTERFACE_FORMAT_12BITS, DCI_INTERFACE_FORMAT_14BITS
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_init(dci_parameter_struct *dci_struct)
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+  61              		.loc 1 67 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     uint32_t reg = 0U;
+  66              		.loc 1 68 5 view .LVU5
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     /* disable capture function and DCI */
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~(DCI_CTL_CAP | DCI_CTL_DCIEN);
+  67              		.loc 1 70 5 view .LVU6
+  68              		.loc 1 70 13 is_stmt 0 view .LVU7
+  69 0000 094A     		ldr	r2, .L4
+  70 0002 1368     		ldr	r3, [r2]
+  71 0004 23F48043 		bic	r3, r3, #16384
+  72 0008 23F00103 		bic	r3, r3, #1
+  73 000c 1360     		str	r3, [r2]
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     /* configure DCI parameter */
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->capture_mode;
+  74              		.loc 1 72 5 is_stmt 1 view .LVU8
+  75              		.loc 1 72 22 is_stmt 0 view .LVU9
+  76 000e 0368     		ldr	r3, [r0]
+  77              	.LVL3:
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->clock_polarity;
+  78              		.loc 1 73 5 is_stmt 1 view .LVU10
+  79              		.loc 1 73 22 is_stmt 0 view .LVU11
+  80 0010 4168     		ldr	r1, [r0, #4]
+  81              		.loc 1 73 9 view .LVU12
+  82 0012 1943     		orrs	r1, r1, r3
+  83              	.LVL4:
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->hsync_polarity;
+  84              		.loc 1 74 5 is_stmt 1 view .LVU13
+  85              		.loc 1 74 22 is_stmt 0 view .LVU14
+  86 0014 8368     		ldr	r3, [r0, #8]
+  87              		.loc 1 74 9 view .LVU15
+  88 0016 1943     		orrs	r1, r1, r3
+  89              	.LVL5:
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->vsync_polarity;
+  90              		.loc 1 75 5 is_stmt 1 view .LVU16
+  91              		.loc 1 75 22 is_stmt 0 view .LVU17
+  92 0018 C368     		ldr	r3, [r0, #12]
+  93              		.loc 1 75 9 view .LVU18
+  94 001a 1943     		orrs	r1, r1, r3
+  95              	.LVL6:
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->frame_rate;
+  96              		.loc 1 76 5 is_stmt 1 view .LVU19
+  97              		.loc 1 76 22 is_stmt 0 view .LVU20
+  98 001c 0369     		ldr	r3, [r0, #16]
+ARM GAS  /tmp/cctAiCBG.s 			page 4
+
+
+  99              		.loc 1 76 9 view .LVU21
+ 100 001e 1943     		orrs	r1, r1, r3
+ 101              	.LVL7:
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     reg |= dci_struct->interface_format;
+ 102              		.loc 1 77 5 is_stmt 1 view .LVU22
+ 103              		.loc 1 77 22 is_stmt 0 view .LVU23
+ 104 0020 4369     		ldr	r3, [r0, #20]
+ 105              		.loc 1 77 9 view .LVU24
+ 106 0022 0B43     		orrs	r3, r3, r1
+ 107              	.LVL8:
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL = reg;
+ 108              		.loc 1 79 5 is_stmt 1 view .LVU25
+ 109              		.loc 1 79 13 is_stmt 0 view .LVU26
+ 110 0024 1360     		str	r3, [r2]
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 111              		.loc 1 80 1 view .LVU27
+ 112 0026 7047     		bx	lr
+ 113              	.L5:
+ 114              		.align	2
+ 115              	.L4:
+ 116 0028 00000550 		.word	1342504960
+ 117              		.cfi_endproc
+ 118              	.LFE117:
+ 120              		.section	.text.dci_enable,"ax",%progbits
+ 121              		.align	1
+ 122              		.global	dci_enable
+ 123              		.syntax unified
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	dci_enable:
+ 128              	.LFB118:
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable DCI function
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_enable(void)
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 129              		.loc 1 89 1 is_stmt 1 view -0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL |= DCI_CTL_DCIEN;
+ 134              		.loc 1 90 5 view .LVU29
+ 135              		.loc 1 90 13 is_stmt 0 view .LVU30
+ 136 0000 024A     		ldr	r2, .L7
+ 137 0002 1368     		ldr	r3, [r2]
+ 138 0004 43F48043 		orr	r3, r3, #16384
+ 139 0008 1360     		str	r3, [r2]
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 140              		.loc 1 91 1 view .LVU31
+ 141 000a 7047     		bx	lr
+ 142              	.L8:
+ARM GAS  /tmp/cctAiCBG.s 			page 5
+
+
+ 143              		.align	2
+ 144              	.L7:
+ 145 000c 00000550 		.word	1342504960
+ 146              		.cfi_endproc
+ 147              	.LFE118:
+ 149              		.section	.text.dci_disable,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	dci_disable
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	dci_disable:
+ 157              	.LFB119:
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disable DCI function
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_disable(void)
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 158              		.loc 1 100 1 is_stmt 1 view -0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~DCI_CTL_DCIEN;
+ 163              		.loc 1 101 5 view .LVU33
+ 164              		.loc 1 101 13 is_stmt 0 view .LVU34
+ 165 0000 024A     		ldr	r2, .L10
+ 166 0002 1368     		ldr	r3, [r2]
+ 167 0004 23F48043 		bic	r3, r3, #16384
+ 168 0008 1360     		str	r3, [r2]
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 169              		.loc 1 102 1 view .LVU35
+ 170 000a 7047     		bx	lr
+ 171              	.L11:
+ 172              		.align	2
+ 173              	.L10:
+ 174 000c 00000550 		.word	1342504960
+ 175              		.cfi_endproc
+ 176              	.LFE119:
+ 178              		.section	.text.dci_capture_enable,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	dci_capture_enable
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	dci_capture_enable:
+ 186              	.LFB120:
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable DCI capture
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ARM GAS  /tmp/cctAiCBG.s 			page 6
+
+
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_capture_enable(void)
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 187              		.loc 1 111 1 is_stmt 1 view -0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              		@ link register save eliminated.
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL |= DCI_CTL_CAP;
+ 192              		.loc 1 112 5 view .LVU37
+ 193              		.loc 1 112 13 is_stmt 0 view .LVU38
+ 194 0000 024A     		ldr	r2, .L13
+ 195 0002 1368     		ldr	r3, [r2]
+ 196 0004 43F00103 		orr	r3, r3, #1
+ 197 0008 1360     		str	r3, [r2]
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 198              		.loc 1 113 1 view .LVU39
+ 199 000a 7047     		bx	lr
+ 200              	.L14:
+ 201              		.align	2
+ 202              	.L13:
+ 203 000c 00000550 		.word	1342504960
+ 204              		.cfi_endproc
+ 205              	.LFE120:
+ 207              		.section	.text.dci_capture_disable,"ax",%progbits
+ 208              		.align	1
+ 209              		.global	dci_capture_disable
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	dci_capture_disable:
+ 215              	.LFB121:
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disable DCI capture
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_capture_disable(void)
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 216              		.loc 1 122 1 is_stmt 1 view -0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              		@ link register save eliminated.
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~DCI_CTL_CAP;
+ 221              		.loc 1 123 5 view .LVU41
+ 222              		.loc 1 123 13 is_stmt 0 view .LVU42
+ 223 0000 024A     		ldr	r2, .L16
+ 224 0002 1368     		ldr	r3, [r2]
+ 225 0004 23F00103 		bic	r3, r3, #1
+ 226 0008 1360     		str	r3, [r2]
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 227              		.loc 1 124 1 view .LVU43
+ 228 000a 7047     		bx	lr
+ 229              	.L17:
+ARM GAS  /tmp/cctAiCBG.s 			page 7
+
+
+ 230              		.align	2
+ 231              	.L16:
+ 232 000c 00000550 		.word	1342504960
+ 233              		.cfi_endproc
+ 234              	.LFE121:
+ 236              		.section	.text.dci_jpeg_enable,"ax",%progbits
+ 237              		.align	1
+ 238              		.global	dci_jpeg_enable
+ 239              		.syntax unified
+ 240              		.thumb
+ 241              		.thumb_func
+ 243              	dci_jpeg_enable:
+ 244              	.LFB122:
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable DCI jpeg mode
+ 128:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 129:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 130:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 131:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 132:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_jpeg_enable(void)
+ 133:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 245              		.loc 1 133 1 is_stmt 1 view -0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 0
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249              		@ link register save eliminated.
+ 134:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL |= DCI_CTL_JM;
+ 250              		.loc 1 134 5 view .LVU45
+ 251              		.loc 1 134 13 is_stmt 0 view .LVU46
+ 252 0000 024A     		ldr	r2, .L19
+ 253 0002 1368     		ldr	r3, [r2]
+ 254 0004 43F00803 		orr	r3, r3, #8
+ 255 0008 1360     		str	r3, [r2]
+ 135:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 256              		.loc 1 135 1 view .LVU47
+ 257 000a 7047     		bx	lr
+ 258              	.L20:
+ 259              		.align	2
+ 260              	.L19:
+ 261 000c 00000550 		.word	1342504960
+ 262              		.cfi_endproc
+ 263              	.LFE122:
+ 265              		.section	.text.dci_jpeg_disable,"ax",%progbits
+ 266              		.align	1
+ 267              		.global	dci_jpeg_disable
+ 268              		.syntax unified
+ 269              		.thumb
+ 270              		.thumb_func
+ 272              	dci_jpeg_disable:
+ 273              	.LFB123:
+ 136:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 137:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 138:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disable DCI jpeg mode
+ 139:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 140:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 141:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ARM GAS  /tmp/cctAiCBG.s 			page 8
+
+
+ 142:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 143:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_jpeg_disable(void)
+ 144:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 274              		.loc 1 144 1 is_stmt 1 view -0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 278              		@ link register save eliminated.
+ 145:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~DCI_CTL_JM;
+ 279              		.loc 1 145 5 view .LVU49
+ 280              		.loc 1 145 13 is_stmt 0 view .LVU50
+ 281 0000 024A     		ldr	r2, .L22
+ 282 0002 1368     		ldr	r3, [r2]
+ 283 0004 23F00803 		bic	r3, r3, #8
+ 284 0008 1360     		str	r3, [r2]
+ 146:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 285              		.loc 1 146 1 view .LVU51
+ 286 000a 7047     		bx	lr
+ 287              	.L23:
+ 288              		.align	2
+ 289              	.L22:
+ 290 000c 00000550 		.word	1342504960
+ 291              		.cfi_endproc
+ 292              	.LFE123:
+ 294              		.section	.text.dci_crop_window_enable,"ax",%progbits
+ 295              		.align	1
+ 296              		.global	dci_crop_window_enable
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 301              	dci_crop_window_enable:
+ 302              	.LFB124:
+ 147:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 148:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 149:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable cropping window function
+ 150:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 151:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 152:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 154:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_crop_window_enable(void)
+ 155:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 303              		.loc 1 155 1 is_stmt 1 view -0
+ 304              		.cfi_startproc
+ 305              		@ args = 0, pretend = 0, frame = 0
+ 306              		@ frame_needed = 0, uses_anonymous_args = 0
+ 307              		@ link register save eliminated.
+ 156:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL |= DCI_CTL_WDEN;
+ 308              		.loc 1 156 5 view .LVU53
+ 309              		.loc 1 156 13 is_stmt 0 view .LVU54
+ 310 0000 024A     		ldr	r2, .L25
+ 311 0002 1368     		ldr	r3, [r2]
+ 312 0004 43F00403 		orr	r3, r3, #4
+ 313 0008 1360     		str	r3, [r2]
+ 157:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 314              		.loc 1 157 1 view .LVU55
+ 315 000a 7047     		bx	lr
+ 316              	.L26:
+ARM GAS  /tmp/cctAiCBG.s 			page 9
+
+
+ 317              		.align	2
+ 318              	.L25:
+ 319 000c 00000550 		.word	1342504960
+ 320              		.cfi_endproc
+ 321              	.LFE124:
+ 323              		.section	.text.dci_crop_window_disable,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	dci_crop_window_disable
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 330              	dci_crop_window_disable:
+ 331              	.LFB125:
+ 158:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 159:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 160:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disable cropping window function
+ 161:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 162:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 163:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 164:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 165:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_crop_window_disable(void)
+ 166:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 332              		.loc 1 166 1 is_stmt 1 view -0
+ 333              		.cfi_startproc
+ 334              		@ args = 0, pretend = 0, frame = 0
+ 335              		@ frame_needed = 0, uses_anonymous_args = 0
+ 336              		@ link register save eliminated.
+ 167:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~DCI_CTL_WDEN;
+ 337              		.loc 1 167 5 view .LVU57
+ 338              		.loc 1 167 13 is_stmt 0 view .LVU58
+ 339 0000 024A     		ldr	r2, .L28
+ 340 0002 1368     		ldr	r3, [r2]
+ 341 0004 23F00403 		bic	r3, r3, #4
+ 342 0008 1360     		str	r3, [r2]
+ 168:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 343              		.loc 1 168 1 view .LVU59
+ 344 000a 7047     		bx	lr
+ 345              	.L29:
+ 346              		.align	2
+ 347              	.L28:
+ 348 000c 00000550 		.word	1342504960
+ 349              		.cfi_endproc
+ 350              	.LFE125:
+ 352              		.section	.text.dci_crop_window_config,"ax",%progbits
+ 353              		.align	1
+ 354              		.global	dci_crop_window_config
+ 355              		.syntax unified
+ 356              		.thumb
+ 357              		.thumb_func
+ 359              	dci_crop_window_config:
+ 360              	.LVL9:
+ 361              	.LFB126:
+ 169:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 170:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 171:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    configure DCI cropping window
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  start_x: window horizontal start position
+ 173:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  start_y: window vertical start position
+ARM GAS  /tmp/cctAiCBG.s 			page 10
+
+
+ 174:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  size_width: window horizontal size
+ 175:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  size_height: window vertical size
+ 176:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 177:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 178:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 179:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_crop_window_config(uint16_t start_x, uint16_t start_y, uint16_t size_width, uint16_t size_
+ 180:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 362              		.loc 1 180 1 is_stmt 1 view -0
+ 363              		.cfi_startproc
+ 364              		@ args = 0, pretend = 0, frame = 0
+ 365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 366              		@ link register save eliminated.
+ 181:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CWSPOS = ((uint32_t)start_x | ((uint32_t)start_y << 16));
+ 367              		.loc 1 181 5 view .LVU61
+ 368              		.loc 1 181 37 is_stmt 0 view .LVU62
+ 369 0000 40EA0140 		orr	r0, r0, r1, lsl #16
+ 370              	.LVL10:
+ 371              		.loc 1 181 16 view .LVU63
+ 372 0004 0249     		ldr	r1, .L31
+ 373              	.LVL11:
+ 374              		.loc 1 181 16 view .LVU64
+ 375 0006 0862     		str	r0, [r1, #32]
+ 182:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CWSZ = ((uint32_t)size_width | ((uint32_t)size_height << 16));
+ 376              		.loc 1 182 5 is_stmt 1 view .LVU65
+ 377              		.loc 1 182 38 is_stmt 0 view .LVU66
+ 378 0008 42EA0342 		orr	r2, r2, r3, lsl #16
+ 379              	.LVL12:
+ 380              		.loc 1 182 14 view .LVU67
+ 381 000c 4A62     		str	r2, [r1, #36]
+ 183:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 382              		.loc 1 183 1 view .LVU68
+ 383 000e 7047     		bx	lr
+ 384              	.L32:
+ 385              		.align	2
+ 386              	.L31:
+ 387 0010 00000550 		.word	1342504960
+ 388              		.cfi_endproc
+ 389              	.LFE126:
+ 391              		.section	.text.dci_embedded_sync_enable,"ax",%progbits
+ 392              		.align	1
+ 393              		.global	dci_embedded_sync_enable
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 398              	dci_embedded_sync_enable:
+ 399              	.LFB127:
+ 184:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 185:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 186:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable embedded synchronous mode
+ 187:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 188:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 189:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 190:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 191:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_embedded_sync_enable(void)
+ 192:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 400              		.loc 1 192 1 is_stmt 1 view -0
+ 401              		.cfi_startproc
+ARM GAS  /tmp/cctAiCBG.s 			page 11
+
+
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              		@ link register save eliminated.
+ 193:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL |= DCI_CTL_ESM;
+ 405              		.loc 1 193 5 view .LVU70
+ 406              		.loc 1 193 13 is_stmt 0 view .LVU71
+ 407 0000 024A     		ldr	r2, .L34
+ 408 0002 1368     		ldr	r3, [r2]
+ 409 0004 43F01003 		orr	r3, r3, #16
+ 410 0008 1360     		str	r3, [r2]
+ 194:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 411              		.loc 1 194 1 view .LVU72
+ 412 000a 7047     		bx	lr
+ 413              	.L35:
+ 414              		.align	2
+ 415              	.L34:
+ 416 000c 00000550 		.word	1342504960
+ 417              		.cfi_endproc
+ 418              	.LFE127:
+ 420              		.section	.text.dci_embedded_sync_disable,"ax",%progbits
+ 421              		.align	1
+ 422              		.global	dci_embedded_sync_disable
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	dci_embedded_sync_disable:
+ 428              	.LFB128:
+ 195:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 196:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 197:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disble embedded synchronous mode
+ 198:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 199:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 200:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 201:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 202:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_embedded_sync_disable(void)
+ 203:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 429              		.loc 1 203 1 is_stmt 1 view -0
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              		@ link register save eliminated.
+ 204:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_CTL &= ~DCI_CTL_ESM;
+ 434              		.loc 1 204 5 view .LVU74
+ 435              		.loc 1 204 13 is_stmt 0 view .LVU75
+ 436 0000 024A     		ldr	r2, .L37
+ 437 0002 1368     		ldr	r3, [r2]
+ 438 0004 23F01003 		bic	r3, r3, #16
+ 439 0008 1360     		str	r3, [r2]
+ 205:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 440              		.loc 1 205 1 view .LVU76
+ 441 000a 7047     		bx	lr
+ 442              	.L38:
+ 443              		.align	2
+ 444              	.L37:
+ 445 000c 00000550 		.word	1342504960
+ 446              		.cfi_endproc
+ 447              	.LFE128:
+ARM GAS  /tmp/cctAiCBG.s 			page 12
+
+
+ 449              		.section	.text.dci_sync_codes_config,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	dci_sync_codes_config
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 456              	dci_sync_codes_config:
+ 457              	.LVL13:
+ 458              	.LFB129:
+ 206:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 207:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    config synchronous codes in embedded synchronous mode
+ 208:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  frame_start: frame start code in embedded synchronous mode
+ 209:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  line_start: line start code in embedded synchronous mode
+ 210:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  line_end: line end code in embedded synchronous mode
+ 211:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  frame_end: frame end code in embedded synchronous mode
+ 212:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 213:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 214:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 215:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_sync_codes_config(uint8_t frame_start, uint8_t line_start, uint8_t line_end, uint8_t frame
+ 216:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 459              		.loc 1 216 1 is_stmt 1 view -0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 0
+ 462              		@ frame_needed = 0, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 217:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_SC = ((uint32_t)frame_start | ((uint32_t)line_start << 8) | ((uint32_t)line_end << 16) | ((
+ 464              		.loc 1 217 5 view .LVU78
+ 465              		.loc 1 217 37 is_stmt 0 view .LVU79
+ 466 0000 40EA0120 		orr	r0, r0, r1, lsl #8
+ 467              	.LVL14:
+ 468              		.loc 1 217 67 view .LVU80
+ 469 0004 40EA0240 		orr	r0, r0, r2, lsl #16
+ 470              		.loc 1 217 96 view .LVU81
+ 471 0008 40EA0360 		orr	r0, r0, r3, lsl #24
+ 472              		.loc 1 217 12 view .LVU82
+ 473 000c 014B     		ldr	r3, .L40
+ 474              	.LVL15:
+ 475              		.loc 1 217 12 view .LVU83
+ 476 000e 9861     		str	r0, [r3, #24]
+ 218:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 477              		.loc 1 218 1 view .LVU84
+ 478 0010 7047     		bx	lr
+ 479              	.L41:
+ 480 0012 00BF     		.align	2
+ 481              	.L40:
+ 482 0014 00000550 		.word	1342504960
+ 483              		.cfi_endproc
+ 484              	.LFE129:
+ 486              		.section	.text.dci_sync_codes_unmask_config,"ax",%progbits
+ 487              		.align	1
+ 488              		.global	dci_sync_codes_unmask_config
+ 489              		.syntax unified
+ 490              		.thumb
+ 491              		.thumb_func
+ 493              	dci_sync_codes_unmask_config:
+ 494              	.LVL16:
+ 495              	.LFB130:
+ARM GAS  /tmp/cctAiCBG.s 			page 13
+
+
+ 219:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 221:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    config synchronous codes unmask in embedded synchronous mode
+ 222:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  frame_start: frame start code unmask bits in embedded synchronous mode
+ 223:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  line_start: line start code unmask bits in embedded synchronous mode
+ 224:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  line_end: line end code unmask bits in embedded synchronous mode
+ 225:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  frame_end: frame end code unmask bits in embedded synchronous mode
+ 226:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 227:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 228:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 229:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_sync_codes_unmask_config(uint8_t frame_start, uint8_t line_start, uint8_t line_end, uint8_
+ 230:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 496              		.loc 1 230 1 is_stmt 1 view -0
+ 497              		.cfi_startproc
+ 498              		@ args = 0, pretend = 0, frame = 0
+ 499              		@ frame_needed = 0, uses_anonymous_args = 0
+ 500              		@ link register save eliminated.
+ 231:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_SCUMSK = ((uint32_t)frame_start | ((uint32_t)line_start << 8) | ((uint32_t)line_end << 16) 
+ 501              		.loc 1 231 5 view .LVU86
+ 502              		.loc 1 231 41 is_stmt 0 view .LVU87
+ 503 0000 40EA0120 		orr	r0, r0, r1, lsl #8
+ 504              	.LVL17:
+ 505              		.loc 1 231 71 view .LVU88
+ 506 0004 40EA0240 		orr	r0, r0, r2, lsl #16
+ 507              		.loc 1 231 100 view .LVU89
+ 508 0008 40EA0360 		orr	r0, r0, r3, lsl #24
+ 509              		.loc 1 231 16 view .LVU90
+ 510 000c 014B     		ldr	r3, .L43
+ 511              	.LVL18:
+ 512              		.loc 1 231 16 view .LVU91
+ 513 000e D861     		str	r0, [r3, #28]
+ 232:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 514              		.loc 1 232 1 view .LVU92
+ 515 0010 7047     		bx	lr
+ 516              	.L44:
+ 517 0012 00BF     		.align	2
+ 518              	.L43:
+ 519 0014 00000550 		.word	1342504960
+ 520              		.cfi_endproc
+ 521              	.LFE130:
+ 523              		.section	.text.dci_data_read,"ax",%progbits
+ 524              		.align	1
+ 525              		.global	dci_data_read
+ 526              		.syntax unified
+ 527              		.thumb
+ 528              		.thumb_func
+ 530              	dci_data_read:
+ 531              	.LFB131:
+ 233:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 234:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 235:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    read DCI data register
+ 236:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  none
+ 237:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 238:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     data
+ 239:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 240:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** uint32_t dci_data_read(void)
+ 241:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ARM GAS  /tmp/cctAiCBG.s 			page 14
+
+
+ 532              		.loc 1 241 1 is_stmt 1 view -0
+ 533              		.cfi_startproc
+ 534              		@ args = 0, pretend = 0, frame = 0
+ 535              		@ frame_needed = 0, uses_anonymous_args = 0
+ 536              		@ link register save eliminated.
+ 242:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     return DCI_DATA;
+ 537              		.loc 1 242 5 view .LVU94
+ 538              		.loc 1 242 12 is_stmt 0 view .LVU95
+ 539 0000 014B     		ldr	r3, .L46
+ 540 0002 986A     		ldr	r0, [r3, #40]
+ 243:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 541              		.loc 1 243 1 view .LVU96
+ 542 0004 7047     		bx	lr
+ 543              	.L47:
+ 544 0006 00BF     		.align	2
+ 545              	.L46:
+ 546 0008 00000550 		.word	1342504960
+ 547              		.cfi_endproc
+ 548              	.LFE131:
+ 550              		.section	.text.dci_flag_get,"ax",%progbits
+ 551              		.align	1
+ 552              		.global	dci_flag_get
+ 553              		.syntax unified
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	dci_flag_get:
+ 558              	.LVL19:
+ 559              	.LFB132:
+ 244:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 245:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 246:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    get specified flag
+ 247:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  flag:
+ 248:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_HS: HS line status
+ 249:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_VS: VS line status
+ 250:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_FV:FIFO valid
+ 251:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_EF: end of frame flag
+ 252:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_OVR: FIFO overrun flag
+ 253:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_ESE: embedded synchronous error flag
+ 254:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_VSYNC: vsync flag
+ 255:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_FLAG_EL: end of line flag
+ 256:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 257:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     FlagStatus: SET or RESET
+ 258:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 259:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** FlagStatus dci_flag_get(uint32_t flag)
+ 260:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 560              		.loc 1 260 1 is_stmt 1 view -0
+ 561              		.cfi_startproc
+ 562              		@ args = 0, pretend = 0, frame = 0
+ 563              		@ frame_needed = 0, uses_anonymous_args = 0
+ 564              		@ link register save eliminated.
+ 261:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     uint32_t stat = 0U;
+ 565              		.loc 1 261 5 view .LVU98
+ 262:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 263:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     if(flag >> 31) {
+ 566              		.loc 1 263 5 view .LVU99
+ 567              		.loc 1 263 7 is_stmt 0 view .LVU100
+ 568 0000 0028     		cmp	r0, #0
+ARM GAS  /tmp/cctAiCBG.s 			page 15
+
+
+ 569              		.loc 1 263 7 view .LVU101
+ 570 0002 05DB     		blt	.L53
+ 264:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         /* get flag status from DCI_STAT1 register */
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         stat = DCI_STAT1;
+ 266:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 267:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         /* get flag status from DCI_STAT0 register */
+ 268:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         stat = DCI_STAT0;
+ 571              		.loc 1 268 9 is_stmt 1 view .LVU102
+ 572              		.loc 1 268 14 is_stmt 0 view .LVU103
+ 573 0004 054B     		ldr	r3, .L54
+ 574 0006 5B68     		ldr	r3, [r3, #4]
+ 575              	.LVL20:
+ 576              	.L50:
+ 269:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     }
+ 270:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 271:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     if(flag & stat) {
+ 577              		.loc 1 271 5 is_stmt 1 view .LVU104
+ 578              		.loc 1 271 7 is_stmt 0 view .LVU105
+ 579 0008 0342     		tst	r3, r0
+ 580 000a 04D0     		beq	.L52
+ 272:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         return SET;
+ 581              		.loc 1 272 16 view .LVU106
+ 582 000c 0120     		movs	r0, #1
+ 583              	.LVL21:
+ 584              		.loc 1 272 16 view .LVU107
+ 585 000e 7047     		bx	lr
+ 586              	.LVL22:
+ 587              	.L53:
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 588              		.loc 1 265 9 is_stmt 1 view .LVU108
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 589              		.loc 1 265 14 is_stmt 0 view .LVU109
+ 590 0010 024B     		ldr	r3, .L54
+ 591 0012 9B68     		ldr	r3, [r3, #8]
+ 592              	.LVL23:
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 593              		.loc 1 265 14 view .LVU110
+ 594 0014 F8E7     		b	.L50
+ 595              	.L52:
+ 273:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 274:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         return RESET;
+ 596              		.loc 1 274 16 view .LVU111
+ 597 0016 0020     		movs	r0, #0
+ 598              	.LVL24:
+ 275:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     }
+ 276:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 599              		.loc 1 276 1 view .LVU112
+ 600 0018 7047     		bx	lr
+ 601              	.L55:
+ 602 001a 00BF     		.align	2
+ 603              	.L54:
+ 604 001c 00000550 		.word	1342504960
+ 605              		.cfi_endproc
+ 606              	.LFE132:
+ 608              		.section	.text.dci_interrupt_enable,"ax",%progbits
+ 609              		.align	1
+ 610              		.global	dci_interrupt_enable
+ARM GAS  /tmp/cctAiCBG.s 			page 16
+
+
+ 611              		.syntax unified
+ 612              		.thumb
+ 613              		.thumb_func
+ 615              	dci_interrupt_enable:
+ 616              	.LVL25:
+ 617              	.LFB133:
+ 277:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 278:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 279:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    enable specified DCI interrupt
+ 280:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  interrupt:
+ 281:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EF: end of frame interrupt
+ 282:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_OVR: FIFO overrun interrupt
+ 283:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_ESE: embedded synchronous error interrupt
+ 284:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_VSYNC: vsync interrupt
+ 285:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EL: end of line interrupt
+ 286:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 287:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 289:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_interrupt_enable(uint32_t interrupt)
+ 290:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 618              		.loc 1 290 1 is_stmt 1 view -0
+ 619              		.cfi_startproc
+ 620              		@ args = 0, pretend = 0, frame = 0
+ 621              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622              		@ link register save eliminated.
+ 291:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_INTEN |= interrupt;
+ 623              		.loc 1 291 5 view .LVU114
+ 624              		.loc 1 291 15 is_stmt 0 view .LVU115
+ 625 0000 024A     		ldr	r2, .L57
+ 626 0002 D368     		ldr	r3, [r2, #12]
+ 627 0004 0343     		orrs	r3, r3, r0
+ 628 0006 D360     		str	r3, [r2, #12]
+ 292:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 629              		.loc 1 292 1 view .LVU116
+ 630 0008 7047     		bx	lr
+ 631              	.L58:
+ 632 000a 00BF     		.align	2
+ 633              	.L57:
+ 634 000c 00000550 		.word	1342504960
+ 635              		.cfi_endproc
+ 636              	.LFE133:
+ 638              		.section	.text.dci_interrupt_disable,"ax",%progbits
+ 639              		.align	1
+ 640              		.global	dci_interrupt_disable
+ 641              		.syntax unified
+ 642              		.thumb
+ 643              		.thumb_func
+ 645              	dci_interrupt_disable:
+ 646              	.LVL26:
+ 647              	.LFB134:
+ 293:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 294:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 295:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    disable specified DCI interrupt
+ 296:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  interrupt:
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EF: end of frame interrupt
+ 298:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_OVR: FIFO overrun interrupt
+ 299:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_ESE: embedded synchronous error interrupt
+ARM GAS  /tmp/cctAiCBG.s 			page 17
+
+
+ 300:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_VSYNC: vsync interrupt
+ 301:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EL: end of line interrupt
+ 302:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 303:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 304:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 305:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_interrupt_disable(uint32_t interrupt)
+ 306:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 648              		.loc 1 306 1 is_stmt 1 view -0
+ 649              		.cfi_startproc
+ 650              		@ args = 0, pretend = 0, frame = 0
+ 651              		@ frame_needed = 0, uses_anonymous_args = 0
+ 652              		@ link register save eliminated.
+ 307:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_INTEN &= ~interrupt;
+ 653              		.loc 1 307 5 view .LVU118
+ 654              		.loc 1 307 15 is_stmt 0 view .LVU119
+ 655 0000 024A     		ldr	r2, .L60
+ 656 0002 D368     		ldr	r3, [r2, #12]
+ 657 0004 23EA0003 		bic	r3, r3, r0
+ 658 0008 D360     		str	r3, [r2, #12]
+ 308:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 659              		.loc 1 308 1 view .LVU120
+ 660 000a 7047     		bx	lr
+ 661              	.L61:
+ 662              		.align	2
+ 663              	.L60:
+ 664 000c 00000550 		.word	1342504960
+ 665              		.cfi_endproc
+ 666              	.LFE134:
+ 668              		.section	.text.dci_interrupt_flag_clear,"ax",%progbits
+ 669              		.align	1
+ 670              		.global	dci_interrupt_flag_clear
+ 671              		.syntax unified
+ 672              		.thumb
+ 673              		.thumb_func
+ 675              	dci_interrupt_flag_clear:
+ 676              	.LVL27:
+ 677              	.LFB135:
+ 309:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 310:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 311:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    clear specified interrupt flag
+ 312:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  int_flag:
+ 313:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EF: end of frame interrupt
+ 314:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_OVR: FIFO overrun interrupt
+ 315:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_ESE: embedded synchronous error interrupt
+ 316:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_VSYNC: vsync interrupt
+ 317:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_EL: end of line interrupt
+ 318:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 319:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     none
+ 320:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 321:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** void dci_interrupt_flag_clear(uint32_t int_flag)
+ 322:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 678              		.loc 1 322 1 is_stmt 1 view -0
+ 679              		.cfi_startproc
+ 680              		@ args = 0, pretend = 0, frame = 0
+ 681              		@ frame_needed = 0, uses_anonymous_args = 0
+ 682              		@ link register save eliminated.
+ 323:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     DCI_INTC |= int_flag;
+ARM GAS  /tmp/cctAiCBG.s 			page 18
+
+
+ 683              		.loc 1 323 5 view .LVU122
+ 684              		.loc 1 323 14 is_stmt 0 view .LVU123
+ 685 0000 024A     		ldr	r2, .L63
+ 686 0002 5369     		ldr	r3, [r2, #20]
+ 687 0004 0343     		orrs	r3, r3, r0
+ 688 0006 5361     		str	r3, [r2, #20]
+ 324:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 689              		.loc 1 324 1 view .LVU124
+ 690 0008 7047     		bx	lr
+ 691              	.L64:
+ 692 000a 00BF     		.align	2
+ 693              	.L63:
+ 694 000c 00000550 		.word	1342504960
+ 695              		.cfi_endproc
+ 696              	.LFE135:
+ 698              		.section	.text.dci_interrupt_flag_get,"ax",%progbits
+ 699              		.align	1
+ 700              		.global	dci_interrupt_flag_get
+ 701              		.syntax unified
+ 702              		.thumb
+ 703              		.thumb_func
+ 705              	dci_interrupt_flag_get:
+ 706              	.LVL28:
+ 707              	.LFB136:
+ 325:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** 
+ 326:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** /*!
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \brief    get specified interrupt flag
+ 328:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[in]  int_flag:
+ 329:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_FLAG_EF: end of frame interrupt flag
+ 330:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_FLAG_OVR: FIFO overrun interrupt flag
+ 331:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_FLAG_ESE: embedded synchronous error interrupt flag
+ 332:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_FLAG_VSYNC: vsync interrupt flag
+ 333:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****       \arg         DCI_INT_FLAG_EL: end of line interrupt flag
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \param[out] none
+ 335:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     \retval     FlagStatus: SET or RESET
+ 336:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** */
+ 337:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** FlagStatus dci_interrupt_flag_get(uint32_t int_flag)
+ 338:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** {
+ 708              		.loc 1 338 1 is_stmt 1 view -0
+ 709              		.cfi_startproc
+ 710              		@ args = 0, pretend = 0, frame = 0
+ 711              		@ frame_needed = 0, uses_anonymous_args = 0
+ 712              		@ link register save eliminated.
+ 339:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     if(RESET == (DCI_INTF & int_flag)) {
+ 713              		.loc 1 339 5 view .LVU126
+ 714              		.loc 1 339 18 is_stmt 0 view .LVU127
+ 715 0000 034B     		ldr	r3, .L68
+ 716 0002 1B69     		ldr	r3, [r3, #16]
+ 717              		.loc 1 339 7 view .LVU128
+ 718 0004 0342     		tst	r3, r0
+ 719 0006 01D1     		bne	.L67
+ 340:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         return RESET;
+ 720              		.loc 1 340 16 view .LVU129
+ 721 0008 0020     		movs	r0, #0
+ 722              	.LVL29:
+ 723              		.loc 1 340 16 view .LVU130
+ 724 000a 7047     		bx	lr
+ARM GAS  /tmp/cctAiCBG.s 			page 19
+
+
+ 725              	.LVL30:
+ 726              	.L67:
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     } else {
+ 342:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****         return SET;
+ 727              		.loc 1 342 16 view .LVU131
+ 728 000c 0120     		movs	r0, #1
+ 729              	.LVL31:
+ 343:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c ****     }
+ 344:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_dci.c **** }
+ 730              		.loc 1 344 1 view .LVU132
+ 731 000e 7047     		bx	lr
+ 732              	.L69:
+ 733              		.align	2
+ 734              	.L68:
+ 735 0010 00000550 		.word	1342504960
+ 736              		.cfi_endproc
+ 737              	.LFE136:
+ 739              		.text
+ 740              	.Letext0:
+ 741              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 742              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 743              		.file 4 "Core/Inc/gd32f4xx.h"
+ 744              		.file 5 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ 745              		.file 6 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_dci.h"
+ARM GAS  /tmp/cctAiCBG.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_dci.c
+     /tmp/cctAiCBG.s:20     .text.dci_deinit:0000000000000000 $t
+     /tmp/cctAiCBG.s:26     .text.dci_deinit:0000000000000000 dci_deinit
+     /tmp/cctAiCBG.s:52     .text.dci_init:0000000000000000 $t
+     /tmp/cctAiCBG.s:58     .text.dci_init:0000000000000000 dci_init
+     /tmp/cctAiCBG.s:116    .text.dci_init:0000000000000028 $d
+     /tmp/cctAiCBG.s:121    .text.dci_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:127    .text.dci_enable:0000000000000000 dci_enable
+     /tmp/cctAiCBG.s:145    .text.dci_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:150    .text.dci_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:156    .text.dci_disable:0000000000000000 dci_disable
+     /tmp/cctAiCBG.s:174    .text.dci_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:179    .text.dci_capture_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:185    .text.dci_capture_enable:0000000000000000 dci_capture_enable
+     /tmp/cctAiCBG.s:203    .text.dci_capture_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:208    .text.dci_capture_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:214    .text.dci_capture_disable:0000000000000000 dci_capture_disable
+     /tmp/cctAiCBG.s:232    .text.dci_capture_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:237    .text.dci_jpeg_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:243    .text.dci_jpeg_enable:0000000000000000 dci_jpeg_enable
+     /tmp/cctAiCBG.s:261    .text.dci_jpeg_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:266    .text.dci_jpeg_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:272    .text.dci_jpeg_disable:0000000000000000 dci_jpeg_disable
+     /tmp/cctAiCBG.s:290    .text.dci_jpeg_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:295    .text.dci_crop_window_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:301    .text.dci_crop_window_enable:0000000000000000 dci_crop_window_enable
+     /tmp/cctAiCBG.s:319    .text.dci_crop_window_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:324    .text.dci_crop_window_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:330    .text.dci_crop_window_disable:0000000000000000 dci_crop_window_disable
+     /tmp/cctAiCBG.s:348    .text.dci_crop_window_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:353    .text.dci_crop_window_config:0000000000000000 $t
+     /tmp/cctAiCBG.s:359    .text.dci_crop_window_config:0000000000000000 dci_crop_window_config
+     /tmp/cctAiCBG.s:387    .text.dci_crop_window_config:0000000000000010 $d
+     /tmp/cctAiCBG.s:392    .text.dci_embedded_sync_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:398    .text.dci_embedded_sync_enable:0000000000000000 dci_embedded_sync_enable
+     /tmp/cctAiCBG.s:416    .text.dci_embedded_sync_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:421    .text.dci_embedded_sync_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:427    .text.dci_embedded_sync_disable:0000000000000000 dci_embedded_sync_disable
+     /tmp/cctAiCBG.s:445    .text.dci_embedded_sync_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:450    .text.dci_sync_codes_config:0000000000000000 $t
+     /tmp/cctAiCBG.s:456    .text.dci_sync_codes_config:0000000000000000 dci_sync_codes_config
+     /tmp/cctAiCBG.s:482    .text.dci_sync_codes_config:0000000000000014 $d
+     /tmp/cctAiCBG.s:487    .text.dci_sync_codes_unmask_config:0000000000000000 $t
+     /tmp/cctAiCBG.s:493    .text.dci_sync_codes_unmask_config:0000000000000000 dci_sync_codes_unmask_config
+     /tmp/cctAiCBG.s:519    .text.dci_sync_codes_unmask_config:0000000000000014 $d
+     /tmp/cctAiCBG.s:524    .text.dci_data_read:0000000000000000 $t
+     /tmp/cctAiCBG.s:530    .text.dci_data_read:0000000000000000 dci_data_read
+     /tmp/cctAiCBG.s:546    .text.dci_data_read:0000000000000008 $d
+     /tmp/cctAiCBG.s:551    .text.dci_flag_get:0000000000000000 $t
+     /tmp/cctAiCBG.s:557    .text.dci_flag_get:0000000000000000 dci_flag_get
+     /tmp/cctAiCBG.s:604    .text.dci_flag_get:000000000000001c $d
+     /tmp/cctAiCBG.s:609    .text.dci_interrupt_enable:0000000000000000 $t
+     /tmp/cctAiCBG.s:615    .text.dci_interrupt_enable:0000000000000000 dci_interrupt_enable
+     /tmp/cctAiCBG.s:634    .text.dci_interrupt_enable:000000000000000c $d
+     /tmp/cctAiCBG.s:639    .text.dci_interrupt_disable:0000000000000000 $t
+     /tmp/cctAiCBG.s:645    .text.dci_interrupt_disable:0000000000000000 dci_interrupt_disable
+ARM GAS  /tmp/cctAiCBG.s 			page 21
+
+
+     /tmp/cctAiCBG.s:664    .text.dci_interrupt_disable:000000000000000c $d
+     /tmp/cctAiCBG.s:669    .text.dci_interrupt_flag_clear:0000000000000000 $t
+     /tmp/cctAiCBG.s:675    .text.dci_interrupt_flag_clear:0000000000000000 dci_interrupt_flag_clear
+     /tmp/cctAiCBG.s:694    .text.dci_interrupt_flag_clear:000000000000000c $d
+     /tmp/cctAiCBG.s:699    .text.dci_interrupt_flag_get:0000000000000000 $t
+     /tmp/cctAiCBG.s:705    .text.dci_interrupt_flag_get:0000000000000000 dci_interrupt_flag_get
+     /tmp/cctAiCBG.s:735    .text.dci_interrupt_flag_get:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

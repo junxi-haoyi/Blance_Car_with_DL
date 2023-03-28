@@ -1,0 +1,414 @@
+ARM GAS  /tmp/ccIqCR2f.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_wwdgt.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.wwdgt_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	wwdgt_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	wwdgt_deinit:
+  27              	.LFB116:
+  28              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \file    gd32f4xx_wwdgt.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief   WWDGT driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****        this list of conditions and the following disclaimer in the documentation 
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****        may be used to endorse or promote products derived from this software without 
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+ARM GAS  /tmp/ccIqCR2f.s 			page 2
+
+
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** #include "gd32f4xx_wwdgt.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    reset the window watchdog timer configuration
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  none
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_deinit(void)
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+  29              		.loc 1 47 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     rcu_periph_reset_enable(RCU_WWDGTRST);
+  38              		.loc 1 48 5 view .LVU1
+  39 0002 40F60B00 		movw	r0, #2059
+  40 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  41              	.LVL0:
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     rcu_periph_reset_disable(RCU_WWDGTRST);
+  42              		.loc 1 49 5 view .LVU2
+  43 000a 40F60B00 		movw	r0, #2059
+  44 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  45              	.LVL1:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+  46              		.loc 1 50 1 is_stmt 0 view .LVU3
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE116:
+  51              		.section	.text.wwdgt_enable,"ax",%progbits
+  52              		.align	1
+  53              		.global	wwdgt_enable
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	wwdgt_enable:
+  59              	.LFB117:
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    start the window watchdog timer counter
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  none
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_enable(void)
+ARM GAS  /tmp/ccIqCR2f.s 			page 3
+
+
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+  60              		.loc 1 59 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_CTL |= WWDGT_CTL_WDGTEN;
+  65              		.loc 1 60 5 view .LVU5
+  66              		.loc 1 60 15 is_stmt 0 view .LVU6
+  67 0000 034A     		ldr	r2, .L4
+  68 0002 D2F8003C 		ldr	r3, [r2, #3072]
+  69 0006 43F08003 		orr	r3, r3, #128
+  70 000a C2F8003C 		str	r3, [r2, #3072]
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+  71              		.loc 1 61 1 view .LVU7
+  72 000e 7047     		bx	lr
+  73              	.L5:
+  74              		.align	2
+  75              	.L4:
+  76 0010 00200040 		.word	1073750016
+  77              		.cfi_endproc
+  78              	.LFE117:
+  80              		.section	.text.wwdgt_counter_update,"ax",%progbits
+  81              		.align	1
+  82              		.global	wwdgt_counter_update
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	wwdgt_counter_update:
+  88              	.LVL2:
+  89              	.LFB118:
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    configure the window watchdog timer counter value
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  counter_value: 0x00 - 0x7F
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_counter_update(uint16_t counter_value)
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+  90              		.loc 1 70 1 is_stmt 1 view -0
+  91              		.cfi_startproc
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_CTL = (uint32_t)(CTL_CNT(counter_value));
+  95              		.loc 1 71 5 view .LVU9
+  96              		.loc 1 71 17 is_stmt 0 view .LVU10
+  97 0000 00F07F00 		and	r0, r0, #127
+  98              	.LVL3:
+  99              		.loc 1 71 15 view .LVU11
+ 100 0004 014B     		ldr	r3, .L7
+ 101 0006 C3F8000C 		str	r0, [r3, #3072]
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+ 102              		.loc 1 72 1 view .LVU12
+ 103 000a 7047     		bx	lr
+ 104              	.L8:
+ARM GAS  /tmp/ccIqCR2f.s 			page 4
+
+
+ 105              		.align	2
+ 106              	.L7:
+ 107 000c 00200040 		.word	1073750016
+ 108              		.cfi_endproc
+ 109              	.LFE118:
+ 111              		.section	.text.wwdgt_config,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	wwdgt_config
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	wwdgt_config:
+ 119              	.LVL4:
+ 120              	.LFB119:
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    configure counter value, window value, and prescaler divider value  
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  counter: 0x00 - 0x7F   
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  window: 0x00 - 0x7F
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  prescaler: wwdgt prescaler value
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****                 only one parameter can be selected which is shown as below:
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV1: the time base of window watchdog counter = (PCLK1/4096)/1
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV2: the time base of window watchdog counter = (PCLK1/4096)/2
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV4: the time base of window watchdog counter = (PCLK1/4096)/4
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****       \arg        WWDGT_CFG_PSC_DIV8: the time base of window watchdog counter = (PCLK1/4096)/8
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_config(uint16_t counter, uint16_t window, uint32_t prescaler)
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+ 121              		.loc 1 88 1 is_stmt 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     /* configure WIN and PSC bits, configure CNT bit */
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_CTL = (uint32_t)(CTL_CNT(counter));
+ 126              		.loc 1 90 5 view .LVU14
+ 127              		.loc 1 90 17 is_stmt 0 view .LVU15
+ 128 0000 00F07F00 		and	r0, r0, #127
+ 129              	.LVL5:
+ 130              		.loc 1 90 15 view .LVU16
+ 131 0004 044B     		ldr	r3, .L10
+ 132 0006 C3F8000C 		str	r0, [r3, #3072]
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_CFG = (uint32_t)(CFG_WIN(window) | prescaler);
+ 133              		.loc 1 91 5 is_stmt 1 view .LVU17
+ 134              		.loc 1 91 28 is_stmt 0 view .LVU18
+ 135 000a 01F07F01 		and	r1, r1, #127
+ 136              	.LVL6:
+ 137              		.loc 1 91 17 view .LVU19
+ 138 000e 1143     		orrs	r1, r1, r2
+ 139              		.loc 1 91 15 view .LVU20
+ 140 0010 C3F8041C 		str	r1, [r3, #3076]
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+ 141              		.loc 1 92 1 view .LVU21
+ 142 0014 7047     		bx	lr
+ 143              	.L11:
+ARM GAS  /tmp/ccIqCR2f.s 			page 5
+
+
+ 144 0016 00BF     		.align	2
+ 145              	.L10:
+ 146 0018 00200040 		.word	1073750016
+ 147              		.cfi_endproc
+ 148              	.LFE119:
+ 150              		.section	.text.wwdgt_flag_get,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	wwdgt_flag_get
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	wwdgt_flag_get:
+ 158              	.LFB120:
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    check early wakeup interrupt state of WWDGT
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  none
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     FlagStatus: SET or RESET
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** FlagStatus wwdgt_flag_get(void)
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+ 159              		.loc 1 101 1 is_stmt 1 view -0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     if(RESET != (WWDGT_STAT & WWDGT_STAT_EWIF)){
+ 164              		.loc 1 102 5 view .LVU23
+ 165              		.loc 1 102 18 is_stmt 0 view .LVU24
+ 166 0000 044B     		ldr	r3, .L15
+ 167 0002 D3F8083C 		ldr	r3, [r3, #3080]
+ 168              		.loc 1 102 7 view .LVU25
+ 169 0006 13F0010F 		tst	r3, #1
+ 170 000a 01D1     		bne	.L14
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****         return SET;
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     }
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     return RESET;
+ 171              		.loc 1 106 12 view .LVU26
+ 172 000c 0020     		movs	r0, #0
+ 173 000e 7047     		bx	lr
+ 174              	.L14:
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****         return SET;
+ 175              		.loc 1 103 16 view .LVU27
+ 176 0010 0120     		movs	r0, #1
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+ 177              		.loc 1 107 1 view .LVU28
+ 178 0012 7047     		bx	lr
+ 179              	.L16:
+ 180              		.align	2
+ 181              	.L15:
+ 182 0014 00200040 		.word	1073750016
+ 183              		.cfi_endproc
+ 184              	.LFE120:
+ 186              		.section	.text.wwdgt_flag_clear,"ax",%progbits
+ 187              		.align	1
+ARM GAS  /tmp/ccIqCR2f.s 			page 6
+
+
+ 188              		.global	wwdgt_flag_clear
+ 189              		.syntax unified
+ 190              		.thumb
+ 191              		.thumb_func
+ 193              	wwdgt_flag_clear:
+ 194              	.LFB121:
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    clear early wakeup interrupt state of WWDGT
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  none
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_flag_clear(void)
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+ 195              		.loc 1 116 1 is_stmt 1 view -0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_STAT = (uint32_t)(RESET);
+ 200              		.loc 1 117 5 view .LVU30
+ 201              		.loc 1 117 16 is_stmt 0 view .LVU31
+ 202 0000 024B     		ldr	r3, .L18
+ 203 0002 0022     		movs	r2, #0
+ 204 0004 C3F8082C 		str	r2, [r3, #3080]
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+ 205              		.loc 1 118 1 view .LVU32
+ 206 0008 7047     		bx	lr
+ 207              	.L19:
+ 208 000a 00BF     		.align	2
+ 209              	.L18:
+ 210 000c 00200040 		.word	1073750016
+ 211              		.cfi_endproc
+ 212              	.LFE121:
+ 214              		.section	.text.wwdgt_interrupt_enable,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	wwdgt_interrupt_enable
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	wwdgt_interrupt_enable:
+ 222              	.LFB122:
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** 
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** /*!
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \brief    enable early wakeup interrupt of WWDGT
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[in]  none
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \param[out] none
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     \retval     none
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** */
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** void wwdgt_interrupt_enable(void)
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** {
+ 223              		.loc 1 127 1 is_stmt 1 view -0
+ 224              		.cfi_startproc
+ 225              		@ args = 0, pretend = 0, frame = 0
+ 226              		@ frame_needed = 0, uses_anonymous_args = 0
+ 227              		@ link register save eliminated.
+ARM GAS  /tmp/ccIqCR2f.s 			page 7
+
+
+ 128:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c ****     WWDGT_CFG |= WWDGT_CFG_EWIE;
+ 228              		.loc 1 128 5 view .LVU34
+ 229              		.loc 1 128 15 is_stmt 0 view .LVU35
+ 230 0000 034A     		ldr	r2, .L21
+ 231 0002 D2F8043C 		ldr	r3, [r2, #3076]
+ 232 0006 43F40073 		orr	r3, r3, #512
+ 233 000a C2F8043C 		str	r3, [r2, #3076]
+ 129:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_wwdgt.c **** }
+ 234              		.loc 1 129 1 view .LVU36
+ 235 000e 7047     		bx	lr
+ 236              	.L22:
+ 237              		.align	2
+ 238              	.L21:
+ 239 0010 00200040 		.word	1073750016
+ 240              		.cfi_endproc
+ 241              	.LFE122:
+ 243              		.text
+ 244              	.Letext0:
+ 245              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 246              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 247              		.file 4 "Core/Inc/gd32f4xx.h"
+ 248              		.file 5 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ARM GAS  /tmp/ccIqCR2f.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_wwdgt.c
+     /tmp/ccIqCR2f.s:20     .text.wwdgt_deinit:0000000000000000 $t
+     /tmp/ccIqCR2f.s:26     .text.wwdgt_deinit:0000000000000000 wwdgt_deinit
+     /tmp/ccIqCR2f.s:52     .text.wwdgt_enable:0000000000000000 $t
+     /tmp/ccIqCR2f.s:58     .text.wwdgt_enable:0000000000000000 wwdgt_enable
+     /tmp/ccIqCR2f.s:76     .text.wwdgt_enable:0000000000000010 $d
+     /tmp/ccIqCR2f.s:81     .text.wwdgt_counter_update:0000000000000000 $t
+     /tmp/ccIqCR2f.s:87     .text.wwdgt_counter_update:0000000000000000 wwdgt_counter_update
+     /tmp/ccIqCR2f.s:107    .text.wwdgt_counter_update:000000000000000c $d
+     /tmp/ccIqCR2f.s:112    .text.wwdgt_config:0000000000000000 $t
+     /tmp/ccIqCR2f.s:118    .text.wwdgt_config:0000000000000000 wwdgt_config
+     /tmp/ccIqCR2f.s:146    .text.wwdgt_config:0000000000000018 $d
+     /tmp/ccIqCR2f.s:151    .text.wwdgt_flag_get:0000000000000000 $t
+     /tmp/ccIqCR2f.s:157    .text.wwdgt_flag_get:0000000000000000 wwdgt_flag_get
+     /tmp/ccIqCR2f.s:182    .text.wwdgt_flag_get:0000000000000014 $d
+     /tmp/ccIqCR2f.s:187    .text.wwdgt_flag_clear:0000000000000000 $t
+     /tmp/ccIqCR2f.s:193    .text.wwdgt_flag_clear:0000000000000000 wwdgt_flag_clear
+     /tmp/ccIqCR2f.s:210    .text.wwdgt_flag_clear:000000000000000c $d
+     /tmp/ccIqCR2f.s:215    .text.wwdgt_interrupt_enable:0000000000000000 $t
+     /tmp/ccIqCR2f.s:221    .text.wwdgt_interrupt_enable:0000000000000000 wwdgt_interrupt_enable
+     /tmp/ccIqCR2f.s:239    .text.wwdgt_interrupt_enable:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

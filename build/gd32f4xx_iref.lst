@@ -1,0 +1,416 @@
+ARM GAS  /tmp/ccA46Q9W.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_iref.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.iref_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	iref_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	iref_deinit:
+  27              	.LFB116:
+  28              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \file    gd32f4xx_iref.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief   IREF driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****        this list of conditions and the following disclaimer in the documentation
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****        may be used to endorse or promote products derived from this software without
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ARM GAS  /tmp/ccA46Q9W.s 			page 2
+
+
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** #include "gd32f4xx_iref.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      deinitialize IREF
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  none
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_deinit(void)
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+  29              		.loc 1 47 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     rcu_periph_reset_enable(RCU_IREFRST);
+  38              		.loc 1 48 5 view .LVU1
+  39 0002 43F61F00 		movw	r0, #14367
+  40 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  41              	.LVL0:
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     rcu_periph_reset_disable(RCU_IREFRST);
+  42              		.loc 1 49 5 view .LVU2
+  43 000a 43F61F00 		movw	r0, #14367
+  44 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  45              	.LVL1:
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+  46              		.loc 1 50 1 is_stmt 0 view .LVU3
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE116:
+  51              		.section	.text.iref_enable,"ax",%progbits
+  52              		.align	1
+  53              		.global	iref_enable
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	iref_enable:
+  59              	.LFB117:
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief    enable IREF
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  none
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_enable(void)
+ARM GAS  /tmp/ccA46Q9W.s 			page 3
+
+
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+  60              		.loc 1 59 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL |= IREF_CTL_CREN;
+  65              		.loc 1 60 5 view .LVU5
+  66              		.loc 1 60 14 is_stmt 0 view .LVU6
+  67 0000 034A     		ldr	r2, .L4
+  68 0002 D2F80037 		ldr	r3, [r2, #1792]
+  69 0006 43F40043 		orr	r3, r3, #32768
+  70 000a C2F80037 		str	r3, [r2, #1792]
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+  71              		.loc 1 61 1 view .LVU7
+  72 000e 7047     		bx	lr
+  73              	.L5:
+  74              		.align	2
+  75              	.L4:
+  76 0010 00C00040 		.word	1073790976
+  77              		.cfi_endproc
+  78              	.LFE117:
+  80              		.section	.text.iref_disable,"ax",%progbits
+  81              		.align	1
+  82              		.global	iref_disable
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	iref_disable:
+  88              	.LFB118:
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      disable IREF
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  none
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_disable(void)
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+  89              		.loc 1 70 1 is_stmt 1 view -0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL &= ~IREF_CTL_CREN;
+  94              		.loc 1 71 5 view .LVU9
+  95              		.loc 1 71 14 is_stmt 0 view .LVU10
+  96 0000 034A     		ldr	r2, .L7
+  97 0002 D2F80037 		ldr	r3, [r2, #1792]
+  98 0006 23F40043 		bic	r3, r3, #32768
+  99 000a C2F80037 		str	r3, [r2, #1792]
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+ 100              		.loc 1 72 1 view .LVU11
+ 101 000e 7047     		bx	lr
+ 102              	.L8:
+ 103              		.align	2
+ 104              	.L7:
+ARM GAS  /tmp/ccA46Q9W.s 			page 4
+
+
+ 105 0010 00C00040 		.word	1073790976
+ 106              		.cfi_endproc
+ 107              	.LFE118:
+ 109              		.section	.text.iref_mode_set,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	iref_mode_set
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	iref_mode_set:
+ 117              	.LVL2:
+ 118              	.LFB119:
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      set IREF mode
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  step
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_MODE_LOW_POWER: 1uA step
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_MODE_HIGH_CURRENT: 8uA step
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_mode_set(uint32_t step)
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+ 119              		.loc 1 83 1 is_stmt 1 view -0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL &= ~IREF_CTL_SSEL;
+ 124              		.loc 1 84 5 view .LVU13
+ 125              		.loc 1 84 14 is_stmt 0 view .LVU14
+ 126 0000 064B     		ldr	r3, .L10
+ 127 0002 D3F80017 		ldr	r1, [r3, #1792]
+ 128 0006 21F48041 		bic	r1, r1, #16384
+ 129 000a C3F80017 		str	r1, [r3, #1792]
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL |= step;
+ 130              		.loc 1 85 5 is_stmt 1 view .LVU15
+ 131              		.loc 1 85 14 is_stmt 0 view .LVU16
+ 132 000e D3F80027 		ldr	r2, [r3, #1792]
+ 133 0012 0243     		orrs	r2, r2, r0
+ 134 0014 C3F80027 		str	r2, [r3, #1792]
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+ 135              		.loc 1 86 1 view .LVU17
+ 136 0018 7047     		bx	lr
+ 137              	.L11:
+ 138 001a 00BF     		.align	2
+ 139              	.L10:
+ 140 001c 00C00040 		.word	1073790976
+ 141              		.cfi_endproc
+ 142              	.LFE119:
+ 144              		.section	.text.iref_precision_trim_value_set,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	iref_precision_trim_value_set
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	iref_precision_trim_value_set:
+ARM GAS  /tmp/ccA46Q9W.s 			page 5
+
+
+ 152              	.LVL3:
+ 153              	.LFB120:
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      set IREF precision_trim_value
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  precisiontrim
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_CUR_PRECISION_TRIM_X(x=0..31): (-15+ x)%
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_precision_trim_value_set(uint32_t precisiontrim)
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+ 154              		.loc 1 96 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL &= ~IREF_CTL_CPT;
+ 159              		.loc 1 97 5 view .LVU19
+ 160              		.loc 1 97 14 is_stmt 0 view .LVU20
+ 161 0000 064B     		ldr	r3, .L13
+ 162 0002 D3F80017 		ldr	r1, [r3, #1792]
+ 163 0006 21F4F851 		bic	r1, r1, #7936
+ 164 000a C3F80017 		str	r1, [r3, #1792]
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL |= precisiontrim;
+ 165              		.loc 1 98 5 is_stmt 1 view .LVU21
+ 166              		.loc 1 98 14 is_stmt 0 view .LVU22
+ 167 000e D3F80027 		ldr	r2, [r3, #1792]
+ 168 0012 0243     		orrs	r2, r2, r0
+ 169 0014 C3F80027 		str	r2, [r3, #1792]
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+ 170              		.loc 1 99 1 view .LVU23
+ 171 0018 7047     		bx	lr
+ 172              	.L14:
+ 173 001a 00BF     		.align	2
+ 174              	.L13:
+ 175 001c 00C00040 		.word	1073790976
+ 176              		.cfi_endproc
+ 177              	.LFE120:
+ 179              		.section	.text.iref_sink_set,"ax",%progbits
+ 180              		.align	1
+ 181              		.global	iref_sink_set
+ 182              		.syntax unified
+ 183              		.thumb
+ 184              		.thumb_func
+ 186              	iref_sink_set:
+ 187              	.LVL4:
+ 188              	.LFB121:
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      set IREF sink mode
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  sinkmode
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_SOURCE_CURRENT : source current.
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_SINK_CURRENT: sink current
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+ARM GAS  /tmp/ccA46Q9W.s 			page 6
+
+
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_sink_set(uint32_t sinkmode)
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+ 189              		.loc 1 110 1 is_stmt 1 view -0
+ 190              		.cfi_startproc
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL &= ~IREF_CTL_SCMOD;
+ 194              		.loc 1 111 5 view .LVU25
+ 195              		.loc 1 111 14 is_stmt 0 view .LVU26
+ 196 0000 064B     		ldr	r3, .L16
+ 197 0002 D3F80017 		ldr	r1, [r3, #1792]
+ 198 0006 21F08001 		bic	r1, r1, #128
+ 199 000a C3F80017 		str	r1, [r3, #1792]
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL |= sinkmode;
+ 200              		.loc 1 112 5 is_stmt 1 view .LVU27
+ 201              		.loc 1 112 14 is_stmt 0 view .LVU28
+ 202 000e D3F80027 		ldr	r2, [r3, #1792]
+ 203 0012 0243     		orrs	r2, r2, r0
+ 204 0014 C3F80027 		str	r2, [r3, #1792]
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+ 205              		.loc 1 113 1 view .LVU29
+ 206 0018 7047     		bx	lr
+ 207              	.L17:
+ 208 001a 00BF     		.align	2
+ 209              	.L16:
+ 210 001c 00C00040 		.word	1073790976
+ 211              		.cfi_endproc
+ 212              	.LFE121:
+ 214              		.section	.text.iref_step_data_config,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	iref_step_data_config
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	iref_step_data_config:
+ 222              	.LVL5:
+ 223              	.LFB122:
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** /*!
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \brief      set IREF step data
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[in]  stepdata
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****       \arg        IREF_CUR_STEP_DATA_X:(x=0..63): step*x
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \param[out] none
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     \retval     none
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** */
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** 
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** void iref_step_data_config(uint32_t stepdata)
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** {
+ 224              		.loc 1 124 1 is_stmt 1 view -0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              		@ link register save eliminated.
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL &= ~IREF_CTL_CSDT;
+ 229              		.loc 1 125 5 view .LVU31
+ 230              		.loc 1 125 14 is_stmt 0 view .LVU32
+ARM GAS  /tmp/ccA46Q9W.s 			page 7
+
+
+ 231 0000 064B     		ldr	r3, .L19
+ 232 0002 D3F80017 		ldr	r1, [r3, #1792]
+ 233 0006 21F03F01 		bic	r1, r1, #63
+ 234 000a C3F80017 		str	r1, [r3, #1792]
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c ****     IREF_CTL |= stepdata;
+ 235              		.loc 1 126 5 is_stmt 1 view .LVU33
+ 236              		.loc 1 126 14 is_stmt 0 view .LVU34
+ 237 000e D3F80027 		ldr	r2, [r3, #1792]
+ 238 0012 0243     		orrs	r2, r2, r0
+ 239 0014 C3F80027 		str	r2, [r3, #1792]
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_iref.c **** }
+ 240              		.loc 1 127 1 view .LVU35
+ 241 0018 7047     		bx	lr
+ 242              	.L20:
+ 243 001a 00BF     		.align	2
+ 244              	.L19:
+ 245 001c 00C00040 		.word	1073790976
+ 246              		.cfi_endproc
+ 247              	.LFE122:
+ 249              		.text
+ 250              	.Letext0:
+ 251              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 252              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 253              		.file 4 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ARM GAS  /tmp/ccA46Q9W.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_iref.c
+     /tmp/ccA46Q9W.s:20     .text.iref_deinit:0000000000000000 $t
+     /tmp/ccA46Q9W.s:26     .text.iref_deinit:0000000000000000 iref_deinit
+     /tmp/ccA46Q9W.s:52     .text.iref_enable:0000000000000000 $t
+     /tmp/ccA46Q9W.s:58     .text.iref_enable:0000000000000000 iref_enable
+     /tmp/ccA46Q9W.s:76     .text.iref_enable:0000000000000010 $d
+     /tmp/ccA46Q9W.s:81     .text.iref_disable:0000000000000000 $t
+     /tmp/ccA46Q9W.s:87     .text.iref_disable:0000000000000000 iref_disable
+     /tmp/ccA46Q9W.s:105    .text.iref_disable:0000000000000010 $d
+     /tmp/ccA46Q9W.s:110    .text.iref_mode_set:0000000000000000 $t
+     /tmp/ccA46Q9W.s:116    .text.iref_mode_set:0000000000000000 iref_mode_set
+     /tmp/ccA46Q9W.s:140    .text.iref_mode_set:000000000000001c $d
+     /tmp/ccA46Q9W.s:145    .text.iref_precision_trim_value_set:0000000000000000 $t
+     /tmp/ccA46Q9W.s:151    .text.iref_precision_trim_value_set:0000000000000000 iref_precision_trim_value_set
+     /tmp/ccA46Q9W.s:175    .text.iref_precision_trim_value_set:000000000000001c $d
+     /tmp/ccA46Q9W.s:180    .text.iref_sink_set:0000000000000000 $t
+     /tmp/ccA46Q9W.s:186    .text.iref_sink_set:0000000000000000 iref_sink_set
+     /tmp/ccA46Q9W.s:210    .text.iref_sink_set:000000000000001c $d
+     /tmp/ccA46Q9W.s:215    .text.iref_step_data_config:0000000000000000 $t
+     /tmp/ccA46Q9W.s:221    .text.iref_step_data_config:0000000000000000 iref_step_data_config
+     /tmp/ccA46Q9W.s:245    .text.iref_step_data_config:000000000000001c $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

@@ -1,0 +1,1901 @@
+ARM GAS  /tmp/ccjHh8bg.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"system_gd32f4xx.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.system_clock_200m_25m_hxtal,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	system_clock_200m_25m_hxtal:
+  26              	.LFB118:
+  27              		.file 1 "Core/Src/system_gd32f4xx.c"
+   1:Core/Src/system_gd32f4xx.c **** /*!
+   2:Core/Src/system_gd32f4xx.c ****     \file  system_gd32f4xx.c
+   3:Core/Src/system_gd32f4xx.c ****     \brief CMSIS Cortex-M4 Device Peripheral Access Layer Source File for
+   4:Core/Src/system_gd32f4xx.c ****            GD32F4xx Device Series
+   5:Core/Src/system_gd32f4xx.c **** */
+   6:Core/Src/system_gd32f4xx.c **** 
+   7:Core/Src/system_gd32f4xx.c **** /* Copyright (c) 2012 ARM LIMITED
+   8:Core/Src/system_gd32f4xx.c **** 
+   9:Core/Src/system_gd32f4xx.c ****    All rights reserved.
+  10:Core/Src/system_gd32f4xx.c ****    Redistribution and use in source and binary forms, with or without
+  11:Core/Src/system_gd32f4xx.c ****    modification, are permitted provided that the following conditions are met:
+  12:Core/Src/system_gd32f4xx.c ****    - Redistributions of source code must retain the above copyright
+  13:Core/Src/system_gd32f4xx.c ****      notice, this list of conditions and the following disclaimer.
+  14:Core/Src/system_gd32f4xx.c ****    - Redistributions in binary form must reproduce the above copyright
+  15:Core/Src/system_gd32f4xx.c ****      notice, this list of conditions and the following disclaimer in the
+  16:Core/Src/system_gd32f4xx.c ****      documentation and/or other materials provided with the distribution.
+  17:Core/Src/system_gd32f4xx.c ****    - Neither the name of ARM nor the names of its contributors may be used
+  18:Core/Src/system_gd32f4xx.c ****      to endorse or promote products derived from this software without
+  19:Core/Src/system_gd32f4xx.c ****      specific prior written permission.
+  20:Core/Src/system_gd32f4xx.c ****    *
+  21:Core/Src/system_gd32f4xx.c ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:Core/Src/system_gd32f4xx.c ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:Core/Src/system_gd32f4xx.c ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:Core/Src/system_gd32f4xx.c ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  25:Core/Src/system_gd32f4xx.c ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:Core/Src/system_gd32f4xx.c ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:Core/Src/system_gd32f4xx.c ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:Core/Src/system_gd32f4xx.c ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:Core/Src/system_gd32f4xx.c ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:Core/Src/system_gd32f4xx.c ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:Core/Src/system_gd32f4xx.c ****    POSSIBILITY OF SUCH DAMAGE.
+ARM GAS  /tmp/ccjHh8bg.s 			page 2
+
+
+  32:Core/Src/system_gd32f4xx.c ****    ---------------------------------------------------------------------------*/
+  33:Core/Src/system_gd32f4xx.c **** 
+  34:Core/Src/system_gd32f4xx.c **** /* This file refers the CMSIS standard, some adjustments are made according to GigaDevice chips */
+  35:Core/Src/system_gd32f4xx.c **** 
+  36:Core/Src/system_gd32f4xx.c **** #include "gd32f4xx.h"
+  37:Core/Src/system_gd32f4xx.c **** 
+  38:Core/Src/system_gd32f4xx.c **** /* system frequency define */
+  39:Core/Src/system_gd32f4xx.c **** #define __IRC16M          (IRC16M_VALUE)            /* internal 16 MHz RC oscillator frequency */
+  40:Core/Src/system_gd32f4xx.c **** #define __HXTAL           (HXTAL_VALUE)             /* high speed crystal oscillator frequency */
+  41:Core/Src/system_gd32f4xx.c **** #define __SYS_OSC_CLK     (__IRC16M)                /* main oscillator frequency */
+  42:Core/Src/system_gd32f4xx.c **** 
+  43:Core/Src/system_gd32f4xx.c **** /* select a system clock by uncommenting the following line */
+  44:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_IRC16M                   (uint32_t)(__IRC16M)
+  45:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_HXTAL                    (uint32_t)(__HXTAL)
+  46:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_120M_PLL_IRC16M          (uint32_t)(120000000)
+  47:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_120M_PLL_8M_HXTAL        (uint32_t)(120000000)
+  48:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_120M_PLL_25M_HXTAL       (uint32_t)(120000000)
+  49:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_168M_PLL_IRC16M          (uint32_t)(168000000)
+  50:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_168M_PLL_8M_HXTAL        (uint32_t)(168000000)
+  51:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_168M_PLL_25M_HXTAL       (uint32_t)(168000000)
+  52:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_200M_PLL_IRC16M          (uint32_t)(200000000)
+  53:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_200M_PLL_8M_HXTAL        (uint32_t)(200000000)
+  54:Core/Src/system_gd32f4xx.c **** #define __SYSTEM_CLOCK_200M_PLL_25M_HXTAL       (uint32_t)(200000000)
+  55:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_240M_PLL_IRC16M          (uint32_t)(240000000)
+  56:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_240M_PLL_8M_HXTAL        (uint32_t)(240000000)
+  57:Core/Src/system_gd32f4xx.c **** //#define __SYSTEM_CLOCK_240M_PLL_25M_HXTAL       (uint32_t)(240000000)
+  58:Core/Src/system_gd32f4xx.c **** 
+  59:Core/Src/system_gd32f4xx.c **** #define RCU_MODIFY(__delay)     do{                                     \
+  60:Core/Src/system_gd32f4xx.c ****                                     volatile uint32_t i;                \
+  61:Core/Src/system_gd32f4xx.c ****                                     if(0 != __delay){                   \
+  62:Core/Src/system_gd32f4xx.c ****                                         RCU_CFG0 |= RCU_AHB_CKSYS_DIV2; \
+  63:Core/Src/system_gd32f4xx.c ****                                         for(i=0; i<__delay; i++){       \
+  64:Core/Src/system_gd32f4xx.c ****                                         }                               \
+  65:Core/Src/system_gd32f4xx.c ****                                         RCU_CFG0 |= RCU_AHB_CKSYS_DIV4; \
+  66:Core/Src/system_gd32f4xx.c ****                                         for(i=0; i<__delay; i++){       \
+  67:Core/Src/system_gd32f4xx.c ****                                         }                               \
+  68:Core/Src/system_gd32f4xx.c ****                                     }                                   \
+  69:Core/Src/system_gd32f4xx.c ****                                 }while(0)
+  70:Core/Src/system_gd32f4xx.c **** 
+  71:Core/Src/system_gd32f4xx.c **** #define SEL_IRC16M      0x00U
+  72:Core/Src/system_gd32f4xx.c **** #define SEL_HXTAL       0x01U
+  73:Core/Src/system_gd32f4xx.c **** #define SEL_PLLP        0x02U
+  74:Core/Src/system_gd32f4xx.c ****                         
+  75:Core/Src/system_gd32f4xx.c **** /* set the system clock frequency and declare the system clock configuration function */
+  76:Core/Src/system_gd32f4xx.c **** #ifdef __SYSTEM_CLOCK_IRC16M
+  77:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_IRC16M;
+  78:Core/Src/system_gd32f4xx.c **** static void system_clock_16m_irc16m(void);
+  79:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_HXTAL)
+  80:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_HXTAL;
+  81:Core/Src/system_gd32f4xx.c **** static void system_clock_hxtal(void);
+  82:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_IRC16M)
+  83:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_120M_PLL_IRC16M;
+  84:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_irc16m(void);
+  85:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_8M_HXTAL)
+  86:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_120M_PLL_8M_HXTAL;
+  87:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_8m_hxtal(void);
+  88:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_25M_HXTAL)
+ARM GAS  /tmp/ccjHh8bg.s 			page 3
+
+
+  89:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_120M_PLL_25M_HXTAL;
+  90:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_25m_hxtal(void);
+  91:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_IRC16M)
+  92:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_168M_PLL_IRC16M;
+  93:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_irc16m(void);
+  94:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_8M_HXTAL)
+  95:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_168M_PLL_8M_HXTAL;
+  96:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_8m_hxtal(void);
+  97:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_25M_HXTAL)
+  98:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_168M_PLL_25M_HXTAL;
+  99:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_25m_hxtal(void);
+ 100:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_IRC16M)
+ 101:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_200M_PLL_IRC16M;
+ 102:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_irc16m(void);
+ 103:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_8M_HXTAL)
+ 104:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_200M_PLL_8M_HXTAL;
+ 105:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_8m_hxtal(void);
+ 106:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_25M_HXTAL)
+ 107:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_200M_PLL_25M_HXTAL;
+ 108:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_25m_hxtal(void);
+ 109:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_IRC16M)
+ 110:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_240M_PLL_IRC16M;
+ 111:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_irc16m(void);
+ 112:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_8M_HXTAL)
+ 113:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_240M_PLL_8M_HXTAL;
+ 114:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_8m_hxtal(void);
+ 115:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_25M_HXTAL)
+ 116:Core/Src/system_gd32f4xx.c **** uint32_t SystemCoreClock = __SYSTEM_CLOCK_240M_PLL_25M_HXTAL;
+ 117:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_25m_hxtal(void);
+ 118:Core/Src/system_gd32f4xx.c **** 
+ 119:Core/Src/system_gd32f4xx.c **** #endif /* __SYSTEM_CLOCK_IRC16M */
+ 120:Core/Src/system_gd32f4xx.c **** 
+ 121:Core/Src/system_gd32f4xx.c **** /* configure the system clock */
+ 122:Core/Src/system_gd32f4xx.c **** static void system_clock_config(void);
+ 123:Core/Src/system_gd32f4xx.c **** 
+ 124:Core/Src/system_gd32f4xx.c **** /*!
+ 125:Core/Src/system_gd32f4xx.c ****     \brief      setup the microcontroller system, initialize the system
+ 126:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 127:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 128:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 129:Core/Src/system_gd32f4xx.c **** */
+ 130:Core/Src/system_gd32f4xx.c **** void SystemInit (void)
+ 131:Core/Src/system_gd32f4xx.c **** {
+ 132:Core/Src/system_gd32f4xx.c ****     /* FPU settings */
+ 133:Core/Src/system_gd32f4xx.c **** #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 134:Core/Src/system_gd32f4xx.c ****     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+ 135:Core/Src/system_gd32f4xx.c **** #endif
+ 136:Core/Src/system_gd32f4xx.c ****     /* Reset the RCU clock configuration to the default reset state */
+ 137:Core/Src/system_gd32f4xx.c ****     /* Set IRC16MEN bit */
+ 138:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 139:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 140:Core/Src/system_gd32f4xx.c ****     }
+ 141:Core/Src/system_gd32f4xx.c ****     RCU_MODIFY(0x50);
+ 142:Core/Src/system_gd32f4xx.c ****     
+ 143:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 144:Core/Src/system_gd32f4xx.c ****     
+ 145:Core/Src/system_gd32f4xx.c ****     /* Reset HXTALEN, CKMEN and PLLEN bits */
+ARM GAS  /tmp/ccjHh8bg.s 			page 4
+
+
+ 146:Core/Src/system_gd32f4xx.c ****     RCU_CTL &= ~(RCU_CTL_PLLEN | RCU_CTL_CKMEN | RCU_CTL_HXTALEN);
+ 147:Core/Src/system_gd32f4xx.c **** 
+ 148:Core/Src/system_gd32f4xx.c ****     /* Reset HSEBYP bit */
+ 149:Core/Src/system_gd32f4xx.c ****     RCU_CTL &= ~(RCU_CTL_HXTALBPS);
+ 150:Core/Src/system_gd32f4xx.c ****     
+ 151:Core/Src/system_gd32f4xx.c ****     /* Reset CFG0 register */
+ 152:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 = 0x00000000U;
+ 153:Core/Src/system_gd32f4xx.c **** 
+ 154:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is selected as system clock */
+ 155:Core/Src/system_gd32f4xx.c ****     while(0 != (RCU_CFG0 & RCU_SCSS_IRC16M)){
+ 156:Core/Src/system_gd32f4xx.c ****     }
+ 157:Core/Src/system_gd32f4xx.c **** 
+ 158:Core/Src/system_gd32f4xx.c ****     /* Reset PLLCFGR register */
+ 159:Core/Src/system_gd32f4xx.c ****     RCU_PLL = 0x24003010U;
+ 160:Core/Src/system_gd32f4xx.c **** 
+ 161:Core/Src/system_gd32f4xx.c ****     /* Disable all interrupts */
+ 162:Core/Src/system_gd32f4xx.c ****     RCU_INT = 0x00000000U;
+ 163:Core/Src/system_gd32f4xx.c ****          
+ 164:Core/Src/system_gd32f4xx.c ****     /* Configure the System clock source, PLL Multiplier and Divider factors, 
+ 165:Core/Src/system_gd32f4xx.c ****         AHB/APBx prescalers and Flash settings */
+ 166:Core/Src/system_gd32f4xx.c ****     system_clock_config();
+ 167:Core/Src/system_gd32f4xx.c **** }
+ 168:Core/Src/system_gd32f4xx.c **** /*!
+ 169:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock
+ 170:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 171:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 172:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 173:Core/Src/system_gd32f4xx.c **** */
+ 174:Core/Src/system_gd32f4xx.c **** static void system_clock_config(void)
+ 175:Core/Src/system_gd32f4xx.c **** {
+ 176:Core/Src/system_gd32f4xx.c **** #ifdef __SYSTEM_CLOCK_IRC16M
+ 177:Core/Src/system_gd32f4xx.c ****     system_clock_16m_irc16m();
+ 178:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_HXTAL)
+ 179:Core/Src/system_gd32f4xx.c ****     system_clock_hxtal();
+ 180:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_IRC16M)
+ 181:Core/Src/system_gd32f4xx.c ****     system_clock_120m_irc16m();
+ 182:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_8M_HXTAL)
+ 183:Core/Src/system_gd32f4xx.c ****     system_clock_120m_8m_hxtal();
+ 184:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_25M_HXTAL)
+ 185:Core/Src/system_gd32f4xx.c ****     system_clock_120m_25m_hxtal();
+ 186:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_IRC16M)
+ 187:Core/Src/system_gd32f4xx.c ****     system_clock_168m_irc16m();
+ 188:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_8M_HXTAL)
+ 189:Core/Src/system_gd32f4xx.c ****     system_clock_168m_8m_hxtal();
+ 190:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_25M_HXTAL)
+ 191:Core/Src/system_gd32f4xx.c ****     system_clock_168m_25m_hxtal();
+ 192:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_IRC16M)
+ 193:Core/Src/system_gd32f4xx.c ****     system_clock_200m_irc16m();
+ 194:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_8M_HXTAL)
+ 195:Core/Src/system_gd32f4xx.c ****     system_clock_200m_8m_hxtal();
+ 196:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_25M_HXTAL)
+ 197:Core/Src/system_gd32f4xx.c ****     system_clock_200m_25m_hxtal();
+ 198:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_IRC16M)
+ 199:Core/Src/system_gd32f4xx.c ****     system_clock_240m_irc16m();
+ 200:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_8M_HXTAL)
+ 201:Core/Src/system_gd32f4xx.c ****     system_clock_240m_8m_hxtal();
+ 202:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_25M_HXTAL)
+ARM GAS  /tmp/ccjHh8bg.s 			page 5
+
+
+ 203:Core/Src/system_gd32f4xx.c ****     system_clock_240m_25m_hxtal();
+ 204:Core/Src/system_gd32f4xx.c **** #endif /* __SYSTEM_CLOCK_IRC16M */   
+ 205:Core/Src/system_gd32f4xx.c **** }
+ 206:Core/Src/system_gd32f4xx.c **** 
+ 207:Core/Src/system_gd32f4xx.c **** #ifdef __SYSTEM_CLOCK_IRC16M
+ 208:Core/Src/system_gd32f4xx.c **** /*!
+ 209:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 16M by IRC16M
+ 210:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 211:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 212:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 213:Core/Src/system_gd32f4xx.c **** */
+ 214:Core/Src/system_gd32f4xx.c **** static void system_clock_16m_irc16m(void)
+ 215:Core/Src/system_gd32f4xx.c **** {
+ 216:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 217:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 218:Core/Src/system_gd32f4xx.c ****     
+ 219:Core/Src/system_gd32f4xx.c ****     /* enable IRC16M */
+ 220:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 221:Core/Src/system_gd32f4xx.c ****     
+ 222:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+ 223:Core/Src/system_gd32f4xx.c ****     do{
+ 224:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 225:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+ 226:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+ 227:Core/Src/system_gd32f4xx.c ****     
+ 228:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 229:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 230:Core/Src/system_gd32f4xx.c ****         while(1){
+ 231:Core/Src/system_gd32f4xx.c ****         }
+ 232:Core/Src/system_gd32f4xx.c ****     }
+ 233:Core/Src/system_gd32f4xx.c ****     
+ 234:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 235:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 236:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB */
+ 237:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 238:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB */
+ 239:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+ 240:Core/Src/system_gd32f4xx.c ****     
+ 241:Core/Src/system_gd32f4xx.c ****     /* select IRC16M as system clock */
+ 242:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 243:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_IRC16M;
+ 244:Core/Src/system_gd32f4xx.c ****     
+ 245:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is selected as system clock */
+ 246:Core/Src/system_gd32f4xx.c ****     while(0 != (RCU_CFG0 & RCU_SCSS_IRC16M)){
+ 247:Core/Src/system_gd32f4xx.c ****     }
+ 248:Core/Src/system_gd32f4xx.c **** }
+ 249:Core/Src/system_gd32f4xx.c **** 
+ 250:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_HXTAL)
+ 251:Core/Src/system_gd32f4xx.c **** /*!
+ 252:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to HXTAL
+ 253:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 254:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 255:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 256:Core/Src/system_gd32f4xx.c **** */
+ 257:Core/Src/system_gd32f4xx.c **** static void system_clock_hxtal(void)
+ 258:Core/Src/system_gd32f4xx.c **** {
+ 259:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ARM GAS  /tmp/ccjHh8bg.s 			page 6
+
+
+ 260:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 261:Core/Src/system_gd32f4xx.c ****     
+ 262:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 263:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 264:Core/Src/system_gd32f4xx.c ****     
+ 265:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 266:Core/Src/system_gd32f4xx.c ****     do{
+ 267:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 268:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 269:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 270:Core/Src/system_gd32f4xx.c ****     
+ 271:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 272:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 273:Core/Src/system_gd32f4xx.c ****         while(1){
+ 274:Core/Src/system_gd32f4xx.c ****         }
+ 275:Core/Src/system_gd32f4xx.c ****     }
+ 276:Core/Src/system_gd32f4xx.c ****     
+ 277:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 278:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 279:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB */
+ 280:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+ 281:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB */
+ 282:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+ 283:Core/Src/system_gd32f4xx.c ****     
+ 284:Core/Src/system_gd32f4xx.c ****     /* select HXTAL as system clock */
+ 285:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 286:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_HXTAL;
+ 287:Core/Src/system_gd32f4xx.c ****     
+ 288:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is selected as system clock */
+ 289:Core/Src/system_gd32f4xx.c ****     while(0 == (RCU_CFG0 & RCU_SCSS_HXTAL)){
+ 290:Core/Src/system_gd32f4xx.c ****     }
+ 291:Core/Src/system_gd32f4xx.c **** }
+ 292:Core/Src/system_gd32f4xx.c **** 
+ 293:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_IRC16M)
+ 294:Core/Src/system_gd32f4xx.c **** /*!
+ 295:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 120M by PLL which selects IRC16M as its clock source
+ 296:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 297:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 298:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 299:Core/Src/system_gd32f4xx.c **** */
+ 300:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_irc16m(void)
+ 301:Core/Src/system_gd32f4xx.c **** {
+ 302:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 303:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 304:Core/Src/system_gd32f4xx.c ****     
+ 305:Core/Src/system_gd32f4xx.c ****     /* enable IRC16M */
+ 306:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 307:Core/Src/system_gd32f4xx.c **** 
+ 308:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+ 309:Core/Src/system_gd32f4xx.c ****     do{
+ 310:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 311:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+ 312:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+ 313:Core/Src/system_gd32f4xx.c **** 
+ 314:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 315:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 316:Core/Src/system_gd32f4xx.c ****         while(1){
+ARM GAS  /tmp/ccjHh8bg.s 			page 7
+
+
+ 317:Core/Src/system_gd32f4xx.c ****         }
+ 318:Core/Src/system_gd32f4xx.c ****     }
+ 319:Core/Src/system_gd32f4xx.c ****          
+ 320:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 321:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 322:Core/Src/system_gd32f4xx.c **** 
+ 323:Core/Src/system_gd32f4xx.c ****     /* IRC16M is stable */
+ 324:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 325:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 326:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 327:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 328:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 329:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 330:Core/Src/system_gd32f4xx.c **** 
+ 331:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 16, PLL_N = 240, PLL_P = 2, PLL_Q = 5 */ 
+ 332:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (16U | (240U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 333:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_IRC16M) | (5U << 24U));
+ 334:Core/Src/system_gd32f4xx.c **** 
+ 335:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 336:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 337:Core/Src/system_gd32f4xx.c **** 
+ 338:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 339:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 340:Core/Src/system_gd32f4xx.c ****     }
+ 341:Core/Src/system_gd32f4xx.c ****     
+ 342:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 120 Mhz */
+ 343:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 344:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 345:Core/Src/system_gd32f4xx.c ****     }
+ 346:Core/Src/system_gd32f4xx.c ****     
+ 347:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 348:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 349:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 350:Core/Src/system_gd32f4xx.c ****     } 
+ 351:Core/Src/system_gd32f4xx.c ****     
+ 352:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 353:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 354:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 355:Core/Src/system_gd32f4xx.c **** 
+ 356:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 357:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 358:Core/Src/system_gd32f4xx.c ****     }
+ 359:Core/Src/system_gd32f4xx.c **** }
+ 360:Core/Src/system_gd32f4xx.c **** 
+ 361:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_8M_HXTAL)
+ 362:Core/Src/system_gd32f4xx.c **** /*!
+ 363:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 120M by PLL which selects HXTAL(8M) as its clock sour
+ 364:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 365:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 366:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 367:Core/Src/system_gd32f4xx.c **** */
+ 368:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_8m_hxtal(void)
+ 369:Core/Src/system_gd32f4xx.c **** {
+ 370:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 371:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 372:Core/Src/system_gd32f4xx.c ****     
+ 373:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ARM GAS  /tmp/ccjHh8bg.s 			page 8
+
+
+ 374:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 375:Core/Src/system_gd32f4xx.c **** 
+ 376:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 377:Core/Src/system_gd32f4xx.c ****     do{
+ 378:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 379:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 380:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 381:Core/Src/system_gd32f4xx.c **** 
+ 382:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 383:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 384:Core/Src/system_gd32f4xx.c ****         while(1){
+ 385:Core/Src/system_gd32f4xx.c ****         }
+ 386:Core/Src/system_gd32f4xx.c ****     }
+ 387:Core/Src/system_gd32f4xx.c ****          
+ 388:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 389:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 390:Core/Src/system_gd32f4xx.c **** 
+ 391:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 392:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 393:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 394:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 395:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 396:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 397:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 398:Core/Src/system_gd32f4xx.c **** 
+ 399:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 8, PLL_N = 240, PLL_P = 2, PLL_Q = 5 */ 
+ 400:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (8U | (240U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 401:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (5U << 24U));
+ 402:Core/Src/system_gd32f4xx.c **** 
+ 403:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 404:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 405:Core/Src/system_gd32f4xx.c **** 
+ 406:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 407:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 408:Core/Src/system_gd32f4xx.c ****     }
+ 409:Core/Src/system_gd32f4xx.c ****     
+ 410:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 120 Mhz */
+ 411:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 412:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 413:Core/Src/system_gd32f4xx.c ****     }
+ 414:Core/Src/system_gd32f4xx.c ****     
+ 415:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 416:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 417:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 418:Core/Src/system_gd32f4xx.c ****     } 
+ 419:Core/Src/system_gd32f4xx.c ****     
+ 420:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 421:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 422:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 423:Core/Src/system_gd32f4xx.c **** 
+ 424:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 425:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 426:Core/Src/system_gd32f4xx.c ****     }
+ 427:Core/Src/system_gd32f4xx.c **** }
+ 428:Core/Src/system_gd32f4xx.c **** 
+ 429:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_120M_PLL_25M_HXTAL)
+ 430:Core/Src/system_gd32f4xx.c **** /*!
+ARM GAS  /tmp/ccjHh8bg.s 			page 9
+
+
+ 431:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 120M by PLL which selects HXTAL(25M) as its clock sou
+ 432:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 433:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 434:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 435:Core/Src/system_gd32f4xx.c **** */
+ 436:Core/Src/system_gd32f4xx.c **** static void system_clock_120m_25m_hxtal(void)
+ 437:Core/Src/system_gd32f4xx.c **** {
+ 438:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 439:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 440:Core/Src/system_gd32f4xx.c ****     
+ 441:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 442:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 443:Core/Src/system_gd32f4xx.c **** 
+ 444:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 445:Core/Src/system_gd32f4xx.c ****     do{
+ 446:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 447:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 448:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 449:Core/Src/system_gd32f4xx.c **** 
+ 450:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 451:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 452:Core/Src/system_gd32f4xx.c ****         while(1){
+ 453:Core/Src/system_gd32f4xx.c ****         }
+ 454:Core/Src/system_gd32f4xx.c ****     }
+ 455:Core/Src/system_gd32f4xx.c ****          
+ 456:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 457:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 458:Core/Src/system_gd32f4xx.c **** 
+ 459:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 460:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 461:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 462:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 463:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 464:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 465:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 466:Core/Src/system_gd32f4xx.c **** 
+ 467:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 25, PLL_N = 240, PLL_P = 2, PLL_Q = 5 */ 
+ 468:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (25U | (240U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 469:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (5U << 24U));
+ 470:Core/Src/system_gd32f4xx.c **** 
+ 471:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 472:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 473:Core/Src/system_gd32f4xx.c **** 
+ 474:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 475:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 476:Core/Src/system_gd32f4xx.c ****     }
+ 477:Core/Src/system_gd32f4xx.c ****     
+ 478:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 120 Mhz */
+ 479:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 480:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 481:Core/Src/system_gd32f4xx.c ****     }
+ 482:Core/Src/system_gd32f4xx.c ****     
+ 483:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 484:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 485:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 486:Core/Src/system_gd32f4xx.c ****     } 
+ 487:Core/Src/system_gd32f4xx.c ****     
+ARM GAS  /tmp/ccjHh8bg.s 			page 10
+
+
+ 488:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 489:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 490:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 491:Core/Src/system_gd32f4xx.c **** 
+ 492:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 493:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 494:Core/Src/system_gd32f4xx.c ****     }
+ 495:Core/Src/system_gd32f4xx.c **** }
+ 496:Core/Src/system_gd32f4xx.c **** 
+ 497:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_IRC16M)
+ 498:Core/Src/system_gd32f4xx.c **** /*!
+ 499:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 168M by PLL which selects IRC16M as its clock source
+ 500:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 501:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 502:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 503:Core/Src/system_gd32f4xx.c **** */
+ 504:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_irc16m(void)
+ 505:Core/Src/system_gd32f4xx.c **** {
+ 506:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 507:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 508:Core/Src/system_gd32f4xx.c ****     
+ 509:Core/Src/system_gd32f4xx.c ****     /* enable IRC16M */
+ 510:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 511:Core/Src/system_gd32f4xx.c **** 
+ 512:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+ 513:Core/Src/system_gd32f4xx.c ****     do{
+ 514:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 515:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+ 516:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+ 517:Core/Src/system_gd32f4xx.c **** 
+ 518:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 519:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 520:Core/Src/system_gd32f4xx.c ****         while(1){
+ 521:Core/Src/system_gd32f4xx.c ****         }
+ 522:Core/Src/system_gd32f4xx.c ****     }
+ 523:Core/Src/system_gd32f4xx.c ****          
+ 524:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 525:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 526:Core/Src/system_gd32f4xx.c **** 
+ 527:Core/Src/system_gd32f4xx.c ****     /* IRC16M is stable */
+ 528:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 529:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 530:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 531:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 532:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 533:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 534:Core/Src/system_gd32f4xx.c **** 
+ 535:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 16, PLL_N = 336, PLL_P = 2, PLL_Q = 7 */ 
+ 536:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (16U | (336U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 537:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_IRC16M) | (7U << 24U));
+ 538:Core/Src/system_gd32f4xx.c **** 
+ 539:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 540:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 541:Core/Src/system_gd32f4xx.c **** 
+ 542:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 543:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 544:Core/Src/system_gd32f4xx.c ****     }
+ARM GAS  /tmp/ccjHh8bg.s 			page 11
+
+
+ 545:Core/Src/system_gd32f4xx.c ****     
+ 546:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 168 Mhz */
+ 547:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 548:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 549:Core/Src/system_gd32f4xx.c ****     }
+ 550:Core/Src/system_gd32f4xx.c ****     
+ 551:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 552:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 553:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 554:Core/Src/system_gd32f4xx.c ****     } 
+ 555:Core/Src/system_gd32f4xx.c ****     
+ 556:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 557:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 558:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 559:Core/Src/system_gd32f4xx.c **** 
+ 560:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 561:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 562:Core/Src/system_gd32f4xx.c ****     }
+ 563:Core/Src/system_gd32f4xx.c **** }
+ 564:Core/Src/system_gd32f4xx.c **** 
+ 565:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_8M_HXTAL)
+ 566:Core/Src/system_gd32f4xx.c **** /*!
+ 567:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 168M by PLL which selects HXTAL(8M) as its clock sour
+ 568:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 569:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 570:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 571:Core/Src/system_gd32f4xx.c **** */
+ 572:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_8m_hxtal(void)
+ 573:Core/Src/system_gd32f4xx.c **** {
+ 574:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 575:Core/Src/system_gd32f4xx.c ****     
+ 576:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 577:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 578:Core/Src/system_gd32f4xx.c **** 
+ 579:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 580:Core/Src/system_gd32f4xx.c ****     while((0U == (RCU_CTL & RCU_CTL_HXTALSTB)) && (HXTAL_STARTUP_TIMEOUT != timeout++)){
+ 581:Core/Src/system_gd32f4xx.c ****     }
+ 582:Core/Src/system_gd32f4xx.c **** 
+ 583:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 584:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 585:Core/Src/system_gd32f4xx.c ****         while(1){
+ 586:Core/Src/system_gd32f4xx.c ****         }
+ 587:Core/Src/system_gd32f4xx.c ****     }
+ 588:Core/Src/system_gd32f4xx.c **** 
+ 589:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 590:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 591:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 592:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 593:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 594:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 595:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 596:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 597:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 598:Core/Src/system_gd32f4xx.c **** 
+ 599:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 8, PLL_N = 336, PLL_P = 2, PLL_Q = 7 */ 
+ 600:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (8U | (336 << 6U) | (((2 >> 1U) -1U) << 16U) |
+ 601:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (7 << 24U));
+ARM GAS  /tmp/ccjHh8bg.s 			page 12
+
+
+ 602:Core/Src/system_gd32f4xx.c **** 
+ 603:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 604:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 605:Core/Src/system_gd32f4xx.c **** 
+ 606:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 607:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 608:Core/Src/system_gd32f4xx.c ****     }
+ 609:Core/Src/system_gd32f4xx.c ****   
+ 610:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 168 Mhz */
+ 611:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 612:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 613:Core/Src/system_gd32f4xx.c ****     }
+ 614:Core/Src/system_gd32f4xx.c ****     
+ 615:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 616:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 617:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 618:Core/Src/system_gd32f4xx.c ****     }
+ 619:Core/Src/system_gd32f4xx.c **** 
+ 620:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 621:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 622:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 623:Core/Src/system_gd32f4xx.c **** 
+ 624:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 625:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 626:Core/Src/system_gd32f4xx.c ****     }
+ 627:Core/Src/system_gd32f4xx.c **** }
+ 628:Core/Src/system_gd32f4xx.c **** 
+ 629:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_168M_PLL_25M_HXTAL)
+ 630:Core/Src/system_gd32f4xx.c **** /*!
+ 631:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 168M by PLL which selects HXTAL(25M) as its clock sou
+ 632:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 633:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 634:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 635:Core/Src/system_gd32f4xx.c **** */
+ 636:Core/Src/system_gd32f4xx.c **** static void system_clock_168m_25m_hxtal(void)
+ 637:Core/Src/system_gd32f4xx.c **** {
+ 638:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 639:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 640:Core/Src/system_gd32f4xx.c ****     
+ 641:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 642:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 643:Core/Src/system_gd32f4xx.c **** 
+ 644:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 645:Core/Src/system_gd32f4xx.c ****     do{
+ 646:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 647:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 648:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 649:Core/Src/system_gd32f4xx.c **** 
+ 650:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 651:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 652:Core/Src/system_gd32f4xx.c ****         while(1){
+ 653:Core/Src/system_gd32f4xx.c ****         }
+ 654:Core/Src/system_gd32f4xx.c ****     }
+ 655:Core/Src/system_gd32f4xx.c ****          
+ 656:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 657:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 658:Core/Src/system_gd32f4xx.c **** 
+ARM GAS  /tmp/ccjHh8bg.s 			page 13
+
+
+ 659:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 660:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 661:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 662:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB */
+ 663:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 664:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB */
+ 665:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 666:Core/Src/system_gd32f4xx.c **** 
+ 667:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 25, PLL_N = 336, PLL_P = 2, PLL_Q = 7 */ 
+ 668:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (25U | (336U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 669:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (7U << 24U));
+ 670:Core/Src/system_gd32f4xx.c **** 
+ 671:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 672:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 673:Core/Src/system_gd32f4xx.c **** 
+ 674:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 675:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 676:Core/Src/system_gd32f4xx.c ****     }
+ 677:Core/Src/system_gd32f4xx.c ****     
+ 678:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 168 Mhz */
+ 679:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 680:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 681:Core/Src/system_gd32f4xx.c ****     }
+ 682:Core/Src/system_gd32f4xx.c ****     
+ 683:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 684:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 685:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 686:Core/Src/system_gd32f4xx.c ****     } 
+ 687:Core/Src/system_gd32f4xx.c ****     
+ 688:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 689:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 690:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 691:Core/Src/system_gd32f4xx.c **** 
+ 692:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 693:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 694:Core/Src/system_gd32f4xx.c ****     }
+ 695:Core/Src/system_gd32f4xx.c **** }
+ 696:Core/Src/system_gd32f4xx.c **** 
+ 697:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_IRC16M)
+ 698:Core/Src/system_gd32f4xx.c **** /*!
+ 699:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 200M by PLL which selects IRC16M as its clock source
+ 700:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 701:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 702:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 703:Core/Src/system_gd32f4xx.c **** */
+ 704:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_irc16m(void)
+ 705:Core/Src/system_gd32f4xx.c **** {
+ 706:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 707:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 708:Core/Src/system_gd32f4xx.c ****     
+ 709:Core/Src/system_gd32f4xx.c ****     /* enable IRC16M */
+ 710:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 711:Core/Src/system_gd32f4xx.c **** 
+ 712:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+ 713:Core/Src/system_gd32f4xx.c ****     do{
+ 714:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 715:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+ARM GAS  /tmp/ccjHh8bg.s 			page 14
+
+
+ 716:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+ 717:Core/Src/system_gd32f4xx.c **** 
+ 718:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 719:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 720:Core/Src/system_gd32f4xx.c ****         while(1){
+ 721:Core/Src/system_gd32f4xx.c ****         }
+ 722:Core/Src/system_gd32f4xx.c ****     }
+ 723:Core/Src/system_gd32f4xx.c ****          
+ 724:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 725:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 726:Core/Src/system_gd32f4xx.c **** 
+ 727:Core/Src/system_gd32f4xx.c ****     /* IRC16M is stable */
+ 728:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 729:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 730:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 731:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 732:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 733:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 734:Core/Src/system_gd32f4xx.c **** 
+ 735:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 16, PLL_N = 400, PLL_P = 2, PLL_Q = 9 */ 
+ 736:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (16U | (400U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 737:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_IRC16M) | (9U << 24U));
+ 738:Core/Src/system_gd32f4xx.c **** 
+ 739:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 740:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 741:Core/Src/system_gd32f4xx.c **** 
+ 742:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 743:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 744:Core/Src/system_gd32f4xx.c ****     }
+ 745:Core/Src/system_gd32f4xx.c ****     
+ 746:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 200 Mhz */
+ 747:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 748:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 749:Core/Src/system_gd32f4xx.c ****     }
+ 750:Core/Src/system_gd32f4xx.c ****     
+ 751:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 752:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 753:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 754:Core/Src/system_gd32f4xx.c ****     } 
+ 755:Core/Src/system_gd32f4xx.c ****     
+ 756:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 757:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 758:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 759:Core/Src/system_gd32f4xx.c **** 
+ 760:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 761:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 762:Core/Src/system_gd32f4xx.c ****     }
+ 763:Core/Src/system_gd32f4xx.c **** }
+ 764:Core/Src/system_gd32f4xx.c **** 
+ 765:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_8M_HXTAL)
+ 766:Core/Src/system_gd32f4xx.c **** /*!
+ 767:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 200M by PLL which selects HXTAL(8M) as its clock sour
+ 768:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 769:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 770:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 771:Core/Src/system_gd32f4xx.c **** */
+ 772:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_8m_hxtal(void)
+ARM GAS  /tmp/ccjHh8bg.s 			page 15
+
+
+ 773:Core/Src/system_gd32f4xx.c **** {
+ 774:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 775:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 776:Core/Src/system_gd32f4xx.c ****     
+ 777:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 778:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 779:Core/Src/system_gd32f4xx.c **** 
+ 780:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 781:Core/Src/system_gd32f4xx.c ****     do{
+ 782:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 783:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 784:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 785:Core/Src/system_gd32f4xx.c **** 
+ 786:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 787:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 788:Core/Src/system_gd32f4xx.c ****         while(1){
+ 789:Core/Src/system_gd32f4xx.c ****         }
+ 790:Core/Src/system_gd32f4xx.c ****     }
+ 791:Core/Src/system_gd32f4xx.c ****          
+ 792:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 793:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 794:Core/Src/system_gd32f4xx.c **** 
+ 795:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 796:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 797:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 798:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 799:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 800:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 801:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 802:Core/Src/system_gd32f4xx.c **** 
+ 803:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 8, PLL_N = 400, PLL_P = 2, PLL_Q = 9 */ 
+ 804:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (8U | (400U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 805:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (9U << 24U));
+ 806:Core/Src/system_gd32f4xx.c **** 
+ 807:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 808:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 809:Core/Src/system_gd32f4xx.c **** 
+ 810:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 811:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 812:Core/Src/system_gd32f4xx.c ****     }
+ 813:Core/Src/system_gd32f4xx.c ****     
+ 814:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 200 Mhz */
+ 815:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 816:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 817:Core/Src/system_gd32f4xx.c ****     }
+ 818:Core/Src/system_gd32f4xx.c ****     
+ 819:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 820:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 821:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 822:Core/Src/system_gd32f4xx.c ****     } 
+ 823:Core/Src/system_gd32f4xx.c ****     
+ 824:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 825:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 826:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 827:Core/Src/system_gd32f4xx.c **** 
+ 828:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 829:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ARM GAS  /tmp/ccjHh8bg.s 			page 16
+
+
+ 830:Core/Src/system_gd32f4xx.c ****     }
+ 831:Core/Src/system_gd32f4xx.c **** }
+ 832:Core/Src/system_gd32f4xx.c **** 
+ 833:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_200M_PLL_25M_HXTAL)
+ 834:Core/Src/system_gd32f4xx.c **** /*!
+ 835:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 200M by PLL which selects HXTAL(25M) as its clock sou
+ 836:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 837:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 838:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 839:Core/Src/system_gd32f4xx.c **** */
+ 840:Core/Src/system_gd32f4xx.c **** static void system_clock_200m_25m_hxtal(void)
+ 841:Core/Src/system_gd32f4xx.c **** {
+  28              		.loc 1 841 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 842:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+  33              		.loc 1 842 5 view .LVU1
+  34              	.LVL0:
+ 843:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+  35              		.loc 1 843 5 view .LVU2
+ 844:Core/Src/system_gd32f4xx.c ****     
+ 845:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 846:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+  36              		.loc 1 846 5 view .LVU3
+  37              		.loc 1 846 13 is_stmt 0 view .LVU4
+  38 0000 364A     		ldr	r2, .L10
+  39 0002 D2F80038 		ldr	r3, [r2, #2048]
+  40 0006 43F48033 		orr	r3, r3, #65536
+  41 000a C2F80038 		str	r3, [r2, #2048]
+ 842:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+  42              		.loc 1 842 14 view .LVU5
+  43 000e 0023     		movs	r3, #0
+  44              	.LVL1:
+  45              	.L3:
+ 847:Core/Src/system_gd32f4xx.c **** 
+ 848:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 849:Core/Src/system_gd32f4xx.c ****     do{
+  46              		.loc 1 849 5 is_stmt 1 discriminator 2 view .LVU6
+ 850:Core/Src/system_gd32f4xx.c ****         timeout++;
+  47              		.loc 1 850 9 discriminator 2 view .LVU7
+  48              		.loc 1 850 16 is_stmt 0 discriminator 2 view .LVU8
+  49 0010 0133     		adds	r3, r3, #1
+  50              	.LVL2:
+ 851:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+  51              		.loc 1 851 9 is_stmt 1 discriminator 2 view .LVU9
+  52              		.loc 1 851 22 is_stmt 0 discriminator 2 view .LVU10
+  53 0012 324A     		ldr	r2, .L10
+  54 0014 D2F80028 		ldr	r2, [r2, #2048]
+  55              	.LVL3:
+ 852:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+  56              		.loc 1 852 11 is_stmt 1 discriminator 2 view .LVU11
+  57              		.loc 1 852 5 is_stmt 0 discriminator 2 view .LVU12
+  58 0018 12F4003F 		tst	r2, #131072
+  59 001c 03D1     		bne	.L2
+  60              		.loc 1 852 30 discriminator 1 view .LVU13
+ARM GAS  /tmp/ccjHh8bg.s 			page 17
+
+
+  61 001e 4FF6FF72 		movw	r2, #65535
+  62              	.LVL4:
+  63              		.loc 1 852 30 discriminator 1 view .LVU14
+  64 0022 9342     		cmp	r3, r2
+  65 0024 F4D1     		bne	.L3
+  66              	.L2:
+ 853:Core/Src/system_gd32f4xx.c **** 
+ 854:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 855:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+  67              		.loc 1 855 5 is_stmt 1 view .LVU15
+  68              		.loc 1 855 15 is_stmt 0 view .LVU16
+  69 0026 2D4B     		ldr	r3, .L10
+  70              	.LVL5:
+  71              		.loc 1 855 15 view .LVU17
+  72 0028 D3F80038 		ldr	r3, [r3, #2048]
+  73              		.loc 1 855 7 view .LVU18
+  74 002c 13F4003F 		tst	r3, #131072
+  75 0030 00D1     		bne	.L4
+  76              	.L5:
+ 856:Core/Src/system_gd32f4xx.c ****         while(1){
+  77              		.loc 1 856 9 is_stmt 1 discriminator 1 view .LVU19
+ 857:Core/Src/system_gd32f4xx.c ****         }
+  78              		.loc 1 857 9 discriminator 1 view .LVU20
+ 856:Core/Src/system_gd32f4xx.c ****         while(1){
+  79              		.loc 1 856 14 discriminator 1 view .LVU21
+  80 0032 FEE7     		b	.L5
+  81              	.L4:
+ 858:Core/Src/system_gd32f4xx.c ****     }
+ 859:Core/Src/system_gd32f4xx.c ****          
+ 860:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+  82              		.loc 1 860 5 view .LVU22
+  83              		.loc 1 860 16 is_stmt 0 view .LVU23
+  84 0034 294B     		ldr	r3, .L10
+  85 0036 D3F84028 		ldr	r2, [r3, #2112]
+  86 003a 42F08052 		orr	r2, r2, #268435456
+  87 003e C3F84028 		str	r2, [r3, #2112]
+ 861:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+  88              		.loc 1 861 5 is_stmt 1 view .LVU24
+  89              		.loc 1 861 13 is_stmt 0 view .LVU25
+  90 0042 2749     		ldr	r1, .L10+4
+  91 0044 0A68     		ldr	r2, [r1]
+  92 0046 42F44042 		orr	r2, r2, #49152
+  93 004a 0A60     		str	r2, [r1]
+ 862:Core/Src/system_gd32f4xx.c **** 
+ 863:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ 864:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 865:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+  94              		.loc 1 865 5 is_stmt 1 view .LVU26
+  95              		.loc 1 865 14 is_stmt 0 view .LVU27
+  96 004c D3F80828 		ldr	r2, [r3, #2056]
+  97 0050 C3F80828 		str	r2, [r3, #2056]
+ 866:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 867:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+  98              		.loc 1 867 5 is_stmt 1 view .LVU28
+  99              		.loc 1 867 14 is_stmt 0 view .LVU29
+ 100 0054 D3F80828 		ldr	r2, [r3, #2056]
+ 101 0058 42F40042 		orr	r2, r2, #32768
+ARM GAS  /tmp/ccjHh8bg.s 			page 18
+
+
+ 102 005c C3F80828 		str	r2, [r3, #2056]
+ 868:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 869:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 103              		.loc 1 869 5 is_stmt 1 view .LVU30
+ 104              		.loc 1 869 14 is_stmt 0 view .LVU31
+ 105 0060 D3F80828 		ldr	r2, [r3, #2056]
+ 106 0064 42F4A052 		orr	r2, r2, #5120
+ 107 0068 C3F80828 		str	r2, [r3, #2056]
+ 870:Core/Src/system_gd32f4xx.c **** 
+ 871:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 25, PLL_N = 400, PLL_P = 2, PLL_Q = 9 */ 
+ 872:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (25U | (400U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 108              		.loc 1 872 5 is_stmt 1 view .LVU32
+ 109              		.loc 1 872 13 is_stmt 0 view .LVU33
+ 110 006c 1D4A     		ldr	r2, .L10+8
+ 111 006e C3F80428 		str	r2, [r3, #2052]
+ 873:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (9U << 24U));
+ 874:Core/Src/system_gd32f4xx.c **** 
+ 875:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 876:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 112              		.loc 1 876 5 is_stmt 1 view .LVU34
+ 113              		.loc 1 876 13 is_stmt 0 view .LVU35
+ 114 0072 D3F80028 		ldr	r2, [r3, #2048]
+ 115 0076 42F08072 		orr	r2, r2, #16777216
+ 116 007a C3F80028 		str	r2, [r3, #2048]
+ 877:Core/Src/system_gd32f4xx.c **** 
+ 878:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 879:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 117              		.loc 1 879 5 is_stmt 1 view .LVU36
+ 118              	.L6:
+ 880:Core/Src/system_gd32f4xx.c ****     }
+ 119              		.loc 1 880 5 discriminator 1 view .LVU37
+ 879:Core/Src/system_gd32f4xx.c ****     }
+ 120              		.loc 1 879 10 discriminator 1 view .LVU38
+ 879:Core/Src/system_gd32f4xx.c ****     }
+ 121              		.loc 1 879 18 is_stmt 0 discriminator 1 view .LVU39
+ 122 007e 174B     		ldr	r3, .L10
+ 123 0080 D3F80038 		ldr	r3, [r3, #2048]
+ 879:Core/Src/system_gd32f4xx.c ****     }
+ 124              		.loc 1 879 10 discriminator 1 view .LVU40
+ 125 0084 13F0007F 		tst	r3, #33554432
+ 126 0088 F9D0     		beq	.L6
+ 881:Core/Src/system_gd32f4xx.c ****     
+ 882:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 200 Mhz */
+ 883:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 127              		.loc 1 883 5 is_stmt 1 view .LVU41
+ 128              		.loc 1 883 13 is_stmt 0 view .LVU42
+ 129 008a 154A     		ldr	r2, .L10+4
+ 130 008c 1368     		ldr	r3, [r2]
+ 131 008e 43F48033 		orr	r3, r3, #65536
+ 132 0092 1360     		str	r3, [r2]
+ 884:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 133              		.loc 1 884 5 is_stmt 1 view .LVU43
+ 134              	.L7:
+ 885:Core/Src/system_gd32f4xx.c ****     }
+ 135              		.loc 1 885 5 discriminator 1 view .LVU44
+ 884:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 136              		.loc 1 884 10 discriminator 1 view .LVU45
+ARM GAS  /tmp/ccjHh8bg.s 			page 19
+
+
+ 884:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 137              		.loc 1 884 18 is_stmt 0 discriminator 1 view .LVU46
+ 138 0094 124B     		ldr	r3, .L10+4
+ 139 0096 5B68     		ldr	r3, [r3, #4]
+ 884:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 140              		.loc 1 884 10 discriminator 1 view .LVU47
+ 141 0098 13F4803F 		tst	r3, #65536
+ 142 009c FAD0     		beq	.L7
+ 886:Core/Src/system_gd32f4xx.c ****     
+ 887:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 888:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 143              		.loc 1 888 5 is_stmt 1 view .LVU48
+ 144              		.loc 1 888 13 is_stmt 0 view .LVU49
+ 145 009e 104A     		ldr	r2, .L10+4
+ 146 00a0 1368     		ldr	r3, [r2]
+ 147 00a2 43F40033 		orr	r3, r3, #131072
+ 148 00a6 1360     		str	r3, [r2]
+ 889:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 149              		.loc 1 889 5 is_stmt 1 view .LVU50
+ 150              	.L8:
+ 890:Core/Src/system_gd32f4xx.c ****     } 
+ 151              		.loc 1 890 5 discriminator 1 view .LVU51
+ 889:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 152              		.loc 1 889 10 discriminator 1 view .LVU52
+ 889:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 153              		.loc 1 889 18 is_stmt 0 discriminator 1 view .LVU53
+ 154 00a8 0D4B     		ldr	r3, .L10+4
+ 155 00aa 5B68     		ldr	r3, [r3, #4]
+ 889:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 156              		.loc 1 889 10 discriminator 1 view .LVU54
+ 157 00ac 13F4003F 		tst	r3, #131072
+ 158 00b0 FAD0     		beq	.L8
+ 891:Core/Src/system_gd32f4xx.c ****     
+ 892:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 893:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 159              		.loc 1 893 5 is_stmt 1 view .LVU55
+ 160              		.loc 1 893 14 is_stmt 0 view .LVU56
+ 161 00b2 0A4B     		ldr	r3, .L10
+ 162 00b4 D3F80828 		ldr	r2, [r3, #2056]
+ 163 00b8 22F00302 		bic	r2, r2, #3
+ 164 00bc C3F80828 		str	r2, [r3, #2056]
+ 894:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 165              		.loc 1 894 5 is_stmt 1 view .LVU57
+ 166              		.loc 1 894 14 is_stmt 0 view .LVU58
+ 167 00c0 D3F80828 		ldr	r2, [r3, #2056]
+ 168 00c4 42F00202 		orr	r2, r2, #2
+ 169 00c8 C3F80828 		str	r2, [r3, #2056]
+ 895:Core/Src/system_gd32f4xx.c **** 
+ 896:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 897:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 170              		.loc 1 897 5 is_stmt 1 view .LVU59
+ 171              	.L9:
+ 898:Core/Src/system_gd32f4xx.c ****     }
+ 172              		.loc 1 898 5 discriminator 1 view .LVU60
+ 897:Core/Src/system_gd32f4xx.c ****     }
+ 173              		.loc 1 897 10 discriminator 1 view .LVU61
+ 897:Core/Src/system_gd32f4xx.c ****     }
+ARM GAS  /tmp/ccjHh8bg.s 			page 20
+
+
+ 174              		.loc 1 897 18 is_stmt 0 discriminator 1 view .LVU62
+ 175 00cc 034B     		ldr	r3, .L10
+ 176 00ce D3F80838 		ldr	r3, [r3, #2056]
+ 897:Core/Src/system_gd32f4xx.c ****     }
+ 177              		.loc 1 897 10 discriminator 1 view .LVU63
+ 178 00d2 13F0080F 		tst	r3, #8
+ 179 00d6 F9D0     		beq	.L9
+ 899:Core/Src/system_gd32f4xx.c **** }
+ 180              		.loc 1 899 1 view .LVU64
+ 181 00d8 7047     		bx	lr
+ 182              	.L11:
+ 183 00da 00BF     		.align	2
+ 184              	.L10:
+ 185 00dc 00300240 		.word	1073885184
+ 186 00e0 00700040 		.word	1073770496
+ 187 00e4 19644009 		.word	155214873
+ 188              		.cfi_endproc
+ 189              	.LFE118:
+ 191              		.section	.text.system_clock_config,"ax",%progbits
+ 192              		.align	1
+ 193              		.syntax unified
+ 194              		.thumb
+ 195              		.thumb_func
+ 197              	system_clock_config:
+ 198              	.LFB117:
+ 175:Core/Src/system_gd32f4xx.c **** #ifdef __SYSTEM_CLOCK_IRC16M
+ 199              		.loc 1 175 1 is_stmt 1 view -0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203 0000 08B5     		push	{r3, lr}
+ 204              	.LCFI0:
+ 205              		.cfi_def_cfa_offset 8
+ 206              		.cfi_offset 3, -8
+ 207              		.cfi_offset 14, -4
+ 197:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_IRC16M)
+ 208              		.loc 1 197 5 view .LVU66
+ 209 0002 FFF7FEFF 		bl	system_clock_200m_25m_hxtal
+ 210              	.LVL6:
+ 205:Core/Src/system_gd32f4xx.c **** 
+ 211              		.loc 1 205 1 is_stmt 0 view .LVU67
+ 212 0006 08BD     		pop	{r3, pc}
+ 213              		.cfi_endproc
+ 214              	.LFE117:
+ 216              		.section	.text.SystemInit,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	SystemInit
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	SystemInit:
+ 224              	.LFB116:
+ 131:Core/Src/system_gd32f4xx.c ****     /* FPU settings */
+ 225              		.loc 1 131 1 is_stmt 1 view -0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 8
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccjHh8bg.s 			page 21
+
+
+ 229 0000 00B5     		push	{lr}
+ 230              	.LCFI1:
+ 231              		.cfi_def_cfa_offset 4
+ 232              		.cfi_offset 14, -4
+ 233 0002 83B0     		sub	sp, sp, #12
+ 234              	.LCFI2:
+ 235              		.cfi_def_cfa_offset 16
+ 134:Core/Src/system_gd32f4xx.c **** #endif
+ 236              		.loc 1 134 5 view .LVU69
+ 134:Core/Src/system_gd32f4xx.c **** #endif
+ 237              		.loc 1 134 16 is_stmt 0 view .LVU70
+ 238 0004 2B4A     		ldr	r2, .L21
+ 239 0006 D2F88830 		ldr	r3, [r2, #136]
+ 240 000a 43F47003 		orr	r3, r3, #15728640
+ 241 000e C2F88830 		str	r3, [r2, #136]
+ 138:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 242              		.loc 1 138 5 is_stmt 1 view .LVU71
+ 138:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 243              		.loc 1 138 13 is_stmt 0 view .LVU72
+ 244 0012 294A     		ldr	r2, .L21+4
+ 245 0014 D2F80038 		ldr	r3, [r2, #2048]
+ 246 0018 43F00103 		orr	r3, r3, #1
+ 247 001c C2F80038 		str	r3, [r2, #2048]
+ 139:Core/Src/system_gd32f4xx.c ****     }
+ 248              		.loc 1 139 5 is_stmt 1 view .LVU73
+ 249              	.L15:
+ 140:Core/Src/system_gd32f4xx.c ****     RCU_MODIFY(0x50);
+ 250              		.loc 1 140 5 discriminator 1 view .LVU74
+ 139:Core/Src/system_gd32f4xx.c ****     }
+ 251              		.loc 1 139 10 discriminator 1 view .LVU75
+ 139:Core/Src/system_gd32f4xx.c ****     }
+ 252              		.loc 1 139 18 is_stmt 0 discriminator 1 view .LVU76
+ 253 0020 254B     		ldr	r3, .L21+4
+ 254 0022 D3F80038 		ldr	r3, [r3, #2048]
+ 139:Core/Src/system_gd32f4xx.c ****     }
+ 255              		.loc 1 139 10 discriminator 1 view .LVU77
+ 256 0026 13F0020F 		tst	r3, #2
+ 257 002a F9D0     		beq	.L15
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 258              		.loc 1 141 5 is_stmt 1 discriminator 1 view .LVU78
+ 259              	.LBB2:
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 260              		.loc 1 141 5 discriminator 1 view .LVU79
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 261              		.loc 1 141 5 discriminator 1 view .LVU80
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 262              		.loc 1 141 5 discriminator 1 view .LVU81
+ 263 002c 224A     		ldr	r2, .L21+4
+ 264 002e D2F80838 		ldr	r3, [r2, #2056]
+ 265 0032 43F08003 		orr	r3, r3, #128
+ 266 0036 C2F80838 		str	r3, [r2, #2056]
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 267              		.loc 1 141 5 discriminator 1 view .LVU82
+ 268 003a 0023     		movs	r3, #0
+ 269 003c 0193     		str	r3, [sp, #4]
+ 270 003e 02E0     		b	.L16
+ 271              	.L17:
+ARM GAS  /tmp/ccjHh8bg.s 			page 22
+
+
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 272              		.loc 1 141 5 discriminator 5 view .LVU83
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 273              		.loc 1 141 5 discriminator 5 view .LVU84
+ 274 0040 019B     		ldr	r3, [sp, #4]
+ 275 0042 0133     		adds	r3, r3, #1
+ 276 0044 0193     		str	r3, [sp, #4]
+ 277              	.L16:
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 278              		.loc 1 141 5 discriminator 3 view .LVU85
+ 279 0046 019B     		ldr	r3, [sp, #4]
+ 280 0048 4F2B     		cmp	r3, #79
+ 281 004a F9D9     		bls	.L17
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 282              		.loc 1 141 5 discriminator 6 view .LVU86
+ 283 004c 1A4A     		ldr	r2, .L21+4
+ 284 004e D2F80838 		ldr	r3, [r2, #2056]
+ 285 0052 43F09003 		orr	r3, r3, #144
+ 286 0056 C2F80838 		str	r3, [r2, #2056]
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 287              		.loc 1 141 5 discriminator 6 view .LVU87
+ 288 005a 0023     		movs	r3, #0
+ 289 005c 0193     		str	r3, [sp, #4]
+ 290 005e 02E0     		b	.L18
+ 291              	.L19:
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 292              		.loc 1 141 5 discriminator 9 view .LVU88
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 293              		.loc 1 141 5 discriminator 9 view .LVU89
+ 294 0060 019B     		ldr	r3, [sp, #4]
+ 295 0062 0133     		adds	r3, r3, #1
+ 296 0064 0193     		str	r3, [sp, #4]
+ 297              	.L18:
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 298              		.loc 1 141 5 discriminator 7 view .LVU90
+ 299 0066 019B     		ldr	r3, [sp, #4]
+ 300 0068 4F2B     		cmp	r3, #79
+ 301 006a F9D9     		bls	.L19
+ 302              	.LBE2:
+ 141:Core/Src/system_gd32f4xx.c ****     
+ 303              		.loc 1 141 5 discriminator 10 view .LVU91
+ 143:Core/Src/system_gd32f4xx.c ****     
+ 304              		.loc 1 143 5 discriminator 10 view .LVU92
+ 143:Core/Src/system_gd32f4xx.c ****     
+ 305              		.loc 1 143 14 is_stmt 0 discriminator 10 view .LVU93
+ 306 006c 124B     		ldr	r3, .L21+4
+ 307 006e D3F80828 		ldr	r2, [r3, #2056]
+ 308 0072 22F00302 		bic	r2, r2, #3
+ 309 0076 C3F80828 		str	r2, [r3, #2056]
+ 146:Core/Src/system_gd32f4xx.c **** 
+ 310              		.loc 1 146 5 is_stmt 1 discriminator 10 view .LVU94
+ 146:Core/Src/system_gd32f4xx.c **** 
+ 311              		.loc 1 146 13 is_stmt 0 discriminator 10 view .LVU95
+ 312 007a D3F80028 		ldr	r2, [r3, #2048]
+ 313 007e 22F08472 		bic	r2, r2, #17301504
+ 314 0082 22F48032 		bic	r2, r2, #65536
+ 315 0086 C3F80028 		str	r2, [r3, #2048]
+ARM GAS  /tmp/ccjHh8bg.s 			page 23
+
+
+ 149:Core/Src/system_gd32f4xx.c ****     
+ 316              		.loc 1 149 5 is_stmt 1 discriminator 10 view .LVU96
+ 149:Core/Src/system_gd32f4xx.c ****     
+ 317              		.loc 1 149 13 is_stmt 0 discriminator 10 view .LVU97
+ 318 008a D3F80028 		ldr	r2, [r3, #2048]
+ 319 008e 22F48022 		bic	r2, r2, #262144
+ 320 0092 C3F80028 		str	r2, [r3, #2048]
+ 152:Core/Src/system_gd32f4xx.c **** 
+ 321              		.loc 1 152 5 is_stmt 1 discriminator 10 view .LVU98
+ 152:Core/Src/system_gd32f4xx.c **** 
+ 322              		.loc 1 152 14 is_stmt 0 discriminator 10 view .LVU99
+ 323 0096 0022     		movs	r2, #0
+ 324 0098 C3F80828 		str	r2, [r3, #2056]
+ 155:Core/Src/system_gd32f4xx.c ****     }
+ 325              		.loc 1 155 5 is_stmt 1 discriminator 10 view .LVU100
+ 156:Core/Src/system_gd32f4xx.c **** 
+ 326              		.loc 1 156 5 discriminator 10 view .LVU101
+ 155:Core/Src/system_gd32f4xx.c ****     }
+ 327              		.loc 1 155 10 discriminator 10 view .LVU102
+ 155:Core/Src/system_gd32f4xx.c ****     }
+ 328              		.loc 1 155 17 is_stmt 0 discriminator 10 view .LVU103
+ 329 009c D3F80818 		ldr	r1, [r3, #2056]
+ 159:Core/Src/system_gd32f4xx.c **** 
+ 330              		.loc 1 159 5 is_stmt 1 discriminator 10 view .LVU104
+ 159:Core/Src/system_gd32f4xx.c **** 
+ 331              		.loc 1 159 13 is_stmt 0 discriminator 10 view .LVU105
+ 332 00a0 0649     		ldr	r1, .L21+8
+ 333 00a2 C3F80418 		str	r1, [r3, #2052]
+ 162:Core/Src/system_gd32f4xx.c ****          
+ 334              		.loc 1 162 5 is_stmt 1 discriminator 10 view .LVU106
+ 162:Core/Src/system_gd32f4xx.c ****          
+ 335              		.loc 1 162 13 is_stmt 0 discriminator 10 view .LVU107
+ 336 00a6 C3F80C28 		str	r2, [r3, #2060]
+ 166:Core/Src/system_gd32f4xx.c **** }
+ 337              		.loc 1 166 5 is_stmt 1 discriminator 10 view .LVU108
+ 338 00aa FFF7FEFF 		bl	system_clock_config
+ 339              	.LVL7:
+ 167:Core/Src/system_gd32f4xx.c **** /*!
+ 340              		.loc 1 167 1 is_stmt 0 discriminator 10 view .LVU109
+ 341 00ae 03B0     		add	sp, sp, #12
+ 342              	.LCFI3:
+ 343              		.cfi_def_cfa_offset 4
+ 344              		@ sp needed
+ 345 00b0 5DF804FB 		ldr	pc, [sp], #4
+ 346              	.L22:
+ 347              		.align	2
+ 348              	.L21:
+ 349 00b4 00ED00E0 		.word	-536810240
+ 350 00b8 00300240 		.word	1073885184
+ 351 00bc 10300024 		.word	603992080
+ 352              		.cfi_endproc
+ 353              	.LFE116:
+ 355              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 356              		.align	1
+ 357              		.global	SystemCoreClockUpdate
+ 358              		.syntax unified
+ 359              		.thumb
+ARM GAS  /tmp/ccjHh8bg.s 			page 24
+
+
+ 360              		.thumb_func
+ 362              	SystemCoreClockUpdate:
+ 363              	.LFB119:
+ 900:Core/Src/system_gd32f4xx.c **** 
+ 901:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_IRC16M)
+ 902:Core/Src/system_gd32f4xx.c **** /*!
+ 903:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 240M by PLL which selects IRC16M as its clock source
+ 904:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 905:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 906:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 907:Core/Src/system_gd32f4xx.c **** */
+ 908:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_irc16m(void)
+ 909:Core/Src/system_gd32f4xx.c **** {
+ 910:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 911:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 912:Core/Src/system_gd32f4xx.c ****     
+ 913:Core/Src/system_gd32f4xx.c ****     /* enable IRC16M */
+ 914:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_IRC16MEN;
+ 915:Core/Src/system_gd32f4xx.c **** 
+ 916:Core/Src/system_gd32f4xx.c ****     /* wait until IRC16M is stable or the startup time is longer than IRC16M_STARTUP_TIMEOUT */
+ 917:Core/Src/system_gd32f4xx.c ****     do{
+ 918:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 919:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_IRC16MSTB);
+ 920:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (IRC16M_STARTUP_TIMEOUT != timeout));
+ 921:Core/Src/system_gd32f4xx.c **** 
+ 922:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 923:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_IRC16MSTB)){
+ 924:Core/Src/system_gd32f4xx.c ****         while(1){
+ 925:Core/Src/system_gd32f4xx.c ****         }
+ 926:Core/Src/system_gd32f4xx.c ****     }
+ 927:Core/Src/system_gd32f4xx.c ****          
+ 928:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 929:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 930:Core/Src/system_gd32f4xx.c **** 
+ 931:Core/Src/system_gd32f4xx.c ****     /* IRC16M is stable */
+ 932:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+ 933:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+ 934:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+ 935:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+ 936:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+ 937:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+ 938:Core/Src/system_gd32f4xx.c **** 
+ 939:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 16, PLL_N = 480, PLL_P = 2, PLL_Q = 10 */ 
+ 940:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (16U | (480U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+ 941:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_IRC16M) | (10U << 24U));
+ 942:Core/Src/system_gd32f4xx.c **** 
+ 943:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+ 944:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+ 945:Core/Src/system_gd32f4xx.c **** 
+ 946:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+ 947:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+ 948:Core/Src/system_gd32f4xx.c ****     }
+ 949:Core/Src/system_gd32f4xx.c ****     
+ 950:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 240 Mhz */
+ 951:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 952:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+ 953:Core/Src/system_gd32f4xx.c ****     }
+ARM GAS  /tmp/ccjHh8bg.s 			page 25
+
+
+ 954:Core/Src/system_gd32f4xx.c ****     
+ 955:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+ 956:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+ 957:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+ 958:Core/Src/system_gd32f4xx.c ****     } 
+ 959:Core/Src/system_gd32f4xx.c ****     
+ 960:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+ 961:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+ 962:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+ 963:Core/Src/system_gd32f4xx.c **** 
+ 964:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+ 965:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+ 966:Core/Src/system_gd32f4xx.c ****     }
+ 967:Core/Src/system_gd32f4xx.c **** }
+ 968:Core/Src/system_gd32f4xx.c **** 
+ 969:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_8M_HXTAL)
+ 970:Core/Src/system_gd32f4xx.c **** /*!
+ 971:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 240M by PLL which selects HXTAL(8M) as its clock sour
+ 972:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+ 973:Core/Src/system_gd32f4xx.c ****     \param[out] none
+ 974:Core/Src/system_gd32f4xx.c ****     \retval     none
+ 975:Core/Src/system_gd32f4xx.c **** */
+ 976:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_8m_hxtal(void)
+ 977:Core/Src/system_gd32f4xx.c **** {
+ 978:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+ 979:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+ 980:Core/Src/system_gd32f4xx.c ****     
+ 981:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+ 982:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+ 983:Core/Src/system_gd32f4xx.c **** 
+ 984:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+ 985:Core/Src/system_gd32f4xx.c ****     do{
+ 986:Core/Src/system_gd32f4xx.c ****         timeout++;
+ 987:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+ 988:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+ 989:Core/Src/system_gd32f4xx.c **** 
+ 990:Core/Src/system_gd32f4xx.c ****     /* if fail */
+ 991:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+ 992:Core/Src/system_gd32f4xx.c ****         while(1){
+ 993:Core/Src/system_gd32f4xx.c ****         }
+ 994:Core/Src/system_gd32f4xx.c ****     }
+ 995:Core/Src/system_gd32f4xx.c ****          
+ 996:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+ 997:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+ 998:Core/Src/system_gd32f4xx.c **** 
+ 999:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+1000:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+1001:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+1002:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+1003:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+1004:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+1005:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+1006:Core/Src/system_gd32f4xx.c **** 
+1007:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 8, PLL_N = 480, PLL_P = 2, PLL_Q = 10 */ 
+1008:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (8U | (480U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+1009:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (10U << 24U));
+1010:Core/Src/system_gd32f4xx.c **** 
+ARM GAS  /tmp/ccjHh8bg.s 			page 26
+
+
+1011:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+1012:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+1013:Core/Src/system_gd32f4xx.c **** 
+1014:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+1015:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+1016:Core/Src/system_gd32f4xx.c ****     }
+1017:Core/Src/system_gd32f4xx.c ****     
+1018:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 240 Mhz */
+1019:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+1020:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+1021:Core/Src/system_gd32f4xx.c ****     }
+1022:Core/Src/system_gd32f4xx.c ****     
+1023:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+1024:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+1025:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+1026:Core/Src/system_gd32f4xx.c ****     } 
+1027:Core/Src/system_gd32f4xx.c ****     
+1028:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+1029:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+1030:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+1031:Core/Src/system_gd32f4xx.c **** 
+1032:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+1033:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+1034:Core/Src/system_gd32f4xx.c ****     }
+1035:Core/Src/system_gd32f4xx.c **** }
+1036:Core/Src/system_gd32f4xx.c **** 
+1037:Core/Src/system_gd32f4xx.c **** #elif defined (__SYSTEM_CLOCK_240M_PLL_25M_HXTAL)
+1038:Core/Src/system_gd32f4xx.c **** /*!
+1039:Core/Src/system_gd32f4xx.c ****     \brief      configure the system clock to 240M by PLL which selects HXTAL(25M) as its clock sou
+1040:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+1041:Core/Src/system_gd32f4xx.c ****     \param[out] none
+1042:Core/Src/system_gd32f4xx.c ****     \retval     none
+1043:Core/Src/system_gd32f4xx.c **** */
+1044:Core/Src/system_gd32f4xx.c **** static void system_clock_240m_25m_hxtal(void)
+1045:Core/Src/system_gd32f4xx.c **** {
+1046:Core/Src/system_gd32f4xx.c ****     uint32_t timeout = 0U;
+1047:Core/Src/system_gd32f4xx.c ****     uint32_t stab_flag = 0U;
+1048:Core/Src/system_gd32f4xx.c ****     
+1049:Core/Src/system_gd32f4xx.c ****     /* enable HXTAL */
+1050:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_HXTALEN;
+1051:Core/Src/system_gd32f4xx.c **** 
+1052:Core/Src/system_gd32f4xx.c ****     /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+1053:Core/Src/system_gd32f4xx.c ****     do{
+1054:Core/Src/system_gd32f4xx.c ****         timeout++;
+1055:Core/Src/system_gd32f4xx.c ****         stab_flag = (RCU_CTL & RCU_CTL_HXTALSTB);
+1056:Core/Src/system_gd32f4xx.c ****     }while((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+1057:Core/Src/system_gd32f4xx.c **** 
+1058:Core/Src/system_gd32f4xx.c ****     /* if fail */
+1059:Core/Src/system_gd32f4xx.c ****     if(0U == (RCU_CTL & RCU_CTL_HXTALSTB)){
+1060:Core/Src/system_gd32f4xx.c ****         while(1){
+1061:Core/Src/system_gd32f4xx.c ****         }
+1062:Core/Src/system_gd32f4xx.c ****     }
+1063:Core/Src/system_gd32f4xx.c ****          
+1064:Core/Src/system_gd32f4xx.c ****     RCU_APB1EN |= RCU_APB1EN_PMUEN;
+1065:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_LDOVS;
+1066:Core/Src/system_gd32f4xx.c **** 
+1067:Core/Src/system_gd32f4xx.c ****     /* HXTAL is stable */
+ARM GAS  /tmp/ccjHh8bg.s 			page 27
+
+
+1068:Core/Src/system_gd32f4xx.c ****     /* AHB = SYSCLK */
+1069:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+1070:Core/Src/system_gd32f4xx.c ****     /* APB2 = AHB/2 */
+1071:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB2_CKAHB_DIV2;
+1072:Core/Src/system_gd32f4xx.c ****     /* APB1 = AHB/4 */
+1073:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_APB1_CKAHB_DIV4;
+1074:Core/Src/system_gd32f4xx.c **** 
+1075:Core/Src/system_gd32f4xx.c ****     /* Configure the main PLL, PSC = 25, PLL_N = 480, PLL_P = 2, PLL_Q = 10 */ 
+1076:Core/Src/system_gd32f4xx.c ****     RCU_PLL = (25U | (480U << 6U) | (((2U >> 1U) - 1U) << 16U) |
+1077:Core/Src/system_gd32f4xx.c ****                    (RCU_PLLSRC_HXTAL) | (10U << 24U));
+1078:Core/Src/system_gd32f4xx.c **** 
+1079:Core/Src/system_gd32f4xx.c ****     /* enable PLL */
+1080:Core/Src/system_gd32f4xx.c ****     RCU_CTL |= RCU_CTL_PLLEN;
+1081:Core/Src/system_gd32f4xx.c **** 
+1082:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is stable */
+1083:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CTL & RCU_CTL_PLLSTB)){
+1084:Core/Src/system_gd32f4xx.c ****     }
+1085:Core/Src/system_gd32f4xx.c ****     
+1086:Core/Src/system_gd32f4xx.c ****     /* Enable the high-drive to extend the clock frequency to 240 Mhz */
+1087:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDEN;
+1088:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDRF)){
+1089:Core/Src/system_gd32f4xx.c ****     }
+1090:Core/Src/system_gd32f4xx.c ****     
+1091:Core/Src/system_gd32f4xx.c ****     /* select the high-drive mode */
+1092:Core/Src/system_gd32f4xx.c ****     PMU_CTL |= PMU_CTL_HDS;
+1093:Core/Src/system_gd32f4xx.c ****     while(0U == (PMU_CS & PMU_CS_HDSRF)){
+1094:Core/Src/system_gd32f4xx.c ****     } 
+1095:Core/Src/system_gd32f4xx.c ****     
+1096:Core/Src/system_gd32f4xx.c ****     /* select PLL as system clock */
+1097:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 &= ~RCU_CFG0_SCS;
+1098:Core/Src/system_gd32f4xx.c ****     RCU_CFG0 |= RCU_CKSYSSRC_PLLP;
+1099:Core/Src/system_gd32f4xx.c **** 
+1100:Core/Src/system_gd32f4xx.c ****     /* wait until PLL is selected as system clock */
+1101:Core/Src/system_gd32f4xx.c ****     while(0U == (RCU_CFG0 & RCU_SCSS_PLLP)){
+1102:Core/Src/system_gd32f4xx.c ****     }
+1103:Core/Src/system_gd32f4xx.c **** }
+1104:Core/Src/system_gd32f4xx.c **** #endif /* __SYSTEM_CLOCK_IRC16M */
+1105:Core/Src/system_gd32f4xx.c **** /*!
+1106:Core/Src/system_gd32f4xx.c ****     \brief      update the SystemCoreClock with current core clock retrieved from cpu registers
+1107:Core/Src/system_gd32f4xx.c ****     \param[in]  none
+1108:Core/Src/system_gd32f4xx.c ****     \param[out] none
+1109:Core/Src/system_gd32f4xx.c ****     \retval     none
+1110:Core/Src/system_gd32f4xx.c **** */
+1111:Core/Src/system_gd32f4xx.c **** void SystemCoreClockUpdate(void)
+1112:Core/Src/system_gd32f4xx.c **** {
+ 364              		.loc 1 1112 1 is_stmt 1 view -0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 16
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              		@ link register save eliminated.
+ 369 0000 84B0     		sub	sp, sp, #16
+ 370              	.LCFI4:
+ 371              		.cfi_def_cfa_offset 16
+1113:Core/Src/system_gd32f4xx.c ****     uint32_t sws;
+ 372              		.loc 1 1113 5 view .LVU111
+1114:Core/Src/system_gd32f4xx.c ****     uint32_t pllpsc, plln, pllsel, pllp, ck_src, idx, clk_exp;
+ 373              		.loc 1 1114 5 view .LVU112
+ARM GAS  /tmp/ccjHh8bg.s 			page 28
+
+
+1115:Core/Src/system_gd32f4xx.c ****     
+1116:Core/Src/system_gd32f4xx.c ****     /* exponent of AHB, APB1 and APB2 clock divider */
+1117:Core/Src/system_gd32f4xx.c ****     const uint8_t ahb_exp[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 374              		.loc 1 1117 5 view .LVU113
+ 375              		.loc 1 1117 19 is_stmt 0 view .LVU114
+ 376 0002 254B     		ldr	r3, .L32
+ 377 0004 0FCB     		ldm	r3, {r0, r1, r2, r3}
+ 378 0006 0DF1100C 		add	ip, sp, #16
+ 379 000a 0CE90F00 		stmdb	ip, {r0, r1, r2, r3}
+1118:Core/Src/system_gd32f4xx.c **** 
+1119:Core/Src/system_gd32f4xx.c ****     sws = GET_BITS(RCU_CFG0, 2, 3);
+ 380              		.loc 1 1119 5 is_stmt 1 view .LVU115
+ 381              		.loc 1 1119 11 is_stmt 0 view .LVU116
+ 382 000e 234B     		ldr	r3, .L32+4
+ 383 0010 D3F80838 		ldr	r3, [r3, #2056]
+ 384              		.loc 1 1119 9 view .LVU117
+ 385 0014 C3F38103 		ubfx	r3, r3, #2, #2
+ 386              	.LVL8:
+1120:Core/Src/system_gd32f4xx.c ****     switch(sws){
+ 387              		.loc 1 1120 5 is_stmt 1 view .LVU118
+ 388 0018 012B     		cmp	r3, #1
+ 389 001a 18D0     		beq	.L24
+ 390 001c 022B     		cmp	r3, #2
+ 391 001e 1AD0     		beq	.L25
+ 392 0020 1BB1     		cbz	r3, .L31
+1121:Core/Src/system_gd32f4xx.c ****     /* IRC16M is selected as CK_SYS */
+1122:Core/Src/system_gd32f4xx.c ****     case SEL_IRC16M:
+1123:Core/Src/system_gd32f4xx.c ****         SystemCoreClock = IRC16M_VALUE;
+1124:Core/Src/system_gd32f4xx.c ****         break;
+1125:Core/Src/system_gd32f4xx.c ****     /* HXTAL is selected as CK_SYS */
+1126:Core/Src/system_gd32f4xx.c ****     case SEL_HXTAL:
+1127:Core/Src/system_gd32f4xx.c ****         SystemCoreClock = HXTAL_VALUE;
+1128:Core/Src/system_gd32f4xx.c ****         break;
+1129:Core/Src/system_gd32f4xx.c ****     /* PLLP is selected as CK_SYS */
+1130:Core/Src/system_gd32f4xx.c ****     case SEL_PLLP:
+1131:Core/Src/system_gd32f4xx.c ****         /* get the value of PLLPSC[5:0] */
+1132:Core/Src/system_gd32f4xx.c ****         pllpsc = GET_BITS(RCU_PLL, 0U, 5U);
+1133:Core/Src/system_gd32f4xx.c ****         plln = GET_BITS(RCU_PLL, 6U, 14U);
+1134:Core/Src/system_gd32f4xx.c ****         pllp = (GET_BITS(RCU_PLL, 16U, 17U) + 1U) * 2U;
+1135:Core/Src/system_gd32f4xx.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+1136:Core/Src/system_gd32f4xx.c ****         pllsel = (RCU_PLL & RCU_PLL_PLLSEL);
+1137:Core/Src/system_gd32f4xx.c ****         if (RCU_PLLSRC_HXTAL == pllsel) {
+1138:Core/Src/system_gd32f4xx.c ****             ck_src = HXTAL_VALUE;
+1139:Core/Src/system_gd32f4xx.c ****         } else {
+1140:Core/Src/system_gd32f4xx.c ****             ck_src = IRC16M_VALUE;
+1141:Core/Src/system_gd32f4xx.c ****         }
+1142:Core/Src/system_gd32f4xx.c ****         SystemCoreClock = ((ck_src / pllpsc) * plln) / pllp;
+1143:Core/Src/system_gd32f4xx.c ****         break;
+1144:Core/Src/system_gd32f4xx.c ****     /* IRC16M is selected as CK_SYS */
+1145:Core/Src/system_gd32f4xx.c ****     default:
+1146:Core/Src/system_gd32f4xx.c ****         SystemCoreClock = IRC16M_VALUE;
+ 393              		.loc 1 1146 9 view .LVU119
+ 394              		.loc 1 1146 25 is_stmt 0 view .LVU120
+ 395 0022 1F4B     		ldr	r3, .L32+8
+ 396              	.LVL9:
+ 397              		.loc 1 1146 25 view .LVU121
+ 398 0024 1F4A     		ldr	r2, .L32+12
+ARM GAS  /tmp/ccjHh8bg.s 			page 29
+
+
+ 399 0026 1A60     		str	r2, [r3]
+1147:Core/Src/system_gd32f4xx.c ****         break;
+ 400              		.loc 1 1147 9 is_stmt 1 view .LVU122
+ 401 0028 02E0     		b	.L27
+ 402              	.LVL10:
+ 403              	.L31:
+1123:Core/Src/system_gd32f4xx.c ****         break;
+ 404              		.loc 1 1123 9 view .LVU123
+1123:Core/Src/system_gd32f4xx.c ****         break;
+ 405              		.loc 1 1123 25 is_stmt 0 view .LVU124
+ 406 002a 1D4B     		ldr	r3, .L32+8
+ 407              	.LVL11:
+1123:Core/Src/system_gd32f4xx.c ****         break;
+ 408              		.loc 1 1123 25 view .LVU125
+ 409 002c 1D4A     		ldr	r2, .L32+12
+ 410 002e 1A60     		str	r2, [r3]
+1124:Core/Src/system_gd32f4xx.c ****     /* HXTAL is selected as CK_SYS */
+ 411              		.loc 1 1124 9 is_stmt 1 view .LVU126
+ 412              	.L27:
+1148:Core/Src/system_gd32f4xx.c ****     }
+1149:Core/Src/system_gd32f4xx.c ****     /* calculate AHB clock frequency */
+1150:Core/Src/system_gd32f4xx.c ****     idx = GET_BITS(RCU_CFG0, 4, 7);
+ 413              		.loc 1 1150 5 view .LVU127
+ 414              		.loc 1 1150 11 is_stmt 0 view .LVU128
+ 415 0030 1A4B     		ldr	r3, .L32+4
+ 416 0032 D3F80838 		ldr	r3, [r3, #2056]
+ 417              		.loc 1 1150 9 view .LVU129
+ 418 0036 C3F30313 		ubfx	r3, r3, #4, #4
+ 419              	.LVL12:
+1151:Core/Src/system_gd32f4xx.c ****     clk_exp = ahb_exp[idx];
+ 420              		.loc 1 1151 5 is_stmt 1 view .LVU130
+ 421              		.loc 1 1151 22 is_stmt 0 view .LVU131
+ 422 003a 1033     		adds	r3, r3, #16
+ 423              	.LVL13:
+ 424              		.loc 1 1151 22 view .LVU132
+ 425 003c 6B44     		add	r3, sp, r3
+ 426              	.LVL14:
+ 427              		.loc 1 1151 22 view .LVU133
+ 428 003e 13F8101C 		ldrb	r1, [r3, #-16]	@ zero_extendqisi2
+ 429              	.LVL15:
+1152:Core/Src/system_gd32f4xx.c ****     SystemCoreClock = SystemCoreClock >> clk_exp;
+ 430              		.loc 1 1152 5 is_stmt 1 view .LVU134
+ 431              		.loc 1 1152 39 is_stmt 0 view .LVU135
+ 432 0042 174A     		ldr	r2, .L32+8
+ 433 0044 1368     		ldr	r3, [r2]
+ 434 0046 CB40     		lsrs	r3, r3, r1
+ 435              		.loc 1 1152 21 view .LVU136
+ 436 0048 1360     		str	r3, [r2]
+1153:Core/Src/system_gd32f4xx.c **** }
+ 437              		.loc 1 1153 1 view .LVU137
+ 438 004a 04B0     		add	sp, sp, #16
+ 439              	.LCFI5:
+ 440              		.cfi_remember_state
+ 441              		.cfi_def_cfa_offset 0
+ 442              		@ sp needed
+ 443 004c 7047     		bx	lr
+ 444              	.LVL16:
+ARM GAS  /tmp/ccjHh8bg.s 			page 30
+
+
+ 445              	.L24:
+ 446              	.LCFI6:
+ 447              		.cfi_restore_state
+1127:Core/Src/system_gd32f4xx.c ****         break;
+ 448              		.loc 1 1127 9 is_stmt 1 view .LVU138
+1127:Core/Src/system_gd32f4xx.c ****         break;
+ 449              		.loc 1 1127 25 is_stmt 0 view .LVU139
+ 450 004e 144B     		ldr	r3, .L32+8
+ 451              	.LVL17:
+1127:Core/Src/system_gd32f4xx.c ****         break;
+ 452              		.loc 1 1127 25 view .LVU140
+ 453 0050 154A     		ldr	r2, .L32+16
+ 454 0052 1A60     		str	r2, [r3]
+1128:Core/Src/system_gd32f4xx.c ****     /* PLLP is selected as CK_SYS */
+ 455              		.loc 1 1128 9 is_stmt 1 view .LVU141
+ 456 0054 ECE7     		b	.L27
+ 457              	.LVL18:
+ 458              	.L25:
+1132:Core/Src/system_gd32f4xx.c ****         plln = GET_BITS(RCU_PLL, 6U, 14U);
+ 459              		.loc 1 1132 9 view .LVU142
+1132:Core/Src/system_gd32f4xx.c ****         plln = GET_BITS(RCU_PLL, 6U, 14U);
+ 460              		.loc 1 1132 18 is_stmt 0 view .LVU143
+ 461 0056 1149     		ldr	r1, .L32+4
+ 462 0058 D1F80438 		ldr	r3, [r1, #2052]
+ 463              	.LVL19:
+1132:Core/Src/system_gd32f4xx.c ****         plln = GET_BITS(RCU_PLL, 6U, 14U);
+ 464              		.loc 1 1132 16 view .LVU144
+ 465 005c 03F03F0C 		and	ip, r3, #63
+ 466              	.LVL20:
+1133:Core/Src/system_gd32f4xx.c ****         pllp = (GET_BITS(RCU_PLL, 16U, 17U) + 1U) * 2U;
+ 467              		.loc 1 1133 9 is_stmt 1 view .LVU145
+1133:Core/Src/system_gd32f4xx.c ****         pllp = (GET_BITS(RCU_PLL, 16U, 17U) + 1U) * 2U;
+ 468              		.loc 1 1133 16 is_stmt 0 view .LVU146
+ 469 0060 D1F80408 		ldr	r0, [r1, #2052]
+1133:Core/Src/system_gd32f4xx.c ****         pllp = (GET_BITS(RCU_PLL, 16U, 17U) + 1U) * 2U;
+ 470              		.loc 1 1133 14 view .LVU147
+ 471 0064 C0F38810 		ubfx	r0, r0, #6, #9
+ 472              	.LVL21:
+1134:Core/Src/system_gd32f4xx.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 473              		.loc 1 1134 9 is_stmt 1 view .LVU148
+1134:Core/Src/system_gd32f4xx.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 474              		.loc 1 1134 17 is_stmt 0 view .LVU149
+ 475 0068 D1F80428 		ldr	r2, [r1, #2052]
+ 476 006c C2F30142 		ubfx	r2, r2, #16, #2
+1134:Core/Src/system_gd32f4xx.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 477              		.loc 1 1134 45 view .LVU150
+ 478 0070 0132     		adds	r2, r2, #1
+1134:Core/Src/system_gd32f4xx.c ****         /* PLL clock source selection, HXTAL or IRC8M/2 */
+ 479              		.loc 1 1134 14 view .LVU151
+ 480 0072 5200     		lsls	r2, r2, #1
+ 481              	.LVL22:
+1136:Core/Src/system_gd32f4xx.c ****         if (RCU_PLLSRC_HXTAL == pllsel) {
+ 482              		.loc 1 1136 9 is_stmt 1 view .LVU152
+1136:Core/Src/system_gd32f4xx.c ****         if (RCU_PLLSRC_HXTAL == pllsel) {
+ 483              		.loc 1 1136 19 is_stmt 0 view .LVU153
+ 484 0074 D1F80438 		ldr	r3, [r1, #2052]
+ 485              	.LVL23:
+ARM GAS  /tmp/ccjHh8bg.s 			page 31
+
+
+1137:Core/Src/system_gd32f4xx.c ****             ck_src = HXTAL_VALUE;
+ 486              		.loc 1 1137 9 is_stmt 1 view .LVU154
+1137:Core/Src/system_gd32f4xx.c ****             ck_src = HXTAL_VALUE;
+ 487              		.loc 1 1137 12 is_stmt 0 view .LVU155
+ 488 0078 13F4800F 		tst	r3, #4194304
+ 489 007c 09D0     		beq	.L29
+1138:Core/Src/system_gd32f4xx.c ****         } else {
+ 490              		.loc 1 1138 20 view .LVU156
+ 491 007e 0A4B     		ldr	r3, .L32+16
+ 492              	.LVL24:
+ 493              	.L28:
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 494              		.loc 1 1142 9 is_stmt 1 view .LVU157
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 495              		.loc 1 1142 36 is_stmt 0 view .LVU158
+ 496 0080 B3FBFCF3 		udiv	r3, r3, ip
+ 497              	.LVL25:
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 498              		.loc 1 1142 46 view .LVU159
+ 499 0084 00FB03F3 		mul	r3, r0, r3
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 500              		.loc 1 1142 54 view .LVU160
+ 501 0088 B3FBF2F3 		udiv	r3, r3, r2
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 502              		.loc 1 1142 25 view .LVU161
+ 503 008c 044A     		ldr	r2, .L32+8
+ 504              	.LVL26:
+1142:Core/Src/system_gd32f4xx.c ****         break;
+ 505              		.loc 1 1142 25 view .LVU162
+ 506 008e 1360     		str	r3, [r2]
+1143:Core/Src/system_gd32f4xx.c ****     /* IRC16M is selected as CK_SYS */
+ 507              		.loc 1 1143 9 is_stmt 1 view .LVU163
+ 508 0090 CEE7     		b	.L27
+ 509              	.LVL27:
+ 510              	.L29:
+1140:Core/Src/system_gd32f4xx.c ****         }
+ 511              		.loc 1 1140 20 is_stmt 0 view .LVU164
+ 512 0092 044B     		ldr	r3, .L32+12
+ 513              	.LVL28:
+1140:Core/Src/system_gd32f4xx.c ****         }
+ 514              		.loc 1 1140 20 view .LVU165
+ 515 0094 F4E7     		b	.L28
+ 516              	.L33:
+ 517 0096 00BF     		.align	2
+ 518              	.L32:
+ 519 0098 00000000 		.word	.LANCHOR0
+ 520 009c 00300240 		.word	1073885184
+ 521 00a0 00000000 		.word	.LANCHOR1
+ 522 00a4 0024F400 		.word	16000000
+ 523 00a8 40787D01 		.word	25000000
+ 524              		.cfi_endproc
+ 525              	.LFE119:
+ 527              		.global	SystemCoreClock
+ 528              		.section	.rodata
+ 529              		.align	2
+ 530              		.set	.LANCHOR0,. + 0
+ 531              	.LC0:
+ARM GAS  /tmp/ccjHh8bg.s 			page 32
+
+
+ 532 0000 00000000 		.ascii	"\000\000\000\000\000\000\000\000\001\002\003\004\006"
+ 532      00000000 
+ 532      01020304 
+ 532      06
+ 533 000d 070809   		.ascii	"\007\010\011"
+ 534              		.section	.data.SystemCoreClock,"aw"
+ 535              		.align	2
+ 536              		.set	.LANCHOR1,. + 0
+ 539              	SystemCoreClock:
+ 540 0000 00C2EB0B 		.word	200000000
+ 541              		.text
+ 542              	.Letext0:
+ 543              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 544              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 545              		.file 4 "Drivers/CMSIS/core_cm4.h"
+ 546              		.file 5 "Core/Inc/system_gd32f4xx.h"
+ 547              		.file 6 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_dbg.h"
+ARM GAS  /tmp/ccjHh8bg.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_gd32f4xx.c
+     /tmp/ccjHh8bg.s:20     .text.system_clock_200m_25m_hxtal:0000000000000000 $t
+     /tmp/ccjHh8bg.s:25     .text.system_clock_200m_25m_hxtal:0000000000000000 system_clock_200m_25m_hxtal
+     /tmp/ccjHh8bg.s:185    .text.system_clock_200m_25m_hxtal:00000000000000dc $d
+     /tmp/ccjHh8bg.s:192    .text.system_clock_config:0000000000000000 $t
+     /tmp/ccjHh8bg.s:197    .text.system_clock_config:0000000000000000 system_clock_config
+     /tmp/ccjHh8bg.s:217    .text.SystemInit:0000000000000000 $t
+     /tmp/ccjHh8bg.s:223    .text.SystemInit:0000000000000000 SystemInit
+     /tmp/ccjHh8bg.s:349    .text.SystemInit:00000000000000b4 $d
+     /tmp/ccjHh8bg.s:356    .text.SystemCoreClockUpdate:0000000000000000 $t
+     /tmp/ccjHh8bg.s:362    .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+     /tmp/ccjHh8bg.s:519    .text.SystemCoreClockUpdate:0000000000000098 $d
+     /tmp/ccjHh8bg.s:539    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+     /tmp/ccjHh8bg.s:529    .rodata:0000000000000000 $d
+     /tmp/ccjHh8bg.s:535    .data.SystemCoreClock:0000000000000000 $d
+
+NO UNDEFINED SYMBOLS

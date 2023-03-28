@@ -1,0 +1,2080 @@
+ARM GAS  /tmp/ccAKfcw9.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_tli.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.tli_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	tli_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	tli_deinit:
+  27              	.LFB116:
+  28              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \file    gd32f4xx_tli.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief   TLI driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****        this list of conditions and the following disclaimer in the documentation
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****        may be used to endorse or promote products derived from this software without
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ARM GAS  /tmp/ccAKfcw9.s 			page 2
+
+
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** #include "gd32f4xx_tli.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** #define TLI_DEFAULT_VALUE   0x00000000U
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** #define TLI_OPAQUE_VALUE    0x000000FFU
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    deinitialize TLI registers
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_deinit(void)
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+  29              		.loc 1 50 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     rcu_periph_reset_enable(RCU_TLIRST);
+  38              		.loc 1 51 5 view .LVU1
+  39 0002 40F61A10 		movw	r0, #2330
+  40 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  41              	.LVL0:
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     rcu_periph_reset_disable(RCU_TLIRST);
+  42              		.loc 1 52 5 view .LVU2
+  43 000a 40F61A10 		movw	r0, #2330
+  44 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  45              	.LVL1:
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+  46              		.loc 1 53 1 is_stmt 0 view .LVU3
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE116:
+  51              		.section	.text.tli_struct_para_init,"ax",%progbits
+  52              		.align	1
+  53              		.global	tli_struct_para_init
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	tli_struct_para_init:
+  59              	.LVL2:
+  60              	.LFB117:
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize the parameters of TLI parameter structure with the default values, it is s
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 that call this function after a tli_parameter_struct structure is defined
+ARM GAS  /tmp/ccAKfcw9.s 			page 3
+
+
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] tli_struct: the data needed to initialize TLI
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   synpsz_vpsz: size of the vertical synchronous pulse
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   synpsz_hpsz: size of the horizontal synchronous pulse
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backpsz_vbpsz: size of the vertical back porch plus synchronous pulse
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backpsz_hbpsz: size of the horizontal back porch plus synchronous pulse
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   activesz_vasz: size of the vertical active area width plus back porch and synchro
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   activesz_hasz: size of the horizontal active area width plus back porch and synch
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   totalsz_vtsz: vertical total size of the display, including active area, back por
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   totalsz_htsz: vorizontal total size of the display, including active area, back p
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_red: background value red
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_green: background value green
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_blue: background value blue
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_hs: TLI_HSYN_ACTLIVE_LOW,TLI_HSYN_ACTLIVE_HIGHT
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_vs: TLI_VSYN_ACTLIVE_LOW,TLI_VSYN_ACTLIVE_HIGHT
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_de: TLI_DE_ACTLIVE_LOW,TLI_DE_ACTLIVE_HIGHT
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_pixelck: TLI_PIXEL_CLOCK_TLI,TLI_PIXEL_CLOCK_INVERTEDTLI
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_struct_para_init(tli_parameter_struct *tli_struct)
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+  61              		.loc 1 78 1 is_stmt 1 view -0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 0, uses_anonymous_args = 0
+  65              		@ link register save eliminated.
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* initialize the struct parameters with default values */
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->synpsz_vpsz = TLI_DEFAULT_VALUE;
+  66              		.loc 1 80 5 view .LVU5
+  67              		.loc 1 80 29 is_stmt 0 view .LVU6
+  68 0000 0023     		movs	r3, #0
+  69 0002 0380     		strh	r3, [r0]	@ movhi
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->synpsz_hpsz = TLI_DEFAULT_VALUE;
+  70              		.loc 1 81 5 is_stmt 1 view .LVU7
+  71              		.loc 1 81 29 is_stmt 0 view .LVU8
+  72 0004 4380     		strh	r3, [r0, #2]	@ movhi
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->backpsz_vbpsz = TLI_DEFAULT_VALUE;
+  73              		.loc 1 82 5 is_stmt 1 view .LVU9
+  74              		.loc 1 82 31 is_stmt 0 view .LVU10
+  75 0006 8380     		strh	r3, [r0, #4]	@ movhi
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->backpsz_hbpsz = TLI_DEFAULT_VALUE;
+  76              		.loc 1 83 5 is_stmt 1 view .LVU11
+  77              		.loc 1 83 31 is_stmt 0 view .LVU12
+  78 0008 C380     		strh	r3, [r0, #6]	@ movhi
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->activesz_vasz = TLI_DEFAULT_VALUE;
+  79              		.loc 1 84 5 is_stmt 1 view .LVU13
+  80              		.loc 1 84 31 is_stmt 0 view .LVU14
+  81 000a 8360     		str	r3, [r0, #8]
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->activesz_hasz = TLI_DEFAULT_VALUE;
+  82              		.loc 1 85 5 is_stmt 1 view .LVU15
+  83              		.loc 1 85 31 is_stmt 0 view .LVU16
+  84 000c C360     		str	r3, [r0, #12]
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->totalsz_vtsz = TLI_DEFAULT_VALUE;
+  85              		.loc 1 86 5 is_stmt 1 view .LVU17
+  86              		.loc 1 86 30 is_stmt 0 view .LVU18
+  87 000e 0361     		str	r3, [r0, #16]
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->totalsz_htsz = TLI_DEFAULT_VALUE;
+ARM GAS  /tmp/ccAKfcw9.s 			page 4
+
+
+  88              		.loc 1 87 5 is_stmt 1 view .LVU19
+  89              		.loc 1 87 30 is_stmt 0 view .LVU20
+  90 0010 4361     		str	r3, [r0, #20]
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->backcolor_red = TLI_DEFAULT_VALUE;
+  91              		.loc 1 88 5 is_stmt 1 view .LVU21
+  92              		.loc 1 88 31 is_stmt 0 view .LVU22
+  93 0012 8361     		str	r3, [r0, #24]
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->backcolor_green = TLI_DEFAULT_VALUE;
+  94              		.loc 1 89 5 is_stmt 1 view .LVU23
+  95              		.loc 1 89 33 is_stmt 0 view .LVU24
+  96 0014 C361     		str	r3, [r0, #28]
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->backcolor_blue = TLI_DEFAULT_VALUE;
+  97              		.loc 1 90 5 is_stmt 1 view .LVU25
+  98              		.loc 1 90 32 is_stmt 0 view .LVU26
+  99 0016 0362     		str	r3, [r0, #32]
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->signalpolarity_hs = TLI_HSYN_ACTLIVE_LOW;
+ 100              		.loc 1 91 5 is_stmt 1 view .LVU27
+ 101              		.loc 1 91 35 is_stmt 0 view .LVU28
+ 102 0018 4362     		str	r3, [r0, #36]
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->signalpolarity_vs = TLI_VSYN_ACTLIVE_LOW;
+ 103              		.loc 1 92 5 is_stmt 1 view .LVU29
+ 104              		.loc 1 92 35 is_stmt 0 view .LVU30
+ 105 001a 8362     		str	r3, [r0, #40]
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->signalpolarity_de = TLI_DE_ACTLIVE_LOW;
+ 106              		.loc 1 93 5 is_stmt 1 view .LVU31
+ 107              		.loc 1 93 35 is_stmt 0 view .LVU32
+ 108 001c C362     		str	r3, [r0, #44]
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     tli_struct->signalpolarity_pixelck = TLI_PIXEL_CLOCK_TLI;
+ 109              		.loc 1 94 5 is_stmt 1 view .LVU33
+ 110              		.loc 1 94 40 is_stmt 0 view .LVU34
+ 111 001e 0363     		str	r3, [r0, #48]
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 112              		.loc 1 95 1 view .LVU35
+ 113 0020 7047     		bx	lr
+ 114              		.cfi_endproc
+ 115              	.LFE117:
+ 117              		.section	.text.tli_init,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	tli_init
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	tli_init:
+ 125              	.LVL3:
+ 126              	.LFB118:
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize TLI display timing parameters
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  tli_struct: the data needed to initialize TLI
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   synpsz_vpsz: size of the vertical synchronous pulse
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   synpsz_hpsz: size of the horizontal synchronous pulse
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backpsz_vbpsz: size of the vertical back porch plus synchronous pulse
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backpsz_hbpsz: size of the horizontal back porch plus synchronous pulse
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   activesz_vasz: size of the vertical active area width plus back porch and synchro
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   activesz_hasz: size of the horizontal active area width plus back porch and synch
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   totalsz_vtsz: vertical total size of the display, including active area, back por
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   totalsz_htsz: vorizontal total size of the display, including active area, back p
+ARM GAS  /tmp/ccAKfcw9.s 			page 5
+
+
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_red: background value red
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_green: background value green
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   backcolor_blue: background value blue
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_hs: TLI_HSYN_ACTLIVE_LOW,TLI_HSYN_ACTLIVE_HIGHT
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_vs: TLI_VSYN_ACTLIVE_LOW,TLI_VSYN_ACTLIVE_HIGHT
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_de: TLI_DE_ACTLIVE_LOW,TLI_DE_ACTLIVE_HIGHT
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   signalpolarity_pixelck: TLI_PIXEL_CLOCK_TLI,TLI_PIXEL_CLOCK_INVERTEDTLI
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_init(tli_parameter_struct *tli_struct)
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 127              		.loc 1 119 1 is_stmt 1 view -0
+ 128              		.cfi_startproc
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132              		.loc 1 119 1 is_stmt 0 view .LVU37
+ 133 0000 10B4     		push	{r4}
+ 134              	.LCFI1:
+ 135              		.cfi_def_cfa_offset 4
+ 136              		.cfi_offset 4, -4
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* synchronous pulse size configuration */
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_SPSZ &= ~(TLI_SPSZ_VPSZ | TLI_SPSZ_HPSZ);
+ 137              		.loc 1 121 5 is_stmt 1 view .LVU38
+ 138              		.loc 1 121 14 is_stmt 0 view .LVU39
+ 139 0002 2A4B     		ldr	r3, .L6
+ 140 0004 D3F80828 		ldr	r2, [r3, #2056]
+ 141 0008 02F0F022 		and	r2, r2, #-268374016
+ 142 000c C3F80828 		str	r2, [r3, #2056]
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_SPSZ = (uint32_t)((uint32_t)tli_struct->synpsz_vpsz | ((uint32_t)tli_struct->synpsz_hpsz <<
+ 143              		.loc 1 122 5 is_stmt 1 view .LVU40
+ 144              		.loc 1 122 47 is_stmt 0 view .LVU41
+ 145 0010 0288     		ldrh	r2, [r0]
+ 146              		.loc 1 122 84 view .LVU42
+ 147 0012 4188     		ldrh	r1, [r0, #2]
+ 148              		.loc 1 122 16 view .LVU43
+ 149 0014 42EA0142 		orr	r2, r2, r1, lsl #16
+ 150              		.loc 1 122 14 view .LVU44
+ 151 0018 C3F80828 		str	r2, [r3, #2056]
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* back-porch size configuration */
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_BPSZ &= ~(TLI_BPSZ_VBPSZ | TLI_BPSZ_HBPSZ);
+ 152              		.loc 1 124 5 is_stmt 1 view .LVU45
+ 153              		.loc 1 124 14 is_stmt 0 view .LVU46
+ 154 001c D3F80C28 		ldr	r2, [r3, #2060]
+ 155 0020 02F0F022 		and	r2, r2, #-268374016
+ 156 0024 C3F80C28 		str	r2, [r3, #2060]
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_BPSZ = (uint32_t)((uint32_t)tli_struct->backpsz_vbpsz | ((uint32_t)tli_struct->backpsz_hbps
+ 157              		.loc 1 125 5 is_stmt 1 view .LVU47
+ 158              		.loc 1 125 47 is_stmt 0 view .LVU48
+ 159 0028 8288     		ldrh	r2, [r0, #4]
+ 160              		.loc 1 125 86 view .LVU49
+ 161 002a C188     		ldrh	r1, [r0, #6]
+ 162              		.loc 1 125 16 view .LVU50
+ 163 002c 42EA0142 		orr	r2, r2, r1, lsl #16
+ 164              		.loc 1 125 14 view .LVU51
+ 165 0030 C3F80C28 		str	r2, [r3, #2060]
+ARM GAS  /tmp/ccAKfcw9.s 			page 6
+
+
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* active size configuration */
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_ASZ &= ~(TLI_ASZ_VASZ | TLI_ASZ_HASZ);
+ 166              		.loc 1 127 5 is_stmt 1 view .LVU52
+ 167              		.loc 1 127 13 is_stmt 0 view .LVU53
+ 168 0034 D3F81028 		ldr	r2, [r3, #2064]
+ 169 0038 02F0F022 		and	r2, r2, #-268374016
+ 170 003c C3F81028 		str	r2, [r3, #2064]
+ 128:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_ASZ = (tli_struct->activesz_vasz | (tli_struct->activesz_hasz << 16U));
+ 171              		.loc 1 128 5 is_stmt 1 view .LVU54
+ 172              		.loc 1 128 26 is_stmt 0 view .LVU55
+ 173 0040 8268     		ldr	r2, [r0, #8]
+ 174              		.loc 1 128 55 view .LVU56
+ 175 0042 C168     		ldr	r1, [r0, #12]
+ 176              		.loc 1 128 42 view .LVU57
+ 177 0044 42EA0142 		orr	r2, r2, r1, lsl #16
+ 178              		.loc 1 128 13 view .LVU58
+ 179 0048 C3F81028 		str	r2, [r3, #2064]
+ 129:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* total size configuration */
+ 130:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_TSZ &= ~(TLI_TSZ_VTSZ | TLI_TSZ_HTSZ);
+ 180              		.loc 1 130 5 is_stmt 1 view .LVU59
+ 181              		.loc 1 130 13 is_stmt 0 view .LVU60
+ 182 004c D3F81428 		ldr	r2, [r3, #2068]
+ 183 0050 02F0F022 		and	r2, r2, #-268374016
+ 184 0054 C3F81428 		str	r2, [r3, #2068]
+ 131:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_TSZ = (tli_struct->totalsz_vtsz | (tli_struct->totalsz_htsz << 16U));
+ 185              		.loc 1 131 5 is_stmt 1 view .LVU61
+ 186              		.loc 1 131 26 is_stmt 0 view .LVU62
+ 187 0058 0269     		ldr	r2, [r0, #16]
+ 188              		.loc 1 131 54 view .LVU63
+ 189 005a 4169     		ldr	r1, [r0, #20]
+ 190              		.loc 1 131 41 view .LVU64
+ 191 005c 42EA0142 		orr	r2, r2, r1, lsl #16
+ 192              		.loc 1 131 13 view .LVU65
+ 193 0060 C3F81428 		str	r2, [r3, #2068]
+ 132:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* background color configuration */
+ 133:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_BGC &= ~(TLI_BGC_BVB | (TLI_BGC_BVG) | (TLI_BGC_BVR));
+ 194              		.loc 1 133 5 is_stmt 1 view .LVU66
+ 195              		.loc 1 133 13 is_stmt 0 view .LVU67
+ 196 0064 D3F82C28 		ldr	r2, [r3, #2092]
+ 197 0068 02F07F42 		and	r2, r2, #-16777216
+ 198 006c C3F82C28 		str	r2, [r3, #2092]
+ 134:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_BGC = (tli_struct->backcolor_blue | (tli_struct->backcolor_green << 8U) | (tli_struct->back
+ 199              		.loc 1 134 5 is_stmt 1 view .LVU68
+ 200              		.loc 1 134 26 is_stmt 0 view .LVU69
+ 201 0070 026A     		ldr	r2, [r0, #32]
+ 202              		.loc 1 134 56 view .LVU70
+ 203 0072 C169     		ldr	r1, [r0, #28]
+ 204              		.loc 1 134 43 view .LVU71
+ 205 0074 42EA0122 		orr	r2, r2, r1, lsl #8
+ 206              		.loc 1 134 94 view .LVU72
+ 207 0078 8169     		ldr	r1, [r0, #24]
+ 208              		.loc 1 134 81 view .LVU73
+ 209 007a 42EA0142 		orr	r2, r2, r1, lsl #16
+ 210              		.loc 1 134 13 view .LVU74
+ 211 007e C3F82C28 		str	r2, [r3, #2092]
+ 135:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_CTL &= ~(TLI_CTL_HPPS | TLI_CTL_VPPS | TLI_CTL_DEPS | TLI_CTL_CLKPS);
+ 212              		.loc 1 135 5 is_stmt 1 view .LVU75
+ARM GAS  /tmp/ccAKfcw9.s 			page 7
+
+
+ 213              		.loc 1 135 13 is_stmt 0 view .LVU76
+ 214 0082 D3F81828 		ldr	r2, [r3, #2072]
+ 215 0086 22F07042 		bic	r2, r2, #-268435456
+ 216 008a C3F81828 		str	r2, [r3, #2072]
+ 136:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_CTL |= (tli_struct->signalpolarity_hs | tli_struct->signalpolarity_vs | \
+ 217              		.loc 1 136 5 is_stmt 1 view .LVU77
+ 218              		.loc 1 136 13 is_stmt 0 view .LVU78
+ 219 008e D3F81818 		ldr	r1, [r3, #2072]
+ 220              		.loc 1 136 27 view .LVU79
+ 221 0092 426A     		ldr	r2, [r0, #36]
+ 222              		.loc 1 136 47 view .LVU80
+ 223 0094 846A     		ldr	r4, [r0, #40]
+ 224 0096 2243     		orrs	r2, r2, r4
+ 225              		.loc 1 136 79 view .LVU81
+ 226 0098 C46A     		ldr	r4, [r0, #44]
+ 227 009a 2243     		orrs	r2, r2, r4
+ 137:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 tli_struct->signalpolarity_de | tli_struct->signalpolarity_pixelck);
+ 228              		.loc 1 137 59 view .LVU82
+ 229 009c 006B     		ldr	r0, [r0, #48]
+ 230              	.LVL4:
+ 231              		.loc 1 137 47 view .LVU83
+ 232 009e 0243     		orrs	r2, r2, r0
+ 136:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_CTL |= (tli_struct->signalpolarity_hs | tli_struct->signalpolarity_vs | \
+ 233              		.loc 1 136 13 view .LVU84
+ 234 00a0 0A43     		orrs	r2, r2, r1
+ 235 00a2 C3F81828 		str	r2, [r3, #2072]
+ 138:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 139:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 236              		.loc 1 139 1 view .LVU85
+ 237 00a6 5DF8044B 		ldr	r4, [sp], #4
+ 238              	.LCFI2:
+ 239              		.cfi_restore 4
+ 240              		.cfi_def_cfa_offset 0
+ 241 00aa 7047     		bx	lr
+ 242              	.L7:
+ 243              		.align	2
+ 244              	.L6:
+ 245 00ac 00600140 		.word	1073831936
+ 246              		.cfi_endproc
+ 247              	.LFE118:
+ 249              		.section	.text.tli_dither_config,"ax",%progbits
+ 250              		.align	1
+ 251              		.global	tli_dither_config
+ 252              		.syntax unified
+ 253              		.thumb
+ 254              		.thumb_func
+ 256              	tli_dither_config:
+ 257              	.LVL5:
+ 258              	.LFB119:
+ 140:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 141:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 142:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    configure TLI dither function
+ 143:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  dither_stat
+ 144:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 only one parameter can be selected which is shown as below:
+ 145:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_DITHER_ENABLE
+ 146:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_DITHER_DISABLE
+ 147:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ARM GAS  /tmp/ccAKfcw9.s 			page 8
+
+
+ 148:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 149:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 150:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_dither_config(uint8_t dither_stat)
+ 151:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 259              		.loc 1 151 1 is_stmt 1 view -0
+ 260              		.cfi_startproc
+ 261              		@ args = 0, pretend = 0, frame = 0
+ 262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 263              		@ link register save eliminated.
+ 152:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     if(TLI_DITHER_ENABLE == dither_stat) {
+ 264              		.loc 1 152 5 view .LVU87
+ 265              		.loc 1 152 7 is_stmt 0 view .LVU88
+ 266 0000 0128     		cmp	r0, #1
+ 267 0002 07D0     		beq	.L11
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_CTL |= TLI_CTL_DFEN;
+ 154:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     } else {
+ 155:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_CTL &= ~(TLI_CTL_DFEN);
+ 268              		.loc 1 155 9 is_stmt 1 view .LVU89
+ 269              		.loc 1 155 17 is_stmt 0 view .LVU90
+ 270 0004 074A     		ldr	r2, .L12
+ 271 0006 D2F81838 		ldr	r3, [r2, #2072]
+ 272 000a 23F48033 		bic	r3, r3, #65536
+ 273 000e C2F81838 		str	r3, [r2, #2072]
+ 156:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 157:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 274              		.loc 1 157 1 view .LVU91
+ 275 0012 7047     		bx	lr
+ 276              	.L11:
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_CTL |= TLI_CTL_DFEN;
+ 277              		.loc 1 153 9 is_stmt 1 view .LVU92
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_CTL |= TLI_CTL_DFEN;
+ 278              		.loc 1 153 17 is_stmt 0 view .LVU93
+ 279 0014 034A     		ldr	r2, .L12
+ 280 0016 D2F81838 		ldr	r3, [r2, #2072]
+ 281 001a 43F48033 		orr	r3, r3, #65536
+ 282 001e C2F81838 		str	r3, [r2, #2072]
+ 283 0022 7047     		bx	lr
+ 284              	.L13:
+ 285              		.align	2
+ 286              	.L12:
+ 287 0024 00600140 		.word	1073831936
+ 288              		.cfi_endproc
+ 289              	.LFE119:
+ 291              		.section	.text.tli_enable,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	tli_enable
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	tli_enable:
+ 299              	.LFB120:
+ 158:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 159:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 160:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    enable TLI
+ 161:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+ 162:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 163:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ARM GAS  /tmp/ccAKfcw9.s 			page 9
+
+
+ 164:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 165:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_enable(void)
+ 166:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 300              		.loc 1 166 1 is_stmt 1 view -0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
+ 167:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_CTL |= TLI_CTL_TLIEN;
+ 305              		.loc 1 167 5 view .LVU95
+ 306              		.loc 1 167 13 is_stmt 0 view .LVU96
+ 307 0000 034A     		ldr	r2, .L15
+ 308 0002 D2F81838 		ldr	r3, [r2, #2072]
+ 309 0006 43F00103 		orr	r3, r3, #1
+ 310 000a C2F81838 		str	r3, [r2, #2072]
+ 168:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 311              		.loc 1 168 1 view .LVU97
+ 312 000e 7047     		bx	lr
+ 313              	.L16:
+ 314              		.align	2
+ 315              	.L15:
+ 316 0010 00600140 		.word	1073831936
+ 317              		.cfi_endproc
+ 318              	.LFE120:
+ 320              		.section	.text.tli_disable,"ax",%progbits
+ 321              		.align	1
+ 322              		.global	tli_disable
+ 323              		.syntax unified
+ 324              		.thumb
+ 325              		.thumb_func
+ 327              	tli_disable:
+ 328              	.LFB121:
+ 169:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 170:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 171:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    disable TLI
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+ 173:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 174:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 175:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 176:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_disable(void)
+ 177:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 329              		.loc 1 177 1 is_stmt 1 view -0
+ 330              		.cfi_startproc
+ 331              		@ args = 0, pretend = 0, frame = 0
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333              		@ link register save eliminated.
+ 178:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_CTL &= ~(TLI_CTL_TLIEN);
+ 334              		.loc 1 178 5 view .LVU99
+ 335              		.loc 1 178 13 is_stmt 0 view .LVU100
+ 336 0000 034A     		ldr	r2, .L18
+ 337 0002 D2F81838 		ldr	r3, [r2, #2072]
+ 338 0006 23F00103 		bic	r3, r3, #1
+ 339 000a C2F81838 		str	r3, [r2, #2072]
+ 179:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 340              		.loc 1 179 1 view .LVU101
+ 341 000e 7047     		bx	lr
+ 342              	.L19:
+ARM GAS  /tmp/ccAKfcw9.s 			page 10
+
+
+ 343              		.align	2
+ 344              	.L18:
+ 345 0010 00600140 		.word	1073831936
+ 346              		.cfi_endproc
+ 347              	.LFE121:
+ 349              		.section	.text.tli_reload_config,"ax",%progbits
+ 350              		.align	1
+ 351              		.global	tli_reload_config
+ 352              		.syntax unified
+ 353              		.thumb
+ 354              		.thumb_func
+ 356              	tli_reload_config:
+ 357              	.LVL6:
+ 358              	.LFB122:
+ 180:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 181:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 182:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    configure TLI reload mode
+ 183:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  reload_mod
+ 184:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 only one parameter can be selected which is shown as below:
+ 185:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FRAME_BLANK_RELOAD_EN
+ 186:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_REQUEST_RELOAD_EN
+ 187:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 188:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 189:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 190:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_reload_config(uint8_t reload_mod)
+ 191:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 359              		.loc 1 191 1 is_stmt 1 view -0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 192:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     if(TLI_FRAME_BLANK_RELOAD_EN == reload_mod) {
+ 364              		.loc 1 192 5 view .LVU103
+ 365              		.loc 1 192 7 is_stmt 0 view .LVU104
+ 366 0000 38B9     		cbnz	r0, .L21
+ 193:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* the layer configuration will be reloaded at frame blank */
+ 194:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_RL |= TLI_RL_FBR;
+ 367              		.loc 1 194 9 is_stmt 1 view .LVU105
+ 368              		.loc 1 194 16 is_stmt 0 view .LVU106
+ 369 0002 084A     		ldr	r2, .L23
+ 370 0004 D2F82438 		ldr	r3, [r2, #2084]
+ 371 0008 43F00203 		orr	r3, r3, #2
+ 372 000c C2F82438 		str	r3, [r2, #2084]
+ 373 0010 7047     		bx	lr
+ 374              	.L21:
+ 195:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     } else {
+ 196:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* the layer configuration will be reloaded after this bit sets */
+ 197:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         TLI_RL |= TLI_RL_RQR;
+ 375              		.loc 1 197 9 is_stmt 1 view .LVU107
+ 376              		.loc 1 197 16 is_stmt 0 view .LVU108
+ 377 0012 044A     		ldr	r2, .L23
+ 378 0014 D2F82438 		ldr	r3, [r2, #2084]
+ 379 0018 43F00103 		orr	r3, r3, #1
+ 380 001c C2F82438 		str	r3, [r2, #2084]
+ 198:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 199:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 381              		.loc 1 199 1 view .LVU109
+ARM GAS  /tmp/ccAKfcw9.s 			page 11
+
+
+ 382 0020 7047     		bx	lr
+ 383              	.L24:
+ 384 0022 00BF     		.align	2
+ 385              	.L23:
+ 386 0024 00600140 		.word	1073831936
+ 387              		.cfi_endproc
+ 388              	.LFE122:
+ 390              		.section	.text.tli_layer_struct_para_init,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	tli_layer_struct_para_init
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	tli_layer_struct_para_init:
+ 398              	.LVL7:
+ 399              	.LFB123:
+ 200:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 201:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 202:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize the parameters of TLI layer structure with the default values, it is sugge
+ 203:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 that call this function after a tli_layer_parameter_struct structure is defined
+ 204:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+ 205:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] layer_struct: TLI Layer parameter struct
+ 206:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_rightpos: window right position
+ 207:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_leftpos: window left position
+ 208:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_bottompos: window bottom position
+ 209:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_toppos: window top position
+ 210:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_ppf: LAYER_PPF_ARGB8888,LAYER_PPF_RGB888,LAYER_PPF_RGB565,
+ 211:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                  LAYER_PPF_ARG1555,LAYER_PPF_ARGB4444,LAYER_PPF_L8,
+ 212:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                  LAYER_PPF_AL44,LAYER_PPF_AL88
+ 213:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_sa: specified alpha
+ 214:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_alpha: the default color alpha
+ 215:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_red: the default color red
+ 216:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_green: the default color green
+ 217:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_blue: the default color blue
+ 218:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_acf1: LAYER_ACF1_SA,LAYER_ACF1_PASA
+ 219:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_acf2: LAYER_ACF2_SA,LAYER_ACF2_PASA
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_bufaddr: frame buffer base address
+ 221:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_buf_stride_offset: frame buffer stride offset
+ 222:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_line_length: frame line length
+ 223:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_total_line_number: frame total line number
+ 224:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 225:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 226:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_layer_struct_para_init(tli_layer_parameter_struct *layer_struct)
+ 227:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 400              		.loc 1 227 1 is_stmt 1 view -0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              		@ link register save eliminated.
+ 228:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* initialize the struct parameters with default values */
+ 229:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_window_rightpos = TLI_DEFAULT_VALUE;
+ 405              		.loc 1 229 5 view .LVU111
+ 406              		.loc 1 229 41 is_stmt 0 view .LVU112
+ 407 0000 0023     		movs	r3, #0
+ 408 0002 0380     		strh	r3, [r0]	@ movhi
+ 230:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_window_leftpos = TLI_DEFAULT_VALUE;
+ 409              		.loc 1 230 5 is_stmt 1 view .LVU113
+ARM GAS  /tmp/ccAKfcw9.s 			page 12
+
+
+ 410              		.loc 1 230 40 is_stmt 0 view .LVU114
+ 411 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 231:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_window_bottompos = TLI_DEFAULT_VALUE;
+ 412              		.loc 1 231 5 is_stmt 1 view .LVU115
+ 413              		.loc 1 231 42 is_stmt 0 view .LVU116
+ 414 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 232:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_window_toppos = TLI_DEFAULT_VALUE;
+ 415              		.loc 1 232 5 is_stmt 1 view .LVU117
+ 416              		.loc 1 232 39 is_stmt 0 view .LVU118
+ 417 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 233:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_ppf = LAYER_PPF_ARGB8888;
+ 418              		.loc 1 233 5 is_stmt 1 view .LVU119
+ 419              		.loc 1 233 29 is_stmt 0 view .LVU120
+ 420 000a 8360     		str	r3, [r0, #8]
+ 234:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_sa = TLI_OPAQUE_VALUE;
+ 421              		.loc 1 234 5 is_stmt 1 view .LVU121
+ 422              		.loc 1 234 28 is_stmt 0 view .LVU122
+ 423 000c FF22     		movs	r2, #255
+ 424 000e 0273     		strb	r2, [r0, #12]
+ 235:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_default_alpha = TLI_DEFAULT_VALUE;
+ 425              		.loc 1 235 5 is_stmt 1 view .LVU123
+ 426              		.loc 1 235 39 is_stmt 0 view .LVU124
+ 427 0010 4373     		strb	r3, [r0, #13]
+ 236:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_default_red = TLI_DEFAULT_VALUE;
+ 428              		.loc 1 236 5 is_stmt 1 view .LVU125
+ 429              		.loc 1 236 37 is_stmt 0 view .LVU126
+ 430 0012 8373     		strb	r3, [r0, #14]
+ 237:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_default_green = TLI_DEFAULT_VALUE;
+ 431              		.loc 1 237 5 is_stmt 1 view .LVU127
+ 432              		.loc 1 237 39 is_stmt 0 view .LVU128
+ 433 0014 C373     		strb	r3, [r0, #15]
+ 238:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_default_blue = TLI_DEFAULT_VALUE;
+ 434              		.loc 1 238 5 is_stmt 1 view .LVU129
+ 435              		.loc 1 238 38 is_stmt 0 view .LVU130
+ 436 0016 0374     		strb	r3, [r0, #16]
+ 239:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_acf1 = LAYER_ACF1_PASA;
+ 437              		.loc 1 239 5 is_stmt 1 view .LVU131
+ 438              		.loc 1 239 30 is_stmt 0 view .LVU132
+ 439 0018 4FF4C062 		mov	r2, #1536
+ 440 001c 4261     		str	r2, [r0, #20]
+ 240:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_acf2 = LAYER_ACF2_PASA;
+ 441              		.loc 1 240 5 is_stmt 1 view .LVU133
+ 442              		.loc 1 240 30 is_stmt 0 view .LVU134
+ 443 001e 0722     		movs	r2, #7
+ 444 0020 8261     		str	r2, [r0, #24]
+ 241:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_frame_bufaddr = TLI_DEFAULT_VALUE;
+ 445              		.loc 1 241 5 is_stmt 1 view .LVU135
+ 446              		.loc 1 241 39 is_stmt 0 view .LVU136
+ 447 0022 C361     		str	r3, [r0, #28]
+ 242:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_frame_buf_stride_offset = TLI_DEFAULT_VALUE;
+ 448              		.loc 1 242 5 is_stmt 1 view .LVU137
+ 449              		.loc 1 242 49 is_stmt 0 view .LVU138
+ 450 0024 0384     		strh	r3, [r0, #32]	@ movhi
+ 243:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_frame_line_length = TLI_DEFAULT_VALUE;
+ 451              		.loc 1 243 5 is_stmt 1 view .LVU139
+ 452              		.loc 1 243 43 is_stmt 0 view .LVU140
+ 453 0026 4384     		strh	r3, [r0, #34]	@ movhi
+ARM GAS  /tmp/ccAKfcw9.s 			page 13
+
+
+ 244:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_struct->layer_frame_total_line_number = TLI_DEFAULT_VALUE;
+ 454              		.loc 1 244 5 is_stmt 1 view .LVU141
+ 455              		.loc 1 244 49 is_stmt 0 view .LVU142
+ 456 0028 8384     		strh	r3, [r0, #36]	@ movhi
+ 245:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 457              		.loc 1 245 1 view .LVU143
+ 458 002a 7047     		bx	lr
+ 459              		.cfi_endproc
+ 460              	.LFE123:
+ 462              		.section	.text.tli_layer_init,"ax",%progbits
+ 463              		.align	1
+ 464              		.global	tli_layer_init
+ 465              		.syntax unified
+ 466              		.thumb
+ 467              		.thumb_func
+ 469              	tli_layer_init:
+ 470              	.LVL8:
+ 471              	.LFB124:
+ 246:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 247:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 248:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize TLI layer
+ 249:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 250:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layer_struct: TLI Layer parameter struct
+ 251:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_rightpos: window right position
+ 252:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_leftpos: window left position
+ 253:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_bottompos: window bottom position
+ 254:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_window_toppos: window top position
+ 255:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_ppf: LAYER_PPF_ARGB8888,LAYER_PPF_RGB888,LAYER_PPF_RGB565,
+ 256:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                  LAYER_PPF_ARG1555,LAYER_PPF_ARGB4444,LAYER_PPF_L8,
+ 257:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                  LAYER_PPF_AL44,LAYER_PPF_AL88
+ 258:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_sa: specified alpha
+ 259:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_alpha: the default color alpha
+ 260:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_red: the default color red
+ 261:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_green: the default color green
+ 262:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_default_blue: the default color blue
+ 263:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_acf1: LAYER_ACF1_SA,LAYER_ACF1_PASA
+ 264:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_acf2: LAYER_ACF2_SA,LAYER_ACF2_PASA
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_bufaddr: frame buffer base address
+ 266:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_buf_stride_offset: frame buffer stride offset
+ 267:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_line_length: frame line length
+ 268:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_frame_total_line_number: frame total line number
+ 269:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 270:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 271:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 272:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_layer_init(uint32_t layerx, tli_layer_parameter_struct *layer_struct)
+ 273:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 472              		.loc 1 273 1 is_stmt 1 view -0
+ 473              		.cfi_startproc
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 0, uses_anonymous_args = 0
+ 476              		@ link register save eliminated.
+ 477              		.loc 1 273 1 is_stmt 0 view .LVU145
+ 478 0000 10B4     		push	{r4}
+ 479              	.LCFI3:
+ 480              		.cfi_def_cfa_offset 4
+ 481              		.cfi_offset 4, -4
+ 274:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer window horizontal position */
+ARM GAS  /tmp/ccAKfcw9.s 			page 14
+
+
+ 275:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxHPOS(layerx) &= ~(TLI_LxHPOS_WLP | (TLI_LxHPOS_WRP));
+ 482              		.loc 1 275 5 is_stmt 1 view .LVU146
+ 483              		.loc 1 275 24 is_stmt 0 view .LVU147
+ 484 0002 D0F88830 		ldr	r3, [r0, #136]
+ 485 0006 03F0F023 		and	r3, r3, #-268374016
+ 486 000a C0F88830 		str	r3, [r0, #136]
+ 276:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxHPOS(layerx) = (uint32_t)((uint32_t)layer_struct->layer_window_leftpos | ((uint32_t)layer
+ 487              		.loc 1 276 5 is_stmt 1 view .LVU148
+ 488              		.loc 1 276 59 is_stmt 0 view .LVU149
+ 489 000e 4B88     		ldrh	r3, [r1, #2]
+ 490              		.loc 1 276 107 view .LVU150
+ 491 0010 0A88     		ldrh	r2, [r1]
+ 492              		.loc 1 276 26 view .LVU151
+ 493 0012 43EA0243 		orr	r3, r3, r2, lsl #16
+ 494              		.loc 1 276 24 view .LVU152
+ 495 0016 C0F88830 		str	r3, [r0, #136]
+ 277:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer window vertical position */
+ 278:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxVPOS(layerx) &= ~(TLI_LxVPOS_WTP | (TLI_LxVPOS_WBP));
+ 496              		.loc 1 278 5 is_stmt 1 view .LVU153
+ 497              		.loc 1 278 24 is_stmt 0 view .LVU154
+ 498 001a D0F88C30 		ldr	r3, [r0, #140]
+ 499 001e 03F0F023 		and	r3, r3, #-268374016
+ 500 0022 C0F88C30 		str	r3, [r0, #140]
+ 279:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxVPOS(layerx) = (uint32_t)((uint32_t)layer_struct->layer_window_toppos | ((uint32_t)layer_
+ 501              		.loc 1 279 5 is_stmt 1 view .LVU155
+ 502              		.loc 1 279 59 is_stmt 0 view .LVU156
+ 503 0026 CB88     		ldrh	r3, [r1, #6]
+ 504              		.loc 1 279 106 view .LVU157
+ 505 0028 8A88     		ldrh	r2, [r1, #4]
+ 506              		.loc 1 279 26 view .LVU158
+ 507 002a 43EA0243 		orr	r3, r3, r2, lsl #16
+ 508              		.loc 1 279 24 view .LVU159
+ 509 002e C0F88C30 		str	r3, [r0, #140]
+ 280:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer packeted pixel format */
+ 281:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxPPF(layerx) &= ~(TLI_LxPPF_PPF);
+ 510              		.loc 1 281 5 is_stmt 1 view .LVU160
+ 511              		.loc 1 281 23 is_stmt 0 view .LVU161
+ 512 0032 D0F89430 		ldr	r3, [r0, #148]
+ 513 0036 23F00703 		bic	r3, r3, #7
+ 514 003a C0F89430 		str	r3, [r0, #148]
+ 282:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxPPF(layerx) = layer_struct->layer_ppf;
+ 515              		.loc 1 282 5 is_stmt 1 view .LVU162
+ 516              		.loc 1 282 37 is_stmt 0 view .LVU163
+ 517 003e 8B68     		ldr	r3, [r1, #8]
+ 518              		.loc 1 282 23 view .LVU164
+ 519 0040 C0F89430 		str	r3, [r0, #148]
+ 283:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer specified alpha */
+ 284:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxSA(layerx) &= ~(TLI_LxSA_SA);
+ 520              		.loc 1 284 5 is_stmt 1 view .LVU165
+ 521              		.loc 1 284 22 is_stmt 0 view .LVU166
+ 522 0044 D0F89830 		ldr	r3, [r0, #152]
+ 523 0048 23F0FF03 		bic	r3, r3, #255
+ 524 004c C0F89830 		str	r3, [r0, #152]
+ 285:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxSA(layerx) = layer_struct->layer_sa;
+ 525              		.loc 1 285 5 is_stmt 1 view .LVU167
+ 526              		.loc 1 285 36 is_stmt 0 view .LVU168
+ 527 0050 0B7B     		ldrb	r3, [r1, #12]	@ zero_extendqisi2
+ARM GAS  /tmp/ccAKfcw9.s 			page 15
+
+
+ 528              		.loc 1 285 22 view .LVU169
+ 529 0052 C0F89830 		str	r3, [r0, #152]
+ 286:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer default color */
+ 287:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxDC(layerx) &= ~(TLI_LxDC_DCB | (TLI_LxDC_DCG) | (TLI_LxDC_DCR) | (TLI_LxDC_DCA));
+ 530              		.loc 1 287 5 is_stmt 1 view .LVU170
+ 531              		.loc 1 287 22 is_stmt 0 view .LVU171
+ 532 0056 D0F89C30 		ldr	r3, [r0, #156]
+ 533 005a 0022     		movs	r2, #0
+ 534 005c C0F89C20 		str	r2, [r0, #156]
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxDC(layerx) = (uint32_t)((uint32_t)layer_struct->layer_default_blue | ((uint32_t)layer_str
+ 535              		.loc 1 288 5 is_stmt 1 view .LVU172
+ 536              		.loc 1 288 57 is_stmt 0 view .LVU173
+ 537 0060 0B7C     		ldrb	r3, [r1, #16]	@ zero_extendqisi2
+ 538              		.loc 1 288 103 view .LVU174
+ 539 0062 91F80FC0 		ldrb	ip, [r1, #15]	@ zero_extendqisi2
+ 540              		.loc 1 288 78 view .LVU175
+ 541 0066 43EA0C23 		orr	r3, r3, ip, lsl #8
+ 289:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                   | ((uint32_t)layer_struct->layer_default_red << 16U)
+ 542              		.loc 1 289 60 view .LVU176
+ 543 006a 91F80EC0 		ldrb	ip, [r1, #14]	@ zero_extendqisi2
+ 544              		.loc 1 289 35 view .LVU177
+ 545 006e 43EA0C43 		orr	r3, r3, ip, lsl #16
+ 290:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                   | ((uint32_t)layer_struct->layer_default_alpha << 24U));
+ 546              		.loc 1 290 60 view .LVU178
+ 547 0072 91F80DC0 		ldrb	ip, [r1, #13]	@ zero_extendqisi2
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxDC(layerx) = (uint32_t)((uint32_t)layer_struct->layer_default_blue | ((uint32_t)layer_str
+ 548              		.loc 1 288 24 view .LVU179
+ 549 0076 43EA0C63 		orr	r3, r3, ip, lsl #24
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxDC(layerx) = (uint32_t)((uint32_t)layer_struct->layer_default_blue | ((uint32_t)layer_str
+ 550              		.loc 1 288 22 view .LVU180
+ 551 007a C0F89C30 		str	r3, [r0, #156]
+ 291:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 292:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer alpha calculation factors */
+ 293:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxBLEND(layerx) &= ~(TLI_LxBLEND_ACF2 | (TLI_LxBLEND_ACF1));
+ 552              		.loc 1 293 5 is_stmt 1 view .LVU181
+ 553              		.loc 1 293 25 is_stmt 0 view .LVU182
+ 554 007e D0F8A030 		ldr	r3, [r0, #160]
+ 555 0082 23F4E063 		bic	r3, r3, #1792
+ 556 0086 23F00703 		bic	r3, r3, #7
+ 557 008a C0F8A030 		str	r3, [r0, #160]
+ 294:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxBLEND(layerx) = ((layer_struct->layer_acf2) | (layer_struct->layer_acf1));
+ 558              		.loc 1 294 5 is_stmt 1 view .LVU183
+ 559              		.loc 1 294 41 is_stmt 0 view .LVU184
+ 560 008e 8B69     		ldr	r3, [r1, #24]
+ 561              		.loc 1 294 55 view .LVU185
+ 562 0090 4C69     		ldr	r4, [r1, #20]
+ 563 0092 2343     		orrs	r3, r3, r4
+ 564              		.loc 1 294 25 view .LVU186
+ 565 0094 C0F8A030 		str	r3, [r0, #160]
+ 295:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer frame buffer base address */
+ 296:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFBADDR(layerx) &= ~(TLI_LxFBADDR_FBADD);
+ 566              		.loc 1 296 5 is_stmt 1 view .LVU187
+ 567              		.loc 1 296 26 is_stmt 0 view .LVU188
+ 568 0098 D0F8AC30 		ldr	r3, [r0, #172]
+ 569 009c C0F8AC20 		str	r2, [r0, #172]
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFBADDR(layerx) = (layer_struct->layer_frame_bufaddr);
+ 570              		.loc 1 297 5 is_stmt 1 view .LVU189
+ARM GAS  /tmp/ccAKfcw9.s 			page 16
+
+
+ 571              		.loc 1 297 41 is_stmt 0 view .LVU190
+ 572 00a0 CB69     		ldr	r3, [r1, #28]
+ 573              		.loc 1 297 26 view .LVU191
+ 574 00a2 C0F8AC30 		str	r3, [r0, #172]
+ 298:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer frame line length */
+ 299:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFLLEN(layerx) &= ~(TLI_LxFLLEN_FLL | (TLI_LxFLLEN_STDOFF));
+ 575              		.loc 1 299 5 is_stmt 1 view .LVU192
+ 576              		.loc 1 299 25 is_stmt 0 view .LVU193
+ 577 00a6 D0F8B030 		ldr	r3, [r0, #176]
+ 578 00aa 03F0C023 		and	r3, r3, #-1073692672
+ 579 00ae C0F8B030 		str	r3, [r0, #176]
+ 300:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFLLEN(layerx) = (uint32_t)((uint32_t)layer_struct->layer_frame_line_length | ((uint32_t)l
+ 580              		.loc 1 300 5 is_stmt 1 view .LVU194
+ 581              		.loc 1 300 60 is_stmt 0 view .LVU195
+ 582 00b2 4B8C     		ldrh	r3, [r1, #34]
+ 583              		.loc 1 300 111 view .LVU196
+ 584 00b4 0A8C     		ldrh	r2, [r1, #32]
+ 585              		.loc 1 300 27 view .LVU197
+ 586 00b6 43EA0243 		orr	r3, r3, r2, lsl #16
+ 587              		.loc 1 300 25 view .LVU198
+ 588 00ba C0F8B030 		str	r3, [r0, #176]
+ 301:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure layer frame total line number */
+ 302:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFTLN(layerx) &= ~(TLI_LxFTLN_FTLN);
+ 589              		.loc 1 302 5 is_stmt 1 view .LVU199
+ 590              		.loc 1 302 24 is_stmt 0 view .LVU200
+ 591 00be D0F8B430 		ldr	r3, [r0, #180]
+ 592 00c2 23F4FF63 		bic	r3, r3, #2040
+ 593 00c6 23F00703 		bic	r3, r3, #7
+ 594 00ca C0F8B430 		str	r3, [r0, #180]
+ 303:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxFTLN(layerx) = (uint32_t)(layer_struct->layer_frame_total_line_number);
+ 595              		.loc 1 303 5 is_stmt 1 view .LVU201
+ 596              		.loc 1 303 49 is_stmt 0 view .LVU202
+ 597 00ce 8B8C     		ldrh	r3, [r1, #36]
+ 598              		.loc 1 303 24 view .LVU203
+ 599 00d0 C0F8B430 		str	r3, [r0, #180]
+ 304:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 305:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 600              		.loc 1 305 1 view .LVU204
+ 601 00d4 5DF8044B 		ldr	r4, [sp], #4
+ 602              	.LCFI4:
+ 603              		.cfi_restore 4
+ 604              		.cfi_def_cfa_offset 0
+ 605 00d8 7047     		bx	lr
+ 606              		.cfi_endproc
+ 607              	.LFE124:
+ 609              		.section	.text.tli_layer_window_offset_modify,"ax",%progbits
+ 610              		.align	1
+ 611              		.global	tli_layer_window_offset_modify
+ 612              		.syntax unified
+ 613              		.thumb
+ 614              		.thumb_func
+ 616              	tli_layer_window_offset_modify:
+ 617              	.LVL9:
+ 618              	.LFB125:
+ 306:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 307:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 308:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    reconfigure window position
+ARM GAS  /tmp/ccAKfcw9.s 			page 17
+
+
+ 309:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 310:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  offset_x: new horizontal offset
+ 311:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  offset_y: new vertical offset
+ 312:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 313:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 314:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 315:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_layer_window_offset_modify(uint32_t layerx, uint16_t offset_x, uint16_t offset_y)
+ 316:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 619              		.loc 1 316 1 is_stmt 1 view -0
+ 620              		.cfi_startproc
+ 621              		@ args = 0, pretend = 0, frame = 0
+ 622              		@ frame_needed = 0, uses_anonymous_args = 0
+ 623              		@ link register save eliminated.
+ 624              		.loc 1 316 1 is_stmt 0 view .LVU206
+ 625 0000 10B4     		push	{r4}
+ 626              	.LCFI5:
+ 627              		.cfi_def_cfa_offset 4
+ 628              		.cfi_offset 4, -4
+ 317:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* configure window start position */
+ 318:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     uint32_t layer_ppf, line_num, hstart, vstart;
+ 629              		.loc 1 318 5 is_stmt 1 view .LVU207
+ 319:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     uint32_t line_length = 0U;
+ 630              		.loc 1 319 5 view .LVU208
+ 631              	.LVL10:
+ 320:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxHPOS(layerx) &= ~(TLI_LxHPOS_WLP | (TLI_LxHPOS_WRP));
+ 632              		.loc 1 320 5 view .LVU209
+ 633              		.loc 1 320 24 is_stmt 0 view .LVU210
+ 634 0002 D0F88830 		ldr	r3, [r0, #136]
+ 635 0006 03F0F023 		and	r3, r3, #-268374016
+ 636 000a C0F88830 		str	r3, [r0, #136]
+ 321:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxVPOS(layerx) &= ~(TLI_LxVPOS_WTP | (TLI_LxVPOS_WBP));
+ 637              		.loc 1 321 5 is_stmt 1 view .LVU211
+ 638              		.loc 1 321 24 is_stmt 0 view .LVU212
+ 639 000e D0F88C30 		ldr	r3, [r0, #140]
+ 640 0012 03F0F023 		and	r3, r3, #-268374016
+ 641 0016 C0F88C30 		str	r3, [r0, #140]
+ 322:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     hstart = (uint32_t)offset_x + (((TLI_BPSZ & TLI_BPSZ_HBPSZ) >> 16U) + 1U);
+ 642              		.loc 1 322 5 is_stmt 1 view .LVU213
+ 643              		.loc 1 322 38 is_stmt 0 view .LVU214
+ 644 001a 264C     		ldr	r4, .L37
+ 645 001c D4F80C38 		ldr	r3, [r4, #2060]
+ 646              		.loc 1 322 65 view .LVU215
+ 647 0020 C3F30B43 		ubfx	r3, r3, #16, #12
+ 648              		.loc 1 322 33 view .LVU216
+ 649 0024 1944     		add	r1, r1, r3
+ 650              	.LVL11:
+ 651              		.loc 1 322 12 view .LVU217
+ 652 0026 0131     		adds	r1, r1, #1
+ 653              	.LVL12:
+ 323:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     vstart = (uint32_t)offset_y + ((TLI_BPSZ & TLI_BPSZ_VBPSZ) + 1U);
+ 654              		.loc 1 323 5 is_stmt 1 view .LVU218
+ 655              		.loc 1 323 37 is_stmt 0 view .LVU219
+ 656 0028 D4F80C38 		ldr	r3, [r4, #2060]
+ 657              		.loc 1 323 46 view .LVU220
+ 658 002c C3F30B03 		ubfx	r3, r3, #0, #12
+ 659              		.loc 1 323 33 view .LVU221
+ 660 0030 1A44     		add	r2, r2, r3
+ARM GAS  /tmp/ccAKfcw9.s 			page 18
+
+
+ 661              	.LVL13:
+ 662              		.loc 1 323 12 view .LVU222
+ 663 0032 0132     		adds	r2, r2, #1
+ 664              	.LVL14:
+ 324:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     line_num = (TLI_LxFTLN(layerx) & TLI_LxFTLN_FTLN);
+ 665              		.loc 1 324 5 is_stmt 1 view .LVU223
+ 666              		.loc 1 324 17 is_stmt 0 view .LVU224
+ 667 0034 D0F8B430 		ldr	r3, [r0, #180]
+ 668              		.loc 1 324 14 view .LVU225
+ 669 0038 C3F30A0C 		ubfx	ip, r3, #0, #11
+ 670              	.LVL15:
+ 325:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     layer_ppf = (TLI_LxPPF(layerx) & TLI_LxPPF_PPF);
+ 671              		.loc 1 325 5 is_stmt 1 view .LVU226
+ 672              		.loc 1 325 18 is_stmt 0 view .LVU227
+ 673 003c D0F89430 		ldr	r3, [r0, #148]
+ 674              		.loc 1 325 15 view .LVU228
+ 675 0040 03F00703 		and	r3, r3, #7
+ 676              	.LVL16:
+ 326:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* the bytes of a line equal TLI_LxFLLEN_FLL bits value minus 3 */
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     switch(layer_ppf) {
+ 677              		.loc 1 327 5 is_stmt 1 view .LVU229
+ 678 0044 072B     		cmp	r3, #7
+ 679 0046 32D8     		bhi	.L35
+ 680 0048 DFE803F0 		tbb	[pc, r3]
+ 681              	.L31:
+ 682 004c 04       		.byte	(.L34-.L31)/2
+ 683 004d 1A       		.byte	(.L33-.L31)/2
+ 684 004e 24       		.byte	(.L30-.L31)/2
+ 685 004f 24       		.byte	(.L30-.L31)/2
+ 686 0050 24       		.byte	(.L30-.L31)/2
+ 687 0051 2B       		.byte	(.L32-.L31)/2
+ 688 0052 2B       		.byte	(.L32-.L31)/2
+ 689 0053 24       		.byte	(.L30-.L31)/2
+ 690              		.p2align 1
+ 691              	.L34:
+ 328:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_ARGB8888:
+ 329:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* each pixel includes 4bytes, when pixel format is ARGB8888 */
+ 330:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         line_length = (((TLI_LxFLLEN(layerx) & TLI_LxFLLEN_FLL) - 3U) / 4U);
+ 692              		.loc 1 330 9 view .LVU230
+ 693              		.loc 1 330 26 is_stmt 0 view .LVU231
+ 694 0054 D0F8B030 		ldr	r3, [r0, #176]
+ 695              	.LVL17:
+ 696              		.loc 1 330 46 view .LVU232
+ 697 0058 C3F30D03 		ubfx	r3, r3, #0, #14
+ 698              		.loc 1 330 65 view .LVU233
+ 699 005c 033B     		subs	r3, r3, #3
+ 700              		.loc 1 330 21 view .LVU234
+ 701 005e 9B08     		lsrs	r3, r3, #2
+ 702              	.LVL18:
+ 331:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 703              		.loc 1 331 9 is_stmt 1 view .LVU235
+ 704              	.L29:
+ 332:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_RGB888:
+ 333:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* each pixel includes 3bytes, when pixel format is RGB888 */
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         line_length = (((TLI_LxFLLEN(layerx) & TLI_LxFLLEN_FLL) - 3U) / 3U);
+ 335:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 336:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_RGB565:
+ARM GAS  /tmp/ccAKfcw9.s 			page 19
+
+
+ 337:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_ARGB1555:
+ 338:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_ARGB4444:
+ 339:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_AL88:
+ 340:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* each pixel includes 2bytes, when pixel format is RGB565,ARG1555,ARGB4444 or AL88 */
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         line_length = (((TLI_LxFLLEN(layerx) & TLI_LxFLLEN_FLL) - 3U) / 2U);
+ 342:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 343:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_L8:
+ 344:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_AL44:
+ 345:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         /* each pixel includes 1byte, when pixel format is L8 or AL44 */
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         line_length = (((TLI_LxFLLEN(layerx) & TLI_LxFLLEN_FLL) - 3U));
+ 347:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 348:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     default:
+ 349:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 350:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 351:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* reconfigure window position */
+ 352:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxHPOS(layerx) = (hstart | ((hstart + line_length - 1U) << 16U));
+ 705              		.loc 1 352 5 view .LVU236
+ 706              		.loc 1 352 45 is_stmt 0 view .LVU237
+ 707 0060 0B44     		add	r3, r3, r1
+ 708              	.LVL19:
+ 709              		.loc 1 352 59 view .LVU238
+ 710 0062 013B     		subs	r3, r3, #1
+ 711              		.loc 1 352 34 view .LVU239
+ 712 0064 41EA0341 		orr	r1, r1, r3, lsl #16
+ 713              	.LVL20:
+ 714              		.loc 1 352 24 view .LVU240
+ 715 0068 C0F88810 		str	r1, [r0, #136]
+ 353:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxVPOS(layerx) = (vstart | ((vstart + line_num - 1U) << 16U));
+ 716              		.loc 1 353 5 is_stmt 1 view .LVU241
+ 717              		.loc 1 353 45 is_stmt 0 view .LVU242
+ 718 006c 9444     		add	ip, ip, r2
+ 719              	.LVL21:
+ 720              		.loc 1 353 56 view .LVU243
+ 721 006e 0CF1FF3C 		add	ip, ip, #-1
+ 722              		.loc 1 353 34 view .LVU244
+ 723 0072 42EA0C42 		orr	r2, r2, ip, lsl #16
+ 724              	.LVL22:
+ 725              		.loc 1 353 24 view .LVU245
+ 726 0076 C0F88C20 		str	r2, [r0, #140]
+ 354:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 727              		.loc 1 354 1 view .LVU246
+ 728 007a 5DF8044B 		ldr	r4, [sp], #4
+ 729              	.LCFI6:
+ 730              		.cfi_remember_state
+ 731              		.cfi_restore 4
+ 732              		.cfi_def_cfa_offset 0
+ 733 007e 7047     		bx	lr
+ 734              	.LVL23:
+ 735              	.L33:
+ 736              	.LCFI7:
+ 737              		.cfi_restore_state
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 738              		.loc 1 334 9 is_stmt 1 view .LVU247
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 739              		.loc 1 334 26 is_stmt 0 view .LVU248
+ 740 0080 D0F8B030 		ldr	r3, [r0, #176]
+ 741              	.LVL24:
+ARM GAS  /tmp/ccAKfcw9.s 			page 20
+
+
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 742              		.loc 1 334 46 view .LVU249
+ 743 0084 C3F30D03 		ubfx	r3, r3, #0, #14
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 744              		.loc 1 334 65 view .LVU250
+ 745 0088 033B     		subs	r3, r3, #3
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 746              		.loc 1 334 21 view .LVU251
+ 747 008a 0B4C     		ldr	r4, .L37+4
+ 748 008c A4FB0343 		umull	r4, r3, r4, r3
+ 749 0090 5B08     		lsrs	r3, r3, #1
+ 750              	.LVL25:
+ 335:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_RGB565:
+ 751              		.loc 1 335 9 is_stmt 1 view .LVU252
+ 752 0092 E5E7     		b	.L29
+ 753              	.LVL26:
+ 754              	.L30:
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 755              		.loc 1 341 9 view .LVU253
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 756              		.loc 1 341 26 is_stmt 0 view .LVU254
+ 757 0094 D0F8B030 		ldr	r3, [r0, #176]
+ 758              	.LVL27:
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 759              		.loc 1 341 46 view .LVU255
+ 760 0098 C3F30D03 		ubfx	r3, r3, #0, #14
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 761              		.loc 1 341 65 view .LVU256
+ 762 009c 033B     		subs	r3, r3, #3
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 763              		.loc 1 341 21 view .LVU257
+ 764 009e 5B08     		lsrs	r3, r3, #1
+ 765              	.LVL28:
+ 342:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_L8:
+ 766              		.loc 1 342 9 is_stmt 1 view .LVU258
+ 767 00a0 DEE7     		b	.L29
+ 768              	.LVL29:
+ 769              	.L32:
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 770              		.loc 1 346 9 view .LVU259
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 771              		.loc 1 346 26 is_stmt 0 view .LVU260
+ 772 00a2 D0F8B030 		ldr	r3, [r0, #176]
+ 773              	.LVL30:
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 774              		.loc 1 346 46 view .LVU261
+ 775 00a6 C3F30D03 		ubfx	r3, r3, #0, #14
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         break;
+ 776              		.loc 1 346 21 view .LVU262
+ 777 00aa 033B     		subs	r3, r3, #3
+ 778              	.LVL31:
+ 347:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     default:
+ 779              		.loc 1 347 9 is_stmt 1 view .LVU263
+ 780 00ac D8E7     		b	.L29
+ 781              	.LVL32:
+ 782              	.L35:
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_ARGB8888:
+ARM GAS  /tmp/ccAKfcw9.s 			page 21
+
+
+ 783              		.loc 1 327 5 is_stmt 0 view .LVU264
+ 784 00ae 0023     		movs	r3, #0
+ 785              	.LVL33:
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     case LAYER_PPF_ARGB8888:
+ 786              		.loc 1 327 5 view .LVU265
+ 787 00b0 D6E7     		b	.L29
+ 788              	.L38:
+ 789 00b2 00BF     		.align	2
+ 790              	.L37:
+ 791 00b4 00600140 		.word	1073831936
+ 792 00b8 ABAAAAAA 		.word	-1431655765
+ 793              		.cfi_endproc
+ 794              	.LFE125:
+ 796              		.section	.text.tli_lut_struct_para_init,"ax",%progbits
+ 797              		.align	1
+ 798              		.global	tli_lut_struct_para_init
+ 799              		.syntax unified
+ 800              		.thumb
+ 801              		.thumb_func
+ 803              	tli_lut_struct_para_init:
+ 804              	.LVL34:
+ 805              	.LFB126:
+ 355:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 356:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 357:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize the parameters of TLI layer LUT structure with the default values, it is s
+ 358:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 that call this function after a tli_layer_lut_parameter_struct structure is defined
+ 359:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+ 360:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] lut_struct: TLI layer LUT parameter struct
+ 361:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_table_addr: look up table write address
+ 362:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_red: red channel of a LUT entry
+ 363:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_green: green channel of a LUT entry
+ 364:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_blue: blue channel of a LUT entry
+ 365:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 366:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 367:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_lut_struct_para_init(tli_layer_lut_parameter_struct *lut_struct)
+ 368:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 806              		.loc 1 368 1 is_stmt 1 view -0
+ 807              		.cfi_startproc
+ 808              		@ args = 0, pretend = 0, frame = 0
+ 809              		@ frame_needed = 0, uses_anonymous_args = 0
+ 810              		@ link register save eliminated.
+ 369:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* initialize the struct parameters with default values */
+ 370:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     lut_struct->layer_table_addr = TLI_DEFAULT_VALUE;
+ 811              		.loc 1 370 5 view .LVU267
+ 812              		.loc 1 370 34 is_stmt 0 view .LVU268
+ 813 0000 0023     		movs	r3, #0
+ 814 0002 0360     		str	r3, [r0]
+ 371:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     lut_struct->layer_lut_channel_red = TLI_DEFAULT_VALUE;
+ 815              		.loc 1 371 5 is_stmt 1 view .LVU269
+ 816              		.loc 1 371 39 is_stmt 0 view .LVU270
+ 817 0004 0371     		strb	r3, [r0, #4]
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     lut_struct->layer_lut_channel_green = TLI_DEFAULT_VALUE;
+ 818              		.loc 1 372 5 is_stmt 1 view .LVU271
+ 819              		.loc 1 372 41 is_stmt 0 view .LVU272
+ 820 0006 4371     		strb	r3, [r0, #5]
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     lut_struct->layer_lut_channel_blue = TLI_DEFAULT_VALUE;
+ 821              		.loc 1 373 5 is_stmt 1 view .LVU273
+ARM GAS  /tmp/ccAKfcw9.s 			page 22
+
+
+ 822              		.loc 1 373 40 is_stmt 0 view .LVU274
+ 823 0008 8371     		strb	r3, [r0, #6]
+ 374:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 824              		.loc 1 374 1 view .LVU275
+ 825 000a 7047     		bx	lr
+ 826              		.cfi_endproc
+ 827              	.LFE126:
+ 829              		.section	.text.tli_lut_init,"ax",%progbits
+ 830              		.align	1
+ 831              		.global	tli_lut_init
+ 832              		.syntax unified
+ 833              		.thumb
+ 834              		.thumb_func
+ 836              	tli_lut_init:
+ 837              	.LVL35:
+ 838              	.LFB127:
+ 375:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 376:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 377:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize TLI layer LUT
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  lut_struct: TLI layer LUT parameter struct
+ 380:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_table_addr: look up table write address
+ 381:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_red: red channel of a LUT entry
+ 382:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_green: green channel of a LUT entry
+ 383:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                   layer_lut_channel_blue: blue channel of a LUT entry
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 386:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 387:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_lut_init(uint32_t layerx, tli_layer_lut_parameter_struct *lut_struct)
+ 388:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 839              		.loc 1 388 1 is_stmt 1 view -0
+ 840              		.cfi_startproc
+ 841              		@ args = 0, pretend = 0, frame = 0
+ 842              		@ frame_needed = 0, uses_anonymous_args = 0
+ 843              		@ link register save eliminated.
+ 389:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxLUT(layerx) = (uint32_t)(((uint32_t)lut_struct->layer_lut_channel_blue) | ((uint32_t)lut_
+ 844              		.loc 1 389 5 view .LVU277
+ 845              		.loc 1 389 57 is_stmt 0 view .LVU278
+ 846 0000 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+ 847              		.loc 1 389 106 view .LVU279
+ 848 0002 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+ 849              		.loc 1 389 83 view .LVU280
+ 850 0004 43EA0223 		orr	r3, r3, r2, lsl #8
+ 390:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                    | ((uint32_t)lut_struct->layer_lut_channel_red << 16U
+ 851              		.loc 1 390 59 view .LVU281
+ 852 0008 91F804C0 		ldrb	ip, [r1, #4]	@ zero_extendqisi2
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                                       | ((uint32_t)lut_struct->layer_table_addr << 24U)));
+ 853              		.loc 1 391 62 view .LVU282
+ 854 000c 0A68     		ldr	r2, [r1]
+ 855              		.loc 1 391 81 view .LVU283
+ 856 000e 1206     		lsls	r2, r2, #24
+ 857              		.loc 1 391 39 view .LVU284
+ 858 0010 42EA0C42 		orr	r2, r2, ip, lsl #16
+ 389:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxLUT(layerx) = (uint32_t)(((uint32_t)lut_struct->layer_lut_channel_blue) | ((uint32_t)lut_
+ 859              		.loc 1 389 25 view .LVU285
+ 860 0014 1343     		orrs	r3, r3, r2
+ 389:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxLUT(layerx) = (uint32_t)(((uint32_t)lut_struct->layer_lut_channel_blue) | ((uint32_t)lut_
+ARM GAS  /tmp/ccAKfcw9.s 			page 23
+
+
+ 861              		.loc 1 389 23 view .LVU286
+ 862 0016 C0F8C430 		str	r3, [r0, #196]
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 863              		.loc 1 392 1 view .LVU287
+ 864 001a 7047     		bx	lr
+ 865              		.cfi_endproc
+ 866              	.LFE127:
+ 868              		.section	.text.tli_color_key_init,"ax",%progbits
+ 869              		.align	1
+ 870              		.global	tli_color_key_init
+ 871              		.syntax unified
+ 872              		.thumb
+ 873              		.thumb_func
+ 875              	tli_color_key_init:
+ 876              	.LVL36:
+ 877              	.LFB128:
+ 393:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 394:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 395:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    initialize TLI layer color key
+ 396:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 397:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  redkey: color key red
+ 398:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  greenkey: color key green
+ 399:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  bluekey: color key blue
+ 400:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 401:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 402:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 403:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_color_key_init(uint32_t layerx, uint8_t redkey, uint8_t greenkey, uint8_t bluekey)
+ 404:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 878              		.loc 1 404 1 is_stmt 1 view -0
+ 879              		.cfi_startproc
+ 880              		@ args = 0, pretend = 0, frame = 0
+ 881              		@ frame_needed = 0, uses_anonymous_args = 0
+ 882              		@ link register save eliminated.
+ 405:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCKEY(layerx) = (((uint32_t)bluekey) | ((uint32_t)greenkey << 8U) | ((uint32_t)redkey << 1
+ 883              		.loc 1 405 5 view .LVU289
+ 884              		.loc 1 405 47 is_stmt 0 view .LVU290
+ 885 0000 43EA0223 		orr	r3, r3, r2, lsl #8
+ 886              	.LVL37:
+ 887              		.loc 1 405 76 view .LVU291
+ 888 0004 43EA0143 		orr	r3, r3, r1, lsl #16
+ 889              		.loc 1 405 24 view .LVU292
+ 890 0008 C0F89030 		str	r3, [r0, #144]
+ 406:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 891              		.loc 1 406 1 view .LVU293
+ 892 000c 7047     		bx	lr
+ 893              		.cfi_endproc
+ 894              	.LFE128:
+ 896              		.section	.text.tli_layer_enable,"ax",%progbits
+ 897              		.align	1
+ 898              		.global	tli_layer_enable
+ 899              		.syntax unified
+ 900              		.thumb
+ 901              		.thumb_func
+ 903              	tli_layer_enable:
+ 904              	.LVL38:
+ 905              	.LFB129:
+ 407:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ARM GAS  /tmp/ccAKfcw9.s 			page 24
+
+
+ 408:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 409:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    enable TLI layer
+ 410:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 411:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 412:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 413:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 414:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_layer_enable(uint32_t layerx)
+ 415:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 906              		.loc 1 415 1 is_stmt 1 view -0
+ 907              		.cfi_startproc
+ 908              		@ args = 0, pretend = 0, frame = 0
+ 909              		@ frame_needed = 0, uses_anonymous_args = 0
+ 910              		@ link register save eliminated.
+ 416:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) |= TLI_LxCTL_LEN;
+ 911              		.loc 1 416 5 view .LVU295
+ 912              		.loc 1 416 23 is_stmt 0 view .LVU296
+ 913 0000 D0F88430 		ldr	r3, [r0, #132]
+ 914 0004 43F00103 		orr	r3, r3, #1
+ 915 0008 C0F88430 		str	r3, [r0, #132]
+ 417:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 916              		.loc 1 417 1 view .LVU297
+ 917 000c 7047     		bx	lr
+ 918              		.cfi_endproc
+ 919              	.LFE129:
+ 921              		.section	.text.tli_layer_disable,"ax",%progbits
+ 922              		.align	1
+ 923              		.global	tli_layer_disable
+ 924              		.syntax unified
+ 925              		.thumb
+ 926              		.thumb_func
+ 928              	tli_layer_disable:
+ 929              	.LVL39:
+ 930              	.LFB130:
+ 418:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 419:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 420:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    disable TLI layer
+ 421:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 422:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 423:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 424:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 425:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_layer_disable(uint32_t layerx)
+ 426:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 931              		.loc 1 426 1 is_stmt 1 view -0
+ 932              		.cfi_startproc
+ 933              		@ args = 0, pretend = 0, frame = 0
+ 934              		@ frame_needed = 0, uses_anonymous_args = 0
+ 935              		@ link register save eliminated.
+ 427:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) &= ~(TLI_LxCTL_LEN);
+ 936              		.loc 1 427 5 view .LVU299
+ 937              		.loc 1 427 23 is_stmt 0 view .LVU300
+ 938 0000 D0F88430 		ldr	r3, [r0, #132]
+ 939 0004 23F00103 		bic	r3, r3, #1
+ 940 0008 C0F88430 		str	r3, [r0, #132]
+ 428:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 941              		.loc 1 428 1 view .LVU301
+ 942 000c 7047     		bx	lr
+ 943              		.cfi_endproc
+ARM GAS  /tmp/ccAKfcw9.s 			page 25
+
+
+ 944              	.LFE130:
+ 946              		.section	.text.tli_color_key_enable,"ax",%progbits
+ 947              		.align	1
+ 948              		.global	tli_color_key_enable
+ 949              		.syntax unified
+ 950              		.thumb
+ 951              		.thumb_func
+ 953              	tli_color_key_enable:
+ 954              	.LVL40:
+ 955              	.LFB131:
+ 429:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 430:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 431:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    enable TLI layer color keying
+ 432:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 433:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 434:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 435:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 436:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_color_key_enable(uint32_t layerx)
+ 437:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 956              		.loc 1 437 1 is_stmt 1 view -0
+ 957              		.cfi_startproc
+ 958              		@ args = 0, pretend = 0, frame = 0
+ 959              		@ frame_needed = 0, uses_anonymous_args = 0
+ 960              		@ link register save eliminated.
+ 438:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) |= TLI_LxCTL_CKEYEN;
+ 961              		.loc 1 438 5 view .LVU303
+ 962              		.loc 1 438 23 is_stmt 0 view .LVU304
+ 963 0000 D0F88430 		ldr	r3, [r0, #132]
+ 964 0004 43F00203 		orr	r3, r3, #2
+ 965 0008 C0F88430 		str	r3, [r0, #132]
+ 439:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 966              		.loc 1 439 1 view .LVU305
+ 967 000c 7047     		bx	lr
+ 968              		.cfi_endproc
+ 969              	.LFE131:
+ 971              		.section	.text.tli_color_key_disable,"ax",%progbits
+ 972              		.align	1
+ 973              		.global	tli_color_key_disable
+ 974              		.syntax unified
+ 975              		.thumb
+ 976              		.thumb_func
+ 978              	tli_color_key_disable:
+ 979              	.LVL41:
+ 980              	.LFB132:
+ 440:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 441:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 442:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    disable TLI layer color keying
+ 443:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 444:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 445:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 447:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_color_key_disable(uint32_t layerx)
+ 448:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 981              		.loc 1 448 1 is_stmt 1 view -0
+ 982              		.cfi_startproc
+ 983              		@ args = 0, pretend = 0, frame = 0
+ 984              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccAKfcw9.s 			page 26
+
+
+ 985              		@ link register save eliminated.
+ 449:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) &= ~(TLI_LxCTL_CKEYEN);
+ 986              		.loc 1 449 5 view .LVU307
+ 987              		.loc 1 449 23 is_stmt 0 view .LVU308
+ 988 0000 D0F88430 		ldr	r3, [r0, #132]
+ 989 0004 23F00203 		bic	r3, r3, #2
+ 990 0008 C0F88430 		str	r3, [r0, #132]
+ 450:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 991              		.loc 1 450 1 view .LVU309
+ 992 000c 7047     		bx	lr
+ 993              		.cfi_endproc
+ 994              	.LFE132:
+ 996              		.section	.text.tli_lut_enable,"ax",%progbits
+ 997              		.align	1
+ 998              		.global	tli_lut_enable
+ 999              		.syntax unified
+ 1000              		.thumb
+ 1001              		.thumb_func
+ 1003              	tli_lut_enable:
+ 1004              	.LVL42:
+ 1005              	.LFB133:
+ 451:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 452:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 453:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    enable TLI layer LUT
+ 454:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 455:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 456:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 457:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 458:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_lut_enable(uint32_t layerx)
+ 459:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1006              		.loc 1 459 1 is_stmt 1 view -0
+ 1007              		.cfi_startproc
+ 1008              		@ args = 0, pretend = 0, frame = 0
+ 1009              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1010              		@ link register save eliminated.
+ 460:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) |= TLI_LxCTL_LUTEN;
+ 1011              		.loc 1 460 5 view .LVU311
+ 1012              		.loc 1 460 23 is_stmt 0 view .LVU312
+ 1013 0000 D0F88430 		ldr	r3, [r0, #132]
+ 1014 0004 43F01003 		orr	r3, r3, #16
+ 1015 0008 C0F88430 		str	r3, [r0, #132]
+ 461:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1016              		.loc 1 461 1 view .LVU313
+ 1017 000c 7047     		bx	lr
+ 1018              		.cfi_endproc
+ 1019              	.LFE133:
+ 1021              		.section	.text.tli_lut_disable,"ax",%progbits
+ 1022              		.align	1
+ 1023              		.global	tli_lut_disable
+ 1024              		.syntax unified
+ 1025              		.thumb
+ 1026              		.thumb_func
+ 1028              	tli_lut_disable:
+ 1029              	.LVL43:
+ 1030              	.LFB134:
+ 462:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 463:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ARM GAS  /tmp/ccAKfcw9.s 			page 27
+
+
+ 464:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    disable TLI layer LUT
+ 465:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  layerx: LAYERx(x=0,1)
+ 466:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 467:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 468:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 469:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_lut_disable(uint32_t layerx)
+ 470:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1031              		.loc 1 470 1 is_stmt 1 view -0
+ 1032              		.cfi_startproc
+ 1033              		@ args = 0, pretend = 0, frame = 0
+ 1034              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1035              		@ link register save eliminated.
+ 471:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LxCTL(layerx) &= ~(TLI_LxCTL_LUTEN);
+ 1036              		.loc 1 471 5 view .LVU315
+ 1037              		.loc 1 471 23 is_stmt 0 view .LVU316
+ 1038 0000 D0F88430 		ldr	r3, [r0, #132]
+ 1039 0004 23F01003 		bic	r3, r3, #16
+ 1040 0008 C0F88430 		str	r3, [r0, #132]
+ 472:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1041              		.loc 1 472 1 view .LVU317
+ 1042 000c 7047     		bx	lr
+ 1043              		.cfi_endproc
+ 1044              	.LFE134:
+ 1046              		.section	.text.tli_line_mark_set,"ax",%progbits
+ 1047              		.align	1
+ 1048              		.global	tli_line_mark_set
+ 1049              		.syntax unified
+ 1050              		.thumb
+ 1051              		.thumb_func
+ 1053              	tli_line_mark_set:
+ 1054              	.LVL44:
+ 1055              	.LFB135:
+ 473:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 474:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 475:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    set line mark value
+ 476:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  line_num: line number
+ 477:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 478:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 479:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 480:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_line_mark_set(uint16_t line_num)
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1056              		.loc 1 481 1 is_stmt 1 view -0
+ 1057              		.cfi_startproc
+ 1058              		@ args = 0, pretend = 0, frame = 0
+ 1059              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1060              		@ link register save eliminated.
+ 482:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LM &= ~(TLI_LM_LM);
+ 1061              		.loc 1 482 5 view .LVU319
+ 1062              		.loc 1 482 12 is_stmt 0 view .LVU320
+ 1063 0000 054A     		ldr	r2, .L49
+ 1064 0002 D2F84038 		ldr	r3, [r2, #2112]
+ 1065 0006 23F4FF63 		bic	r3, r3, #2040
+ 1066 000a 23F00703 		bic	r3, r3, #7
+ 1067 000e C2F84038 		str	r3, [r2, #2112]
+ 483:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_LM = (uint32_t)line_num;
+ 1068              		.loc 1 483 5 is_stmt 1 view .LVU321
+ 1069              		.loc 1 483 12 is_stmt 0 view .LVU322
+ARM GAS  /tmp/ccAKfcw9.s 			page 28
+
+
+ 1070 0012 C2F84008 		str	r0, [r2, #2112]
+ 484:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1071              		.loc 1 484 1 view .LVU323
+ 1072 0016 7047     		bx	lr
+ 1073              	.L50:
+ 1074              		.align	2
+ 1075              	.L49:
+ 1076 0018 00600140 		.word	1073831936
+ 1077              		.cfi_endproc
+ 1078              	.LFE135:
+ 1080              		.section	.text.tli_current_pos_get,"ax",%progbits
+ 1081              		.align	1
+ 1082              		.global	tli_current_pos_get
+ 1083              		.syntax unified
+ 1084              		.thumb
+ 1085              		.thumb_func
+ 1087              	tli_current_pos_get:
+ 1088              	.LFB136:
+ 485:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 486:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 487:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    get current displayed position
+ 488:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  none
+ 489:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 490:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     position of current pixel
+ 491:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 492:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** uint32_t tli_current_pos_get(void)
+ 493:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1089              		.loc 1 493 1 is_stmt 1 view -0
+ 1090              		.cfi_startproc
+ 1091              		@ args = 0, pretend = 0, frame = 0
+ 1092              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1093              		@ link register save eliminated.
+ 494:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     return TLI_CPPOS;
+ 1094              		.loc 1 494 5 view .LVU325
+ 1095              		.loc 1 494 12 is_stmt 0 view .LVU326
+ 1096 0000 014B     		ldr	r3, .L52
+ 1097 0002 D3F84408 		ldr	r0, [r3, #2116]
+ 495:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1098              		.loc 1 495 1 view .LVU327
+ 1099 0006 7047     		bx	lr
+ 1100              	.L53:
+ 1101              		.align	2
+ 1102              	.L52:
+ 1103 0008 00600140 		.word	1073831936
+ 1104              		.cfi_endproc
+ 1105              	.LFE136:
+ 1107              		.section	.text.tli_interrupt_enable,"ax",%progbits
+ 1108              		.align	1
+ 1109              		.global	tli_interrupt_enable
+ 1110              		.syntax unified
+ 1111              		.thumb
+ 1112              		.thumb_func
+ 1114              	tli_interrupt_enable:
+ 1115              	.LVL45:
+ 1116              	.LFB137:
+ 496:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 497:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ARM GAS  /tmp/ccAKfcw9.s 			page 29
+
+
+ 498:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    enable TLI interrupt
+ 499:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  int_flag: TLI interrupt flags
+ 500:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 one or more parameters can be selected which are shown as below:
+ 501:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_LM: line mark interrupt
+ 502:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FE: FIFO error interrupt
+ 503:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_TE: transaction error interrupt
+ 504:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_LCR: layer configuration reloaded interrupt
+ 505:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 506:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 507:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 508:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_interrupt_enable(uint32_t int_flag)
+ 509:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1117              		.loc 1 509 1 is_stmt 1 view -0
+ 1118              		.cfi_startproc
+ 1119              		@ args = 0, pretend = 0, frame = 0
+ 1120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1121              		@ link register save eliminated.
+ 510:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_INTEN |= (int_flag);
+ 1122              		.loc 1 510 5 view .LVU329
+ 1123              		.loc 1 510 15 is_stmt 0 view .LVU330
+ 1124 0000 034A     		ldr	r2, .L55
+ 1125 0002 D2F83438 		ldr	r3, [r2, #2100]
+ 1126 0006 0343     		orrs	r3, r3, r0
+ 1127 0008 C2F83438 		str	r3, [r2, #2100]
+ 511:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1128              		.loc 1 511 1 view .LVU331
+ 1129 000c 7047     		bx	lr
+ 1130              	.L56:
+ 1131 000e 00BF     		.align	2
+ 1132              	.L55:
+ 1133 0010 00600140 		.word	1073831936
+ 1134              		.cfi_endproc
+ 1135              	.LFE137:
+ 1137              		.section	.text.tli_interrupt_disable,"ax",%progbits
+ 1138              		.align	1
+ 1139              		.global	tli_interrupt_disable
+ 1140              		.syntax unified
+ 1141              		.thumb
+ 1142              		.thumb_func
+ 1144              	tli_interrupt_disable:
+ 1145              	.LVL46:
+ 1146              	.LFB138:
+ 512:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 513:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 514:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    disable TLI interrupt
+ 515:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  int_flag: TLI interrupt flags
+ 516:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 one or more parameters can be selected which are shown as below:
+ 517:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_LM: line mark interrupt
+ 518:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FE: FIFO error interrupt
+ 519:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_TE: transaction error interrupt
+ 520:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_LCR: layer configuration reloaded interrupt
+ 521:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 522:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 523:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 524:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_interrupt_disable(uint32_t int_flag)
+ 525:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1147              		.loc 1 525 1 is_stmt 1 view -0
+ARM GAS  /tmp/ccAKfcw9.s 			page 30
+
+
+ 1148              		.cfi_startproc
+ 1149              		@ args = 0, pretend = 0, frame = 0
+ 1150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1151              		@ link register save eliminated.
+ 526:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_INTEN &= ~(int_flag);
+ 1152              		.loc 1 526 5 view .LVU333
+ 1153              		.loc 1 526 15 is_stmt 0 view .LVU334
+ 1154 0000 034A     		ldr	r2, .L58
+ 1155 0002 D2F83438 		ldr	r3, [r2, #2100]
+ 1156 0006 23EA0003 		bic	r3, r3, r0
+ 1157 000a C2F83438 		str	r3, [r2, #2100]
+ 527:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1158              		.loc 1 527 1 view .LVU335
+ 1159 000e 7047     		bx	lr
+ 1160              	.L59:
+ 1161              		.align	2
+ 1162              	.L58:
+ 1163 0010 00600140 		.word	1073831936
+ 1164              		.cfi_endproc
+ 1165              	.LFE138:
+ 1167              		.section	.text.tli_interrupt_flag_get,"ax",%progbits
+ 1168              		.align	1
+ 1169              		.global	tli_interrupt_flag_get
+ 1170              		.syntax unified
+ 1171              		.thumb
+ 1172              		.thumb_func
+ 1174              	tli_interrupt_flag_get:
+ 1175              	.LVL47:
+ 1176              	.LFB139:
+ 528:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 529:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 530:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    get TLI interrupt flag
+ 531:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  int_flag: TLI interrupt flags
+ 532:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 one or more parameters can be selected which are shown as below:
+ 533:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_LM: line mark interrupt flag
+ 534:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_FE: FIFO error interrupt flag
+ 535:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_TE: transaction error interrupt flag
+ 536:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_LCR: layer configuration reloaded interrupt flag
+ 537:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 538:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     FlagStatus: SET or RESET
+ 539:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 540:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** FlagStatus tli_interrupt_flag_get(uint32_t int_flag)
+ 541:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1177              		.loc 1 541 1 is_stmt 1 view -0
+ 1178              		.cfi_startproc
+ 1179              		@ args = 0, pretend = 0, frame = 0
+ 1180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1181              		@ link register save eliminated.
+ 542:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     uint32_t state;
+ 1182              		.loc 1 542 5 view .LVU337
+ 543:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     state = TLI_INTF;
+ 1183              		.loc 1 543 5 view .LVU338
+ 1184              		.loc 1 543 11 is_stmt 0 view .LVU339
+ 1185 0000 074B     		ldr	r3, .L64
+ 1186 0002 D3F83838 		ldr	r3, [r3, #2104]
+ 1187              	.LVL48:
+ 544:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     if(state & int_flag) {
+ARM GAS  /tmp/ccAKfcw9.s 			page 31
+
+
+ 1188              		.loc 1 544 5 is_stmt 1 view .LVU340
+ 1189              		.loc 1 544 7 is_stmt 0 view .LVU341
+ 1190 0006 0342     		tst	r3, r0
+ 1191 0008 06D0     		beq	.L62
+ 545:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         state = TLI_INTEN;
+ 1192              		.loc 1 545 9 is_stmt 1 view .LVU342
+ 1193              		.loc 1 545 15 is_stmt 0 view .LVU343
+ 1194 000a 054B     		ldr	r3, .L64
+ 1195              	.LVL49:
+ 1196              		.loc 1 545 15 view .LVU344
+ 1197 000c D3F83438 		ldr	r3, [r3, #2100]
+ 1198              	.LVL50:
+ 546:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         if(state & int_flag) {
+ 1199              		.loc 1 546 9 is_stmt 1 view .LVU345
+ 1200              		.loc 1 546 11 is_stmt 0 view .LVU346
+ 1201 0010 1842     		tst	r0, r3
+ 1202 0012 03D1     		bne	.L63
+ 547:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****             return SET;
+ 548:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         }
+ 549:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 550:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     return RESET;
+ 1203              		.loc 1 550 12 view .LVU347
+ 1204 0014 0020     		movs	r0, #0
+ 1205              	.LVL51:
+ 1206              		.loc 1 550 12 view .LVU348
+ 1207 0016 7047     		bx	lr
+ 1208              	.LVL52:
+ 1209              	.L62:
+ 1210              		.loc 1 550 12 view .LVU349
+ 1211 0018 0020     		movs	r0, #0
+ 1212              	.LVL53:
+ 1213              		.loc 1 550 12 view .LVU350
+ 1214 001a 7047     		bx	lr
+ 1215              	.LVL54:
+ 1216              	.L63:
+ 547:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****             return SET;
+ 1217              		.loc 1 547 20 view .LVU351
+ 1218 001c 0120     		movs	r0, #1
+ 1219              	.LVL55:
+ 551:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1220              		.loc 1 551 1 view .LVU352
+ 1221 001e 7047     		bx	lr
+ 1222              	.L65:
+ 1223              		.align	2
+ 1224              	.L64:
+ 1225 0020 00600140 		.word	1073831936
+ 1226              		.cfi_endproc
+ 1227              	.LFE139:
+ 1229              		.section	.text.tli_interrupt_flag_clear,"ax",%progbits
+ 1230              		.align	1
+ 1231              		.global	tli_interrupt_flag_clear
+ 1232              		.syntax unified
+ 1233              		.thumb
+ 1234              		.thumb_func
+ 1236              	tli_interrupt_flag_clear:
+ 1237              	.LVL56:
+ 1238              	.LFB140:
+ARM GAS  /tmp/ccAKfcw9.s 			page 32
+
+
+ 552:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 553:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 554:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    clear TLI interrupt flag
+ 555:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  int_flag: TLI interrupt flags
+ 556:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 one or more parameters can be selected which are shown as below:
+ 557:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_LM: line mark interrupt flag
+ 558:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_FE: FIFO error interrupt flag
+ 559:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_TE: transaction error interrupt flag
+ 560:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_INT_FLAG_LCR: layer configuration reloaded interrupt flag
+ 561:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 562:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     none
+ 563:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 564:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** void tli_interrupt_flag_clear(uint32_t int_flag)
+ 565:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1239              		.loc 1 565 1 is_stmt 1 view -0
+ 1240              		.cfi_startproc
+ 1241              		@ args = 0, pretend = 0, frame = 0
+ 1242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1243              		@ link register save eliminated.
+ 566:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     TLI_INTC |= (int_flag);
+ 1244              		.loc 1 566 5 view .LVU354
+ 1245              		.loc 1 566 14 is_stmt 0 view .LVU355
+ 1246 0000 034A     		ldr	r2, .L67
+ 1247 0002 D2F83C38 		ldr	r3, [r2, #2108]
+ 1248 0006 0343     		orrs	r3, r3, r0
+ 1249 0008 C2F83C38 		str	r3, [r2, #2108]
+ 567:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1250              		.loc 1 567 1 view .LVU356
+ 1251 000c 7047     		bx	lr
+ 1252              	.L68:
+ 1253 000e 00BF     		.align	2
+ 1254              	.L67:
+ 1255 0010 00600140 		.word	1073831936
+ 1256              		.cfi_endproc
+ 1257              	.LFE140:
+ 1259              		.section	.text.tli_flag_get,"ax",%progbits
+ 1260              		.align	1
+ 1261              		.global	tli_flag_get
+ 1262              		.syntax unified
+ 1263              		.thumb
+ 1264              		.thumb_func
+ 1266              	tli_flag_get:
+ 1267              	.LVL57:
+ 1268              	.LFB141:
+ 568:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** 
+ 569:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** /*!
+ 570:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \brief    get TLI flag or state in TLI_INTF register or TLI_STAT register
+ 571:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[in]  flag: TLI flags or states
+ 572:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****                 only one parameter can be selected which is shown as below:
+ 573:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_VDE: current VDE state
+ 574:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_HDE: current HDE state
+ 575:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_VS: current VS status of the TLI
+ 576:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_HS: current HS status of the TLI
+ 577:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_LM: line mark interrupt flag
+ 578:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_FE: FIFO error interrupt flag
+ 579:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_TE: transaction error interrupt flag
+ 580:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****       \arg        TLI_FLAG_LCR: layer configuration reloaded interrupt flag
+ARM GAS  /tmp/ccAKfcw9.s 			page 33
+
+
+ 581:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \param[out] none
+ 582:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     \retval     FlagStatus: SET or RESET
+ 583:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** */
+ 584:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** FlagStatus tli_flag_get(uint32_t flag)
+ 585:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** {
+ 1269              		.loc 1 585 1 is_stmt 1 view -0
+ 1270              		.cfi_startproc
+ 1271              		@ args = 0, pretend = 0, frame = 0
+ 1272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1273              		@ link register save eliminated.
+ 586:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     uint32_t stat;
+ 1274              		.loc 1 586 5 view .LVU358
+ 587:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     /* choose which register to get flag or state */
+ 588:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     if(flag >> 31U) {
+ 1275              		.loc 1 588 5 view .LVU359
+ 1276              		.loc 1 588 7 is_stmt 0 view .LVU360
+ 1277 0000 0028     		cmp	r0, #0
+ 1278              		.loc 1 588 7 view .LVU361
+ 1279 0002 06DB     		blt	.L74
+ 589:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         stat = TLI_INTF;
+ 590:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     } else {
+ 591:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         stat = TLI_STAT;
+ 1280              		.loc 1 591 9 is_stmt 1 view .LVU362
+ 1281              		.loc 1 591 14 is_stmt 0 view .LVU363
+ 1282 0004 064B     		ldr	r3, .L75
+ 1283 0006 D3F84838 		ldr	r3, [r3, #2120]
+ 1284              	.LVL58:
+ 1285              	.L71:
+ 592:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 593:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     if(flag & stat) {
+ 1286              		.loc 1 593 5 is_stmt 1 view .LVU364
+ 1287              		.loc 1 593 7 is_stmt 0 view .LVU365
+ 1288 000a 0342     		tst	r3, r0
+ 1289 000c 05D0     		beq	.L73
+ 594:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         return SET;
+ 1290              		.loc 1 594 16 view .LVU366
+ 1291 000e 0120     		movs	r0, #1
+ 1292              	.LVL59:
+ 1293              		.loc 1 594 16 view .LVU367
+ 1294 0010 7047     		bx	lr
+ 1295              	.LVL60:
+ 1296              	.L74:
+ 589:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         stat = TLI_INTF;
+ 1297              		.loc 1 589 9 is_stmt 1 view .LVU368
+ 589:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         stat = TLI_INTF;
+ 1298              		.loc 1 589 14 is_stmt 0 view .LVU369
+ 1299 0012 034B     		ldr	r3, .L75
+ 1300 0014 D3F83838 		ldr	r3, [r3, #2104]
+ 1301              	.LVL61:
+ 589:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         stat = TLI_INTF;
+ 1302              		.loc 1 589 14 view .LVU370
+ 1303 0018 F7E7     		b	.L71
+ 1304              	.L73:
+ 595:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     } else {
+ 596:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****         return RESET;
+ 1305              		.loc 1 596 16 view .LVU371
+ 1306 001a 0020     		movs	r0, #0
+ARM GAS  /tmp/ccAKfcw9.s 			page 34
+
+
+ 1307              	.LVL62:
+ 597:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c ****     }
+ 598:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_tli.c **** }
+ 1308              		.loc 1 598 1 view .LVU372
+ 1309 001c 7047     		bx	lr
+ 1310              	.L76:
+ 1311 001e 00BF     		.align	2
+ 1312              	.L75:
+ 1313 0020 00600140 		.word	1073831936
+ 1314              		.cfi_endproc
+ 1315              	.LFE141:
+ 1317              		.text
+ 1318              	.Letext0:
+ 1319              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 1320              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1321              		.file 4 "Core/Inc/gd32f4xx.h"
+ 1322              		.file 5 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ 1323              		.file 6 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_tli.h"
+ARM GAS  /tmp/ccAKfcw9.s 			page 35
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_tli.c
+     /tmp/ccAKfcw9.s:20     .text.tli_deinit:0000000000000000 $t
+     /tmp/ccAKfcw9.s:26     .text.tli_deinit:0000000000000000 tli_deinit
+     /tmp/ccAKfcw9.s:52     .text.tli_struct_para_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:58     .text.tli_struct_para_init:0000000000000000 tli_struct_para_init
+     /tmp/ccAKfcw9.s:118    .text.tli_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:124    .text.tli_init:0000000000000000 tli_init
+     /tmp/ccAKfcw9.s:245    .text.tli_init:00000000000000ac $d
+     /tmp/ccAKfcw9.s:250    .text.tli_dither_config:0000000000000000 $t
+     /tmp/ccAKfcw9.s:256    .text.tli_dither_config:0000000000000000 tli_dither_config
+     /tmp/ccAKfcw9.s:287    .text.tli_dither_config:0000000000000024 $d
+     /tmp/ccAKfcw9.s:292    .text.tli_enable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:298    .text.tli_enable:0000000000000000 tli_enable
+     /tmp/ccAKfcw9.s:316    .text.tli_enable:0000000000000010 $d
+     /tmp/ccAKfcw9.s:321    .text.tli_disable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:327    .text.tli_disable:0000000000000000 tli_disable
+     /tmp/ccAKfcw9.s:345    .text.tli_disable:0000000000000010 $d
+     /tmp/ccAKfcw9.s:350    .text.tli_reload_config:0000000000000000 $t
+     /tmp/ccAKfcw9.s:356    .text.tli_reload_config:0000000000000000 tli_reload_config
+     /tmp/ccAKfcw9.s:386    .text.tli_reload_config:0000000000000024 $d
+     /tmp/ccAKfcw9.s:391    .text.tli_layer_struct_para_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:397    .text.tli_layer_struct_para_init:0000000000000000 tli_layer_struct_para_init
+     /tmp/ccAKfcw9.s:463    .text.tli_layer_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:469    .text.tli_layer_init:0000000000000000 tli_layer_init
+     /tmp/ccAKfcw9.s:610    .text.tli_layer_window_offset_modify:0000000000000000 $t
+     /tmp/ccAKfcw9.s:616    .text.tli_layer_window_offset_modify:0000000000000000 tli_layer_window_offset_modify
+     /tmp/ccAKfcw9.s:682    .text.tli_layer_window_offset_modify:000000000000004c $d
+     /tmp/ccAKfcw9.s:690    .text.tli_layer_window_offset_modify:0000000000000054 $t
+     /tmp/ccAKfcw9.s:791    .text.tli_layer_window_offset_modify:00000000000000b4 $d
+     /tmp/ccAKfcw9.s:797    .text.tli_lut_struct_para_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:803    .text.tli_lut_struct_para_init:0000000000000000 tli_lut_struct_para_init
+     /tmp/ccAKfcw9.s:830    .text.tli_lut_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:836    .text.tli_lut_init:0000000000000000 tli_lut_init
+     /tmp/ccAKfcw9.s:869    .text.tli_color_key_init:0000000000000000 $t
+     /tmp/ccAKfcw9.s:875    .text.tli_color_key_init:0000000000000000 tli_color_key_init
+     /tmp/ccAKfcw9.s:897    .text.tli_layer_enable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:903    .text.tli_layer_enable:0000000000000000 tli_layer_enable
+     /tmp/ccAKfcw9.s:922    .text.tli_layer_disable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:928    .text.tli_layer_disable:0000000000000000 tli_layer_disable
+     /tmp/ccAKfcw9.s:947    .text.tli_color_key_enable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:953    .text.tli_color_key_enable:0000000000000000 tli_color_key_enable
+     /tmp/ccAKfcw9.s:972    .text.tli_color_key_disable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:978    .text.tli_color_key_disable:0000000000000000 tli_color_key_disable
+     /tmp/ccAKfcw9.s:997    .text.tli_lut_enable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1003   .text.tli_lut_enable:0000000000000000 tli_lut_enable
+     /tmp/ccAKfcw9.s:1022   .text.tli_lut_disable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1028   .text.tli_lut_disable:0000000000000000 tli_lut_disable
+     /tmp/ccAKfcw9.s:1047   .text.tli_line_mark_set:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1053   .text.tli_line_mark_set:0000000000000000 tli_line_mark_set
+     /tmp/ccAKfcw9.s:1076   .text.tli_line_mark_set:0000000000000018 $d
+     /tmp/ccAKfcw9.s:1081   .text.tli_current_pos_get:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1087   .text.tli_current_pos_get:0000000000000000 tli_current_pos_get
+     /tmp/ccAKfcw9.s:1103   .text.tli_current_pos_get:0000000000000008 $d
+     /tmp/ccAKfcw9.s:1108   .text.tli_interrupt_enable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1114   .text.tli_interrupt_enable:0000000000000000 tli_interrupt_enable
+     /tmp/ccAKfcw9.s:1133   .text.tli_interrupt_enable:0000000000000010 $d
+ARM GAS  /tmp/ccAKfcw9.s 			page 36
+
+
+     /tmp/ccAKfcw9.s:1138   .text.tli_interrupt_disable:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1144   .text.tli_interrupt_disable:0000000000000000 tli_interrupt_disable
+     /tmp/ccAKfcw9.s:1163   .text.tli_interrupt_disable:0000000000000010 $d
+     /tmp/ccAKfcw9.s:1168   .text.tli_interrupt_flag_get:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1174   .text.tli_interrupt_flag_get:0000000000000000 tli_interrupt_flag_get
+     /tmp/ccAKfcw9.s:1225   .text.tli_interrupt_flag_get:0000000000000020 $d
+     /tmp/ccAKfcw9.s:1230   .text.tli_interrupt_flag_clear:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1236   .text.tli_interrupt_flag_clear:0000000000000000 tli_interrupt_flag_clear
+     /tmp/ccAKfcw9.s:1255   .text.tli_interrupt_flag_clear:0000000000000010 $d
+     /tmp/ccAKfcw9.s:1260   .text.tli_flag_get:0000000000000000 $t
+     /tmp/ccAKfcw9.s:1266   .text.tli_flag_get:0000000000000000 tli_flag_get
+     /tmp/ccAKfcw9.s:1313   .text.tli_flag_get:0000000000000020 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

@@ -1,0 +1,2472 @@
+ARM GAS  /tmp/ccwY5hkO.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"gd32f4xx_ipa.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ipa_deinit,"ax",%progbits
+  20              		.align	1
+  21              		.global	ipa_deinit
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	ipa_deinit:
+  27              	.LFB116:
+  28              		.file 1 "Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c"
+   1:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+   2:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \file    gd32f4xx_ipa.c
+   3:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief   IPA driver
+   4:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+   5:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \version 2016-08-15, V1.0.0, firmware for GD32F4xx
+   6:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \version 2018-12-12, V2.0.0, firmware for GD32F4xx
+   7:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \version 2020-09-30, V2.1.0, firmware for GD32F4xx
+   8:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \version 2022-03-09, V3.0.0, firmware for GD32F4xx
+   9:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  10:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  11:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*
+  12:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     Copyright (c) 2022, GigaDevice Semiconductor Inc.
+  13:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  14:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** are permitted provided that the following conditions are met:
+  16:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  17:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     1. Redistributions of source code must retain the above copyright notice, this
+  18:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****        list of conditions and the following disclaimer.
+  19:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     2. Redistributions in binary form must reproduce the above copyright notice,
+  20:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****        this list of conditions and the following disclaimer in the documentation
+  21:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****        and/or other materials provided with the distribution.
+  22:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     3. Neither the name of the copyright holder nor the names of its contributors
+  23:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****        may be used to endorse or promote products derived from this software without
+  24:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****        specific prior written permission.
+  25:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  26:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  27:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  28:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  29:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  30:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ARM GAS  /tmp/ccwY5hkO.s 			page 2
+
+
+  31:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+  32:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  33:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  34:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+  35:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** OF SUCH DAMAGE.
+  36:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  37:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  38:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** #include "gd32f4xx_ipa.h"
+  39:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  40:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** #define IPA_DEFAULT_VALUE   0x00000000U
+  41:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  42:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  43:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    deinitialize IPA registers
+  44:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+  45:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+  46:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+  47:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  48:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_deinit(void)
+  49:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+  29              		.loc 1 49 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  50:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     rcu_periph_reset_enable(RCU_IPARST);
+  38              		.loc 1 50 5 view .LVU1
+  39 0002 40F21740 		movw	r0, #1047
+  40 0006 FFF7FEFF 		bl	rcu_periph_reset_enable
+  41              	.LVL0:
+  51:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     rcu_periph_reset_disable(RCU_IPARST);
+  42              		.loc 1 51 5 view .LVU2
+  43 000a 40F21740 		movw	r0, #1047
+  44 000e FFF7FEFF 		bl	rcu_periph_reset_disable
+  45              	.LVL1:
+  52:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+  46              		.loc 1 52 1 is_stmt 0 view .LVU3
+  47 0012 08BD     		pop	{r3, pc}
+  48              		.cfi_endproc
+  49              	.LFE116:
+  51              		.section	.text.ipa_transfer_enable,"ax",%progbits
+  52              		.align	1
+  53              		.global	ipa_transfer_enable
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	ipa_transfer_enable:
+  59              	.LFB117:
+  53:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  54:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  55:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA transfer
+  56:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+  57:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+  58:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ARM GAS  /tmp/ccwY5hkO.s 			page 3
+
+
+  59:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  60:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_transfer_enable(void)
+  61:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+  60              		.loc 1 61 1 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  62:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL |= IPA_CTL_TEN;
+  65              		.loc 1 62 5 view .LVU5
+  66              		.loc 1 62 13 is_stmt 0 view .LVU6
+  67 0000 024A     		ldr	r2, .L4
+  68 0002 1368     		ldr	r3, [r2]
+  69 0004 43F00103 		orr	r3, r3, #1
+  70 0008 1360     		str	r3, [r2]
+  63:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+  71              		.loc 1 63 1 view .LVU7
+  72 000a 7047     		bx	lr
+  73              	.L5:
+  74              		.align	2
+  75              	.L4:
+  76 000c 00B00240 		.word	1073917952
+  77              		.cfi_endproc
+  78              	.LFE117:
+  80              		.section	.text.ipa_transfer_hangup_enable,"ax",%progbits
+  81              		.align	1
+  82              		.global	ipa_transfer_hangup_enable
+  83              		.syntax unified
+  84              		.thumb
+  85              		.thumb_func
+  87              	ipa_transfer_hangup_enable:
+  88              	.LFB118:
+  64:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  65:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  66:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA transfer hang up
+  67:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+  68:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+  69:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+  70:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  71:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_transfer_hangup_enable(void)
+  72:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+  89              		.loc 1 72 1 is_stmt 1 view -0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  73:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL |= IPA_CTL_THU;
+  94              		.loc 1 73 5 view .LVU9
+  95              		.loc 1 73 13 is_stmt 0 view .LVU10
+  96 0000 024A     		ldr	r2, .L7
+  97 0002 1368     		ldr	r3, [r2]
+  98 0004 43F00203 		orr	r3, r3, #2
+  99 0008 1360     		str	r3, [r2]
+  74:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 100              		.loc 1 74 1 view .LVU11
+ 101 000a 7047     		bx	lr
+ 102              	.L8:
+ARM GAS  /tmp/ccwY5hkO.s 			page 4
+
+
+ 103              		.align	2
+ 104              	.L7:
+ 105 000c 00B00240 		.word	1073917952
+ 106              		.cfi_endproc
+ 107              	.LFE118:
+ 109              		.section	.text.ipa_transfer_hangup_disable,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	ipa_transfer_hangup_disable
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	ipa_transfer_hangup_disable:
+ 117              	.LFB119:
+  75:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  76:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  77:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    disable IPA transfer hang up
+  78:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+  79:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+  80:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+  81:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  82:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_transfer_hangup_disable(void)
+  83:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 118              		.loc 1 83 1 is_stmt 1 view -0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              		@ link register save eliminated.
+  84:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL &= ~(IPA_CTL_THU);
+ 123              		.loc 1 84 5 view .LVU13
+ 124              		.loc 1 84 13 is_stmt 0 view .LVU14
+ 125 0000 024A     		ldr	r2, .L10
+ 126 0002 1368     		ldr	r3, [r2]
+ 127 0004 23F00203 		bic	r3, r3, #2
+ 128 0008 1360     		str	r3, [r2]
+  85:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 129              		.loc 1 85 1 view .LVU15
+ 130 000a 7047     		bx	lr
+ 131              	.L11:
+ 132              		.align	2
+ 133              	.L10:
+ 134 000c 00B00240 		.word	1073917952
+ 135              		.cfi_endproc
+ 136              	.LFE119:
+ 138              		.section	.text.ipa_transfer_stop_enable,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	ipa_transfer_stop_enable
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	ipa_transfer_stop_enable:
+ 146              	.LFB120:
+  86:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  87:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  88:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA transfer stop
+  89:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+  90:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+  91:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ARM GAS  /tmp/ccwY5hkO.s 			page 5
+
+
+  92:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+  93:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_transfer_stop_enable(void)
+  94:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 147              		.loc 1 94 1 is_stmt 1 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+  95:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL |= IPA_CTL_TST;
+ 152              		.loc 1 95 5 view .LVU17
+ 153              		.loc 1 95 13 is_stmt 0 view .LVU18
+ 154 0000 024A     		ldr	r2, .L13
+ 155 0002 1368     		ldr	r3, [r2]
+ 156 0004 43F00403 		orr	r3, r3, #4
+ 157 0008 1360     		str	r3, [r2]
+  96:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 158              		.loc 1 96 1 view .LVU19
+ 159 000a 7047     		bx	lr
+ 160              	.L14:
+ 161              		.align	2
+ 162              	.L13:
+ 163 000c 00B00240 		.word	1073917952
+ 164              		.cfi_endproc
+ 165              	.LFE120:
+ 167              		.section	.text.ipa_transfer_stop_disable,"ax",%progbits
+ 168              		.align	1
+ 169              		.global	ipa_transfer_stop_disable
+ 170              		.syntax unified
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	ipa_transfer_stop_disable:
+ 175              	.LFB121:
+  97:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+  98:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+  99:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    disable IPA transfer stop
+ 100:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 101:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 102:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 103:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 104:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_transfer_stop_disable(void)
+ 105:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 176              		.loc 1 105 1 is_stmt 1 view -0
+ 177              		.cfi_startproc
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 106:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL &= ~(IPA_CTL_TST);
+ 181              		.loc 1 106 5 view .LVU21
+ 182              		.loc 1 106 13 is_stmt 0 view .LVU22
+ 183 0000 024A     		ldr	r2, .L16
+ 184 0002 1368     		ldr	r3, [r2]
+ 185 0004 23F00403 		bic	r3, r3, #4
+ 186 0008 1360     		str	r3, [r2]
+ 107:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 187              		.loc 1 107 1 view .LVU23
+ 188 000a 7047     		bx	lr
+ 189              	.L17:
+ARM GAS  /tmp/ccwY5hkO.s 			page 6
+
+
+ 190              		.align	2
+ 191              	.L16:
+ 192 000c 00B00240 		.word	1073917952
+ 193              		.cfi_endproc
+ 194              	.LFE121:
+ 196              		.section	.text.ipa_foreground_lut_loading_enable,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	ipa_foreground_lut_loading_enable
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	ipa_foreground_lut_loading_enable:
+ 204              	.LFB122:
+ 108:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 109:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA foreground LUT loading
+ 110:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 111:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 112:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 113:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 114:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_foreground_lut_loading_enable(void)
+ 115:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 205              		.loc 1 115 1 is_stmt 1 view -0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209              		@ link register save eliminated.
+ 116:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL |= IPA_FPCTL_FLLEN;
+ 210              		.loc 1 116 5 view .LVU25
+ 211              		.loc 1 116 15 is_stmt 0 view .LVU26
+ 212 0000 024A     		ldr	r2, .L19
+ 213 0002 D369     		ldr	r3, [r2, #28]
+ 214 0004 43F02003 		orr	r3, r3, #32
+ 215 0008 D361     		str	r3, [r2, #28]
+ 117:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 216              		.loc 1 117 1 view .LVU27
+ 217 000a 7047     		bx	lr
+ 218              	.L20:
+ 219              		.align	2
+ 220              	.L19:
+ 221 000c 00B00240 		.word	1073917952
+ 222              		.cfi_endproc
+ 223              	.LFE122:
+ 225              		.section	.text.ipa_background_lut_loading_enable,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	ipa_background_lut_loading_enable
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 232              	ipa_background_lut_loading_enable:
+ 233              	.LFB123:
+ 118:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 119:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 120:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA background LUT loading
+ 121:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 122:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 123:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 124:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ARM GAS  /tmp/ccwY5hkO.s 			page 7
+
+
+ 125:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_background_lut_loading_enable(void)
+ 126:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 234              		.loc 1 126 1 is_stmt 1 view -0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 127:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL |= IPA_BPCTL_BLLEN;
+ 239              		.loc 1 127 5 view .LVU29
+ 240              		.loc 1 127 15 is_stmt 0 view .LVU30
+ 241 0000 024A     		ldr	r2, .L22
+ 242 0002 536A     		ldr	r3, [r2, #36]
+ 243 0004 43F02003 		orr	r3, r3, #32
+ 244 0008 5362     		str	r3, [r2, #36]
+ 128:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 245              		.loc 1 128 1 view .LVU31
+ 246 000a 7047     		bx	lr
+ 247              	.L23:
+ 248              		.align	2
+ 249              	.L22:
+ 250 000c 00B00240 		.word	1073917952
+ 251              		.cfi_endproc
+ 252              	.LFE123:
+ 254              		.section	.text.ipa_pixel_format_convert_mode_set,"ax",%progbits
+ 255              		.align	1
+ 256              		.global	ipa_pixel_format_convert_mode_set
+ 257              		.syntax unified
+ 258              		.thumb
+ 259              		.thumb_func
+ 261              	ipa_pixel_format_convert_mode_set:
+ 262              	.LVL2:
+ 263              	.LFB124:
+ 129:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 130:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 131:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    set pixel format convert mode, the function is invalid when the IPA transfer is enabl
+ 132:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  pfcm: pixel format convert mode
+ 133:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 only one parameter can be selected which is shown as below:
+ 134:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FGTODE: foreground memory to destination memory without pixel format convert
+ 135:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FGTODE_PF_CONVERT: foreground memory to destination memory with pixel format 
+ 136:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FGBGTODE: blending foreground and background memory to destination memory
+ 137:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FILL_UP_DE: fill up destination memory with specific color
+ 138:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 139:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 140:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 141:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_pixel_format_convert_mode_set(uint32_t pfcm)
+ 142:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 264              		.loc 1 142 1 is_stmt 1 view -0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 143:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL &= ~(IPA_CTL_PFCM);
+ 269              		.loc 1 143 5 view .LVU33
+ 270              		.loc 1 143 13 is_stmt 0 view .LVU34
+ 271 0000 044B     		ldr	r3, .L25
+ 272 0002 1968     		ldr	r1, [r3]
+ 273 0004 21F44031 		bic	r1, r1, #196608
+ARM GAS  /tmp/ccwY5hkO.s 			page 8
+
+
+ 274 0008 1960     		str	r1, [r3]
+ 144:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL |= pfcm;
+ 275              		.loc 1 144 5 is_stmt 1 view .LVU35
+ 276              		.loc 1 144 13 is_stmt 0 view .LVU36
+ 277 000a 1A68     		ldr	r2, [r3]
+ 278 000c 0243     		orrs	r2, r2, r0
+ 279 000e 1A60     		str	r2, [r3]
+ 145:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 280              		.loc 1 145 1 view .LVU37
+ 281 0010 7047     		bx	lr
+ 282              	.L26:
+ 283 0012 00BF     		.align	2
+ 284              	.L25:
+ 285 0014 00B00240 		.word	1073917952
+ 286              		.cfi_endproc
+ 287              	.LFE124:
+ 289              		.section	.text.ipa_foreground_struct_para_init,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	ipa_foreground_struct_para_init
+ 292              		.syntax unified
+ 293              		.thumb
+ 294              		.thumb_func
+ 296              	ipa_foreground_struct_para_init:
+ 297              	.LVL3:
+ 298              	.LFB125:
+ 146:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 147:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 148:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize the structure of IPA foreground parameter struct with the default values, 
+ 149:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 suggested that call this function after an ipa_foreground_parameter_struct structur
+ 150:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 151:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] foreground_struct: the data needed to initialize foreground
+ 152:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_memaddr: foreground memory base address
+ 153:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_lineoff: foreground line offset
+ 154:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_prealpha: foreground pre-defined alpha value
+ 155:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_alpha_algorithm: IPA_FG_ALPHA_MODE_0,IPA_FG_ALPHA_MODE_1,IPA_FG_ALPHA_
+ 156:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_pf: foreground pixel format(FOREGROUND_PPF_ARGB8888,FOREGROUND_PPF_RGB
+ 157:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             FOREGROUND_PPF_ARG1555,FOREGROUND_PPF_ARGB4444,FOREGROUND_PPF_L8,FOREGR
+ 158:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             FOREGROUND_PPF_AL88,FOREGROUND_PPF_L4,FOREGROUND_PPF_A8,FOREGROUND_PPF_
+ 159:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_prered: foreground pre-defined red value
+ 160:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_pregreen: foreground pre-defined green value
+ 161:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_preblue: foreground pre-defined blue value
+ 162:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 163:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 164:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_foreground_struct_para_init(ipa_foreground_parameter_struct *foreground_struct)
+ 165:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 299              		.loc 1 165 1 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 0
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		@ link register save eliminated.
+ 166:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* initialize the struct parameters with default values */
+ 167:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_memaddr = IPA_DEFAULT_VALUE;
+ 304              		.loc 1 167 5 view .LVU39
+ 305              		.loc 1 167 43 is_stmt 0 view .LVU40
+ 306 0000 0023     		movs	r3, #0
+ 307 0002 0360     		str	r3, [r0]
+ 168:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_lineoff = IPA_DEFAULT_VALUE;
+ARM GAS  /tmp/ccwY5hkO.s 			page 9
+
+
+ 308              		.loc 1 168 5 is_stmt 1 view .LVU41
+ 309              		.loc 1 168 43 is_stmt 0 view .LVU42
+ 310 0004 4360     		str	r3, [r0, #4]
+ 169:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_prealpha = IPA_DEFAULT_VALUE;
+ 311              		.loc 1 169 5 is_stmt 1 view .LVU43
+ 312              		.loc 1 169 44 is_stmt 0 view .LVU44
+ 313 0006 8360     		str	r3, [r0, #8]
+ 170:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_alpha_algorithm = IPA_FG_ALPHA_MODE_0;
+ 314              		.loc 1 170 5 is_stmt 1 view .LVU45
+ 315              		.loc 1 170 51 is_stmt 0 view .LVU46
+ 316 0008 C360     		str	r3, [r0, #12]
+ 171:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_pf = FOREGROUND_PPF_ARGB8888;
+ 317              		.loc 1 171 5 is_stmt 1 view .LVU47
+ 318              		.loc 1 171 38 is_stmt 0 view .LVU48
+ 319 000a 0361     		str	r3, [r0, #16]
+ 172:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_prered = IPA_DEFAULT_VALUE;
+ 320              		.loc 1 172 5 is_stmt 1 view .LVU49
+ 321              		.loc 1 172 42 is_stmt 0 view .LVU50
+ 322 000c 4361     		str	r3, [r0, #20]
+ 173:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_pregreen = IPA_DEFAULT_VALUE;
+ 323              		.loc 1 173 5 is_stmt 1 view .LVU51
+ 324              		.loc 1 173 44 is_stmt 0 view .LVU52
+ 325 000e 8361     		str	r3, [r0, #24]
+ 174:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     foreground_struct->foreground_preblue = IPA_DEFAULT_VALUE;
+ 326              		.loc 1 174 5 is_stmt 1 view .LVU53
+ 327              		.loc 1 174 43 is_stmt 0 view .LVU54
+ 328 0010 C361     		str	r3, [r0, #28]
+ 175:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 329              		.loc 1 175 1 view .LVU55
+ 330 0012 7047     		bx	lr
+ 331              		.cfi_endproc
+ 332              	.LFE125:
+ 334              		.section	.text.ipa_foreground_init,"ax",%progbits
+ 335              		.align	1
+ 336              		.global	ipa_foreground_init
+ 337              		.syntax unified
+ 338              		.thumb
+ 339              		.thumb_func
+ 341              	ipa_foreground_init:
+ 342              	.LVL4:
+ 343              	.LFB126:
+ 176:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 177:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 178:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize foreground parameters
+ 179:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  foreground_struct: the data needed to initialize foreground
+ 180:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_memaddr: foreground memory base address
+ 181:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_lineoff: foreground line offset
+ 182:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_prealpha: foreground pre-defined alpha value
+ 183:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_alpha_algorithm: IPA_FG_ALPHA_MODE_0,IPA_FG_ALPHA_MODE_1,IPA_FG_ALPHA_
+ 184:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_pf: foreground pixel format(FOREGROUND_PPF_ARGB8888,FOREGROUND_PPF_RGB
+ 185:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             FOREGROUND_PPF_ARG1555,FOREGROUND_PPF_ARGB4444,FOREGROUND_PPF_L8,FOREGR
+ 186:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             FOREGROUND_PPF_AL88,FOREGROUND_PPF_L4,FOREGROUND_PPF_A8,FOREGROUND_PPF_
+ 187:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_prered: foreground pre-defined red value
+ 188:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_pregreen: foreground pre-defined green value
+ 189:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   foreground_preblue: foreground pre-defined blue value
+ 190:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 191:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ARM GAS  /tmp/ccwY5hkO.s 			page 10
+
+
+ 192:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 193:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_foreground_init(ipa_foreground_parameter_struct *foreground_struct)
+ 194:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 344              		.loc 1 194 1 is_stmt 1 view -0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              		@ link register save eliminated.
+ 349              		.loc 1 194 1 is_stmt 0 view .LVU57
+ 350 0000 30B4     		push	{r4, r5}
+ 351              	.LCFI1:
+ 352              		.cfi_def_cfa_offset 8
+ 353              		.cfi_offset 4, -8
+ 354              		.cfi_offset 5, -4
+ 195:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     FlagStatus tempflag = RESET;
+ 355              		.loc 1 195 5 is_stmt 1 view .LVU58
+ 356              	.LVL5:
+ 196:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 357              		.loc 1 196 5 view .LVU59
+ 358              		.loc 1 196 18 is_stmt 0 view .LVU60
+ 359 0002 214B     		ldr	r3, .L34
+ 360 0004 1B68     		ldr	r3, [r3]
+ 361              		.loc 1 196 7 view .LVU61
+ 362 0006 13F0010F 		tst	r3, #1
+ 363 000a 35D0     		beq	.L31
+ 197:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 364              		.loc 1 197 9 is_stmt 1 view .LVU62
+ 365              	.LVL6:
+ 198:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* reset the TEN in order to configure the following bits */
+ 199:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL &= ~IPA_CTL_TEN;
+ 366              		.loc 1 199 9 view .LVU63
+ 367              		.loc 1 199 17 is_stmt 0 view .LVU64
+ 368 000c 1E4A     		ldr	r2, .L34
+ 369 000e 1368     		ldr	r3, [r2]
+ 370 0010 23F00103 		bic	r3, r3, #1
+ 371 0014 1360     		str	r3, [r2]
+ 197:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 372              		.loc 1 197 18 view .LVU65
+ 373 0016 0124     		movs	r4, #1
+ 374              	.LVL7:
+ 375              	.L29:
+ 200:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 201:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 202:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground memory base address configuration */
+ 203:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FMADDR &= ~(IPA_FMADDR_FMADDR);
+ 376              		.loc 1 203 5 is_stmt 1 view .LVU66
+ 377              		.loc 1 203 16 is_stmt 0 view .LVU67
+ 378 0018 1B4B     		ldr	r3, .L34
+ 379 001a DA68     		ldr	r2, [r3, #12]
+ 380 001c 0022     		movs	r2, #0
+ 381 001e DA60     		str	r2, [r3, #12]
+ 204:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FMADDR = foreground_struct->foreground_memaddr;
+ 382              		.loc 1 204 5 is_stmt 1 view .LVU68
+ 383              		.loc 1 204 35 is_stmt 0 view .LVU69
+ 384 0020 0268     		ldr	r2, [r0]
+ 385              		.loc 1 204 16 view .LVU70
+ 386 0022 DA60     		str	r2, [r3, #12]
+ARM GAS  /tmp/ccwY5hkO.s 			page 11
+
+
+ 205:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground line offset configuration */
+ 206:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FLOFF &= ~(IPA_FLOFF_FLOFF);
+ 387              		.loc 1 206 5 is_stmt 1 view .LVU71
+ 388              		.loc 1 206 15 is_stmt 0 view .LVU72
+ 389 0024 1A69     		ldr	r2, [r3, #16]
+ 390 0026 22F47F52 		bic	r2, r2, #16320
+ 391 002a 22F03F02 		bic	r2, r2, #63
+ 392 002e 1A61     		str	r2, [r3, #16]
+ 207:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FLOFF = foreground_struct->foreground_lineoff;
+ 393              		.loc 1 207 5 is_stmt 1 view .LVU73
+ 394              		.loc 1 207 34 is_stmt 0 view .LVU74
+ 395 0030 4268     		ldr	r2, [r0, #4]
+ 396              		.loc 1 207 15 view .LVU75
+ 397 0032 1A61     		str	r2, [r3, #16]
+ 208:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground pixel format pre-defined alpha, alpha calculation algorithm configuration */
+ 209:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL &= ~(IPA_FPCTL_FPDAV | IPA_FPCTL_FAVCA | IPA_FPCTL_FPF);
+ 398              		.loc 1 209 5 is_stmt 1 view .LVU76
+ 399              		.loc 1 209 15 is_stmt 0 view .LVU77
+ 400 0034 D969     		ldr	r1, [r3, #28]
+ 401 0036 154A     		ldr	r2, .L34+4
+ 402 0038 0A40     		ands	r2, r2, r1
+ 403 003a DA61     		str	r2, [r3, #28]
+ 210:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL |= (foreground_struct->foreground_prealpha << 24U);
+ 404              		.loc 1 210 5 is_stmt 1 view .LVU78
+ 405              		.loc 1 210 15 is_stmt 0 view .LVU79
+ 406 003c DA69     		ldr	r2, [r3, #28]
+ 407              		.loc 1 210 36 view .LVU80
+ 408 003e 8168     		ldr	r1, [r0, #8]
+ 409              		.loc 1 210 15 view .LVU81
+ 410 0040 42EA0162 		orr	r2, r2, r1, lsl #24
+ 411 0044 DA61     		str	r2, [r3, #28]
+ 211:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL |= foreground_struct->foreground_alpha_algorithm;
+ 412              		.loc 1 211 5 is_stmt 1 view .LVU82
+ 413              		.loc 1 211 15 is_stmt 0 view .LVU83
+ 414 0046 DA69     		ldr	r2, [r3, #28]
+ 415              		.loc 1 211 35 view .LVU84
+ 416 0048 C168     		ldr	r1, [r0, #12]
+ 417              		.loc 1 211 15 view .LVU85
+ 418 004a 0A43     		orrs	r2, r2, r1
+ 419 004c DA61     		str	r2, [r3, #28]
+ 212:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL |= foreground_struct->foreground_pf;
+ 420              		.loc 1 212 5 is_stmt 1 view .LVU86
+ 421              		.loc 1 212 15 is_stmt 0 view .LVU87
+ 422 004e DA69     		ldr	r2, [r3, #28]
+ 423              		.loc 1 212 35 view .LVU88
+ 424 0050 0169     		ldr	r1, [r0, #16]
+ 425              		.loc 1 212 15 view .LVU89
+ 426 0052 0A43     		orrs	r2, r2, r1
+ 427 0054 DA61     		str	r2, [r3, #28]
+ 213:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground pre-defined red green blue configuration */
+ 214:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPV &= ~(IPA_FPV_FPDRV | IPA_FPV_FPDGV | IPA_FPV_FPDBV);
+ 428              		.loc 1 214 5 is_stmt 1 view .LVU90
+ 429              		.loc 1 214 13 is_stmt 0 view .LVU91
+ 430 0056 1A6A     		ldr	r2, [r3, #32]
+ 431 0058 02F07F42 		and	r2, r2, #-16777216
+ 432 005c 1A62     		str	r2, [r3, #32]
+ 215:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPV |= ((foreground_struct->foreground_prered << 16U) | (foreground_struct->foreground_preg
+ARM GAS  /tmp/ccwY5hkO.s 			page 12
+
+
+ 433              		.loc 1 215 5 is_stmt 1 view .LVU92
+ 434              		.loc 1 215 13 is_stmt 0 view .LVU93
+ 435 005e 196A     		ldr	r1, [r3, #32]
+ 436              		.loc 1 215 83 view .LVU94
+ 437 0060 8269     		ldr	r2, [r0, #24]
+ 438              		.loc 1 215 105 view .LVU95
+ 439 0062 1202     		lsls	r2, r2, #8
+ 440              		.loc 1 215 63 view .LVU96
+ 441 0064 4569     		ldr	r5, [r0, #20]
+ 442 0066 42EA0542 		orr	r2, r2, r5, lsl #16
+ 216:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 | (foreground_struct->foreground_preblue));
+ 443              		.loc 1 216 37 view .LVU97
+ 444 006a C069     		ldr	r0, [r0, #28]
+ 445              	.LVL8:
+ 446              		.loc 1 216 17 view .LVU98
+ 447 006c 0243     		orrs	r2, r2, r0
+ 215:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPV |= ((foreground_struct->foreground_prered << 16U) | (foreground_struct->foreground_preg
+ 448              		.loc 1 215 13 view .LVU99
+ 449 006e 0A43     		orrs	r2, r2, r1
+ 450 0070 1A62     		str	r2, [r3, #32]
+ 217:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 218:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(SET == tempflag) {
+ 451              		.loc 1 218 5 is_stmt 1 view .LVU100
+ 452              		.loc 1 218 7 is_stmt 0 view .LVU101
+ 453 0072 1CB9     		cbnz	r4, .L33
+ 454              	.L28:
+ 219:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* restore the state of TEN */
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL |= IPA_CTL_TEN;
+ 221:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 222:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 455              		.loc 1 222 1 view .LVU102
+ 456 0074 30BC     		pop	{r4, r5}
+ 457              	.LCFI2:
+ 458              		.cfi_remember_state
+ 459              		.cfi_restore 5
+ 460              		.cfi_restore 4
+ 461              		.cfi_def_cfa_offset 0
+ 462              	.LVL9:
+ 463              		.loc 1 222 1 view .LVU103
+ 464 0076 7047     		bx	lr
+ 465              	.LVL10:
+ 466              	.L31:
+ 467              	.LCFI3:
+ 468              		.cfi_restore_state
+ 195:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 469              		.loc 1 195 16 view .LVU104
+ 470 0078 0024     		movs	r4, #0
+ 471 007a CDE7     		b	.L29
+ 472              	.LVL11:
+ 473              	.L33:
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 474              		.loc 1 220 9 is_stmt 1 view .LVU105
+ 220:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 475              		.loc 1 220 17 is_stmt 0 view .LVU106
+ 476 007c 1A46     		mov	r2, r3
+ 477 007e 1B68     		ldr	r3, [r3]
+ 478 0080 43F00103 		orr	r3, r3, #1
+ARM GAS  /tmp/ccwY5hkO.s 			page 13
+
+
+ 479 0084 1360     		str	r3, [r2]
+ 480              		.loc 1 222 1 view .LVU107
+ 481 0086 F5E7     		b	.L28
+ 482              	.L35:
+ 483              		.align	2
+ 484              	.L34:
+ 485 0088 00B00240 		.word	1073917952
+ 486 008c F0FFFC00 		.word	16580592
+ 487              		.cfi_endproc
+ 488              	.LFE126:
+ 490              		.section	.text.ipa_background_struct_para_init,"ax",%progbits
+ 491              		.align	1
+ 492              		.global	ipa_background_struct_para_init
+ 493              		.syntax unified
+ 494              		.thumb
+ 495              		.thumb_func
+ 497              	ipa_background_struct_para_init:
+ 498              	.LVL12:
+ 499              	.LFB127:
+ 223:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 224:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 225:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize the structure of IPA background parameter struct with the default values, 
+ 226:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 suggested that call this function after an ipa_background_parameter_struct structur
+ 227:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 228:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] background_struct: the data needed to initialize background
+ 229:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_memaddr: background memory base address
+ 230:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_lineoff: background line offset
+ 231:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_prealpha: background pre-defined alpha value
+ 232:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_alpha_algorithm: IPA_BG_ALPHA_MODE_0,IPA_BG_ALPHA_MODE_1,IPA_BG_ALPHA_
+ 233:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_pf: background pixel format(BACKGROUND_PPF_ARGB8888,BACKGROUND_PPF_RGB
+ 234:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             BACKGROUND_PPF_ARG1555,BACKGROUND_PPF_ARGB4444,BACKGROUND_PPF_L8,BACKGR
+ 235:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             BACKGROUND_PPF_AL88,BACKGROUND_PPF_L4,BACKGROUND_PPF_A8,BACKGROUND_PPF_
+ 236:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_prered: background pre-defined red value
+ 237:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_pregreen: background pre-defined green value
+ 238:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_preblue: background pre-defined blue value
+ 239:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 240:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 241:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_background_struct_para_init(ipa_background_parameter_struct *background_struct)
+ 242:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 500              		.loc 1 242 1 is_stmt 1 view -0
+ 501              		.cfi_startproc
+ 502              		@ args = 0, pretend = 0, frame = 0
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504              		@ link register save eliminated.
+ 243:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* initialize the struct parameters with default values */
+ 244:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_memaddr = IPA_DEFAULT_VALUE;
+ 505              		.loc 1 244 5 view .LVU109
+ 506              		.loc 1 244 43 is_stmt 0 view .LVU110
+ 507 0000 0023     		movs	r3, #0
+ 508 0002 0360     		str	r3, [r0]
+ 245:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_lineoff = IPA_DEFAULT_VALUE;
+ 509              		.loc 1 245 5 is_stmt 1 view .LVU111
+ 510              		.loc 1 245 43 is_stmt 0 view .LVU112
+ 511 0004 4360     		str	r3, [r0, #4]
+ 246:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_prealpha = IPA_DEFAULT_VALUE;
+ 512              		.loc 1 246 5 is_stmt 1 view .LVU113
+ 513              		.loc 1 246 44 is_stmt 0 view .LVU114
+ARM GAS  /tmp/ccwY5hkO.s 			page 14
+
+
+ 514 0006 8360     		str	r3, [r0, #8]
+ 247:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_alpha_algorithm = IPA_BG_ALPHA_MODE_0;
+ 515              		.loc 1 247 5 is_stmt 1 view .LVU115
+ 516              		.loc 1 247 51 is_stmt 0 view .LVU116
+ 517 0008 C360     		str	r3, [r0, #12]
+ 248:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_pf = BACKGROUND_PPF_ARGB8888;
+ 518              		.loc 1 248 5 is_stmt 1 view .LVU117
+ 519              		.loc 1 248 38 is_stmt 0 view .LVU118
+ 520 000a 0361     		str	r3, [r0, #16]
+ 249:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_prered = IPA_DEFAULT_VALUE;
+ 521              		.loc 1 249 5 is_stmt 1 view .LVU119
+ 522              		.loc 1 249 42 is_stmt 0 view .LVU120
+ 523 000c 4361     		str	r3, [r0, #20]
+ 250:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_pregreen = IPA_DEFAULT_VALUE;
+ 524              		.loc 1 250 5 is_stmt 1 view .LVU121
+ 525              		.loc 1 250 44 is_stmt 0 view .LVU122
+ 526 000e 8361     		str	r3, [r0, #24]
+ 251:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     background_struct->background_preblue = IPA_DEFAULT_VALUE;
+ 527              		.loc 1 251 5 is_stmt 1 view .LVU123
+ 528              		.loc 1 251 43 is_stmt 0 view .LVU124
+ 529 0010 C361     		str	r3, [r0, #28]
+ 252:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 530              		.loc 1 252 1 view .LVU125
+ 531 0012 7047     		bx	lr
+ 532              		.cfi_endproc
+ 533              	.LFE127:
+ 535              		.section	.text.ipa_background_init,"ax",%progbits
+ 536              		.align	1
+ 537              		.global	ipa_background_init
+ 538              		.syntax unified
+ 539              		.thumb
+ 540              		.thumb_func
+ 542              	ipa_background_init:
+ 543              	.LVL13:
+ 544              	.LFB128:
+ 253:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 254:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 255:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize background parameters
+ 256:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  background_struct: the data needed to initialize background
+ 257:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_memaddr: background memory base address
+ 258:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_lineoff: background line offset
+ 259:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_prealpha: background pre-defined alpha value
+ 260:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_alpha_algorithm: IPA_BG_ALPHA_MODE_0,IPA_FG_ALPHA_MODE_1,IPA_FG_ALPHA_
+ 261:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_pf: background pixel format(BACKGROUND_PPF_ARGB8888,BACKGROUND_PPF_RGB
+ 262:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             BACKGROUND_PPF_ARG1555,BACKGROUND_PPF_ARGB4444,BACKGROUND_PPF_L8,BACKGR
+ 263:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                             BACKGROUND_PPF_AL88,BACKGROUND_PPF_L4,BACKGROUND_PPF_A8,BACKGROUND_PPF_
+ 264:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_prered: background pre-defined red value
+ 265:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_pregreen: background pre-defined green value
+ 266:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   background_preblue: background pre-defined blue value
+ 267:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 268:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 269:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 270:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_background_init(ipa_background_parameter_struct *background_struct)
+ 271:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 545              		.loc 1 271 1 is_stmt 1 view -0
+ 546              		.cfi_startproc
+ 547              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccwY5hkO.s 			page 15
+
+
+ 548              		@ frame_needed = 0, uses_anonymous_args = 0
+ 549              		@ link register save eliminated.
+ 550              		.loc 1 271 1 is_stmt 0 view .LVU127
+ 551 0000 30B4     		push	{r4, r5}
+ 552              	.LCFI4:
+ 553              		.cfi_def_cfa_offset 8
+ 554              		.cfi_offset 4, -8
+ 555              		.cfi_offset 5, -4
+ 272:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     FlagStatus tempflag = RESET;
+ 556              		.loc 1 272 5 is_stmt 1 view .LVU128
+ 557              	.LVL14:
+ 273:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 558              		.loc 1 273 5 view .LVU129
+ 559              		.loc 1 273 18 is_stmt 0 view .LVU130
+ 560 0002 214B     		ldr	r3, .L43
+ 561 0004 1B68     		ldr	r3, [r3]
+ 562              		.loc 1 273 7 view .LVU131
+ 563 0006 13F0010F 		tst	r3, #1
+ 564 000a 35D0     		beq	.L40
+ 274:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 565              		.loc 1 274 9 is_stmt 1 view .LVU132
+ 566              	.LVL15:
+ 275:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* reset the TEN in order to configure the following bits */
+ 276:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL &= ~IPA_CTL_TEN;
+ 567              		.loc 1 276 9 view .LVU133
+ 568              		.loc 1 276 17 is_stmt 0 view .LVU134
+ 569 000c 1E4A     		ldr	r2, .L43
+ 570 000e 1368     		ldr	r3, [r2]
+ 571 0010 23F00103 		bic	r3, r3, #1
+ 572 0014 1360     		str	r3, [r2]
+ 274:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 573              		.loc 1 274 18 view .LVU135
+ 574 0016 0124     		movs	r4, #1
+ 575              	.LVL16:
+ 576              	.L38:
+ 277:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 278:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 279:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background memory base address configuration */
+ 280:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BMADDR &= ~(IPA_BMADDR_BMADDR);
+ 577              		.loc 1 280 5 is_stmt 1 view .LVU136
+ 578              		.loc 1 280 16 is_stmt 0 view .LVU137
+ 579 0018 1B4B     		ldr	r3, .L43
+ 580 001a 5A69     		ldr	r2, [r3, #20]
+ 581 001c 0022     		movs	r2, #0
+ 582 001e 5A61     		str	r2, [r3, #20]
+ 281:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BMADDR = background_struct->background_memaddr;
+ 583              		.loc 1 281 5 is_stmt 1 view .LVU138
+ 584              		.loc 1 281 35 is_stmt 0 view .LVU139
+ 585 0020 0268     		ldr	r2, [r0]
+ 586              		.loc 1 281 16 view .LVU140
+ 587 0022 5A61     		str	r2, [r3, #20]
+ 282:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background line offset configuration */
+ 283:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BLOFF &= ~(IPA_BLOFF_BLOFF);
+ 588              		.loc 1 283 5 is_stmt 1 view .LVU141
+ 589              		.loc 1 283 15 is_stmt 0 view .LVU142
+ 590 0024 9A69     		ldr	r2, [r3, #24]
+ 591 0026 22F47F52 		bic	r2, r2, #16320
+ARM GAS  /tmp/ccwY5hkO.s 			page 16
+
+
+ 592 002a 22F03F02 		bic	r2, r2, #63
+ 593 002e 9A61     		str	r2, [r3, #24]
+ 284:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BLOFF = background_struct->background_lineoff;
+ 594              		.loc 1 284 5 is_stmt 1 view .LVU143
+ 595              		.loc 1 284 34 is_stmt 0 view .LVU144
+ 596 0030 4268     		ldr	r2, [r0, #4]
+ 597              		.loc 1 284 15 view .LVU145
+ 598 0032 9A61     		str	r2, [r3, #24]
+ 285:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background pixel format pre-defined alpha, alpha calculation algorithm configuration */
+ 286:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL &= ~(IPA_BPCTL_BPDAV | IPA_BPCTL_BAVCA | IPA_BPCTL_BPF);
+ 599              		.loc 1 286 5 is_stmt 1 view .LVU146
+ 600              		.loc 1 286 15 is_stmt 0 view .LVU147
+ 601 0034 596A     		ldr	r1, [r3, #36]
+ 602 0036 154A     		ldr	r2, .L43+4
+ 603 0038 0A40     		ands	r2, r2, r1
+ 604 003a 5A62     		str	r2, [r3, #36]
+ 287:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL |= (background_struct->background_prealpha << 24U);
+ 605              		.loc 1 287 5 is_stmt 1 view .LVU148
+ 606              		.loc 1 287 15 is_stmt 0 view .LVU149
+ 607 003c 5A6A     		ldr	r2, [r3, #36]
+ 608              		.loc 1 287 36 view .LVU150
+ 609 003e 8168     		ldr	r1, [r0, #8]
+ 610              		.loc 1 287 15 view .LVU151
+ 611 0040 42EA0162 		orr	r2, r2, r1, lsl #24
+ 612 0044 5A62     		str	r2, [r3, #36]
+ 288:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL |= background_struct->background_alpha_algorithm;
+ 613              		.loc 1 288 5 is_stmt 1 view .LVU152
+ 614              		.loc 1 288 15 is_stmt 0 view .LVU153
+ 615 0046 5A6A     		ldr	r2, [r3, #36]
+ 616              		.loc 1 288 35 view .LVU154
+ 617 0048 C168     		ldr	r1, [r0, #12]
+ 618              		.loc 1 288 15 view .LVU155
+ 619 004a 0A43     		orrs	r2, r2, r1
+ 620 004c 5A62     		str	r2, [r3, #36]
+ 289:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL |= background_struct->background_pf;
+ 621              		.loc 1 289 5 is_stmt 1 view .LVU156
+ 622              		.loc 1 289 15 is_stmt 0 view .LVU157
+ 623 004e 5A6A     		ldr	r2, [r3, #36]
+ 624              		.loc 1 289 35 view .LVU158
+ 625 0050 0169     		ldr	r1, [r0, #16]
+ 626              		.loc 1 289 15 view .LVU159
+ 627 0052 0A43     		orrs	r2, r2, r1
+ 628 0054 5A62     		str	r2, [r3, #36]
+ 290:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background pre-defined red green blue configuration */
+ 291:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPV &= ~(IPA_BPV_BPDRV | IPA_BPV_BPDGV | IPA_BPV_BPDBV);
+ 629              		.loc 1 291 5 is_stmt 1 view .LVU160
+ 630              		.loc 1 291 13 is_stmt 0 view .LVU161
+ 631 0056 9A6A     		ldr	r2, [r3, #40]
+ 632 0058 02F07F42 		and	r2, r2, #-16777216
+ 633 005c 9A62     		str	r2, [r3, #40]
+ 292:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPV |= ((background_struct->background_prered << 16U) | (background_struct->background_preg
+ 634              		.loc 1 292 5 is_stmt 1 view .LVU162
+ 635              		.loc 1 292 13 is_stmt 0 view .LVU163
+ 636 005e 996A     		ldr	r1, [r3, #40]
+ 637              		.loc 1 292 83 view .LVU164
+ 638 0060 8269     		ldr	r2, [r0, #24]
+ 639              		.loc 1 292 105 view .LVU165
+ARM GAS  /tmp/ccwY5hkO.s 			page 17
+
+
+ 640 0062 1202     		lsls	r2, r2, #8
+ 641              		.loc 1 292 63 view .LVU166
+ 642 0064 4569     		ldr	r5, [r0, #20]
+ 643 0066 42EA0542 		orr	r2, r2, r5, lsl #16
+ 293:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 | (background_struct->background_preblue));
+ 644              		.loc 1 293 37 view .LVU167
+ 645 006a C069     		ldr	r0, [r0, #28]
+ 646              	.LVL17:
+ 647              		.loc 1 293 17 view .LVU168
+ 648 006c 0243     		orrs	r2, r2, r0
+ 292:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPV |= ((background_struct->background_prered << 16U) | (background_struct->background_preg
+ 649              		.loc 1 292 13 view .LVU169
+ 650 006e 0A43     		orrs	r2, r2, r1
+ 651 0070 9A62     		str	r2, [r3, #40]
+ 294:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 295:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(SET == tempflag) {
+ 652              		.loc 1 295 5 is_stmt 1 view .LVU170
+ 653              		.loc 1 295 7 is_stmt 0 view .LVU171
+ 654 0072 1CB9     		cbnz	r4, .L42
+ 655              	.L37:
+ 296:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* restore the state of TEN */
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL |= IPA_CTL_TEN;
+ 298:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 299:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 656              		.loc 1 299 1 view .LVU172
+ 657 0074 30BC     		pop	{r4, r5}
+ 658              	.LCFI5:
+ 659              		.cfi_remember_state
+ 660              		.cfi_restore 5
+ 661              		.cfi_restore 4
+ 662              		.cfi_def_cfa_offset 0
+ 663              	.LVL18:
+ 664              		.loc 1 299 1 view .LVU173
+ 665 0076 7047     		bx	lr
+ 666              	.LVL19:
+ 667              	.L40:
+ 668              	.LCFI6:
+ 669              		.cfi_restore_state
+ 272:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 670              		.loc 1 272 16 view .LVU174
+ 671 0078 0024     		movs	r4, #0
+ 672 007a CDE7     		b	.L38
+ 673              	.LVL20:
+ 674              	.L42:
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 675              		.loc 1 297 9 is_stmt 1 view .LVU175
+ 297:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 676              		.loc 1 297 17 is_stmt 0 view .LVU176
+ 677 007c 1A46     		mov	r2, r3
+ 678 007e 1B68     		ldr	r3, [r3]
+ 679 0080 43F00103 		orr	r3, r3, #1
+ 680 0084 1360     		str	r3, [r2]
+ 681              		.loc 1 299 1 view .LVU177
+ 682 0086 F5E7     		b	.L37
+ 683              	.L44:
+ 684              		.align	2
+ 685              	.L43:
+ARM GAS  /tmp/ccwY5hkO.s 			page 18
+
+
+ 686 0088 00B00240 		.word	1073917952
+ 687 008c F0FFFC00 		.word	16580592
+ 688              		.cfi_endproc
+ 689              	.LFE128:
+ 691              		.section	.text.ipa_destination_struct_para_init,"ax",%progbits
+ 692              		.align	1
+ 693              		.global	ipa_destination_struct_para_init
+ 694              		.syntax unified
+ 695              		.thumb
+ 696              		.thumb_func
+ 698              	ipa_destination_struct_para_init:
+ 699              	.LVL21:
+ 700              	.LFB129:
+ 300:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 301:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 302:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize the structure of IPA destination parameter struct with the default values,
+ 303:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 suggested that call this function after an ipa_destination_parameter_struct structu
+ 304:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  none
+ 305:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] destination_struct: the data needed to initialize destination parameter
+ 306:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_pf: IPA_DPF_ARGB8888,IPA_DPF_RGB888,IPA_DPF_RGB565,IPA_DPF_ARGB1555,
+ 307:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                               IPA_DPF_ARGB4444,refer to ipa_dpf_enum
+ 308:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_lineoff: destination line offset
+ 309:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_prealpha: destination pre-defined alpha value
+ 310:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_prered: destination pre-defined red value
+ 311:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_pregreen: destination pre-defined green value
+ 312:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_preblue: destination pre-defined blue value
+ 313:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_memaddr: destination memory base address
+ 314:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   image_width: width of the image to be processed
+ 315:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   image_height: height of the image to be processed
+ 316:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 317:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 318:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_destination_struct_para_init(ipa_destination_parameter_struct *destination_struct)
+ 319:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 701              		.loc 1 319 1 is_stmt 1 view -0
+ 702              		.cfi_startproc
+ 703              		@ args = 0, pretend = 0, frame = 0
+ 704              		@ frame_needed = 0, uses_anonymous_args = 0
+ 705              		@ link register save eliminated.
+ 320:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* initialize the struct parameters with default values */
+ 321:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_pf = IPA_DPF_ARGB8888;
+ 706              		.loc 1 321 5 view .LVU179
+ 707              		.loc 1 321 40 is_stmt 0 view .LVU180
+ 708 0000 0023     		movs	r3, #0
+ 709 0002 C360     		str	r3, [r0, #12]
+ 322:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_lineoff = IPA_DEFAULT_VALUE;
+ 710              		.loc 1 322 5 is_stmt 1 view .LVU181
+ 711              		.loc 1 322 45 is_stmt 0 view .LVU182
+ 712 0004 4360     		str	r3, [r0, #4]
+ 323:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_prealpha = IPA_DEFAULT_VALUE;
+ 713              		.loc 1 323 5 is_stmt 1 view .LVU183
+ 714              		.loc 1 323 46 is_stmt 0 view .LVU184
+ 715 0006 8360     		str	r3, [r0, #8]
+ 324:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_prered = IPA_DEFAULT_VALUE;
+ 716              		.loc 1 324 5 is_stmt 1 view .LVU185
+ 717              		.loc 1 324 44 is_stmt 0 view .LVU186
+ 718 0008 0361     		str	r3, [r0, #16]
+ 325:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_pregreen = IPA_DEFAULT_VALUE;
+ARM GAS  /tmp/ccwY5hkO.s 			page 19
+
+
+ 719              		.loc 1 325 5 is_stmt 1 view .LVU187
+ 720              		.loc 1 325 46 is_stmt 0 view .LVU188
+ 721 000a 4361     		str	r3, [r0, #20]
+ 326:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_preblue = IPA_DEFAULT_VALUE;
+ 722              		.loc 1 326 5 is_stmt 1 view .LVU189
+ 723              		.loc 1 326 45 is_stmt 0 view .LVU190
+ 724 000c 8361     		str	r3, [r0, #24]
+ 327:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->destination_memaddr = IPA_DEFAULT_VALUE;
+ 725              		.loc 1 327 5 is_stmt 1 view .LVU191
+ 726              		.loc 1 327 45 is_stmt 0 view .LVU192
+ 727 000e 0360     		str	r3, [r0]
+ 328:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->image_width = IPA_DEFAULT_VALUE;
+ 728              		.loc 1 328 5 is_stmt 1 view .LVU193
+ 729              		.loc 1 328 37 is_stmt 0 view .LVU194
+ 730 0010 C361     		str	r3, [r0, #28]
+ 329:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_struct->image_height = IPA_DEFAULT_VALUE;
+ 731              		.loc 1 329 5 is_stmt 1 view .LVU195
+ 732              		.loc 1 329 38 is_stmt 0 view .LVU196
+ 733 0012 0362     		str	r3, [r0, #32]
+ 330:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 734              		.loc 1 330 1 view .LVU197
+ 735 0014 7047     		bx	lr
+ 736              		.cfi_endproc
+ 737              	.LFE129:
+ 739              		.section	.text.ipa_destination_init,"ax",%progbits
+ 740              		.align	1
+ 741              		.global	ipa_destination_init
+ 742              		.syntax unified
+ 743              		.thumb
+ 744              		.thumb_func
+ 746              	ipa_destination_init:
+ 747              	.LVL22:
+ 748              	.LFB130:
+ 331:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 332:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 333:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize destination parameters
+ 334:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  destination_struct: the data needed to initialize destination parameters
+ 335:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_pf: IPA_DPF_ARGB8888,IPA_DPF_RGB888,IPA_DPF_RGB565,IPA_DPF_ARGB1555,
+ 336:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                                 IPA_DPF_ARGB4444,refer to ipa_dpf_enum
+ 337:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_lineoff: destination line offset
+ 338:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_prealpha: destination pre-defined alpha value
+ 339:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_prered: destination pre-defined red value
+ 340:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_pregreen: destination pre-defined green value
+ 341:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_preblue: destination pre-defined blue value
+ 342:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   destination_memaddr: destination memory base address
+ 343:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   image_width: width of the image to be processed
+ 344:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                   image_height: height of the image to be processed
+ 345:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 346:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 347:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 348:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_destination_init(ipa_destination_parameter_struct *destination_struct)
+ 349:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 749              		.loc 1 349 1 is_stmt 1 view -0
+ 750              		.cfi_startproc
+ 751              		@ args = 0, pretend = 0, frame = 0
+ 752              		@ frame_needed = 0, uses_anonymous_args = 0
+ 753              		@ link register save eliminated.
+ARM GAS  /tmp/ccwY5hkO.s 			page 20
+
+
+ 754              		.loc 1 349 1 is_stmt 0 view .LVU199
+ 755 0000 30B4     		push	{r4, r5}
+ 756              	.LCFI7:
+ 757              		.cfi_def_cfa_offset 8
+ 758              		.cfi_offset 4, -8
+ 759              		.cfi_offset 5, -4
+ 350:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     uint32_t destination_pixelformat;
+ 760              		.loc 1 350 5 is_stmt 1 view .LVU200
+ 351:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     FlagStatus tempflag = RESET;
+ 761              		.loc 1 351 5 view .LVU201
+ 762              	.LVL23:
+ 352:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 763              		.loc 1 352 5 view .LVU202
+ 764              		.loc 1 352 18 is_stmt 0 view .LVU203
+ 765 0002 454B     		ldr	r3, .L59
+ 766 0004 1B68     		ldr	r3, [r3]
+ 767              		.loc 1 352 7 view .LVU204
+ 768 0006 13F0010F 		tst	r3, #1
+ 769 000a 13D0     		beq	.L56
+ 353:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 770              		.loc 1 353 9 is_stmt 1 view .LVU205
+ 771              	.LVL24:
+ 354:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* reset the TEN in order to configure the following bits */
+ 355:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL &= ~IPA_CTL_TEN;
+ 772              		.loc 1 355 9 view .LVU206
+ 773              		.loc 1 355 17 is_stmt 0 view .LVU207
+ 774 000c 424A     		ldr	r2, .L59
+ 775 000e 1368     		ldr	r3, [r2]
+ 776 0010 23F00103 		bic	r3, r3, #1
+ 777 0014 1360     		str	r3, [r2]
+ 353:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 778              		.loc 1 353 18 view .LVU208
+ 779 0016 0124     		movs	r4, #1
+ 780              	.LVL25:
+ 781              	.L47:
+ 356:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 357:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 358:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format configuration */
+ 359:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DPCTL &= ~(IPA_DPCTL_DPF);
+ 782              		.loc 1 359 5 is_stmt 1 view .LVU209
+ 783              		.loc 1 359 15 is_stmt 0 view .LVU210
+ 784 0018 3F4A     		ldr	r2, .L59
+ 785 001a 536B     		ldr	r3, [r2, #52]
+ 786 001c 23F00703 		bic	r3, r3, #7
+ 787 0020 5363     		str	r3, [r2, #52]
+ 360:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DPCTL = destination_struct->destination_pf;
+ 788              		.loc 1 360 5 is_stmt 1 view .LVU211
+ 789              		.loc 1 360 35 is_stmt 0 view .LVU212
+ 790 0022 C368     		ldr	r3, [r0, #12]
+ 791              		.loc 1 360 15 view .LVU213
+ 792 0024 5363     		str	r3, [r2, #52]
+ 361:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     destination_pixelformat = destination_struct->destination_pf;
+ 793              		.loc 1 361 5 is_stmt 1 view .LVU214
+ 794              	.LVL26:
+ 362:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format ARGB8888 */
+ 363:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     switch(destination_pixelformat) {
+ 795              		.loc 1 363 5 view .LVU215
+ARM GAS  /tmp/ccwY5hkO.s 			page 21
+
+
+ 796 0026 042B     		cmp	r3, #4
+ 797 0028 15D8     		bhi	.L48
+ 798 002a DFE803F0 		tbb	[pc, r3]
+ 799              	.L50:
+ 800 002e 05       		.byte	(.L54-.L50)/2
+ 801 002f 31       		.byte	(.L53-.L50)/2
+ 802 0030 3F       		.byte	(.L52-.L50)/2
+ 803 0031 4D       		.byte	(.L51-.L50)/2
+ 804 0032 5E       		.byte	(.L49-.L50)/2
+ 805              	.LVL27:
+ 806 0033 00       		.p2align 1
+ 807              	.L56:
+ 351:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_CTL & IPA_CTL_TEN)) {
+ 808              		.loc 1 351 16 is_stmt 0 view .LVU216
+ 809 0034 0024     		movs	r4, #0
+ 810 0036 EFE7     		b	.L47
+ 811              	.LVL28:
+ 812              	.L54:
+ 364:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     case IPA_DPF_ARGB8888:
+ 365:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV &= ~(IPA_DPV_DPDBV_0 | (IPA_DPV_DPDGV_0) | (IPA_DPV_DPDRV_0) | (IPA_DPV_DPDAV_0));
+ 813              		.loc 1 365 9 is_stmt 1 view .LVU217
+ 814              		.loc 1 365 17 is_stmt 0 view .LVU218
+ 815 0038 374A     		ldr	r2, .L59
+ 816 003a 936B     		ldr	r3, [r2, #56]
+ 817              	.LVL29:
+ 818              		.loc 1 365 17 view .LVU219
+ 819 003c 0023     		movs	r3, #0
+ 820 003e 9363     		str	r3, [r2, #56]
+ 821              	.LVL30:
+ 366:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 822              		.loc 1 366 9 is_stmt 1 view .LVU220
+ 823              		.loc 1 366 38 is_stmt 0 view .LVU221
+ 824 0040 8369     		ldr	r3, [r0, #24]
+ 825              		.loc 1 366 81 view .LVU222
+ 826 0042 4169     		ldr	r1, [r0, #20]
+ 827              		.loc 1 366 60 view .LVU223
+ 828 0044 43EA0123 		orr	r3, r3, r1, lsl #8
+ 367:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U)
+ 829              		.loc 1 367 41 view .LVU224
+ 830 0048 0169     		ldr	r1, [r0, #16]
+ 831              		.loc 1 367 20 view .LVU225
+ 832 004a 43EA0143 		orr	r3, r3, r1, lsl #16
+ 368:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 24U));
+ 833              		.loc 1 368 41 view .LVU226
+ 834 004e 8168     		ldr	r1, [r0, #8]
+ 835              		.loc 1 368 20 view .LVU227
+ 836 0050 43EA0163 		orr	r3, r3, r1, lsl #24
+ 366:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 837              		.loc 1 366 17 view .LVU228
+ 838 0054 9363     		str	r3, [r2, #56]
+ 369:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 839              		.loc 1 369 9 is_stmt 1 view .LVU229
+ 840              	.L48:
+ 370:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format RGB888 */
+ 371:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     case IPA_DPF_RGB888:
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV &= ~(IPA_DPV_DPDBV_1 | (IPA_DPV_DPDGV_1) | (IPA_DPV_DPDRV_1));
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ARM GAS  /tmp/ccwY5hkO.s 			page 22
+
+
+ 374:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 375:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 376:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format RGB565 */
+ 377:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     case IPA_DPF_RGB565:
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV &= ~(IPA_DPV_DPDBV_2 | (IPA_DPV_DPDGV_2) | (IPA_DPV_DPDRV_2));
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 380:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 381:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 382:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format ARGB1555 */
+ 383:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     case IPA_DPF_ARGB1555:
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV &= ~(IPA_DPV_DPDBV_3 | (IPA_DPV_DPDGV_3) | (IPA_DPV_DPDRV_3) | (IPA_DPV_DPDAV_3));
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 386:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 387:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 15U));
+ 388:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 389:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format ARGB4444 */
+ 390:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     case IPA_DPF_ARGB4444:
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV &= ~(IPA_DPV_DPDBV_4 | (IPA_DPV_DPDGV_4) | (IPA_DPV_DPDRV_4) | (IPA_DPV_DPDAV_4));
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 393:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 394:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 12U));
+ 395:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 396:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     default:
+ 397:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 398:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 399:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination memory base address configuration */
+ 400:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DMADDR &= ~(IPA_DMADDR_DMADDR);
+ 841              		.loc 1 400 5 view .LVU230
+ 842              		.loc 1 400 16 is_stmt 0 view .LVU231
+ 843 0056 304B     		ldr	r3, .L59
+ 844 0058 DA6B     		ldr	r2, [r3, #60]
+ 845 005a 0022     		movs	r2, #0
+ 846 005c DA63     		str	r2, [r3, #60]
+ 401:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DMADDR = destination_struct->destination_memaddr;
+ 847              		.loc 1 401 5 is_stmt 1 view .LVU232
+ 848              		.loc 1 401 36 is_stmt 0 view .LVU233
+ 849 005e 0268     		ldr	r2, [r0]
+ 850              		.loc 1 401 16 view .LVU234
+ 851 0060 DA63     		str	r2, [r3, #60]
+ 402:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination line offset configuration */
+ 403:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DLOFF &= ~(IPA_DLOFF_DLOFF);
+ 852              		.loc 1 403 5 is_stmt 1 view .LVU235
+ 853              		.loc 1 403 15 is_stmt 0 view .LVU236
+ 854 0062 1A6C     		ldr	r2, [r3, #64]
+ 855 0064 22F47F52 		bic	r2, r2, #16320
+ 856 0068 22F03F02 		bic	r2, r2, #63
+ 857 006c 1A64     		str	r2, [r3, #64]
+ 404:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_DLOFF = destination_struct->destination_lineoff;
+ 858              		.loc 1 404 5 is_stmt 1 view .LVU237
+ 859              		.loc 1 404 35 is_stmt 0 view .LVU238
+ 860 006e 4268     		ldr	r2, [r0, #4]
+ 861              		.loc 1 404 15 view .LVU239
+ 862 0070 1A64     		str	r2, [r3, #64]
+ 405:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* image size configuration */
+ 406:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_IMS &= ~(IPA_IMS_HEIGHT | IPA_IMS_WIDTH);
+ 863              		.loc 1 406 5 is_stmt 1 view .LVU240
+ 864              		.loc 1 406 13 is_stmt 0 view .LVU241
+ARM GAS  /tmp/ccwY5hkO.s 			page 23
+
+
+ 865 0072 5A6C     		ldr	r2, [r3, #68]
+ 866 0074 02F04042 		and	r2, r2, #-1073741824
+ 867 0078 5A64     		str	r2, [r3, #68]
+ 407:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_IMS |= ((destination_struct->image_width << 16U) | (destination_struct->image_height));
+ 868              		.loc 1 407 5 is_stmt 1 view .LVU242
+ 869              		.loc 1 407 13 is_stmt 0 view .LVU243
+ 870 007a 5A6C     		ldr	r2, [r3, #68]
+ 871              		.loc 1 407 36 view .LVU244
+ 872 007c C569     		ldr	r5, [r0, #28]
+ 873              		.loc 1 407 79 view .LVU245
+ 874 007e 016A     		ldr	r1, [r0, #32]
+ 875              		.loc 1 407 58 view .LVU246
+ 876 0080 41EA0541 		orr	r1, r1, r5, lsl #16
+ 877              		.loc 1 407 13 view .LVU247
+ 878 0084 0A43     		orrs	r2, r2, r1
+ 879 0086 5A64     		str	r2, [r3, #68]
+ 408:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 409:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(SET == tempflag) {
+ 880              		.loc 1 409 5 is_stmt 1 view .LVU248
+ 881              		.loc 1 409 7 is_stmt 0 view .LVU249
+ 882 0088 002C     		cmp	r4, #0
+ 883 008a 3FD1     		bne	.L58
+ 884              	.L46:
+ 410:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* restore the state of TEN */
+ 411:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_CTL |= IPA_CTL_TEN;
+ 412:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 413:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 885              		.loc 1 413 1 view .LVU250
+ 886 008c 30BC     		pop	{r4, r5}
+ 887              	.LCFI8:
+ 888              		.cfi_remember_state
+ 889              		.cfi_restore 5
+ 890              		.cfi_restore 4
+ 891              		.cfi_def_cfa_offset 0
+ 892              	.LVL31:
+ 893              		.loc 1 413 1 view .LVU251
+ 894 008e 7047     		bx	lr
+ 895              	.LVL32:
+ 896              	.L53:
+ 897              	.LCFI9:
+ 898              		.cfi_restore_state
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 899              		.loc 1 372 9 is_stmt 1 view .LVU252
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 900              		.loc 1 372 17 is_stmt 0 view .LVU253
+ 901 0090 214A     		ldr	r2, .L59
+ 902 0092 936B     		ldr	r3, [r2, #56]
+ 903              	.LVL33:
+ 372:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 904              		.loc 1 372 17 view .LVU254
+ 905 0094 03F07F43 		and	r3, r3, #-16777216
+ 906 0098 9363     		str	r3, [r2, #56]
+ 907              	.LVL34:
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 908              		.loc 1 373 9 is_stmt 1 view .LVU255
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 909              		.loc 1 373 38 is_stmt 0 view .LVU256
+ARM GAS  /tmp/ccwY5hkO.s 			page 24
+
+
+ 910 009a 8369     		ldr	r3, [r0, #24]
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 911              		.loc 1 373 81 view .LVU257
+ 912 009c 4169     		ldr	r1, [r0, #20]
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 913              		.loc 1 373 60 view .LVU258
+ 914 009e 43EA0123 		orr	r3, r3, r1, lsl #8
+ 374:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 915              		.loc 1 374 41 view .LVU259
+ 916 00a2 0169     		ldr	r1, [r0, #16]
+ 374:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 917              		.loc 1 374 20 view .LVU260
+ 918 00a4 43EA0143 		orr	r3, r3, r1, lsl #16
+ 373:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 16U));
+ 919              		.loc 1 373 17 view .LVU261
+ 920 00a8 9363     		str	r3, [r2, #56]
+ 375:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format RGB565 */
+ 921              		.loc 1 375 9 is_stmt 1 view .LVU262
+ 922 00aa D4E7     		b	.L48
+ 923              	.LVL35:
+ 924              	.L52:
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 925              		.loc 1 378 9 view .LVU263
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 926              		.loc 1 378 17 is_stmt 0 view .LVU264
+ 927 00ac 1A4A     		ldr	r2, .L59
+ 928 00ae 936B     		ldr	r3, [r2, #56]
+ 929              	.LVL36:
+ 378:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 930              		.loc 1 378 17 view .LVU265
+ 931 00b0 1B0C     		lsrs	r3, r3, #16
+ 932 00b2 1B04     		lsls	r3, r3, #16
+ 933 00b4 9363     		str	r3, [r2, #56]
+ 934              	.LVL37:
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 935              		.loc 1 379 9 is_stmt 1 view .LVU266
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 936              		.loc 1 379 38 is_stmt 0 view .LVU267
+ 937 00b6 8369     		ldr	r3, [r0, #24]
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 938              		.loc 1 379 81 view .LVU268
+ 939 00b8 4169     		ldr	r1, [r0, #20]
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 940              		.loc 1 379 60 view .LVU269
+ 941 00ba 43EA4113 		orr	r3, r3, r1, lsl #5
+ 380:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 942              		.loc 1 380 41 view .LVU270
+ 943 00be 0169     		ldr	r1, [r0, #16]
+ 380:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 944              		.loc 1 380 20 view .LVU271
+ 945 00c0 43EAC123 		orr	r3, r3, r1, lsl #11
+ 379:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 11U));
+ 946              		.loc 1 379 17 view .LVU272
+ 947 00c4 9363     		str	r3, [r2, #56]
+ 381:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format ARGB1555 */
+ 948              		.loc 1 381 9 is_stmt 1 view .LVU273
+ 949 00c6 C6E7     		b	.L48
+ARM GAS  /tmp/ccwY5hkO.s 			page 25
+
+
+ 950              	.LVL38:
+ 951              	.L51:
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 952              		.loc 1 384 9 view .LVU274
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 953              		.loc 1 384 17 is_stmt 0 view .LVU275
+ 954 00c8 134A     		ldr	r2, .L59
+ 955 00ca 936B     		ldr	r3, [r2, #56]
+ 956              	.LVL39:
+ 384:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 957              		.loc 1 384 17 view .LVU276
+ 958 00cc 1B0C     		lsrs	r3, r3, #16
+ 959 00ce 1B04     		lsls	r3, r3, #16
+ 960 00d0 9363     		str	r3, [r2, #56]
+ 961              	.LVL40:
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 962              		.loc 1 385 9 is_stmt 1 view .LVU277
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 963              		.loc 1 385 38 is_stmt 0 view .LVU278
+ 964 00d2 8369     		ldr	r3, [r0, #24]
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 965              		.loc 1 385 81 view .LVU279
+ 966 00d4 4169     		ldr	r1, [r0, #20]
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 967              		.loc 1 385 60 view .LVU280
+ 968 00d6 43EA4113 		orr	r3, r3, r1, lsl #5
+ 386:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 15U));
+ 969              		.loc 1 386 41 view .LVU281
+ 970 00da 0169     		ldr	r1, [r0, #16]
+ 386:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 15U));
+ 971              		.loc 1 386 20 view .LVU282
+ 972 00dc 43EA8123 		orr	r3, r3, r1, lsl #10
+ 387:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 973              		.loc 1 387 41 view .LVU283
+ 974 00e0 8168     		ldr	r1, [r0, #8]
+ 387:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 975              		.loc 1 387 20 view .LVU284
+ 976 00e2 43EAC133 		orr	r3, r3, r1, lsl #15
+ 385:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 10U)
+ 977              		.loc 1 385 17 view .LVU285
+ 978 00e6 9363     		str	r3, [r2, #56]
+ 388:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* destination pixel format ARGB4444 */
+ 979              		.loc 1 388 9 is_stmt 1 view .LVU286
+ 980 00e8 B5E7     		b	.L48
+ 981              	.LVL41:
+ 982              	.L49:
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 983              		.loc 1 391 9 view .LVU287
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 984              		.loc 1 391 17 is_stmt 0 view .LVU288
+ 985 00ea 0B4A     		ldr	r2, .L59
+ 986 00ec 936B     		ldr	r3, [r2, #56]
+ 987              	.LVL42:
+ 391:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_DPV = (destination_struct->destination_preblue | (destination_struct->destination_pregr
+ 988              		.loc 1 391 17 view .LVU289
+ 989 00ee 1B0C     		lsrs	r3, r3, #16
+ 990 00f0 1B04     		lsls	r3, r3, #16
+ARM GAS  /tmp/ccwY5hkO.s 			page 26
+
+
+ 991 00f2 9363     		str	r3, [r2, #56]
+ 992              	.LVL43:
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 993              		.loc 1 392 9 is_stmt 1 view .LVU290
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 994              		.loc 1 392 38 is_stmt 0 view .LVU291
+ 995 00f4 8369     		ldr	r3, [r0, #24]
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 996              		.loc 1 392 81 view .LVU292
+ 997 00f6 4169     		ldr	r1, [r0, #20]
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 998              		.loc 1 392 60 view .LVU293
+ 999 00f8 43EA0113 		orr	r3, r3, r1, lsl #4
+ 393:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 12U));
+ 1000              		.loc 1 393 41 view .LVU294
+ 1001 00fc 0169     		ldr	r1, [r0, #16]
+ 393:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prealpha << 12U));
+ 1002              		.loc 1 393 20 view .LVU295
+ 1003 00fe 43EA0123 		orr	r3, r3, r1, lsl #8
+ 394:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 1004              		.loc 1 394 41 view .LVU296
+ 1005 0102 8168     		ldr	r1, [r0, #8]
+ 394:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         break;
+ 1006              		.loc 1 394 20 view .LVU297
+ 1007 0104 43EA0133 		orr	r3, r3, r1, lsl #12
+ 392:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                    | (destination_struct->destination_prered << 8U)
+ 1008              		.loc 1 392 17 view .LVU298
+ 1009 0108 9363     		str	r3, [r2, #56]
+ 395:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     default:
+ 1010              		.loc 1 395 9 is_stmt 1 view .LVU299
+ 1011 010a A4E7     		b	.L48
+ 1012              	.L58:
+ 411:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1013              		.loc 1 411 9 view .LVU300
+ 411:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1014              		.loc 1 411 17 is_stmt 0 view .LVU301
+ 1015 010c 1A46     		mov	r2, r3
+ 1016 010e 1B68     		ldr	r3, [r3]
+ 1017 0110 43F00103 		orr	r3, r3, #1
+ 1018 0114 1360     		str	r3, [r2]
+ 1019              		.loc 1 413 1 view .LVU302
+ 1020 0116 B9E7     		b	.L46
+ 1021              	.L60:
+ 1022              		.align	2
+ 1023              	.L59:
+ 1024 0118 00B00240 		.word	1073917952
+ 1025              		.cfi_endproc
+ 1026              	.LFE130:
+ 1028              		.section	.text.ipa_foreground_lut_init,"ax",%progbits
+ 1029              		.align	1
+ 1030              		.global	ipa_foreground_lut_init
+ 1031              		.syntax unified
+ 1032              		.thumb
+ 1033              		.thumb_func
+ 1035              	ipa_foreground_lut_init:
+ 1036              	.LVL44:
+ 1037              	.LFB131:
+ARM GAS  /tmp/ccwY5hkO.s 			page 27
+
+
+ 414:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 415:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 416:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize IPA foreground LUT parameters
+ 417:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  fg_lut_num: foreground LUT number of pixel
+ 418:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  fg_lut_pf: foreground LUT pixel format(IPA_LUT_PF_ARGB8888, IPA_LUT_PF_RGB888)
+ 419:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  fg_lut_addr: foreground LUT memory base address
+ 420:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 421:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 422:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 423:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_foreground_lut_init(uint8_t fg_lut_num, uint8_t fg_lut_pf, uint32_t fg_lut_addr)
+ 424:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1038              		.loc 1 424 1 is_stmt 1 view -0
+ 1039              		.cfi_startproc
+ 1040              		@ args = 0, pretend = 0, frame = 0
+ 1041              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1042              		@ link register save eliminated.
+ 1043              		.loc 1 424 1 is_stmt 0 view .LVU304
+ 1044 0000 30B4     		push	{r4, r5}
+ 1045              	.LCFI10:
+ 1046              		.cfi_def_cfa_offset 8
+ 1047              		.cfi_offset 4, -8
+ 1048              		.cfi_offset 5, -4
+ 425:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     FlagStatus tempflag = RESET;
+ 1049              		.loc 1 425 5 is_stmt 1 view .LVU305
+ 1050              	.LVL45:
+ 426:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_FPCTL & IPA_FPCTL_FLLEN)) {
+ 1051              		.loc 1 426 5 view .LVU306
+ 1052              		.loc 1 426 18 is_stmt 0 view .LVU307
+ 1053 0002 164B     		ldr	r3, .L70
+ 1054 0004 DB69     		ldr	r3, [r3, #28]
+ 1055              		.loc 1 426 7 view .LVU308
+ 1056 0006 13F0200F 		tst	r3, #32
+ 1057 000a 19D0     		beq	.L66
+ 427:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 1058              		.loc 1 427 9 is_stmt 1 view .LVU309
+ 1059              	.LVL46:
+ 428:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* reset the FLLEN in order to configure the following bits */
+ 429:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_FPCTL &= ~IPA_FPCTL_FLLEN;
+ 1060              		.loc 1 429 9 view .LVU310
+ 1061              		.loc 1 429 19 is_stmt 0 view .LVU311
+ 1062 000c 134C     		ldr	r4, .L70
+ 1063 000e E369     		ldr	r3, [r4, #28]
+ 1064 0010 23F02003 		bic	r3, r3, #32
+ 1065 0014 E361     		str	r3, [r4, #28]
+ 427:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 1066              		.loc 1 427 18 view .LVU312
+ 1067 0016 0125     		movs	r5, #1
+ 1068              	.LVL47:
+ 1069              	.L62:
+ 430:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 431:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 432:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground LUT number of pixel configuration */
+ 433:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FPCTL |= ((uint32_t)fg_lut_num << 8U);
+ 1070              		.loc 1 433 5 is_stmt 1 view .LVU313
+ 1071              		.loc 1 433 15 is_stmt 0 view .LVU314
+ 1072 0018 104C     		ldr	r4, .L70
+ 1073 001a E369     		ldr	r3, [r4, #28]
+ARM GAS  /tmp/ccwY5hkO.s 			page 28
+
+
+ 1074 001c 43EA0020 		orr	r0, r3, r0, lsl #8
+ 1075              	.LVL48:
+ 1076              		.loc 1 433 15 view .LVU315
+ 1077 0020 E061     		str	r0, [r4, #28]
+ 434:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground LUT pixel format configuration */
+ 435:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(IPA_LUT_PF_RGB888 == fg_lut_pf) {
+ 1078              		.loc 1 435 5 is_stmt 1 view .LVU316
+ 1079              		.loc 1 435 7 is_stmt 0 view .LVU317
+ 1080 0022 0129     		cmp	r1, #1
+ 1081 0024 0ED0     		beq	.L68
+ 436:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_FPCTL |= IPA_FPCTL_FLPF;
+ 437:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 438:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_FPCTL &= ~(IPA_FPCTL_FLPF);
+ 1082              		.loc 1 438 9 is_stmt 1 view .LVU318
+ 1083              		.loc 1 438 19 is_stmt 0 view .LVU319
+ 1084 0026 0D49     		ldr	r1, .L70
+ 1085              	.LVL49:
+ 1086              		.loc 1 438 19 view .LVU320
+ 1087 0028 CB69     		ldr	r3, [r1, #28]
+ 1088 002a 23F01003 		bic	r3, r3, #16
+ 1089 002e CB61     		str	r3, [r1, #28]
+ 1090              	.L64:
+ 439:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 440:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* foreground LUT memory base address configuration */
+ 441:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FLMADDR &= ~(IPA_FLMADDR_FLMADDR);
+ 1091              		.loc 1 441 5 is_stmt 1 view .LVU321
+ 1092              		.loc 1 441 17 is_stmt 0 view .LVU322
+ 1093 0030 0A4B     		ldr	r3, .L70
+ 1094 0032 D96A     		ldr	r1, [r3, #44]
+ 1095 0034 0021     		movs	r1, #0
+ 1096 0036 D962     		str	r1, [r3, #44]
+ 442:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_FLMADDR = fg_lut_addr;
+ 1097              		.loc 1 442 5 is_stmt 1 view .LVU323
+ 1098              		.loc 1 442 17 is_stmt 0 view .LVU324
+ 1099 0038 DA62     		str	r2, [r3, #44]
+ 443:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 444:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(SET == tempflag) {
+ 1100              		.loc 1 444 5 is_stmt 1 view .LVU325
+ 1101              		.loc 1 444 7 is_stmt 0 view .LVU326
+ 1102 003a 45B9     		cbnz	r5, .L69
+ 1103              	.LVL50:
+ 1104              	.L61:
+ 445:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* restore the state of FLLEN */
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_FPCTL |= IPA_FPCTL_FLLEN;
+ 447:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 448:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1105              		.loc 1 448 1 view .LVU327
+ 1106 003c 30BC     		pop	{r4, r5}
+ 1107              	.LCFI11:
+ 1108              		.cfi_remember_state
+ 1109              		.cfi_restore 5
+ 1110              		.cfi_restore 4
+ 1111              		.cfi_def_cfa_offset 0
+ 1112              	.LVL51:
+ 1113              		.loc 1 448 1 view .LVU328
+ 1114 003e 7047     		bx	lr
+ 1115              	.LVL52:
+ARM GAS  /tmp/ccwY5hkO.s 			page 29
+
+
+ 1116              	.L66:
+ 1117              	.LCFI12:
+ 1118              		.cfi_restore_state
+ 425:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_FPCTL & IPA_FPCTL_FLLEN)) {
+ 1119              		.loc 1 425 16 view .LVU329
+ 1120 0040 0025     		movs	r5, #0
+ 1121 0042 E9E7     		b	.L62
+ 1122              	.LVL53:
+ 1123              	.L68:
+ 436:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 1124              		.loc 1 436 9 is_stmt 1 view .LVU330
+ 436:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 1125              		.loc 1 436 19 is_stmt 0 view .LVU331
+ 1126 0044 E369     		ldr	r3, [r4, #28]
+ 1127 0046 43F01003 		orr	r3, r3, #16
+ 1128 004a E361     		str	r3, [r4, #28]
+ 1129 004c F0E7     		b	.L64
+ 1130              	.LVL54:
+ 1131              	.L69:
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1132              		.loc 1 446 9 is_stmt 1 view .LVU332
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1133              		.loc 1 446 19 is_stmt 0 view .LVU333
+ 1134 004e 1A46     		mov	r2, r3
+ 1135              	.LVL55:
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1136              		.loc 1 446 19 view .LVU334
+ 1137 0050 DB69     		ldr	r3, [r3, #28]
+ 1138              	.LVL56:
+ 446:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1139              		.loc 1 446 19 view .LVU335
+ 1140 0052 43F02003 		orr	r3, r3, #32
+ 1141 0056 D361     		str	r3, [r2, #28]
+ 1142              	.LVL57:
+ 1143              		.loc 1 448 1 view .LVU336
+ 1144 0058 F0E7     		b	.L61
+ 1145              	.L71:
+ 1146 005a 00BF     		.align	2
+ 1147              	.L70:
+ 1148 005c 00B00240 		.word	1073917952
+ 1149              		.cfi_endproc
+ 1150              	.LFE131:
+ 1152              		.section	.text.ipa_background_lut_init,"ax",%progbits
+ 1153              		.align	1
+ 1154              		.global	ipa_background_lut_init
+ 1155              		.syntax unified
+ 1156              		.thumb
+ 1157              		.thumb_func
+ 1159              	ipa_background_lut_init:
+ 1160              	.LVL58:
+ 1161              	.LFB132:
+ 449:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 450:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 451:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    initialize IPA background LUT parameters
+ 452:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  bg_lut_num: background LUT number of pixel
+ 453:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  bg_lut_pf: background LUT pixel format(IPA_LUT_PF_ARGB8888, IPA_LUT_PF_RGB888)
+ 454:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  bg_lut_addr: background LUT memory base address
+ARM GAS  /tmp/ccwY5hkO.s 			page 30
+
+
+ 455:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 456:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 457:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 458:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_background_lut_init(uint8_t bg_lut_num, uint8_t bg_lut_pf, uint32_t bg_lut_addr)
+ 459:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1162              		.loc 1 459 1 is_stmt 1 view -0
+ 1163              		.cfi_startproc
+ 1164              		@ args = 0, pretend = 0, frame = 0
+ 1165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1166              		@ link register save eliminated.
+ 1167              		.loc 1 459 1 is_stmt 0 view .LVU338
+ 1168 0000 30B4     		push	{r4, r5}
+ 1169              	.LCFI13:
+ 1170              		.cfi_def_cfa_offset 8
+ 1171              		.cfi_offset 4, -8
+ 1172              		.cfi_offset 5, -4
+ 460:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     FlagStatus tempflag = RESET;
+ 1173              		.loc 1 460 5 is_stmt 1 view .LVU339
+ 1174              	.LVL59:
+ 461:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_BPCTL & IPA_BPCTL_BLLEN)) {
+ 1175              		.loc 1 461 5 view .LVU340
+ 1176              		.loc 1 461 18 is_stmt 0 view .LVU341
+ 1177 0002 164B     		ldr	r3, .L81
+ 1178 0004 5B6A     		ldr	r3, [r3, #36]
+ 1179              		.loc 1 461 7 view .LVU342
+ 1180 0006 13F0200F 		tst	r3, #32
+ 1181 000a 19D0     		beq	.L77
+ 462:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 1182              		.loc 1 462 9 is_stmt 1 view .LVU343
+ 1183              	.LVL60:
+ 463:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* reset the BLLEN in order to configure the following bits */
+ 464:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_BPCTL &= ~IPA_BPCTL_BLLEN;
+ 1184              		.loc 1 464 9 view .LVU344
+ 1185              		.loc 1 464 19 is_stmt 0 view .LVU345
+ 1186 000c 134C     		ldr	r4, .L81
+ 1187 000e 636A     		ldr	r3, [r4, #36]
+ 1188 0010 23F02003 		bic	r3, r3, #32
+ 1189 0014 6362     		str	r3, [r4, #36]
+ 462:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         tempflag = SET;
+ 1190              		.loc 1 462 18 view .LVU346
+ 1191 0016 0125     		movs	r5, #1
+ 1192              	.LVL61:
+ 1193              	.L73:
+ 465:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 466:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 467:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background LUT number of pixel configuration */
+ 468:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BPCTL |= ((uint32_t)bg_lut_num << 8U);
+ 1194              		.loc 1 468 5 is_stmt 1 view .LVU347
+ 1195              		.loc 1 468 15 is_stmt 0 view .LVU348
+ 1196 0018 104C     		ldr	r4, .L81
+ 1197 001a 636A     		ldr	r3, [r4, #36]
+ 1198 001c 43EA0020 		orr	r0, r3, r0, lsl #8
+ 1199              	.LVL62:
+ 1200              		.loc 1 468 15 view .LVU349
+ 1201 0020 6062     		str	r0, [r4, #36]
+ 469:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background LUT pixel format configuration */
+ 470:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(IPA_LUT_PF_RGB888 == bg_lut_pf) {
+ARM GAS  /tmp/ccwY5hkO.s 			page 31
+
+
+ 1202              		.loc 1 470 5 is_stmt 1 view .LVU350
+ 1203              		.loc 1 470 7 is_stmt 0 view .LVU351
+ 1204 0022 0129     		cmp	r1, #1
+ 1205 0024 0ED0     		beq	.L79
+ 471:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_BPCTL |= IPA_BPCTL_BLPF;
+ 472:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 473:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_BPCTL &= ~(IPA_BPCTL_BLPF);
+ 1206              		.loc 1 473 9 is_stmt 1 view .LVU352
+ 1207              		.loc 1 473 19 is_stmt 0 view .LVU353
+ 1208 0026 0D49     		ldr	r1, .L81
+ 1209              	.LVL63:
+ 1210              		.loc 1 473 19 view .LVU354
+ 1211 0028 4B6A     		ldr	r3, [r1, #36]
+ 1212 002a 23F01003 		bic	r3, r3, #16
+ 1213 002e 4B62     		str	r3, [r1, #36]
+ 1214              	.L75:
+ 474:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 475:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* background LUT memory base address configuration */
+ 476:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BLMADDR &= ~(IPA_BLMADDR_BLMADDR);
+ 1215              		.loc 1 476 5 is_stmt 1 view .LVU355
+ 1216              		.loc 1 476 17 is_stmt 0 view .LVU356
+ 1217 0030 0A4B     		ldr	r3, .L81
+ 1218 0032 196B     		ldr	r1, [r3, #48]
+ 1219 0034 0021     		movs	r1, #0
+ 1220 0036 1963     		str	r1, [r3, #48]
+ 477:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_BLMADDR = bg_lut_addr;
+ 1221              		.loc 1 477 5 is_stmt 1 view .LVU357
+ 1222              		.loc 1 477 17 is_stmt 0 view .LVU358
+ 1223 0038 1A63     		str	r2, [r3, #48]
+ 478:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 479:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(SET == tempflag) {
+ 1224              		.loc 1 479 5 is_stmt 1 view .LVU359
+ 1225              		.loc 1 479 7 is_stmt 0 view .LVU360
+ 1226 003a 45B9     		cbnz	r5, .L80
+ 1227              	.LVL64:
+ 1228              	.L72:
+ 480:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         /* restore the state of BLLEN */
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_BPCTL |= IPA_BPCTL_BLLEN;
+ 482:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 483:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1229              		.loc 1 483 1 view .LVU361
+ 1230 003c 30BC     		pop	{r4, r5}
+ 1231              	.LCFI14:
+ 1232              		.cfi_remember_state
+ 1233              		.cfi_restore 5
+ 1234              		.cfi_restore 4
+ 1235              		.cfi_def_cfa_offset 0
+ 1236              	.LVL65:
+ 1237              		.loc 1 483 1 view .LVU362
+ 1238 003e 7047     		bx	lr
+ 1239              	.LVL66:
+ 1240              	.L77:
+ 1241              	.LCFI15:
+ 1242              		.cfi_restore_state
+ 460:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_BPCTL & IPA_BPCTL_BLLEN)) {
+ 1243              		.loc 1 460 16 view .LVU363
+ 1244 0040 0025     		movs	r5, #0
+ARM GAS  /tmp/ccwY5hkO.s 			page 32
+
+
+ 1245 0042 E9E7     		b	.L73
+ 1246              	.LVL67:
+ 1247              	.L79:
+ 471:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 1248              		.loc 1 471 9 is_stmt 1 view .LVU364
+ 471:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 1249              		.loc 1 471 19 is_stmt 0 view .LVU365
+ 1250 0044 636A     		ldr	r3, [r4, #36]
+ 1251 0046 43F01003 		orr	r3, r3, #16
+ 1252 004a 6362     		str	r3, [r4, #36]
+ 1253 004c F0E7     		b	.L75
+ 1254              	.LVL68:
+ 1255              	.L80:
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1256              		.loc 1 481 9 is_stmt 1 view .LVU366
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1257              		.loc 1 481 19 is_stmt 0 view .LVU367
+ 1258 004e 1A46     		mov	r2, r3
+ 1259              	.LVL69:
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1260              		.loc 1 481 19 view .LVU368
+ 1261 0050 5B6A     		ldr	r3, [r3, #36]
+ 1262              	.LVL70:
+ 481:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 1263              		.loc 1 481 19 view .LVU369
+ 1264 0052 43F02003 		orr	r3, r3, #32
+ 1265 0056 5362     		str	r3, [r2, #36]
+ 1266              	.LVL71:
+ 1267              		.loc 1 483 1 view .LVU370
+ 1268 0058 F0E7     		b	.L72
+ 1269              	.L82:
+ 1270 005a 00BF     		.align	2
+ 1271              	.L81:
+ 1272 005c 00B00240 		.word	1073917952
+ 1273              		.cfi_endproc
+ 1274              	.LFE132:
+ 1276              		.section	.text.ipa_line_mark_config,"ax",%progbits
+ 1277              		.align	1
+ 1278              		.global	ipa_line_mark_config
+ 1279              		.syntax unified
+ 1280              		.thumb
+ 1281              		.thumb_func
+ 1283              	ipa_line_mark_config:
+ 1284              	.LVL72:
+ 1285              	.LFB133:
+ 484:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 485:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 486:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    configure IPA line mark
+ 487:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  line_num: line number
+ 488:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 489:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 490:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 491:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_line_mark_config(uint16_t line_num)
+ 492:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1286              		.loc 1 492 1 is_stmt 1 view -0
+ 1287              		.cfi_startproc
+ 1288              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/ccwY5hkO.s 			page 33
+
+
+ 1289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1290              		@ link register save eliminated.
+ 493:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_LM &= ~(IPA_LM_LM);
+ 1291              		.loc 1 493 5 view .LVU372
+ 1292              		.loc 1 493 12 is_stmt 0 view .LVU373
+ 1293 0000 034A     		ldr	r2, .L84
+ 1294 0002 936C     		ldr	r3, [r2, #72]
+ 1295 0004 1B0C     		lsrs	r3, r3, #16
+ 1296 0006 1B04     		lsls	r3, r3, #16
+ 1297 0008 9364     		str	r3, [r2, #72]
+ 494:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_LM = line_num;
+ 1298              		.loc 1 494 5 is_stmt 1 view .LVU374
+ 1299              		.loc 1 494 12 is_stmt 0 view .LVU375
+ 1300 000a 9064     		str	r0, [r2, #72]
+ 495:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1301              		.loc 1 495 1 view .LVU376
+ 1302 000c 7047     		bx	lr
+ 1303              	.L85:
+ 1304 000e 00BF     		.align	2
+ 1305              	.L84:
+ 1306 0010 00B00240 		.word	1073917952
+ 1307              		.cfi_endproc
+ 1308              	.LFE133:
+ 1310              		.section	.text.ipa_inter_timer_config,"ax",%progbits
+ 1311              		.align	1
+ 1312              		.global	ipa_inter_timer_config
+ 1313              		.syntax unified
+ 1314              		.thumb
+ 1315              		.thumb_func
+ 1317              	ipa_inter_timer_config:
+ 1318              	.LVL73:
+ 1319              	.LFB134:
+ 496:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 497:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 498:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    inter-timer enable or disable
+ 499:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  timer_cfg: IPA_INTER_TIMER_ENABLE,IPA_INTER_TIMER_DISABLE
+ 500:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 501:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 502:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 503:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_inter_timer_config(uint8_t timer_cfg)
+ 504:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1320              		.loc 1 504 1 is_stmt 1 view -0
+ 1321              		.cfi_startproc
+ 1322              		@ args = 0, pretend = 0, frame = 0
+ 1323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1324              		@ link register save eliminated.
+ 505:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(IPA_INTER_TIMER_ENABLE == timer_cfg) {
+ 1325              		.loc 1 505 5 view .LVU378
+ 1326              		.loc 1 505 7 is_stmt 0 view .LVU379
+ 1327 0000 0128     		cmp	r0, #1
+ 1328 0002 05D0     		beq	.L89
+ 506:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_ITCTL |= IPA_ITCTL_ITEN;
+ 507:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 508:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_ITCTL &= ~(IPA_ITCTL_ITEN);
+ 1329              		.loc 1 508 9 is_stmt 1 view .LVU380
+ 1330              		.loc 1 508 19 is_stmt 0 view .LVU381
+ 1331 0004 054A     		ldr	r2, .L90
+ARM GAS  /tmp/ccwY5hkO.s 			page 34
+
+
+ 1332 0006 D36C     		ldr	r3, [r2, #76]
+ 1333 0008 23F00103 		bic	r3, r3, #1
+ 1334 000c D364     		str	r3, [r2, #76]
+ 509:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 510:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1335              		.loc 1 510 1 view .LVU382
+ 1336 000e 7047     		bx	lr
+ 1337              	.L89:
+ 506:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_ITCTL |= IPA_ITCTL_ITEN;
+ 1338              		.loc 1 506 9 is_stmt 1 view .LVU383
+ 506:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         IPA_ITCTL |= IPA_ITCTL_ITEN;
+ 1339              		.loc 1 506 19 is_stmt 0 view .LVU384
+ 1340 0010 024A     		ldr	r2, .L90
+ 1341 0012 D36C     		ldr	r3, [r2, #76]
+ 1342 0014 43F00103 		orr	r3, r3, #1
+ 1343 0018 D364     		str	r3, [r2, #76]
+ 1344 001a 7047     		bx	lr
+ 1345              	.L91:
+ 1346              		.align	2
+ 1347              	.L90:
+ 1348 001c 00B00240 		.word	1073917952
+ 1349              		.cfi_endproc
+ 1350              	.LFE134:
+ 1352              		.section	.text.ipa_interval_clock_num_config,"ax",%progbits
+ 1353              		.align	1
+ 1354              		.global	ipa_interval_clock_num_config
+ 1355              		.syntax unified
+ 1356              		.thumb
+ 1357              		.thumb_func
+ 1359              	ipa_interval_clock_num_config:
+ 1360              	.LVL74:
+ 1361              	.LFB135:
+ 511:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 512:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 513:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    configure the number of clock cycles interval
+ 514:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  clk_num: the number of clock cycles
+ 515:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 516:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 517:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 518:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_interval_clock_num_config(uint8_t clk_num)
+ 519:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1362              		.loc 1 519 1 is_stmt 1 view -0
+ 1363              		.cfi_startproc
+ 1364              		@ args = 0, pretend = 0, frame = 0
+ 1365              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1366              		@ link register save eliminated.
+ 520:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     /* NCCI[7:0] bits have no meaning if ITEN is '0' */
+ 521:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_ITCTL &= ~(IPA_ITCTL_NCCI);
+ 1367              		.loc 1 521 5 view .LVU386
+ 1368              		.loc 1 521 15 is_stmt 0 view .LVU387
+ 1369 0000 044B     		ldr	r3, .L93
+ 1370 0002 D96C     		ldr	r1, [r3, #76]
+ 1371 0004 21F47F41 		bic	r1, r1, #65280
+ 1372 0008 D964     		str	r1, [r3, #76]
+ 522:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_ITCTL |= ((uint32_t)clk_num << 8U);
+ 1373              		.loc 1 522 5 is_stmt 1 view .LVU388
+ 1374              		.loc 1 522 15 is_stmt 0 view .LVU389
+ARM GAS  /tmp/ccwY5hkO.s 			page 35
+
+
+ 1375 000a DA6C     		ldr	r2, [r3, #76]
+ 1376 000c 42EA0022 		orr	r2, r2, r0, lsl #8
+ 1377 0010 DA64     		str	r2, [r3, #76]
+ 523:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1378              		.loc 1 523 1 view .LVU390
+ 1379 0012 7047     		bx	lr
+ 1380              	.L94:
+ 1381              		.align	2
+ 1382              	.L93:
+ 1383 0014 00B00240 		.word	1073917952
+ 1384              		.cfi_endproc
+ 1385              	.LFE135:
+ 1387              		.section	.text.ipa_flag_get,"ax",%progbits
+ 1388              		.align	1
+ 1389              		.global	ipa_flag_get
+ 1390              		.syntax unified
+ 1391              		.thumb
+ 1392              		.thumb_func
+ 1394              	ipa_flag_get:
+ 1395              	.LVL75:
+ 1396              	.LFB136:
+ 524:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 525:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 526:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    get IPA flag status in IPA_INTF register
+ 527:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  flag: IPA flags
+ 528:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 529:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_TAE: transfer access error interrupt flag
+ 530:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_FTF: full transfer finish interrupt flag
+ 531:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_TLM: transfer line mark interrupt flag
+ 532:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_LAC: LUT access conflict interrupt flag
+ 533:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_LLF: LUT loading finish interrupt flag
+ 534:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_WCF: wrong configuration interrupt flag
+ 535:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 536:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 537:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 538:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** FlagStatus ipa_flag_get(uint32_t flag)
+ 539:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1397              		.loc 1 539 1 is_stmt 1 view -0
+ 1398              		.cfi_startproc
+ 1399              		@ args = 0, pretend = 0, frame = 0
+ 1400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1401              		@ link register save eliminated.
+ 540:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(RESET != (IPA_INTF & flag)) {
+ 1402              		.loc 1 540 5 view .LVU392
+ 1403              		.loc 1 540 18 is_stmt 0 view .LVU393
+ 1404 0000 034B     		ldr	r3, .L98
+ 1405 0002 5B68     		ldr	r3, [r3, #4]
+ 1406              		.loc 1 540 7 view .LVU394
+ 1407 0004 0342     		tst	r3, r0
+ 1408 0006 01D0     		beq	.L97
+ 541:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         return SET;
+ 1409              		.loc 1 541 16 view .LVU395
+ 1410 0008 0120     		movs	r0, #1
+ 1411              	.LVL76:
+ 1412              		.loc 1 541 16 view .LVU396
+ 1413 000a 7047     		bx	lr
+ 1414              	.LVL77:
+ARM GAS  /tmp/ccwY5hkO.s 			page 36
+
+
+ 1415              	.L97:
+ 542:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 543:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         return RESET;
+ 1416              		.loc 1 543 16 view .LVU397
+ 1417 000c 0020     		movs	r0, #0
+ 1418              	.LVL78:
+ 544:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 545:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1419              		.loc 1 545 1 view .LVU398
+ 1420 000e 7047     		bx	lr
+ 1421              	.L99:
+ 1422              		.align	2
+ 1423              	.L98:
+ 1424 0010 00B00240 		.word	1073917952
+ 1425              		.cfi_endproc
+ 1426              	.LFE136:
+ 1428              		.section	.text.ipa_flag_clear,"ax",%progbits
+ 1429              		.align	1
+ 1430              		.global	ipa_flag_clear
+ 1431              		.syntax unified
+ 1432              		.thumb
+ 1433              		.thumb_func
+ 1435              	ipa_flag_clear:
+ 1436              	.LVL79:
+ 1437              	.LFB137:
+ 546:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 547:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 548:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    clear IPA flag in IPA_INTF register
+ 549:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  flag: IPA flags
+ 550:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 551:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_TAE: transfer access error interrupt flag
+ 552:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_FTF: full transfer finish interrupt flag
+ 553:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_TLM: transfer line mark interrupt flag
+ 554:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_LAC: LUT access conflict interrupt flag
+ 555:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_LLF: LUT loading finish interrupt flag
+ 556:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_FLAG_WCF: wrong configuration interrupt flag
+ 557:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 558:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 559:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 560:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_flag_clear(uint32_t flag)
+ 561:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1438              		.loc 1 561 1 is_stmt 1 view -0
+ 1439              		.cfi_startproc
+ 1440              		@ args = 0, pretend = 0, frame = 0
+ 1441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1442              		@ link register save eliminated.
+ 562:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_INTC |= (flag);
+ 1443              		.loc 1 562 5 view .LVU400
+ 1444              		.loc 1 562 14 is_stmt 0 view .LVU401
+ 1445 0000 024A     		ldr	r2, .L101
+ 1446 0002 9368     		ldr	r3, [r2, #8]
+ 1447 0004 0343     		orrs	r3, r3, r0
+ 1448 0006 9360     		str	r3, [r2, #8]
+ 563:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1449              		.loc 1 563 1 view .LVU402
+ 1450 0008 7047     		bx	lr
+ 1451              	.L102:
+ARM GAS  /tmp/ccwY5hkO.s 			page 37
+
+
+ 1452 000a 00BF     		.align	2
+ 1453              	.L101:
+ 1454 000c 00B00240 		.word	1073917952
+ 1455              		.cfi_endproc
+ 1456              	.LFE137:
+ 1458              		.section	.text.ipa_interrupt_enable,"ax",%progbits
+ 1459              		.align	1
+ 1460              		.global	ipa_interrupt_enable
+ 1461              		.syntax unified
+ 1462              		.thumb
+ 1463              		.thumb_func
+ 1465              	ipa_interrupt_enable:
+ 1466              	.LVL80:
+ 1467              	.LFB138:
+ 564:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 565:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 566:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    enable IPA interrupt
+ 567:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  int_flag: IPA interrupt flags
+ 568:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 569:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_TAE: transfer access error interrupt
+ 570:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FTF: full transfer finish interrupt
+ 571:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_TLM: transfer line mark interrupt
+ 572:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_LAC: LUT access conflict interrupt
+ 573:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_LLF: LUT loading finish interrupt
+ 574:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_WCF: wrong configuration interrupt
+ 575:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 576:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 577:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 578:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_interrupt_enable(uint32_t int_flag)
+ 579:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1468              		.loc 1 579 1 is_stmt 1 view -0
+ 1469              		.cfi_startproc
+ 1470              		@ args = 0, pretend = 0, frame = 0
+ 1471              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1472              		@ link register save eliminated.
+ 580:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL |= (int_flag);
+ 1473              		.loc 1 580 5 view .LVU404
+ 1474              		.loc 1 580 13 is_stmt 0 view .LVU405
+ 1475 0000 024A     		ldr	r2, .L104
+ 1476 0002 1368     		ldr	r3, [r2]
+ 1477 0004 0343     		orrs	r3, r3, r0
+ 1478 0006 1360     		str	r3, [r2]
+ 581:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1479              		.loc 1 581 1 view .LVU406
+ 1480 0008 7047     		bx	lr
+ 1481              	.L105:
+ 1482 000a 00BF     		.align	2
+ 1483              	.L104:
+ 1484 000c 00B00240 		.word	1073917952
+ 1485              		.cfi_endproc
+ 1486              	.LFE138:
+ 1488              		.section	.text.ipa_interrupt_disable,"ax",%progbits
+ 1489              		.align	1
+ 1490              		.global	ipa_interrupt_disable
+ 1491              		.syntax unified
+ 1492              		.thumb
+ 1493              		.thumb_func
+ARM GAS  /tmp/ccwY5hkO.s 			page 38
+
+
+ 1495              	ipa_interrupt_disable:
+ 1496              	.LVL81:
+ 1497              	.LFB139:
+ 582:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 583:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 584:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    disable IPA interrupt
+ 585:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  int_flag: IPA interrupt flags
+ 586:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 587:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_TAE: transfer access error interrupt
+ 588:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FTF: full transfer finish interrupt
+ 589:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_TLM: transfer line mark interrupt
+ 590:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_LAC: LUT access conflict interrupt
+ 591:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_LLF: LUT loading finish interrupt
+ 592:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_WCF: wrong configuration interrupt
+ 593:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 594:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 595:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 596:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_interrupt_disable(uint32_t int_flag)
+ 597:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1498              		.loc 1 597 1 is_stmt 1 view -0
+ 1499              		.cfi_startproc
+ 1500              		@ args = 0, pretend = 0, frame = 0
+ 1501              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1502              		@ link register save eliminated.
+ 598:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_CTL &= ~(int_flag);
+ 1503              		.loc 1 598 5 view .LVU408
+ 1504              		.loc 1 598 13 is_stmt 0 view .LVU409
+ 1505 0000 024A     		ldr	r2, .L107
+ 1506 0002 1368     		ldr	r3, [r2]
+ 1507 0004 23EA0003 		bic	r3, r3, r0
+ 1508 0008 1360     		str	r3, [r2]
+ 599:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1509              		.loc 1 599 1 view .LVU410
+ 1510 000a 7047     		bx	lr
+ 1511              	.L108:
+ 1512              		.align	2
+ 1513              	.L107:
+ 1514 000c 00B00240 		.word	1073917952
+ 1515              		.cfi_endproc
+ 1516              	.LFE139:
+ 1518              		.section	.text.ipa_interrupt_flag_get,"ax",%progbits
+ 1519              		.align	1
+ 1520              		.global	ipa_interrupt_flag_get
+ 1521              		.syntax unified
+ 1522              		.thumb
+ 1523              		.thumb_func
+ 1525              	ipa_interrupt_flag_get:
+ 1526              	.LVL82:
+ 1527              	.LFB140:
+ 600:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 601:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 602:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    get IPA interrupt flag
+ 603:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  int_flag: IPA interrupt flag flags
+ 604:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 605:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_TAE: transfer access error interrupt flag
+ 606:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_FTF: full transfer finish interrupt flag
+ 607:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_TLM: transfer line mark interrupt flag
+ARM GAS  /tmp/ccwY5hkO.s 			page 39
+
+
+ 608:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_LAC: LUT access conflict interrupt flag
+ 609:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_LLF: LUT loading finish interrupt flag
+ 610:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_WCF: wrong configuration interrupt flag
+ 611:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 612:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 613:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 614:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** FlagStatus ipa_interrupt_flag_get(uint32_t int_flag)
+ 615:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1528              		.loc 1 615 1 is_stmt 1 view -0
+ 1529              		.cfi_startproc
+ 1530              		@ args = 0, pretend = 0, frame = 0
+ 1531              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1532              		@ link register save eliminated.
+ 616:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     if(0U != (IPA_INTF & int_flag)) {
+ 1533              		.loc 1 616 5 view .LVU412
+ 1534              		.loc 1 616 15 is_stmt 0 view .LVU413
+ 1535 0000 034B     		ldr	r3, .L112
+ 1536 0002 5B68     		ldr	r3, [r3, #4]
+ 1537              		.loc 1 616 7 view .LVU414
+ 1538 0004 0342     		tst	r3, r0
+ 1539 0006 01D0     		beq	.L111
+ 617:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         return SET;
+ 1540              		.loc 1 617 16 view .LVU415
+ 1541 0008 0120     		movs	r0, #1
+ 1542              	.LVL83:
+ 1543              		.loc 1 617 16 view .LVU416
+ 1544 000a 7047     		bx	lr
+ 1545              	.LVL84:
+ 1546              	.L111:
+ 618:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     } else {
+ 619:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****         return RESET;
+ 1547              		.loc 1 619 16 view .LVU417
+ 1548 000c 0020     		movs	r0, #0
+ 1549              	.LVL85:
+ 620:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     }
+ 621:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1550              		.loc 1 621 1 view .LVU418
+ 1551 000e 7047     		bx	lr
+ 1552              	.L113:
+ 1553              		.align	2
+ 1554              	.L112:
+ 1555 0010 00B00240 		.word	1073917952
+ 1556              		.cfi_endproc
+ 1557              	.LFE140:
+ 1559              		.section	.text.ipa_interrupt_flag_clear,"ax",%progbits
+ 1560              		.align	1
+ 1561              		.global	ipa_interrupt_flag_clear
+ 1562              		.syntax unified
+ 1563              		.thumb
+ 1564              		.thumb_func
+ 1566              	ipa_interrupt_flag_clear:
+ 1567              	.LVL86:
+ 1568              	.LFB141:
+ 622:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** 
+ 623:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** /*!
+ 624:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \brief    clear IPA interrupt flag
+ 625:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[in]  int_flag: IPA interrupt flag flags
+ARM GAS  /tmp/ccwY5hkO.s 			page 40
+
+
+ 626:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****                 one or more parameters can be selected which are shown as below:
+ 627:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_TAE: transfer access error interrupt flag
+ 628:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_FTF: full transfer finish interrupt flag
+ 629:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_TLM: transfer line mark interrupt flag
+ 630:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_LAC: LUT access conflict interrupt flag
+ 631:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_LLF: LUT loading finish interrupt flag
+ 632:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****       \arg        IPA_INT_FLAG_WCF: wrong configuration interrupt flag
+ 633:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \param[out] none
+ 634:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     \retval     none
+ 635:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** */
+ 636:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** void ipa_interrupt_flag_clear(uint32_t int_flag)
+ 637:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** {
+ 1569              		.loc 1 637 1 is_stmt 1 view -0
+ 1570              		.cfi_startproc
+ 1571              		@ args = 0, pretend = 0, frame = 0
+ 1572              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1573              		@ link register save eliminated.
+ 638:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c ****     IPA_INTC |= (int_flag);
+ 1574              		.loc 1 638 5 view .LVU420
+ 1575              		.loc 1 638 14 is_stmt 0 view .LVU421
+ 1576 0000 024A     		ldr	r2, .L115
+ 1577 0002 9368     		ldr	r3, [r2, #8]
+ 1578 0004 0343     		orrs	r3, r3, r0
+ 1579 0006 9360     		str	r3, [r2, #8]
+ 639:Drivers/GD32_F470_STD_Driver/Source/gd32f4xx_ipa.c **** }
+ 1580              		.loc 1 639 1 view .LVU422
+ 1581 0008 7047     		bx	lr
+ 1582              	.L116:
+ 1583 000a 00BF     		.align	2
+ 1584              	.L115:
+ 1585 000c 00B00240 		.word	1073917952
+ 1586              		.cfi_endproc
+ 1587              	.LFE141:
+ 1589              		.text
+ 1590              	.Letext0:
+ 1591              		.file 2 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_defau
+ 1592              		.file 3 "/home/funtime/arm_gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 1593              		.file 4 "Core/Inc/gd32f4xx.h"
+ 1594              		.file 5 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_rcu.h"
+ 1595              		.file 6 "Drivers/GD32_F470_STD_Driver/Include/gd32f4xx_ipa.h"
+ARM GAS  /tmp/ccwY5hkO.s 			page 41
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 gd32f4xx_ipa.c
+     /tmp/ccwY5hkO.s:20     .text.ipa_deinit:0000000000000000 $t
+     /tmp/ccwY5hkO.s:26     .text.ipa_deinit:0000000000000000 ipa_deinit
+     /tmp/ccwY5hkO.s:52     .text.ipa_transfer_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:58     .text.ipa_transfer_enable:0000000000000000 ipa_transfer_enable
+     /tmp/ccwY5hkO.s:76     .text.ipa_transfer_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:81     .text.ipa_transfer_hangup_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:87     .text.ipa_transfer_hangup_enable:0000000000000000 ipa_transfer_hangup_enable
+     /tmp/ccwY5hkO.s:105    .text.ipa_transfer_hangup_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:110    .text.ipa_transfer_hangup_disable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:116    .text.ipa_transfer_hangup_disable:0000000000000000 ipa_transfer_hangup_disable
+     /tmp/ccwY5hkO.s:134    .text.ipa_transfer_hangup_disable:000000000000000c $d
+     /tmp/ccwY5hkO.s:139    .text.ipa_transfer_stop_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:145    .text.ipa_transfer_stop_enable:0000000000000000 ipa_transfer_stop_enable
+     /tmp/ccwY5hkO.s:163    .text.ipa_transfer_stop_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:168    .text.ipa_transfer_stop_disable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:174    .text.ipa_transfer_stop_disable:0000000000000000 ipa_transfer_stop_disable
+     /tmp/ccwY5hkO.s:192    .text.ipa_transfer_stop_disable:000000000000000c $d
+     /tmp/ccwY5hkO.s:197    .text.ipa_foreground_lut_loading_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:203    .text.ipa_foreground_lut_loading_enable:0000000000000000 ipa_foreground_lut_loading_enable
+     /tmp/ccwY5hkO.s:221    .text.ipa_foreground_lut_loading_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:226    .text.ipa_background_lut_loading_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:232    .text.ipa_background_lut_loading_enable:0000000000000000 ipa_background_lut_loading_enable
+     /tmp/ccwY5hkO.s:250    .text.ipa_background_lut_loading_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:255    .text.ipa_pixel_format_convert_mode_set:0000000000000000 $t
+     /tmp/ccwY5hkO.s:261    .text.ipa_pixel_format_convert_mode_set:0000000000000000 ipa_pixel_format_convert_mode_set
+     /tmp/ccwY5hkO.s:285    .text.ipa_pixel_format_convert_mode_set:0000000000000014 $d
+     /tmp/ccwY5hkO.s:290    .text.ipa_foreground_struct_para_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:296    .text.ipa_foreground_struct_para_init:0000000000000000 ipa_foreground_struct_para_init
+     /tmp/ccwY5hkO.s:335    .text.ipa_foreground_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:341    .text.ipa_foreground_init:0000000000000000 ipa_foreground_init
+     /tmp/ccwY5hkO.s:485    .text.ipa_foreground_init:0000000000000088 $d
+     /tmp/ccwY5hkO.s:491    .text.ipa_background_struct_para_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:497    .text.ipa_background_struct_para_init:0000000000000000 ipa_background_struct_para_init
+     /tmp/ccwY5hkO.s:536    .text.ipa_background_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:542    .text.ipa_background_init:0000000000000000 ipa_background_init
+     /tmp/ccwY5hkO.s:686    .text.ipa_background_init:0000000000000088 $d
+     /tmp/ccwY5hkO.s:692    .text.ipa_destination_struct_para_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:698    .text.ipa_destination_struct_para_init:0000000000000000 ipa_destination_struct_para_init
+     /tmp/ccwY5hkO.s:740    .text.ipa_destination_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:746    .text.ipa_destination_init:0000000000000000 ipa_destination_init
+     /tmp/ccwY5hkO.s:800    .text.ipa_destination_init:000000000000002e $d
+     /tmp/ccwY5hkO.s:1024   .text.ipa_destination_init:0000000000000118 $d
+     /tmp/ccwY5hkO.s:1029   .text.ipa_foreground_lut_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1035   .text.ipa_foreground_lut_init:0000000000000000 ipa_foreground_lut_init
+     /tmp/ccwY5hkO.s:1148   .text.ipa_foreground_lut_init:000000000000005c $d
+     /tmp/ccwY5hkO.s:1153   .text.ipa_background_lut_init:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1159   .text.ipa_background_lut_init:0000000000000000 ipa_background_lut_init
+     /tmp/ccwY5hkO.s:1272   .text.ipa_background_lut_init:000000000000005c $d
+     /tmp/ccwY5hkO.s:1277   .text.ipa_line_mark_config:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1283   .text.ipa_line_mark_config:0000000000000000 ipa_line_mark_config
+     /tmp/ccwY5hkO.s:1306   .text.ipa_line_mark_config:0000000000000010 $d
+     /tmp/ccwY5hkO.s:1311   .text.ipa_inter_timer_config:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1317   .text.ipa_inter_timer_config:0000000000000000 ipa_inter_timer_config
+     /tmp/ccwY5hkO.s:1348   .text.ipa_inter_timer_config:000000000000001c $d
+     /tmp/ccwY5hkO.s:1353   .text.ipa_interval_clock_num_config:0000000000000000 $t
+ARM GAS  /tmp/ccwY5hkO.s 			page 42
+
+
+     /tmp/ccwY5hkO.s:1359   .text.ipa_interval_clock_num_config:0000000000000000 ipa_interval_clock_num_config
+     /tmp/ccwY5hkO.s:1383   .text.ipa_interval_clock_num_config:0000000000000014 $d
+     /tmp/ccwY5hkO.s:1388   .text.ipa_flag_get:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1394   .text.ipa_flag_get:0000000000000000 ipa_flag_get
+     /tmp/ccwY5hkO.s:1424   .text.ipa_flag_get:0000000000000010 $d
+     /tmp/ccwY5hkO.s:1429   .text.ipa_flag_clear:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1435   .text.ipa_flag_clear:0000000000000000 ipa_flag_clear
+     /tmp/ccwY5hkO.s:1454   .text.ipa_flag_clear:000000000000000c $d
+     /tmp/ccwY5hkO.s:1459   .text.ipa_interrupt_enable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1465   .text.ipa_interrupt_enable:0000000000000000 ipa_interrupt_enable
+     /tmp/ccwY5hkO.s:1484   .text.ipa_interrupt_enable:000000000000000c $d
+     /tmp/ccwY5hkO.s:1489   .text.ipa_interrupt_disable:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1495   .text.ipa_interrupt_disable:0000000000000000 ipa_interrupt_disable
+     /tmp/ccwY5hkO.s:1514   .text.ipa_interrupt_disable:000000000000000c $d
+     /tmp/ccwY5hkO.s:1519   .text.ipa_interrupt_flag_get:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1525   .text.ipa_interrupt_flag_get:0000000000000000 ipa_interrupt_flag_get
+     /tmp/ccwY5hkO.s:1555   .text.ipa_interrupt_flag_get:0000000000000010 $d
+     /tmp/ccwY5hkO.s:1560   .text.ipa_interrupt_flag_clear:0000000000000000 $t
+     /tmp/ccwY5hkO.s:1566   .text.ipa_interrupt_flag_clear:0000000000000000 ipa_interrupt_flag_clear
+     /tmp/ccwY5hkO.s:1585   .text.ipa_interrupt_flag_clear:000000000000000c $d
+     /tmp/ccwY5hkO.s:806    .text.ipa_destination_init:0000000000000033 $d
+     /tmp/ccwY5hkO.s:806    .text.ipa_destination_init:0000000000000034 $t
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable

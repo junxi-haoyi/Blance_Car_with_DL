@@ -1,4 +1,4 @@
-# GD32F470 Balance Car
+# GD32F470 Balance Car and Develope by Makefile
 
 **as the old rule , try this game for practicing**
 
@@ -9,3 +9,6 @@
 - I have a jetson nano. How to use the board is difficulty for me . Something like Deepstream ,Tensorrt and CUDA confuse me . I need to learn that by this project.
 
   Good luck for me . I will keep updating
+  
+  
+  

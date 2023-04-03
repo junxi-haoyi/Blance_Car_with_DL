@@ -1,0 +1,433 @@
+{
+  "name": "Balance_Car_with_DL",
+  "type": "ARM",
+  "dependenceList": [],
+  "srcDirs": [
+    ".eide/deps"
+  ],
+  "virtualFolder": {
+    "name": "<virtual_root>",
+    "files": [],
+    "folders": [
+      {
+        "name": "API",
+        "files": [],
+        "folders": []
+      },
+      {
+        "name": "FreeRTOS_Core",
+        "files": [
+          {
+            "path": "../../../FreeRTOS/CORE/croutine.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/event_groups.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/list.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/queue.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/stream_buffer.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/tasks.c"
+          },
+          {
+            "path": "../../../FreeRTOS/CORE/timers.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "FreeRTOS_Inc",
+        "files": [
+          {
+            "path": "../../../FreeRTOS/INC/atomic.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/croutine.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/deprecated_definitions.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/event_groups.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/FreeRTOS.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/list.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/message_buffer.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/mpu_prototypes.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/mpu_wrappers.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/portable.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/portmacro.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/projdefs.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/queue.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/semphr.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/stack_macros.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/StackMacros.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/stdint.readme"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/stream_buffer.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/task.h"
+          },
+          {
+            "path": "../../../FreeRTOS/INC/timers.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "FreeRTOS_Port",
+        "files": [
+          {
+            "path": "../../../FreeRTOS/PORT/heap_4.c"
+          },
+          {
+            "path": "../../../FreeRTOS/PORT/port.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "INC",
+        "files": [
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_adc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_can.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_crc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_ctc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_dac.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_dbg.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_dci.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_dma.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_enet.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_exmc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_exti.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_fmc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_fwdgt.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_gpio.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_i2c.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_ipa.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_iref.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_misc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_pmu.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_rcu.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_rtc.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_sdio.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_spi.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_syscfg.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_timer.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_tli.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_trng.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_usart.h"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Include/gd32f4xx_wwdgt.h"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "SRC",
+        "files": [
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_adc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_can.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_crc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_ctc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_dac.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_dbg.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_dci.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_dma.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_enet.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_exmc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_exti.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_fmc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_fwdgt.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_gpio.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_i2c.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_ipa.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_iref.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_misc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_pmu.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_rcu.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_rtc.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_sdio.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_spi.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_syscfg.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_timer.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_tli.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_trng.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_usart.c"
+          },
+          {
+            "path": "../../../Libraries/GD32F4xx_standard_peripheral/Source/gd32f4xx_wwdgt.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "STARTUP",
+        "files": [
+          {
+            "path": "../../../Libraries/Startup/startup_gd32f450_470.s"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "USER",
+        "files": [
+          {
+            "path": "../../../Libraries/CMSIS/Source/system_gd32f4xx.c"
+          },
+          {
+            "path": "../../../USER/FreeRTOSConfig.h"
+          },
+          {
+            "path": "../../../USER/gd32f4xx_it.c"
+          },
+          {
+            "path": "../../../USER/gd32f4xx_it.h"
+          },
+          {
+            "path": "../../../USER/gd32f4xx_libopt.h"
+          },
+          {
+            "path": "../../../USER/main.c"
+          },
+          {
+            "path": "../../../USER/systick.c"
+          },
+          {
+            "path": "../../../USER/systick.h"
+          }
+        ],
+        "folders": []
+      }
+    ]
+  },
+  "outDir": "build",
+  "deviceName": null,
+  "packDir": null,
+  "miscInfo": {
+    "uid": "07c01740e1a40c6ded10514ef1d59d75"
+  },
+  "targets": {
+    "Debug": {
+      "excludeList": [],
+      "toolchain": "AC5",
+      "compileConfig": {
+        "cpuType": "Cortex-M4",
+        "floatingPointHardware": "single",
+        "useCustomScatterFile": false,
+        "scatterFilePath": "<YOUR_SCATTER_FILE>.sct",
+        "storageLayout": {
+          "RAM": [
+            {
+              "tag": "IRAM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x20000000",
+                "size": "0x5000"
+              },
+              "isChecked": true,
+              "noInit": false
+            }
+          ],
+          "ROM": [
+            {
+              "tag": "IROM",
+              "id": 1,
+              "mem": {
+                "startAddr": "0x08000000",
+                "size": "0x10000"
+              },
+              "isChecked": true,
+              "isStartup": true
+            }
+          ]
+        },
+        "options": "null"
+      },
+      "uploader": "OpenOCD",
+      "uploadConfig": {
+        "bin": "",
+        "target": "stm32f4x",
+        "interface": "cmsis-dap",
+        "baseAddr": "0x08000000"
+      },
+      "uploadConfigMap": {
+        "JLink": {
+          "bin": "",
+          "baseAddr": "",
+          "cpuInfo": {
+            "vendor": "null",
+            "cpuName": "null"
+          },
+          "proType": 1,
+          "speed": 8000,
+          "otherCmds": ""
+        }
+      },
+      "custom_dep": {
+        "name": "default",
+        "incList": [
+          ".eide/deps",
+          "../../../USER",
+          "../../../Libraries/CMSIS",
+          "../../../Libraries/CMSIS/Include",
+          "../../../Libraries/CMSIS/Source",
+          "../../../Libraries/GD32F4xx_standard_peripheral/Include",
+          "../../../FreeRTOS/INC"
+        ],
+        "libList": [],
+        "sourceDirList": [],
+        "defineList": [
+          "USE_STDPERIPH_DRIVER",
+          "GD32F470"
+        ]
+      }
+    }
+  },
+  "version": "3.3"
+}

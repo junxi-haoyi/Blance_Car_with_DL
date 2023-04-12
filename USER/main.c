@@ -39,6 +39,8 @@ OF SUCH DAMAGE.
 #include "systick.h"
 #include <stdio.h>
 #include "FreeRTOS.h"
+#include "USART0.h"
+#include "I2C0.h"
 
 /*!
     \brief      main function
@@ -48,6 +50,22 @@ OF SUCH DAMAGE.
 */
 int main(void)
 {
-    systick_config();
+   // systick_config();
+    USART_Init();
+    I2C_Init();
+
+    if(mpu6050_CheckDevice(0x68))
+    {
+        printf("Device falied\n");
+    }
+    else
+    {
+        printf("Device ok\n");
+    }
+   while (1)
+   {
+    /* code */
+   }
+   
 
 }

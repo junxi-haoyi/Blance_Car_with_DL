@@ -11,7 +11,17 @@
     "folders": [
       {
         "name": "API",
-        "files": [],
+        "files": [
+          {
+            "path": "../../../API/I2C0.c"
+          },
+          {
+            "path": "../../../API/motor.c"
+          },
+          {
+            "path": "../../../API/USART0.c"
+          }
+        ],
         "folders": []
       },
       {
@@ -315,6 +325,11 @@
         "folders": []
       },
       {
+        "name": "Task",
+        "files": [],
+        "folders": []
+      },
+      {
         "name": "USER",
         "files": [
           {
@@ -418,7 +433,9 @@
           "../../../Libraries/CMSIS/Include",
           "../../../Libraries/CMSIS/Source",
           "../../../Libraries/GD32F4xx_standard_peripheral/Include",
-          "../../../FreeRTOS/INC"
+          "../../../FreeRTOS/INC",
+          "../../../API",
+          "../../../Task"
         ],
         "libList": [],
         "sourceDirList": [],

@@ -35,12 +35,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 OF SUCH DAMAGE.
 */
 
-#include "gd32f4xx.h"
-#include "systick.h"
-#include <stdio.h>
-#include "FreeRTOS.h"
-#include "USART0.h"
-#include "I2C0.h"
+#include "includes.h"
 
 /*!
     \brief      main function
@@ -53,6 +48,7 @@ int main(void)
    // systick_config();
     USART_Init();
     I2C_Init();
+    led_Init();
 
     if(mpu6050_CheckDevice(0x68))
     {

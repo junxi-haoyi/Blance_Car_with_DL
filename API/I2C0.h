@@ -2,6 +2,7 @@
 #define __I2C0__
 
 #include "gd32f4xx.h"
+#include <stdio.h>
 
 //#define HARD_I2C0
 #define SOFT_I2C0

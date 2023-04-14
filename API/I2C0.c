@@ -14,7 +14,7 @@ void I2C_Init(void)
 {
     //Enable I2C0 and GPIOB clock
     rcu_periph_clock_enable(RCU_GPIOB);
-    rcu_periph_clock_enable(RCU_I2C0);
+
 
      //GPIO af set
     gpio_af_set(GPIOB,GPIO_AF_4,GPIO_PIN_6);
@@ -27,11 +27,12 @@ void I2C_Init(void)
     gpio_output_options_set(GPIOB,GPIO_OTYPE_OD,GPIO_OSPEED_50MHZ,GPIO_PIN_7);
 
     //Init I2C0
-    i2c_clock_config(I2C0,400000,I2C_DTCY_2);
-    i2c_mode_addr_config(I2C0,I2C_I2CMODE_ENABLE,I2C_ADDFORMAT_7BITS,0xA0);
-    i2c_ack_config(I2C0,I2C_ACK_ENABLE);
+    i2c_deinit(I2C0);
+    rcu_periph_clock_enable(RCU_I2C0);
+    i2c_clock_config(I2C0,100000,I2C_DTCY_2);
+    i2c_mode_addr_config(I2C0,I2C_I2CMODE_ENABLE,I2C_ADDFORMAT_7BITS,0x68<<1);
     i2c_enable(I2C0);
-
+    i2c_ack_config(I2C0,I2C_ACK_ENABLE);
 
 
 }
@@ -39,15 +40,29 @@ void I2C_Init(void)
 
 uint8_t  mpu6050_CheckDevice(void)
 {
-    uint8_t i;
-    i2c_ack_config(I2C0,I2C_ACK_ENABLE);
+
+    while(i2c_flag_get(I2C0, I2C_FLAG_I2CBSY));
+
     i2c_start_on_bus(I2C0);
-    while(!i2c_flag_get(I2C0,I2C_FLAG_SBSEND));
-    i2c_master_addressing(I2C0,0x68<<1,I2C_TRANSMITTER);
+    while(!i2c_flag_get(I2C0, I2C_FLAG_SBSEND));
+    printf("start OK\n");
+
     i2c_Delay();
-    i = i2c_flag_get(I2C0,I2C_FLAG_ADDSEND);
-    i2c_stop_on_bus(I2C0);
-    return !i;
+
+    i2c_master_addressing(I2C0, 0x68<<1, I2C_TRANSMITTER);
+    while(!i2c_flag_get(I2C0, I2C_FLAG_TBE));
+    printf("add OK\n");
+
+    return 0;
+    // uint8_t i;
+    // i2c_ack_config(I2C0,I2C_ACK_ENABLE);
+    // i2c_start_on_bus(I2C0);
+    // while(!i2c_flag_get(I2C0,I2C_FLAG_SBSEND));
+    // i2c_master_addressing(I2C0,0x68,I2C_TRANSMITTER);
+    // i2c_Delay();
+    // i = i2c_flag_get(I2C0,I2C_FLAG_ADDSEND);
+    // i2c_stop_on_bus(I2C0);
+    // return !i;
 }
 
 

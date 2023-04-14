@@ -16,7 +16,13 @@
             "path": "../../../API/I2C0.c"
           },
           {
+            "path": "../../../API/LED.c"
+          },
+          {
             "path": "../../../API/motor.c"
+          },
+          {
+            "path": "../../../API/PWM.c"
           },
           {
             "path": "../../../API/USART0.c"
@@ -326,7 +332,11 @@
       },
       {
         "name": "Task",
-        "files": [],
+        "files": [
+          {
+            "path": "../../../Task/car_Task.c"
+          }
+        ],
         "folders": []
       },
       {

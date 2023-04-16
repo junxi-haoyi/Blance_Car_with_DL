@@ -16,6 +16,9 @@
             "path": "../../../API/I2C0.c"
           },
           {
+            "path": "../../../API/KEY.c"
+          },
+          {
             "path": "../../../API/LED.c"
           },
           {
@@ -372,8 +375,8 @@
     ]
   },
   "outDir": "build",
-  "deviceName": null,
-  "packDir": null,
+  "deviceName": "GD32F470ZG",
+  "packDir": ".pack/GigaDevice/GD32F4xx_DFP.3.0.0",
   "miscInfo": {
     "uid": "07c01740e1a40c6ded10514ef1d59d75"
   },
@@ -393,7 +396,17 @@
               "id": 1,
               "mem": {
                 "startAddr": "0x20000000",
-                "size": "0x5000"
+                "size": "0x070000"
+              },
+              "isChecked": true,
+              "noInit": false
+            },
+            {
+              "tag": "IRAM",
+              "id": 2,
+              "mem": {
+                "startAddr": "0x10000000",
+                "size": "0x010000"
               },
               "isChecked": true,
               "noInit": false
@@ -405,7 +418,7 @@
               "id": 1,
               "mem": {
                 "startAddr": "0x08000000",
-                "size": "0x10000"
+                "size": "0x0100000"
               },
               "isChecked": true,
               "isStartup": true
@@ -445,7 +458,14 @@
           "../../../Libraries/GD32F4xx_standard_peripheral/Include",
           "../../../FreeRTOS/INC",
           "../../../API",
-          "../../../Task"
+          "../../../Task",
+          "../../../FreeRTOS/CORE",
+          "../../../Core/Inc",
+          "../../../Core/Src",
+          "../../../Drivers",
+          "../../../Drivers/CMSIS",
+          "../../../Drivers/CMSIS/GD/Include",
+          "../../../Drivers/GD32_F470_STD_Driver/Source"
         ],
         "libList": [],
         "sourceDirList": [],

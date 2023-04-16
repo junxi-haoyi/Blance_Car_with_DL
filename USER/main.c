@@ -37,6 +37,7 @@ OF SUCH DAMAGE.
 
 #include "includes.h"
 
+void global_Init(void);
 /*!
     \brief      main function
     \param[in]  none
@@ -46,22 +47,17 @@ OF SUCH DAMAGE.
 int main(void)
 {
    // systick_config();
+    global_Init();
+
+    freeRTOS_Task_Start();
+}
+
+
+
+
+void global_Init(void)
+{
     USART_Init();
     I2C_Init();
     led_Init();
-
-    if(mpu6050_CheckDevice(0x68))
-    {
-        printf("Device falied\n");
-    }
-    else
-    {
-        printf("Device ok\n");
-    }
-   while (1)
-   {
-    /* code */
-   }
-   
-
 }

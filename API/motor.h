@@ -3,6 +3,7 @@
 
 #include "gd32f4xx.h"
 
+void init_Motor(void);
 
 
 

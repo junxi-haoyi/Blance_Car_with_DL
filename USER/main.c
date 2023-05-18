@@ -46,7 +46,6 @@ void global_Init(void);
 */
 int main(void)
 {
-   // systick_config();
     global_Init();
 
     freeRTOS_Task_Start();
@@ -57,7 +56,19 @@ int main(void)
 
 void global_Init(void)
 {
-    USART_Init();
+    USART2_Init();
     I2C_Init();
     led_Init();
+    key_Init();
+    dma_Init();
+    PWMA_Init();
+    PWMB_Init();
+    init_Motor();
+    if(mpu6050_CheckDevice())
+    {
+        printf("MPU6050 Check right\n");
+    }
+    printf("Init OK\n");
 }
+
+

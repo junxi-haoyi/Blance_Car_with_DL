@@ -3,9 +3,10 @@
 
 
 /*******    Stacks Setting   **********/
-#define FREERTOS_TASK_START_SIZE    128
-#define BLINK_LEDE_STACK_SIZE    50
-#define KEY_GET_STACK_SIZE    50
+#define FREERTOS_TASK_START_SIZE   128
+#define BLINK_LEDE_STACK_SIZE      50
+#define MOTOER_TEST_STACK_SIZE     50
+#define USART_RX_PRINT_STACK_SIZE  50
 /************************************/
 
 
@@ -16,10 +17,16 @@ uint8_t buffers[100] = {"it must be a great car that is"};
 /************************************/
 
 
+/*******    Signal volume   **********/
+SemaphoreHandle_t binary_Task_binary;
+/************************************/
+
+
 /*******   Task Handlers   **********/
 TaskHandle_t    task_Create_Handler;
 TaskHandle_t    blink_LEDE_Handler;
-TaskHandle_t    get_Key_Handler;
+TaskHandle_t    motor_test_Handler;
+TaskHandle_t    usart_rx_print_Handler;
 /************************************/
 
 
@@ -28,10 +35,17 @@ TaskHandle_t    get_Key_Handler;
 void freeRTOS_Task_Start(void);
 void task_Create(void *pvParameters);
 void blink_LEDE(void *pvParameters);
-void key_Get(void *pvParameters);
+void motor_test(void *pvParameters);
+void usart_rx_print(void *pvParameters);
 /************************************/
 
 
+/********* List Defination **********/
+QueueHandle_t queue_usart;
+/************************************/
+
+
+static uint8_t i = 5;
 
 
 
@@ -48,28 +62,10 @@ void freeRTOS_Task_Start(void)
 {
     taskENTER_CRITICAL();
 
-    // Create Key queue
-    key_queue = xQueueCreate( 3, sizeof(uint8_t));
-    if(key_queue == NULL)
+    queue_usart = xQueueCreate(1, 10);
+    if(queue_usart == NULL)
     {
-        printf("Key Queue Create fail\n");
-        while(1);
-    }
-    else
-    {
-        printf("Key Queue Create successfully\n");
-    }
-
-    // Create big data queue
-    big_date_queue = xQueueCreate(1, sizeof(char*));
-    if(big_date_queue == NULL)
-    {
-        printf("big_date_queue Queue Create fail\n");
-        while(1);
-    }
-    else
-    {
-        printf("big_date_queue Queue Create successfully\n");
+        printf("Queue created failed");
     }
 
 
@@ -84,6 +80,9 @@ void freeRTOS_Task_Start(void)
 
     vTaskStartScheduler();
 }
+
+
+
 
 
 /**
@@ -102,13 +101,21 @@ void task_Create(void *pvParameters)
                 (TaskHandle_t*                  )   &blink_LEDE_Handler
     );
 
-    xTaskCreate((TaskFunction_t                 )   key_Get,
-                (const char*                    )   "key_Get",
-                (configSTACK_DEPTH_TYPE         )   BLINK_LEDE_STACK_SIZE,
+    xTaskCreate((TaskFunction_t                 )   motor_test,
+                (const char*                    )   "motor_test",
+                (configSTACK_DEPTH_TYPE         )   MOTOER_TEST_STACK_SIZE,
                 (void *                         )   NULL,
-                (UBaseType_t                    )   2,
-                (TaskHandle_t*                  )   &blink_LEDE_Handler
+                (UBaseType_t                    )   5,
+                (TaskHandle_t*                  )   &motor_test_Handler
     );
+
+    // xTaskCreate((TaskFunction_t                 )   usart_rx_print,
+    //             (const char*                    )   "usart_rx_print",
+    //             (configSTACK_DEPTH_TYPE         )   USART_RX_PRINT_STACK_SIZE,
+    //             (void*                          )   NULL,
+    //             (UBaseType_t                    )   6,
+    //             (TaskHandle_t*                  )   &usart_rx_print_Handler
+    //             );
 
     vTaskDelete(NULL);
 }
@@ -128,36 +135,54 @@ void blink_LEDE(void *pvParameters)
         // gpio_bit_set(GPIOE, GPIO_PIN_3);
         gpio_bit_toggle(GPIOE, GPIO_PIN_3);
         //delay_1ms(500);
-        vTaskDelay(500);
+        vTaskDelay(5000);
     }
 }
 
 
 /**
- * @brief get key value
+ * @brief 
  * 
  * @param pvParameters 
- * @return void
  */
-void key_Get(void *pvParameters)
+void motor_test(void *pvParameters)
 {
-    uint8_t key = 0;
-    BaseType_t state = 0;
+    while (1)
+    {
+        if(i==27)delay_1ms(1000);
+        gpio_bit_set(GPIOC, GPIO_PIN_9);
+        delay_1ms(i);
+        gpio_bit_reset(GPIOC, GPIO_PIN_9);
+        if(key_Scan())
+        {
+            i++;
+        }
+        if(i >= 27)i=5;
+        vTaskDelay(500-i);
+    } 
+}
+
+
+void usart_rx_print(void *pvParameters)
+{
+    static uint8_t recv = 0;
     while(1)
     {
-        key = KEY_READ();
-        if(key)
+        xQueueReceive(queue_usart, &recv, portMAX_DELAY);
+        if(recv)
         {
-            state = xQueueSend(key_queue, key, portMAX_DELAY);
-            if(state == errQUEUE_FULL)
-            {
-                printf("write key queue fail\n");
-            }
+            printf("recv %c", recv);
+            printf("usart_rx_list : %s", usart_rx_list);
+            word_length = 0;
         }
-        
-        vTaskDelay(10);
     }
+
 }
+
+
+
+
+
 
 /**
  * @brief Get the Remain Stacks object
@@ -166,8 +191,7 @@ void key_Get(void *pvParameters)
  * 
  * @return void 
  */
-void get_Remain_Stacks(void *pvParameters)
-{
-
-}
-
+// void get_Remain_Stacks(void *pvParameters)
+// {
+//     uxSemaphoreGetCount    
+// }

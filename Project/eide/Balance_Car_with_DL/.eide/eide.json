@@ -13,6 +13,9 @@
         "name": "API",
         "files": [
           {
+            "path": "../../../API/DMA0.c"
+          },
+          {
             "path": "../../../API/I2C0.c"
           },
           {
@@ -25,10 +28,16 @@
             "path": "../../../API/motor.c"
           },
           {
+            "path": "../../../API/MPU6050.c"
+          },
+          {
             "path": "../../../API/PWM.c"
           },
           {
-            "path": "../../../API/USART0.c"
+            "path": "../../../API/TIM.c"
+          },
+          {
+            "path": "../../../API/USART2.c"
           }
         ],
         "folders": []
@@ -470,7 +479,6 @@
         "libList": [],
         "sourceDirList": [],
         "defineList": [
-          "USE_STDPERIPH_DRIVER",
           "GD32F470"
         ]
       }

@@ -21,9 +21,19 @@ void key_Init(void)
  */
 uint8_t key_Scan(void)
 {
-    gpio_input_bit_get(GPIOA, GPIO_PIN_0);
-
-    
+    if(gpio_input_bit_get(GPIOA, GPIO_PIN_0))
+    {
+        delay_1ms(100);
+        if(gpio_input_bit_get(GPIOA, GPIO_PIN_0))
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    return 0;
 }
 
 

@@ -24,7 +24,8 @@
             "editor.insertSpaces": true,
             "editor.tabSize": 4,
             "editor.autoIndent": "advanced"
-        }
+        },
+        "RTT_Studio.Build.Parallel_Jobs": "12"
     },
     "extensions": {
         "recommendations": [

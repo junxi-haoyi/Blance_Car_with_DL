@@ -2,8 +2,10 @@
 #define __KEY__
 
 #include "gd32f4xx.h"
+#include "systick.h"
 
-#define KEY_READ() gpio_input_bit_get(GPIOA, GPIO_PIN_0)
+
+uint8_t key_Scan(void);
 
 void key_Init(void);
 

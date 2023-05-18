@@ -60,7 +60,7 @@
 #define configUSE_TICKLESS_IDLE			0					//1启用低功耗tickless模式
 
 #define configCPU_CLOCK_HZ				( SystemCoreClock )	//系统时钟
-#define configTICK_RATE_HZ				( ( TickType_t ) 1000 )//系统时钟分频 时钟节拍频率，这里设置为1000，周期就是1ms
+#define configTICK_RATE_HZ				( ( TickType_t ) 10000 )//系统时钟分频 时钟节拍频率，这里设置为1000，周期就是1ms
 #define configMAX_PRIORITIES			( 32 )				//可使用的最大优先级
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 128 )//空闲任务使用的堆栈大小 单位：字 
 #define configMAX_TASK_NAME_LEN			( 32 )				//任务名字字符串长度
@@ -79,7 +79,7 @@
 /***************************************************************************************************************/
 #define configSUPPORT_DYNAMIC_ALLOCATION		1//支持动态内存申请
 #define configSUPPORT_STATIC_ALLOCATION			0//支持静态内存
-#define configTOTAL_HEAP_SIZE				((size_t)448*1024)//系统总堆栈大小
+#define configTOTAL_HEAP_SIZE				((size_t)128*1024)//系统总堆栈大小
 
 /***************************************************************************************************************/
 /*                                FreeRTOS与钩子函数有关的配置选项                                              */
@@ -152,7 +152,7 @@ function. */
 routine that makes calls to interrupt safe FreeRTOS API functions.  DO NOT CALL
 INTERRUPT SAFE FREERTOS API FUNCTIONS FROM ANY INTERRUPT THAT HAS A HIGHER
 PRIORITY THAN THIS! (higher priorities are lower numeric values. */
-#define configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY	5//系统可管理的最高中断优先级
+#define configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY	0x5//系统可管理的最高中断优先级
 
 /* Interrupt priorities used by the kernel port layer itself.  These are generic
 to all Cortex-M ports, and do not rely on any particular library functions. */

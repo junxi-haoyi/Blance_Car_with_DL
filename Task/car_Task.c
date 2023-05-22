@@ -26,7 +26,6 @@ SemaphoreHandle_t binary_Task_binary;
 TaskHandle_t    task_Create_Handler;
 TaskHandle_t    blink_LEDE_Handler;
 TaskHandle_t    motor_test_Handler;
-TaskHandle_t    usart_rx_print_Handler;
 /************************************/
 
 
@@ -36,7 +35,6 @@ void freeRTOS_Task_Start(void);
 void task_Create(void *pvParameters);
 void blink_LEDE(void *pvParameters);
 void motor_test(void *pvParameters);
-void usart_rx_print(void *pvParameters);
 /************************************/
 
 
@@ -61,13 +59,6 @@ static uint8_t i = 5;
 void freeRTOS_Task_Start(void)
 {
     taskENTER_CRITICAL();
-
-    queue_usart = xQueueCreate(1, 10);
-    if(queue_usart == NULL)
-    {
-        printf("Queue created failed");
-    }
-
 
     xTaskCreate((TaskFunction_t                 )   task_Create,
                 (const  char*                   )   "task_Create",
@@ -109,13 +100,7 @@ void task_Create(void *pvParameters)
                 (TaskHandle_t*                  )   &motor_test_Handler
     );
 
-    // xTaskCreate((TaskFunction_t                 )   usart_rx_print,
-    //             (const char*                    )   "usart_rx_print",
-    //             (configSTACK_DEPTH_TYPE         )   USART_RX_PRINT_STACK_SIZE,
-    //             (void*                          )   NULL,
-    //             (UBaseType_t                    )   6,
-    //             (TaskHandle_t*                  )   &usart_rx_print_Handler
-    //             );
+
 
     vTaskDelete(NULL);
 }
@@ -135,13 +120,13 @@ void blink_LEDE(void *pvParameters)
         // gpio_bit_set(GPIOE, GPIO_PIN_3);
         gpio_bit_toggle(GPIOE, GPIO_PIN_3);
         //delay_1ms(500);
-        vTaskDelay(5000);
+        vTaskDelay(500);
     }
 }
 
 
 /**
- * @brief 
+ * @brief motor test ¶æ»ú²âÊÔ
  * 
  * @param pvParameters 
  */
@@ -163,21 +148,7 @@ void motor_test(void *pvParameters)
 }
 
 
-void usart_rx_print(void *pvParameters)
-{
-    static uint8_t recv = 0;
-    while(1)
-    {
-        xQueueReceive(queue_usart, &recv, portMAX_DELAY);
-        if(recv)
-        {
-            printf("recv %c", recv);
-            printf("usart_rx_list : %s", usart_rx_list);
-            word_length = 0;
-        }
-    }
 
-}
 
 
 

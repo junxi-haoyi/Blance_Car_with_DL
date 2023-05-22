@@ -25,11 +25,11 @@ void PWMA_Init(void)
     timer_parameter_struct timerA_struct_init;
     timer_oc_parameter_struct timerA_oc_struct_init;
 
-    timerA_struct_init.prescaler = 6000U - 1;
+    timerA_struct_init.prescaler = 0;
     timerA_struct_init.alignedmode = TIMER_COUNTER_EDGE;
     timerA_struct_init.counterdirection = TIMER_COUNTER_UP;
     timerA_struct_init.clockdivision = TIMER_CKDIV_DIV4;
-    timerA_struct_init.period = 1000 - 1;
+    timerA_struct_init.period = 6000 - 1;
     timerA_struct_init.repetitioncounter = 0;
 
     timer_init(TIMER7, &timerA_struct_init);
@@ -81,11 +81,11 @@ void PWMB_Init(void)
     timer_parameter_struct timerA_struct_init;
     timer_oc_parameter_struct timerA_oc_struct_init;
 
-    timerA_struct_init.prescaler = 6000U - 1;
+    timerA_struct_init.prescaler = 0;
     timerA_struct_init.alignedmode = TIMER_COUNTER_EDGE;
     timerA_struct_init.counterdirection = TIMER_COUNTER_UP;
     timerA_struct_init.clockdivision = TIMER_CKDIV_DIV4;
-    timerA_struct_init.period = 1000 - 1;
+    timerA_struct_init.period = 6000 - 1;
     timerA_struct_init.repetitioncounter = 0;
 
     timer_init(TIMER0, &timerA_struct_init);

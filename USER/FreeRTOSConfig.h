@@ -60,7 +60,7 @@
 #define configUSE_TICKLESS_IDLE			0					//1启用低功耗tickless模式
 
 #define configCPU_CLOCK_HZ				( SystemCoreClock )	//系统时钟
-#define configTICK_RATE_HZ				( ( TickType_t ) 10000 )//系统时钟分频 时钟节拍频率，这里设置为1000，周期就是1ms
+#define configTICK_RATE_HZ				( ( TickType_t ) 1000 )//系统时钟分频 时钟节拍频率，这里设置为1000，周期就是1ms
 #define configMAX_PRIORITIES			( 32 )				//可使用的最大优先级
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 128 )//空闲任务使用的堆栈大小 单位：字 
 #define configMAX_TASK_NAME_LEN			( 32 )				//任务名字字符串长度

@@ -64,11 +64,9 @@ void global_Init(void)
     PWMA_Init();
     PWMB_Init();
     init_Motor();
-    if(mpu6050_CheckDevice())
-    {
-        printf("MPU6050 Check right\n");
-    }
-    printf("Init OK\n");
+    MPU_6050_Init();
+    mpu6050_ReadID();
+    printf("Initialization successfullly\n");
 }
 
 

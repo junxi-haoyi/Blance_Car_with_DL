@@ -13,6 +13,9 @@
         "name": "API",
         "files": [
           {
+            "path": "../../../API/control.c"
+          },
+          {
             "path": "../../../API/DMA0.c"
           },
           {
@@ -38,6 +41,18 @@
           },
           {
             "path": "../../../API/USART2.c"
+          }
+        ],
+        "folders": []
+      },
+      {
+        "name": "DMP",
+        "files": [
+          {
+            "path": "../../../DMP/inv_mpu_dmp_motion_driver.c"
+          },
+          {
+            "path": "../../../DMP/inv_mpu.c"
           }
         ],
         "folders": []
@@ -474,7 +489,8 @@
           "../../../Drivers",
           "../../../Drivers/CMSIS",
           "../../../Drivers/CMSIS/GD/Include",
-          "../../../Drivers/GD32_F470_STD_Driver/Source"
+          "../../../Drivers/GD32_F470_STD_Driver/Source",
+          "../../../DMP"
         ],
         "libList": [],
         "sourceDirList": [],

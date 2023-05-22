@@ -14,6 +14,7 @@
 #include "DMA0.h"
 #include "TIM.h"
 #include "motor.h"
+#include "MPU6050.h"
 
 
 
